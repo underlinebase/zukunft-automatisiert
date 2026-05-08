@@ -6,6 +6,7 @@ import LiveTicker from '@/components/live-ticker';
 import NumberCounter from '@/components/number-counter';
 import NewsletterForm from '@/components/newsletter-form';
 import RevealLines from '@/components/reveal-lines';
+import MethodSketch from '@/components/method-sketch';
 
 export const metadata: Metadata = {
   title: 'Zukunft. Automatisiert. — Prozess-Surgeon für Mittelständler',
@@ -112,10 +113,10 @@ export default async function HomePage() {
             </div>
             <div className="methodik__steps">
               {[
-                { n: '01 / KARTIEREN', h: 'Prozess-Topologie aufnehmen.', p: 'Wir interviewen, beobachten, messen. Output ist eine vollständige Karte aller IST-Prozesse mit Zeitkosten in Euro pro Jahr.' },
-                { n: '02 / DIAGNOSTIZIEREN', h: 'Engpässe und Hebel identifizieren.', p: 'Wo verliert Ihr Unternehmen Stunden? Wo ist Wissen einer Person unterstellt? Priorisierung nach Impact und Aufwand.' },
-                { n: '03 / OPERIEREN', h: 'Implementation in n8n und Code.', p: 'Wir bauen die Workflows live. Keine Foliensammlung. Übergabe inklusive Monitoring und Eskalations-Pfad.' },
-                { n: '04 / NACHSORGE', h: 'Übergabe und Optimierung.', p: 'Ihr Team wird befähigt. Wir bleiben für 90 Tage erreichbar. Optionale Wartung danach pauschal.' },
+                { n: '01 / KARTIEREN',     h: 'Prozess-Topologie aufnehmen.',      p: 'Wir interviewen, beobachten, messen. Output ist eine vollständige Karte aller IST-Prozesse mit Zeitkosten in Euro pro Jahr.', svg: 'map'   },
+                { n: '02 / DIAGNOSTIZIEREN', h: 'Engpässe und Hebel identifizieren.', p: 'Wo verliert Ihr Unternehmen Stunden? Wo ist Wissen einer Person unterstellt? Priorisierung nach Impact und Aufwand.',   svg: 'diag'  },
+                { n: '03 / OPERIEREN',      h: 'Implementation in n8n und Code.',    p: 'Wir bauen die Workflows live. Keine Foliensammlung. Übergabe inklusive Monitoring und Eskalations-Pfad.',                 svg: 'op'    },
+                { n: '04 / NACHSORGE',      h: 'Übergabe und Optimierung.',          p: 'Ihr Team wird befähigt. Wir bleiben für 90 Tage erreichbar. Optionale Wartung danach pauschal.',                          svg: 'after' },
               ].map((s, i) => (
                 <div className="methodik__step" key={i}>
                   <div className="num">{s.n}</div>
@@ -123,7 +124,9 @@ export default async function HomePage() {
                     <h3>{s.h}</h3>
                     <p>{s.p}</p>
                   </div>
-                  <div className="draw" />
+                  <div className="draw">
+                    <MethodSketch kind={s.svg as 'map' | 'diag' | 'op' | 'after'} />
+                  </div>
                 </div>
               ))}
             </div>
