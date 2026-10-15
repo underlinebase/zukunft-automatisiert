@@ -1,5 +1,6 @@
-import { INDUSTRIES } from '@/lib/content/branchen';
-import { CheckIcon } from '@/components/ui/icons';
+import Link from 'next/link';
+import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
+import { ArrowIcon, CheckIcon } from '@/components/ui/icons';
 import SectionHead from '@/components/ui/section-head';
 import Slider from '@/components/ui/slider';
 
@@ -9,20 +10,24 @@ interface IndustriesProps {
 
 /**
  * Branchen als Slider. Neue Branchen in lib/content/branchen.ts erscheinen hier automatisch.
- * Bewusst ohne Links: Die Landingpages werden gezielt beworben, nicht von der Startseite verlinkt.
+ * Dies ist die einzige Stelle der Website, die auf die Landingpages verlinkt
+ * (Menü und Footer bewusst nicht). Die ganze Karte ist klickbar.
  */
 export default function Industries({ intro }: IndustriesProps) {
-  const list = INDUSTRIES;
   return (
     <section className="section tone-gray" id="branchen" aria-labelledby="industries-title">
       <div className="container">
         <SectionHead label={intro.eyebrow} title={intro.title} lead={intro.lead} id="industries-title" split />
         <Slider label="Branchen">
-          {list.map((industry) => (
+          {INDUSTRIES.map((industry) => (
             <li key={industry.slug} className="slider__item">
               <article className="card card--hover industry-card">
                 <span className="label">{industry.trades}</span>
-                <h3>{industry.name}</h3>
+                <h3>
+                  <Link className="industry-card__title-link" href={industryHref(industry.slug)}>
+                    {industry.name}
+                  </Link>
+                </h3>
                 <p className="muted">{industry.teaser}</p>
                 <ul className="check-list industry-card__list">
                   {industry.routines.map((routine) => (
@@ -32,6 +37,9 @@ export default function Industries({ intro }: IndustriesProps) {
                     </li>
                   ))}
                 </ul>
+                <span className="text-link industry-card__link" aria-hidden="true">
+                  Mehr für {industry.short} <ArrowIcon />
+                </span>
               </article>
             </li>
           ))}
