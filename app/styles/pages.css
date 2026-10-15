@@ -48,6 +48,13 @@
 .site-nav__sublink { display: block; color: var(--c-text); text-decoration: none; font-size: 16px; }
 .site-nav__sublink:hover, .site-nav__sublink[aria-current='page'] { color: var(--c-brand); }
 
+/* Landingpages: nur Logo und Kontakt-Button */
+.site-header__cta { flex-shrink: 0; }
+@media (max-width: 479px) {
+  .site-header--minimal .logo { font-size: 17px; }
+  .site-header--minimal .site-header__cta { min-height: 42px; padding: 9px 14px; font-size: 15px; }
+}
+
 .menu-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 48px; height: 48px; margin-right: -10px;

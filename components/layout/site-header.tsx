@@ -9,9 +9,11 @@ import Logo from './logo';
 
 interface SiteHeaderProps {
   nav: NavItem[];
+  /** Seiten, auf denen nur Logo und Kontakt-Button erscheinen (Landingpages). */
+  minimalPaths?: readonly string[];
 }
 
-export default function SiteHeader({ nav: NAV_ITEMS }: SiteHeaderProps) {
+export default function SiteHeader({ nav: NAV_ITEMS, minimalPaths = [] }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const [lastPath, setLastPath] = useState(pathname);
@@ -59,6 +61,20 @@ export default function SiteHeader({ nav: NAV_ITEMS }: SiteHeaderProps) {
     if (!item.href.startsWith('/#') && (pathname === item.href || pathname.startsWith(`${item.href}/`))) return true;
     return item.children?.some((child) => pathname === child.href) ?? false;
   };
+
+  // Landingpages: kein Menü, damit Besucher beim Angebot bleiben.
+  if (minimalPaths.includes(pathname)) {
+    return (
+      <header className="site-header site-header--minimal">
+        <div className="container site-header__inner">
+          <Logo />
+          <Link href={CONTACT_PAGE} className="btn btn--primary site-header__cta" onClick={goToContact}>
+            Ablauf schildern
+          </Link>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className={`site-header${open ? ' is-open' : ''}`}>

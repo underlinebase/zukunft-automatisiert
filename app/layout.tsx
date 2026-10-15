@@ -8,6 +8,7 @@ import './styles/landing.css';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
 import { NAV_ITEMS, SITE } from '@/lib/content/site';
+import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -35,13 +36,16 @@ export const metadata: Metadata = {
 // Markiert, dass JavaScript läuft. Erst dann wird der Hero-Titel für die Einblendung versteckt.
 const JS_FLAG = "document.documentElement.classList.add('js')";
 
+// Landingpages zeigen im Kopf nur Logo und Kontakt-Button.
+const LANDING_PATHS = INDUSTRIES.map((industry) => industryHref(industry.slug));
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className={`${fraunces.variable} ${figtree.variable}`} suppressHydrationWarning>
       <body>
         <script dangerouslySetInnerHTML={{ __html: JS_FLAG }} />
         <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
-        <SiteHeader nav={NAV_ITEMS} />
+        <SiteHeader nav={NAV_ITEMS} minimalPaths={LANDING_PATHS} />
         <main id="inhalt">{children}</main>
         <SiteFooter />
       </body>

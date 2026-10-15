@@ -23,6 +23,11 @@ describe('industries', () => {
     });
   });
 
+  test('include the landing pages for agencies and coaches', () => {
+    const slugs = INDUSTRIES.map((industry) => industry.slug);
+    expect(slugs).toEqual(expect.arrayContaining(['agenturen', 'coaches']));
+  });
+
   test('have their own FAQ entries', () => {
     INDUSTRIES.forEach((industry) => expect(industry.faqs.length).toBeGreaterThanOrEqual(3));
   });
@@ -72,24 +77,45 @@ describe('structured data', () => {
   });
 });
 
-describe('Wissen-Artikel: keine typischen KI-Muster', () => {
-  // Quelle: Wikipedia „Anzeichen für KI-generierte Inhalte“ und die Stilregeln aus dem Briefing.
-  const FORBIDDEN: RegExp[] = [
-    /—/,
-    /\bnahtlos/i, /ganzheitlich/i, /holistisch/i, /maßgeschneidert/i, /essenziell/i, /\bzentral/i,
-    /tiefgreifend/i, /transformativ/i, /optimier/i, /\bnutz(e|en|t|te|ten)?\b/i, /ermöglich/i, /landschaft/i,
-    /in der heutigen/i, /es ist wichtig/i, /zusammenfassend/i, /abschließend/i, /tauchen wir/i,
-    /kein geheimnis/i, /nicht nur\b/i, /darüber hinaus/i, /\bzudem\b/i, /des weiteren/i, /\brobust/i,
-    /umfassend/i, /maximier/i, /\bförder/i, /entscheidend/i, /bahnbrechend/i, /nächste level/i, /unterm strich/i,
-  ];
+// Quelle: Wikipedia „Anzeichen für KI-generierte Inhalte“ und die Stilregeln aus dem Briefing.
+const FORBIDDEN: RegExp[] = [
+  /—/,
+  /\bnahtlos/i, /ganzheitlich/i, /holistisch/i, /maßgeschneidert/i, /essenziell/i, /\bzentral/i,
+  /tiefgreifend/i, /transformativ/i, /optimier/i, /\bnutz(e|en|t|te|ten)?\b/i, /ermöglich/i, /landschaft/i,
+  /in der heutigen/i, /es ist wichtig/i, /zusammenfassend/i, /abschließend/i, /tauchen wir/i,
+  /kein geheimnis/i, /nicht nur\b/i, /darüber hinaus/i, /\bzudem\b/i, /des weiteren/i, /\brobust/i,
+  /umfassend/i, /maximier/i, /\bförder/i, /entscheidend/i, /bahnbrechend/i, /nächste level/i, /unterm strich/i,
+];
 
+function aiPatternHits(text: string): string[] {
+  return FORBIDDEN.filter((pattern) => pattern.test(text)).map(String);
+}
+
+describe('Wissen-Artikel: keine typischen KI-Muster', () => {
   test.each(ARTICLES.map((article) => [article.slug, article] as const))('%s', (_slug, article) => {
     const text = [article.title, article.lead, ...article.body.map((block) => block.text), ...article.notes].join('\n');
-    const hits = FORBIDDEN.filter((pattern) => pattern.test(text)).map(String);
-    expect(hits).toEqual([]);
+    expect(aiPatternHits(text)).toEqual([]);
   });
 
   test('have unique slugs', () => {
     expect(new Set(ARTICLES.map((article) => article.slug)).size).toBe(ARTICLES.length);
+  });
+});
+
+describe('Landingpages: keine typischen KI-Muster', () => {
+  test.each(INDUSTRIES.map((industry) => [industry.slug, industry] as const))('%s', (_slug, industry) => {
+    const text = [
+      industry.teaser,
+      industry.hero.title,
+      industry.hero.lead,
+      ...industry.heroBenefits,
+      ...industry.routines.flatMap((routine) => [routine.title, routine.text]),
+      ...industry.scenes.flatMap((scene) => [scene.title, scene.text]),
+      ...industry.routineDetails.flatMap((detail) => [detail.title, detail.today, detail.after]),
+      ...industry.faqs.flatMap((faq) => [faq.q, faq.a]),
+      industry.example.title,
+      ...industry.example.steps.flatMap((step) => [step.text, step.afterText ?? '', step.keeps ?? '']),
+    ].join('\n');
+    expect(aiPatternHits(text)).toEqual([]);
   });
 });

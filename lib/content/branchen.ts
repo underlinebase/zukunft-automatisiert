@@ -274,6 +274,194 @@ export const INDUSTRIES: Industry[] = [
     },
     calculator: { hoursPerWeek: 7, hourlyRate: 85 },
   },
+  {
+    slug: 'agenturen',
+    name: 'Agenturen',
+    short: 'Agenturen',
+    audience: 'Agenturen',
+    audienceDative: 'Agenturen',
+    trades: 'Marketing, Web, Werbung',
+    teaser: 'Weniger Statusmails und Stundenzettel, mehr Zeit für Kundenprojekte.',
+    routines: [
+      { title: 'Neue Kunden aufnehmen', text: 'Briefing, Logos und Zugänge kommen gesammelt über ein Formular.' },
+      { title: 'Status an Kunden melden', text: 'Der wöchentliche Bericht liegt als Entwurf bereit, statt dass ihn jemand zusammensucht.' },
+    ],
+    hero: {
+      kicker: 'Automatisierung für Agenturen',
+      title: 'Schluss mit Statusmails am Freitagnachmittag.',
+      lead: 'Den Ablauf, der Ihre Agentur jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Klappt das nicht, arbeite ich kostenlos weiter.',
+    },
+    seo: {
+      title: 'Automatisierung für Agenturen: Onboarding und Reporting',
+      description:
+        'Kunden-Onboarding, Statusberichte, Zeiten und Rechnungen: Ich automatisiere den Ablauf, der Ihre Agentur am meisten Zeit kostet. In 4 Wochen, mit Garantie.',
+      serviceType: 'Prozessautomatisierung für Agenturen',
+    },
+    faqs: [
+      {
+        q: 'Funktioniert das mit unserem Projekttool?',
+        a: 'Meistens ja. Asana, ClickUp, Trello, Monday und die meisten anderen Programme haben eine Schnittstelle. Welche Anbindung bei Ihnen passt, prüfe ich im ersten Gespräch, bevor Sie etwas bezahlen.',
+      },
+      {
+        q: 'Wir sind selbst digital unterwegs. Warum sollten wir das abgeben?',
+        a: 'Weil Ihr Team für Kundenprojekte bezahlt wird, nicht für die eigene Verwaltung. Interne Abläufe bleiben in vielen Agenturen liegen, weil immer ein Kundenprojekt dringender ist. Ich kümmere mich 4 Wochen lang nur um diesen einen Ablauf.',
+      },
+      {
+        q: 'Bekommen unsere Kunden dann automatische Berichte statt persönlicher Worte?',
+        a: 'Nein. Der Bericht sammelt Stand und Zahlen. Ihre Projektleitung liest drüber, ergänzt ein paar Sätze und schickt ihn ab. Das Gespräch mit dem Kunden bleibt bei Ihnen.',
+      },
+      {
+        q: 'Was ist mit Zugangsdaten und Kundendaten?',
+        a: 'Zugangsdaten gehören nicht in E-Mails. Ich richte den Ablauf so ein, dass sie direkt in Ihrem Passwort-Manager oder einem geschützten Bereich landen. Alle anderen Daten bleiben in Ihren Systemen oder auf Servern in der EU.',
+      },
+    ],
+    scenes: [
+      {
+        tag: 'Neue Kunden',
+        title: 'Der Vertrag ist unterschrieben. Die Zugänge fehlen noch.',
+        text: 'Briefing, Logos, Zugänge zu Website und Werbekonten: Bis alles da ist, gehen ein Dutzend E-Mails hin und her.',
+        hours: 'ca. 2 bis 3 Std. pro Woche',
+      },
+      {
+        tag: 'Status',
+        title: 'Freitag, 16 Uhr. Fünf Kunden wollen wissen, wo ihr Projekt steht.',
+        text: 'Stand aus dem Projekttool suchen, Zahlen aus den Werbekonten holen, eine E-Mail daraus machen. Für jeden Kunden einzeln.',
+        hours: 'ca. 3 bis 5 Std. pro Woche',
+      },
+      {
+        tag: 'Abrechnung',
+        title: 'Am Monatsende fehlen die Stunden.',
+        text: 'Zeiten nachtragen lassen, mit dem Budget abgleichen, Rechnungen schreiben. Was nicht erfasst ist, wird nicht bezahlt.',
+        hours: 'ca. 2 bis 4 Std. pro Woche',
+      },
+    ],
+    heroBenefits: [
+      'Neue Kunden mit vollständigem Briefing und allen Zugängen',
+      'Statusberichte als fertiger Entwurf',
+      'Stunden erfasst, bevor die Rechnung rausgeht',
+    ],
+    timeSinks: [
+      { label: 'Statusberichte', min: 3, max: 5 },
+      { label: 'Zeiten und Abrechnung', min: 2, max: 4 },
+      { label: 'Neue Kunden aufnehmen', min: 2, max: 3 },
+    ],
+    routineDetails: [
+      { title: 'Kunden aufnehmen', today: 'Briefing, Logos und Zugänge kommen nach und nach über E-Mails, Chats und Telefonate.', after: 'Neue Kunden füllen ein Formular aus. Projekt, Ordner und Aufgaben werden angelegt, fehlende Angaben freundlich nachgefragt.' },
+      { title: 'Statusberichte', today: 'Jede Woche sucht jemand den Stand aus Projekttool und Werbekonten zusammen und schreibt ihn auf.', after: 'Der Bericht entsteht aus Ihren Projektdaten. Die Projektleitung prüft, ergänzt und schickt ab.' },
+      { title: 'Zeiten erfassen', today: 'Am Monatsende werden Stunden aus dem Gedächtnis nachgetragen. Ein Teil geht verloren.', after: 'Fehlen Zeiten, kommt eine kurze Erinnerung. Läuft ein Budget aus, erfahren Sie es vorher.' },
+      { title: 'Rechnungen', today: 'Stunden und Pauschalen werden von Hand in die Rechnung übertragen.', after: 'Aus den erfassten Zeiten entsteht ein Rechnungsentwurf. Sie prüfen und geben frei.' },
+    ],
+
+    example: {
+      title: 'Ein Statusbericht für einen Kunden.',
+      context: 'Beispielablauf. Die Minuten sind typische Werte, kein Kundenfall.',
+      perWeek: 8,
+      unit: 'Berichte pro Woche',
+      steps: [
+        { text: 'Stand der Aufgaben im Projekttool durchsehen', minutesBefore: 6, minutesAfter: 0, afterText: 'Stand wird automatisch ausgelesen' },
+        { text: 'Zahlen aus Werbekonten oder Analytics holen', minutesBefore: 8, minutesAfter: 0, afterText: 'Zahlen werden abgerufen' },
+        { text: 'Bericht schreiben und formatieren', minutesBefore: 10, minutesAfter: 3, afterText: 'Entwurf liegt bereit, die Projektleitung ergänzt ein paar Sätze', keeps: 'den Entwurf prüfen und ergänzen' },
+        { text: 'Offene Fragen an den Kunden sammeln', minutesBefore: 4, minutesAfter: 0, afterText: 'Offene Punkte stehen automatisch im Bericht' },
+        { text: 'E-Mail an den Kunden schicken', minutesBefore: 2, minutesAfter: 0, afterText: 'Bericht geht nach Freigabe raus' },
+        { text: 'Bericht im Kundenordner ablegen', minutesBefore: 2, minutesAfter: 0, afterText: 'Bericht wird abgelegt' },
+      ],
+    },
+    calculator: { hoursPerWeek: 7, hourlyRate: 80 },
+  },
+  {
+    slug: 'coaches',
+    name: 'Coaches',
+    short: 'Coaches',
+    audience: 'Coaches',
+    audienceDative: 'Coaches',
+    trades: 'Coaching und Training',
+    teaser: 'Termine, Rechnungen und Nachbereitung, ohne Abende am Schreibtisch.',
+    routines: [
+      { title: 'Erstgespräche buchen', text: 'Interessenten wählen selbst einen Termin und beantworten vorab ein paar Fragen.' },
+      { title: 'Nach der Sitzung', text: 'Unterlagen, nächster Termin und Rechnung gehen raus, ohne dass Sie etwas abtippen.' },
+    ],
+    hero: {
+      kicker: 'Automatisierung für Coaches',
+      title: 'Mehr Zeit für Klienten. Weniger für den Papierkram danach.',
+      lead: 'Den Ablauf, der Sie jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Klappt das nicht, arbeite ich kostenlos weiter.',
+    },
+    seo: {
+      title: 'Automatisierung für Coaches: Termine und Rechnungen',
+      description:
+        'Erstgespräche, Terminbuchung, Rechnungen und Nachbereitung: Ich automatisiere den Ablauf, der Sie als Coach am meisten Zeit kostet. In 4 Wochen, mit Garantie.',
+      serviceType: 'Prozessautomatisierung für Coaches',
+    },
+    faqs: [
+      {
+        q: 'Ich arbeite allein. Lohnt sich das für mich?',
+        a: 'Oft gerade dann. Jede Stunde mit Terminen und Rechnungen fehlt Ihnen bei Klienten oder am Feierabend. Rechnen Sie es mit dem Zeitrechner nach. Rechnet es sich nicht, sage ich Ihnen das.',
+      },
+      {
+        q: 'Funktioniert das mit meinem Kalender und meinem Rechnungsprogramm?',
+        a: 'Meistens ja. Gängige Kalender, Buchungstools und Rechnungsprogramme lassen sich anbinden. Welche Anbindung bei Ihnen passt, prüfe ich im ersten Gespräch, bevor Sie etwas bezahlen.',
+      },
+      {
+        q: 'Wirkt das auf meine Klienten nicht unpersönlich?',
+        a: 'Nein. Automatisiert wird das Drumherum: Termin, Erinnerung, Rechnung. Die Nachrichten klingen nach Ihnen, weil wir sie gemeinsam schreiben. Das Coaching selbst bleibt persönlich.',
+      },
+      {
+        q: 'Was passiert mit vertraulichen Angaben aus den Sitzungen?',
+        a: 'Sitzungsnotizen bleiben, wo sie heute sind, und werden nur bewegt, wenn Sie das wollen. Alles andere läuft über Server in der EU. KI setze ich nur mit Diensten ein, die keine Daten zum Training verwenden.',
+      },
+    ],
+    scenes: [
+      {
+        tag: 'Erstgespräche',
+        title: 'Drei E-Mails, bis ein Kennenlerntermin steht.',
+        text: 'Interessenten fragen nach freien Zeiten, Sie schlagen vor, es passt nicht, Sie schlagen neu vor. Manche melden sich danach nicht mehr.',
+        hours: 'ca. 1 bis 2 Std. pro Woche',
+      },
+      {
+        tag: 'Termine',
+        title: 'Absage am Vorabend. Der Platz bleibt leer.',
+        text: 'Termine verschieben, Erinnerungen schicken, Ausfälle nachhalten. Alles von Hand, oft zwischen zwei Sitzungen.',
+        hours: 'ca. 2 bis 3 Std. pro Woche',
+      },
+      {
+        tag: 'Nachbereitung',
+        title: 'Nach der letzten Sitzung beginnt die Büroarbeit.',
+        text: 'Unterlagen verschicken, Rechnung schreiben, Zahlungseingang prüfen. Meistens abends.',
+        hours: 'ca. 2 bis 4 Std. pro Woche',
+      },
+    ],
+    heroBenefits: [
+      'Erstgespräche buchen sich von selbst',
+      'Erinnerungen und Absagen ohne Hin und Her',
+      'Unterlagen und Rechnung nach jeder Sitzung',
+    ],
+    timeSinks: [
+      { label: 'Nachbereitung und Rechnungen', min: 2, max: 4 },
+      { label: 'Termine und Erinnerungen', min: 2, max: 3 },
+      { label: 'Erstgespräche abstimmen', min: 1, max: 2 },
+    ],
+    routineDetails: [
+      { title: 'Erstgespräch buchen', today: 'Anfragen kommen per E-Mail, über Instagram oder LinkedIn. Den Termin stimmen Sie per Nachricht ab.', after: 'Interessenten buchen selbst aus Ihren freien Zeiten und beantworten vorab ein paar Fragen. Sie gehen vorbereitet ins Gespräch.' },
+      { title: 'An Termine erinnern', today: 'Erinnerungen schreiben Sie selbst oder gar nicht. Ausfälle merken Sie erst, wenn niemand kommt.', after: 'Klienten bekommen am Vortag eine Erinnerung. Absagen und Verschieben laufen nach Ihren Regeln.' },
+      { title: 'Nach der Sitzung', today: 'Arbeitsblätter heraussuchen, E-Mail schreiben, nächsten Termin vorschlagen.', after: 'Unterlagen und ein Link für den nächsten Termin gehen automatisch raus.' },
+      { title: 'Rechnung und Zahlung', today: 'Rechnungen schreiben Sie gesammelt am Monatsende. Wer noch nicht bezahlt hat, prüfen Sie im Kontoauszug.', after: 'Nach jeder Sitzung oder für jedes Paket entsteht die Rechnung. An offene Beträge wird freundlich erinnert.' },
+    ],
+
+    example: {
+      title: 'Eine Sitzung von der Buchung bis zur Rechnung.',
+      context: 'Beispielablauf. Die Minuten sind typische Werte, kein Kundenfall.',
+      perWeek: 10,
+      unit: 'Sitzungen pro Woche',
+      steps: [
+        { text: 'Termin per E-Mail abstimmen', minutesBefore: 6, minutesAfter: 0, afterText: 'Klient bucht selbst aus Ihren freien Zeiten' },
+        { text: 'Erinnerung am Vortag schicken', minutesBefore: 2, minutesAfter: 0, afterText: 'Erinnerung geht automatisch raus' },
+        { text: 'Unterlagen nach der Sitzung verschicken', minutesBefore: 4, minutesAfter: 0, afterText: 'Unterlagen gehen automatisch raus' },
+        { text: 'Nächsten Termin vorschlagen', minutesBefore: 3, minutesAfter: 0, afterText: 'Buchungslink steht in der E-Mail' },
+        { text: 'Rechnung schreiben und versenden', minutesBefore: 6, minutesAfter: 1, afterText: 'Rechnungsentwurf liegt bereit, Sie geben frei', keeps: 'die Rechnung freigeben' },
+        { text: 'Zahlungseingang prüfen und erinnern', minutesBefore: 3, minutesAfter: 0, afterText: 'Bei offener Rechnung geht eine Erinnerung raus' },
+      ],
+    },
+    calculator: { hoursPerWeek: 5, hourlyRate: 100 },
+  },
 ];
 
 export function getIndustry(slug: string): Industry | undefined {
