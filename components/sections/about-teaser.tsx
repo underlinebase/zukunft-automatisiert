@@ -12,10 +12,10 @@ export default function AboutTeaser({ content }: AboutTeaserProps) {
       <div className="container about">
         <figure className="about__photo">
           <Image
-            src="/marco-gundlach.jpg"
+            src="/marco-gundlach-portrait.jpg"
             alt={content.photoAlt}
-            width={800}
-            height={1000}
+            width={1254}
+            height={1254}
             sizes="(min-width: 1000px) 40vw, 100vw"
           />
         </figure>

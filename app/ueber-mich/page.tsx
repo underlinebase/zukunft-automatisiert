@@ -42,7 +42,7 @@ export default function AboutPage() {
       <section className="container about-page">
         <div className="about-page__aside">
           <figure className="about-page__photo" style={{ margin: 0 }}>
-            <Image src="/marco-gundlach.jpg" alt="Marco Gundlach" width={800} height={1000} sizes="(min-width: 1000px) 35vw, 100vw" priority />
+            <Image src="/marco-gundlach-portrait.jpg" alt="Marco Gundlach" width={1254} height={1254} sizes="(min-width: 1000px) 35vw, 100vw" priority />
           </figure>
         </div>
         <div className="about-page__essay">

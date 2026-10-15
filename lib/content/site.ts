@@ -23,18 +23,16 @@ export interface NavItem extends NavLink {
 }
 
 /**
- * Hauptnavigation. Die Branchen-Einträge kommen aus lib/content/branchen.ts,
- * damit neue Landingpages automatisch im Menü erscheinen.
+ * Hauptnavigation. Landingpages (z. B. /steuerberater) sind bewusst nicht verlinkt;
+ * sie werden gezielt über Anzeigen, Mailings oder Suchmaschinen angesteuert.
  */
-export function buildNav(industryLinks: NavLink[]): NavItem[] {
-  return [
-    { href: '/#angebot', label: 'Angebot', hint: 'Ein Ablauf in 4 Wochen · Festpreis' },
-    { href: '/#branchen', label: 'Branchen', children: industryLinks },
-    { href: '/#so-laeuft-es', label: 'So läuft es' },
-    { href: '/ueber-mich', label: 'Über mich' },
-    { href: '/wissen', label: 'Wissen' },
-  ];
-}
+export const NAV_ITEMS: NavItem[] = [
+  { href: '/#angebot', label: 'Angebot', hint: 'Ein Ablauf in 4 Wochen · Festpreis' },
+  { href: '/#branchen', label: 'Branchen' },
+  { href: '/#so-laeuft-es', label: 'So läuft es' },
+  { href: '/ueber-mich', label: 'Über mich' },
+  { href: '/wissen', label: 'Wissen' },
+];
 
 /** Sprungmarke zum Abschluss-Formular auf derselben Seite (Startseite, Landingpages, Über mich). */
 export const CONTACT_ANCHOR = '#kontakt';

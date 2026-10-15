@@ -4,12 +4,10 @@ import './globals.css';
 import './styles/sections.css';
 import './styles/week.css';
 import './styles/pages.css';
+import './styles/landing.css';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
-import { SITE, buildNav } from '@/lib/content/site';
-import { INDUSTRY_LINKS } from '@/lib/content/branchen';
-
-const NAV = buildNav(INDUSTRY_LINKS);
+import { NAV_ITEMS, SITE } from '@/lib/content/site';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -43,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script dangerouslySetInnerHTML={{ __html: JS_FLAG }} />
         <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
-        <SiteHeader nav={NAV} />
+        <SiteHeader nav={NAV_ITEMS} />
         <main id="inhalt">{children}</main>
         <SiteFooter />
       </body>

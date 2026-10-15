@@ -32,7 +32,7 @@ export function personSchema(): JsonLd {
     jobTitle: 'KI-Berater und Automatisierungs-Architekt',
     description: 'Der KI-Realist: automatisiert Abläufe für Inhaber und sagt offen, wo KI hilft und wo nicht.',
     url: `${SITE.url}/ueber-mich`,
-    image: `${SITE.url}/marco-gundlach.jpg`,
+    image: `${SITE.url}/marco-gundlach-portrait.jpg`,
     sameAs: [SITE.linkedin],
     homeLocation: { '@type': 'Place', name: SITE.location },
     worksFor: { '@id': ORG_ID },

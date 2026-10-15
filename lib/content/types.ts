@@ -56,6 +56,18 @@ export interface Routine {
   text: string;
 }
 
+export interface TimeSink {
+  label: string;
+  min: number;
+  max: number;
+}
+
+export interface RoutineDetail {
+  title: string;
+  today: string;
+  after: string;
+}
+
 export interface WeekBlockLabel {
   day: 0 | 1 | 2 | 3 | 4;
   label: string;
@@ -83,10 +95,14 @@ export interface Industry {
     title: string;
     lead: string;
   };
+  /** Drei kurze Vorteile im Landingpage-Hero. */
+  heroBenefits: string[];
+  /** Zeitfresser der Branche in Stunden pro Woche (Spanne), für die Hero-Grafik. */
+  timeSinks: TimeSink[];
   scenes: Scene[];
-  moreRoutines: Routine[];
+  /** Typische Abläufe mit Vergleich „heute“ und „danach“. */
+  routineDetails: RoutineDetail[];
   example: BeforeAfterExample;
-  weekBlocks: WeekBlockLabel[];
   calculator: CalculatorDefaults;
   /** Branchenspezifische Fragen; auf der Landingpage vor den allgemeinen Fragen. */
   faqs: Faq[];

@@ -1,33 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { INDUSTRIES, getIndustry, industryHref } from '@/lib/content/branchen';
-import {
-  ABOUT,
-  CLOSING,
-  FACTS,
-  FAQ_INTRO,
-  FIT,
-  GUARANTEE,
-  INDUSTRIES_INTRO,
-  LANDING_GENERAL_FAQS,
-  PRINCIPLES,
-  PRINCIPLES_INTRO,
-  WEEKS,
-  WEEKS_INTRO,
-} from '@/lib/content/home';
+import { CLOSING, FAQ_INTRO, GUARANTEE, LANDING_GENERAL_FAQS, WEEKS, WEEKS_INTRO } from '@/lib/content/home';
 import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, serviceSchema } from '@/lib/seo/schema';
 import JsonLd from '@/components/seo/json-ld';
-import Hero from '@/components/sections/hero';
-import FactsBar from '@/components/sections/facts-bar';
-import Scenes from '@/components/sections/scenes';
-import Routines from '@/components/sections/routines';
-import Principles from '@/components/sections/principles';
-import FourWeeks from '@/components/sections/four-weeks';
+import LandingHero from '@/components/landing/landing-hero';
+import PainPoints from '@/components/landing/pain-points';
+import RoutineCompare from '@/components/landing/routine-compare';
+import StepsCompact from '@/components/landing/steps-compact';
+import ContactPerson from '@/components/landing/contact-person';
 import BeforeAfter from '@/components/sections/before-after';
 import Guarantee from '@/components/sections/guarantee';
-import FitCheck from '@/components/sections/fit-check';
-import AboutTeaser from '@/components/sections/about-teaser';
-import Industries from '@/components/sections/industries';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 
@@ -55,6 +38,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/**
+ * Eigenständige Landingpage pro Branche. Bewusst anders aufgebaut als die Startseite
+ * und nicht von ihr verlinkt; Zugang über Anzeigen, Mailings oder Suchmaschinen.
+ */
 export default async function LandingPage({ params }: PageProps) {
   const { branche } = await params;
   const industry = getIndustry(branche);
@@ -76,31 +63,14 @@ export default async function LandingPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={schema} />
-      <Hero
-        eyebrow={industry.trades}
-        kicker={industry.hero.kicker}
-        title={industry.hero.title}
-        lead={industry.hero.lead}
-        weekBlocks={industry.weekBlocks}
-      />
-      <FactsBar facts={FACTS} />
-      <Scenes
-        intro={{
-          eyebrow: 'Kennen Sie das?',
-          title: `Drei Szenen aus dem Alltag von ${industry.audienceDative}.`,
-          lead: 'Wo die Zeit hingeht, bevor es Feierabend wird.',
-        }}
-        scenes={industry.scenes}
-      />
-      <Routines audience={industry.audience} routines={industry.moreRoutines} />
+      <LandingHero industry={industry} />
+      <PainPoints audienceDative={industry.audienceDative} scenes={industry.scenes} />
+      <RoutineCompare audience={industry.audience} routines={industry.routineDetails} />
       <BeforeAfter example={industry.example} />
-      <FourWeeks intro={WEEKS_INTRO} weeks={WEEKS} />
+      <StepsCompact steps={WEEKS} total={WEEKS_INTRO.total} />
       <Guarantee content={GUARANTEE} calculator={industry.calculator} />
-      <Principles intro={PRINCIPLES_INTRO} principles={PRINCIPLES} />
-      <AboutTeaser content={ABOUT} />
-      <FitCheck content={FIT} />
+      <ContactPerson />
       <FaqSection intro={{ ...FAQ_INTRO, title: `Was ${industry.audience} mich vorher fragen.` }} items={faqs} />
-      <Industries intro={{ ...INDUSTRIES_INTRO, title: 'Auch für diese Betriebe.' }} exclude={industry.slug} />
       <Closing content={CLOSING} />
     </>
   );
