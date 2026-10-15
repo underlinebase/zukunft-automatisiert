@@ -47,6 +47,9 @@ const BOARD_W = 5 * COL_W + 4 * COL_GAP;
 const BASE_ROT = { x: -0.5, y: 0.3, z: 0.05 };
 const MAX_TILT = MathUtils.degToRad(3.5);
 const TILT_LERP = 0.08;
+// Werte aus dem Claude-Design-Entwurf „Startseite v2“: Block kippt um rund 77° weg, Häkchen federt leicht nach.
+const LEAVE_ROTATION = 1.35;
+const CHECK_OVERSHOOT = 1.9;
 const FOV = 24;
 const SIDE_COLOR = '#DCDCE1';
 const SHADOW_OPACITY_GROUND = 0.07;
@@ -145,7 +148,7 @@ function buildFreedSlot(palette: ScenePalette, anisotropy: number): Mesh<PlaneGe
 }
 
 function backOut(t: number): number {
-  const s = 1.70158;
+  const s = CHECK_OVERSHOOT;
   const x = t - 1;
   return 1 + (s + 1) * x * x * x + s * x * x;
 }
@@ -261,7 +264,7 @@ function buildScene(
       const { check, leave } = blockStateAt(progress, rig.order, rigs.length);
       rig.check.scale.setScalar(Math.max(0.0001, backOut(check)));
       rig.pivot.position.set(rig.home.x, rig.home.y + leave * 0.35, rig.home.z + leave * 0.55);
-      rig.pivot.rotation.x = -leave * 0.95;
+      rig.pivot.rotation.x = -leave * LEAVE_ROTATION;
       const opacity = 1 - leave;
       rig.materials.forEach((m) => { m.opacity = opacity; });
       rig.check.material.opacity = opacity;

@@ -11,7 +11,8 @@ interface WeekHeroProps {
   blocks: readonly WeekBlockLabel[];
 }
 
-const PIN_LENGTH = '+=120%';
+/** Scrollstrecke, über die der Hero gepinnt bleibt (wie im Design-Entwurf). */
+const PIN_LENGTH = '+=1500';
 const IDLE_TIMEOUT_MS = 1500;
 
 type IdleHandle = { cancel: () => void };
