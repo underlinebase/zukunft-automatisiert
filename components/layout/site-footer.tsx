@@ -1,0 +1,52 @@
+import Link from 'next/link';
+import { SITE } from '@/lib/content/site';
+import { INDUSTRIES } from '@/lib/content/branchen';
+import Logo from './logo';
+
+export default function SiteFooter() {
+  const year = new Date().getFullYear();
+  return (
+    <footer className="site-footer">
+      <div className="container">
+        <div className="site-footer__grid">
+          <div className="site-footer__brand">
+            <Logo inverse />
+            <p>Prozessautomatisierung für Inhaber im DACH-Raum. Ein Ablauf, 4 Wochen, direkt mit {SITE.owner}.</p>
+          </div>
+          <nav aria-label="Branchen">
+            <h2 className="site-footer__title">Branchen</h2>
+            <ul>
+              {INDUSTRIES.map((industry) => (
+                <li key={industry.slug}>
+                  <Link href={`/branchen/${industry.slug}`}>{industry.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label="Weitere Seiten">
+            <h2 className="site-footer__title">Mehr</h2>
+            <ul>
+              <li><Link href="/ueber-mich">Über mich</Link></li>
+              <li><Link href="/wissen">Wissen</Link></li>
+              <li><Link href="/kontakt">Kontakt</Link></li>
+            </ul>
+          </nav>
+          <div>
+            <h2 className="site-footer__title">Kontakt</h2>
+            <ul>
+              <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+              <li><a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="site-footer__bottom">
+          <span>© {year} {SITE.owner} · {SITE.name}</span>
+          <span className="site-footer__legal">
+            <Link href="/impressum">Impressum</Link>
+            <Link href="/datenschutz">Datenschutz</Link>
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}

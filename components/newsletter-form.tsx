@@ -1,52 +1,54 @@
 'use client';
-import { useState } from 'react';
+
+import { useId, useState } from 'react';
+import type { FormEvent } from 'react';
+
+type Status = 'idle' | 'loading' | 'done' | 'error';
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('');
-  const [state, setState] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
+  const [status, setStatus] = useState<Status>('idle');
+  const id = useId();
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     if (!email) return;
-    setState('loading');
+    setStatus('loading');
     try {
-      const res = await fetch('/api/newsletter', {
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
-      setState(res.ok ? 'done' : 'error');
+      setStatus(response.ok ? 'done' : 'error');
     } catch {
-      setState('error');
+      setStatus('error');
     }
   }
 
-  if (state === 'done') {
-    return (
-      <div style={{ padding: '16px 0', color: 'var(--pulse)', fontFamily: 'Geist Mono, monospace', fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-        ✓ EINGETRAGEN. NÄCHSTER BERICHT IN 14 TAGEN.
-      </div>
-    );
+  if (status === 'done') {
+    return <p className="newsletter-done" role="status">Eingetragen. Danke!</p>;
   }
 
   return (
-    <form className="newsletter__form" onSubmit={handleSubmit}>
-      <input
-        type="email"
-        required
-        placeholder="ihre@firma.de"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        disabled={state === 'loading'}
-      />
-      <button type="submit" disabled={state === 'loading'}>
-        {state === 'loading' ? '...' : 'EINTRAGEN →'}
+    <form className="newsletter-form" onSubmit={handleSubmit}>
+      <div className="field">
+        <label htmlFor={`${id}-email`} className="visually-hidden">E-Mail-Adresse</label>
+        <input
+          id={`${id}-email`}
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="ihre@firma.de"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          disabled={status === 'loading'}
+        />
+      </div>
+      <button type="submit" className="btn btn--primary" disabled={status === 'loading'}>
+        {status === 'loading' ? 'Wird eingetragen …' : 'Eintragen'}
       </button>
-      {state === 'error' && (
-        <p style={{ color: '#e53e3e', fontSize: 13, margin: '8px 0 0', fontFamily: 'Geist Mono, monospace' }}>
-          Fehler - bitte nochmal versuchen.
-        </p>
-      )}
+      {status === 'error' ? <p className="form-error" role="alert">Das hat nicht geklappt. Bitte versuchen Sie es noch einmal.</p> : null}
     </form>
   );
 }

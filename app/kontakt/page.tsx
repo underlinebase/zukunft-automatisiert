@@ -1,57 +1,55 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import KontaktBooking from '@/components/kontakt-booking';
+import { SITE } from '@/lib/content/site';
+import InquiryForm from '@/components/sections/inquiry-form';
 
 export const metadata: Metadata = {
   title: 'Kontakt',
-  description: 'Erstgespräch buchen. 30 Minuten. Keine Folien. Direkt über Kalender, E-Mail oder LinkedIn.',
+  description: 'Schildern Sie Ihren Ablauf in drei Sätzen oder buchen Sie 30 Minuten. Antwort in 24 Stunden.',
   alternates: { canonical: '/kontakt' },
 };
 
+const BOOKING_EMBED = `${SITE.calUrl}?embed=true&theme=light&layout=month_view&locale=de`;
+
 export default function KontaktPage() {
   return (
-    <main className="page">
+    <>
       <section className="page-hero">
-        <div className="container">
-          <div className="crumbs">
-            <Link href="/">START</Link><span className="sep">/</span><span>KONTAKT</span>
-          </div>
-          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> KONTAKT</div>
-          <h1 className="tight">Erstgespräch. 30 Minuten. Keine Folien.</h1>
+        <div className="container page-hero__inner">
+          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Kontakt</span></nav>
+          <span className="label">Kontakt</span>
+          <h1>Schildern Sie mir Ihren Ablauf.</h1>
           <p className="lead">
-            Wir sprechen über Ihren Engpass. Sie entscheiden danach, ob eine Diagnose folgt.
+            Drei Sätze reichen. Ich antworte innerhalb von {SITE.responseTime} mit einer ehrlichen Einschätzung. Lieber
+            sprechen? Dann buchen Sie direkt 30 Minuten.
           </p>
         </div>
       </section>
 
-      <section className="container">
-        <div className="kontakt">
-          <div className="kontakt__alt">
-            <div className="eyebrow"><span className="sect">§</span> KANÄLE</div>
-            <h2 className="tight">Drei Wege. Empfohlen ist Kalender.</h2>
-            <div className="channels">
-              {[
-                { k: 'KALENDER', v: 'cal.com/marco-g-ppa25o', href: 'https://cal.com/marco-g-ppa25o' },
-                { k: 'E-MAIL', v: 'marco@zukunft-automatisiert.de' },
-                { k: 'LINKEDIN', v: 'linkedin.com/in/marcogundlach', href: 'https://www.linkedin.com/in/marcogundlach/' },
-                { k: 'POST', v: 'M. Gundlach · Postfach 12 04 · 22769 Hamburg' },
-                { k: 'REAKTION', v: '≤ 48 Std. Werktags.' },
-              ].map((c, i) => (
-                <div className="channel" key={i}>
-                  <div className="k">{c.k}</div>
-                  <div className="v">
-                    {(c as { k: string; v: string; href?: string }).href
-                      ? <a href={(c as { href: string }).href} target="_blank" rel="noreferrer">{c.v}</a>
-                      : c.v}
-                  </div>
-                </div>
-              ))}
+      <section className="container contact-page">
+        <InquiryForm />
+        <div>
+          <h2>30 Minuten sprechen</h2>
+          <p className="muted">Am Telefon oder per Video. Sie erzählen, ich frage nach. Danach wissen Sie, ob sich eine Automatisierung lohnt.</p>
+          <dl className="contact-channels">
+            <div>
+              <dt>E-Mail</dt>
+              <dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
             </div>
-            <p className="muted" style={{ marginTop: 16, fontSize: 14 }}>Kein Kontaktformular. Niemand füllt das aus, der nicht muss.</p>
+            <div>
+              <dt>LinkedIn</dt>
+              <dd><a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/marcogundlach</a></dd>
+            </div>
+            <div>
+              <dt>Antwort</dt>
+              <dd>Innerhalb von {SITE.responseTime}</dd>
+            </div>
+          </dl>
+          <div className="booking">
+            <iframe src={BOOKING_EMBED} loading="lazy" title="30-Minuten-Termin bei Marco Gundlach buchen" />
           </div>
-          <KontaktBooking />
         </div>
       </section>
-    </main>
+    </>
   );
 }

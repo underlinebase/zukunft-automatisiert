@@ -1,0 +1,147 @@
+/* =============================================================
+   Wochen-Grafik „Die Woche, die leerer wird“
+   ============================================================= */
+
+.week-hero { position: relative; }
+.week-3d {
+  position: absolute;
+  inset: -12% -10%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.week-3d__canvas { width: 100%; height: 100%; }
+.week-hero.is-3d .week-3d { opacity: 1; }
+.week-hero.is-3d .week-flat { visibility: hidden; }
+
+/* ---------- Flache Woche ---------- */
+.week-flat {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+.week-day {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 6px;
+  padding: 6px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px -10px rgba(37, 37, 41, 0.25);
+}
+.week-day__name {
+  padding: 2px 0 6px;
+  border-bottom: 1px solid var(--c-line);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--c-text-muted);
+}
+.week-day__long { display: none; }
+.week-day__slots {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(4, minmax(48px, auto));
+  gap: 5px;
+}
+.week-day__slots > * { grid-column: 1; }
+
+.week-block {
+  --check: 0;
+  --leave: 0;
+  position: relative;
+  z-index: 1;
+  padding: 6px 6px 6px 7px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--c-text);
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  opacity: calc(1 - var(--leave));
+  transform: perspective(500px) translateY(calc(var(--leave) * -12px)) rotateX(calc(var(--leave) * 58deg));
+  transform-origin: 50% 100%;
+}
+.week-block__label { display: block; padding-right: 12px; }
+.week-block__check {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 13px;
+  height: 13px;
+  color: var(--c-brand);
+  transform: scale(var(--check));
+}
+.week-block__check svg { width: 100%; height: 100%; }
+
+.week-freed {
+  --freed: 0;
+  grid-row: 3 / span 2;
+  z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  border-radius: 4px;
+  background: var(--c-brand);
+  color: #FFFFFF;
+  font-family: var(--f-serif);
+  font-variation-settings: 'SOFT' 50, 'WONK' 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.15;
+  opacity: var(--freed);
+}
+
+/* Aufgeräumter Zustand (statisch) */
+.week-flat[data-state='clean'] .week-block { display: none; }
+.week-flat[data-state='clean'] .week-freed { --freed: 1; }
+
+/* Schmale Bildschirme: ein Tag pro Zeile, Aufgaben als Chips. Gleiche Animation. */
+@media (max-width: 559px) {
+  .week-flat--hero { grid-template-columns: 1fr; gap: 6px; }
+  .week-flat--hero .week-day { grid-template-columns: 30px 1fr; grid-template-rows: none; align-items: center; gap: 8px; }
+  .week-flat--hero .week-day__name { padding: 0; border: 0; text-align: left; }
+  .week-flat--hero .week-day__slots { display: flex; flex-wrap: wrap; gap: 4px; min-height: 30px; }
+  .week-flat--hero .week-block { white-space: nowrap; overflow-wrap: normal; hyphens: none; padding: 5px 20px 5px 8px; }
+  .week-flat--hero .week-block__label { padding-right: 0; }
+  .week-flat--hero .week-block__check { top: 50%; margin-top: -6.5px; }
+  .week-flat--hero .week-freed {
+    position: absolute; inset: 0 0 0 40%;
+    align-items: center; padding: 4px 10px; font-size: 15px;
+  }
+}
+
+@media (min-width: 560px) {
+  .week-flat--hero { gap: 10px; }
+  .week-flat--hero .week-day { padding: 8px; gap: 8px; }
+  .week-flat--hero .week-day__long { display: inline; }
+  .week-flat--hero .week-day__short { display: none; }
+  .week-flat--hero .week-block { font-size: 12px; padding: 8px; }
+  .week-flat--hero .week-day__slots { grid-template-rows: repeat(4, minmax(56px, auto)); gap: 6px; }
+  .week-flat--hero .week-freed { font-size: 17px; padding: 10px; }
+}
+
+/* Desktop: leicht schräg gestellt wie die 3D-Szene, solange diese lädt */
+@media (min-width: 1024px) {
+  .week-flat--hero {
+    transform: perspective(1600px) rotateX(18deg) rotateY(14deg) rotateZ(-2deg);
+    transform-origin: 50% 60%;
+  }
+}
+
+/* ---------- Kompakte Woche im Abschluss (auf Graphit) ---------- */
+.week-closing { max-width: 420px; margin: 8px 0; }
+.week-flat--compact { gap: 6px; }
+.week-flat--compact .week-day {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--c-dark-line);
+  box-shadow: none;
+  padding: 6px;
+}
+.week-flat--compact .week-day__name { border-color: var(--c-dark-line); color: var(--c-on-dark-muted); }
+.week-flat--compact .week-day__slots { grid-template-rows: repeat(4, 26px); gap: 4px; }
+.week-flat--compact .week-freed { font-size: 12px; padding: 6px; }

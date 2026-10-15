@@ -1,34 +1,37 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { getArticles } from '@/lib/db';
 import WissenTabs from '@/components/wissen-tabs';
+import NewsletterForm from '@/components/newsletter-form';
 
 export const metadata: Metadata = {
   title: 'Wissen',
-  description: 'Notizen, Methodik-Texte, technische Vermerke. Schreibstil akademisch-pragmatisch, ohne Begeisterungs-Rhetorik.',
+  description: 'Notizen aus der Praxis: Automatisierung, KI ohne Hype und was im Alltag wirklich Zeit spart.',
   alternates: { canonical: '/wissen' },
 };
 
 export default async function WissenPage() {
   const articles = await getArticles();
   return (
-    <main className="page">
+    <>
       <section className="page-hero">
-        <div className="container">
-          <div className="crumbs">
-            <a href="/">START</a><span className="sep">/</span><span>WISSEN</span>
-          </div>
-          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> WISSEN</div>
-          <h1 className="tight">Operations-Berichte aus der Werkstatt.</h1>
-          <p className="lead">
-            Notizen, Methodik-Texte, technische Vermerke. Keine Trend-Beiträge, keine Listicles.
-          </p>
+        <div className="container page-hero__inner">
+          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Wissen</span></nav>
+          <span className="label">Wissen</span>
+          <h1>Notizen aus der Praxis.</h1>
+          <p className="lead">Was im Alltag wirklich Zeit spart, und wo KI nur nach Fortschritt klingt.</p>
         </div>
       </section>
       <section className="section">
         <div className="container">
           <WissenTabs articles={articles} />
+          <div className="newsletter-box">
+            <h2>Neue Notizen per E-Mail</h2>
+            <p className="muted">Etwa alle zwei Wochen. Abmelden geht jederzeit mit einem Klick.</p>
+            <NewsletterForm />
+          </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

@@ -8,16 +8,15 @@ export const metadata: Metadata = {
 
 export default function DatenschutzPage() {
   return (
-    <main className="page">
+    <>
       <section className="page-hero">
-        <div className="container">
-          <div className="crumbs"><Link href="/">START</Link><span className="sep">/</span><span>DATENSCHUTZ</span></div>
-          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> DATENSCHUTZ</div>
-          <h1 className="tight">Datenschutzerklärung.</h1>
+        <div className="container page-hero__inner">
+          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Datenschutz</span></nav>
+          <h1>Datenschutzerklärung</h1>
         </div>
       </section>
       <section className="container">
-        <div className="legal">
+        <div className="prose">
 
           <h2>1. Datenschutz auf einen Blick</h2>
 
@@ -76,6 +75,9 @@ export default function DatenschutzPage() {
           </ul>
           <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer: 14 Tage.</p>
 
+          <h3>Anfrageformular „Ablauf schildern“</h3>
+          <p>Wenn Sie uns über das Formular auf dieser Website eine Anfrage schicken, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse und Ihre Beschreibung, um Ihre Anfrage zu beantworten. Die Angaben werden über den E-Mail-Dienst von Brevo SAS, 7 rue de Madrid, 75008 Paris, Frankreich, an uns zugestellt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Wir löschen die Angaben, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+
           <h3>Newsletter-Anmeldung</h3>
           <p>Wenn Sie sich für den Operations-Bericht eintragen, wird Ihre E-Mail-Adresse an Brevo SAS (ehemals Sendinblue), 7 rue de Madrid, 75008 Paris, Frankreich, übermittelt und dort gespeichert. Brevo ist unser E-Mail-Dienstleister. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie können Ihre Einwilligung jederzeit durch formlose E-Mail an uns oder über den Abmelde-Link im Newsletter widerrufen. Weitere Informationen finden Sie in der Datenschutzerklärung von Brevo: <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" rel="noreferrer">brevo.com/de/legal/privacypolicy</a>.</p>
 
@@ -101,6 +103,6 @@ export default function DatenschutzPage() {
 
         </div>
       </section>
-    </main>
+    </>
   );
 }

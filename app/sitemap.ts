@@ -1,40 +1,33 @@
 import type { MetadataRoute } from 'next';
-import { getServices, getCases, getArticles } from '@/lib/db';
+import { getArticles } from '@/lib/db';
+import { INDUSTRIES } from '@/lib/content/branchen';
+import { SITE } from '@/lib/content/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = 'https://zukunft-automatisiert.de';
-  const [services, cases, articles] = await Promise.all([getServices(), getCases(), getArticles()]);
+  const base = SITE.url;
+  const now = new Date();
+  const articles = await getArticles();
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${base}/leistungen`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${base}/cases`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/wissen`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${base}/news`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.6 },
-    { url: `${base}/ueber-mich`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.7 },
-    { url: `${base}/kontakt`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.9 },
+    { url: base, lastModified: now, changeFrequency: 'monthly', priority: 1 },
+    { url: `${base}/ueber-mich`, lastModified: now, changeFrequency: 'yearly', priority: 0.7 },
+    { url: `${base}/kontakt`, lastModified: now, changeFrequency: 'yearly', priority: 0.8 },
+    { url: `${base}/wissen`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
   ];
 
-  const servicePages: MetadataRoute.Sitemap = services.map(s => ({
-    url: `${base}/leistungen/${s.slug}`,
-    lastModified: new Date(),
+  const industryPages: MetadataRoute.Sitemap = INDUSTRIES.map((industry) => ({
+    url: `${base}/branchen/${industry.slug}`,
+    lastModified: now,
     changeFrequency: 'monthly',
-    priority: 0.8,
+    priority: 0.9,
   }));
 
-  const casePages: MetadataRoute.Sitemap = cases.map(c => ({
-    url: `${base}/cases/${c.slug}`,
-    lastModified: new Date(),
+  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${base}/wissen/${article.slug}`,
+    lastModified: now,
     changeFrequency: 'yearly',
-    priority: 0.7,
+    priority: 0.5,
   }));
 
-  const articlePages: MetadataRoute.Sitemap = articles.map(a => ({
-    url: `${base}/wissen/${a.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'yearly',
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...servicePages, ...casePages, ...articlePages];
+  return [...staticPages, ...industryPages, ...articlePages];
 }

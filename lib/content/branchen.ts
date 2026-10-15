@@ -1,0 +1,236 @@
+import { HOME_EXAMPLE } from './home';
+import type { Industry } from './types';
+
+const SHARED_LEAD =
+  'Den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Klappt das nicht, arbeite ich kostenlos weiter.';
+
+export const INDUSTRIES: Industry[] = [
+  {
+    slug: 'handwerk',
+    name: 'Handwerk',
+    short: 'Handwerk',
+    audience: 'Handwerksbetriebe',
+    audienceDative: 'Handwerksbetrieben',
+    trades: 'SHK, Elektro, Dach',
+    teaser: 'Vom Aufmaß bis zur Rechnung, mit weniger Büro am Abend.',
+    routines: [
+      { title: 'Angebote nachfassen', text: 'Kunden bekommen nach ein paar Tagen automatisch eine freundliche Erinnerung.' },
+      { title: 'Fotos und Aufmaße ablegen', text: 'Bilder vom Handy landen direkt im richtigen Kundenordner.' },
+    ],
+    hero: {
+      eyebrow: 'Für Handwerksbetriebe · SHK, Elektro, Dach',
+      title: 'Schluss mit Angeboten am Sonntagabend.',
+      lead: SHARED_LEAD,
+    },
+    scenes: [
+      {
+        tag: 'Angebote',
+        title: 'Im Kopf ist das Angebot fertig. Auf dem Papier noch nicht.',
+        text: 'Aufmaß abtippen, Preise nachsehen, Positionen zusammenbauen. Jedes Angebot kostet Sie eine halbe Stunde oder mehr.',
+        hours: 'ca. 3 bis 5 Std. pro Woche',
+      },
+      {
+        tag: 'Nachfassen',
+        title: 'Hat der Kunde das Angebot überhaupt gelesen?',
+        text: 'Ohne Nachfassen gehen Aufträge verloren. Mit Nachfassen geht der Abend verloren.',
+        hours: 'ca. 1 bis 2 Std. pro Woche',
+      },
+      {
+        tag: 'Baustelle und Büro',
+        title: 'Fotos auf dem Handy, Notizen im Auto, Lieferscheine im Handschuhfach.',
+        text: 'Am Ende der Woche sortiert jemand alles zusammen. Meistens Sie.',
+        hours: 'ca. 2 bis 3 Std. pro Woche',
+      },
+    ],
+    moreRoutines: [
+      { title: 'Anfragen sammeln', text: 'Anfragen aus E-Mail, Website und Anrufbeantworter landen an einer Stelle, mit allen Angaben.' },
+      { title: 'Angebotsentwurf vorbereiten', text: 'Aus Aufmaß und Standardpositionen entsteht ein Entwurf. Sie prüfen, ergänzen und geben frei.' },
+      { title: 'Angebote nachfassen', text: 'Nach ein paar Tagen geht eine freundliche Erinnerung raus. Sie sehen, wer geantwortet hat.' },
+      { title: 'Termine bestätigen', text: 'Kunden bekommen Termin, Ansprechpartner und Erinnerung, ohne dass jemand telefonieren muss.' },
+    ],
+    example: HOME_EXAMPLE,
+    weekBlocks: [
+      { day: 0, label: 'Angebot schreiben' },
+      { day: 0, label: 'Aufmaß abtippen' },
+      { day: 0, label: 'Anfrage beantworten' },
+      { day: 1, label: 'Fotos sortieren' },
+      { day: 1, label: 'Termin bestätigen' },
+      { day: 1, label: 'Angebot nachfassen' },
+      { day: 2, label: 'Material bestellen' },
+      { day: 2, label: 'Angebot schreiben' },
+      { day: 2, label: 'Lieferschein ablegen' },
+      { day: 3, label: 'Rechnung schreiben' },
+      { day: 3, label: 'Aufmaß abtippen' },
+      { day: 3, label: 'Termin verschieben' },
+      { day: 4, label: 'Angebot nachfassen' },
+      { day: 4, label: 'Rechnung prüfen' },
+      { day: 4, label: 'Fotos sortieren' },
+      { day: 4, label: 'Angebot schreiben' },
+    ],
+    calculator: { hoursPerWeek: 6, hourlyRate: 70 },
+    metaDescription:
+      'Prozessautomatisierung für Handwerksbetriebe (SHK, Elektro, Dach): Angebote, Nachfassen und Ablage in 4 Wochen automatisiert. Mit Garantie.',
+  },
+  {
+    slug: 'immobilienmakler',
+    name: 'Immobilienmakler',
+    short: 'Makler',
+    audience: 'Immobilienmakler',
+    audienceDative: 'Immobilienmaklern',
+    trades: 'Vermietung und Verkauf',
+    teaser: 'Anfragen schneller beantworten, Besichtigungen ohne Telefon-Pingpong.',
+    routines: [
+      { title: 'Anfragen sofort beantworten', text: 'Jede Portal-Anfrage bekommt in wenigen Minuten eine Antwort mit Exposé.' },
+      { title: 'Besichtigungen abstimmen', text: 'Interessenten wählen selbst einen freien Termin aus Ihrem Kalender.' },
+    ],
+    hero: {
+      eyebrow: 'Für Immobilienmakler · Vermietung und Verkauf',
+      title: 'Jede Anfrage beantwortet, bevor der Abend kommt.',
+      lead: SHARED_LEAD,
+    },
+    scenes: [
+      {
+        tag: 'Portal-Anfragen',
+        title: 'Montagmorgen, 40 neue Anfragen.',
+        text: 'Jede will eine Antwort, ein Exposé und am besten sofort einen Termin. Die meisten fragen dasselbe.',
+        hours: 'ca. 3 bis 5 Std. pro Woche',
+      },
+      {
+        tag: 'Besichtigungen',
+        title: 'Der dritte Terminvorschlag passt wieder nicht.',
+        text: 'Termine per Telefon und E-Mail hin und her schieben, absagen, neu vergeben.',
+        hours: 'ca. 2 bis 3 Std. pro Woche',
+      },
+      {
+        tag: 'Unterlagen',
+        title: 'Die Selbstauskunft fehlt. Wieder.',
+        text: 'Unterlagen von Interessenten anfordern, prüfen, nachfordern. Bis alles da ist, vergehen Tage.',
+        hours: 'ca. 1 bis 2 Std. pro Woche',
+      },
+    ],
+    moreRoutines: [
+      { title: 'Anfragen beantworten', text: 'Portal-Anfragen bekommen sofort eine persönliche Antwort mit Exposé und den nächsten Schritten.' },
+      { title: 'Interessenten vorsortieren', text: 'Ein paar kurze Fragen vorab zeigen, wer wirklich passt. Sie rufen nur die Richtigen an.' },
+      { title: 'Besichtigungen buchen', text: 'Interessenten wählen einen freien Termin. Bestätigung und Erinnerung gehen automatisch raus.' },
+      { title: 'Unterlagen einsammeln', text: 'Selbstauskunft und Nachweise kommen über ein Formular. Fehlt etwas, wird nachgefragt.' },
+    ],
+    example: {
+      title: 'Eine Portal-Anfrage bis zur Besichtigung.',
+      context: 'Beispielablauf. Die Minuten sind typische Werte, kein Kundenfall.',
+      perWeek: 25,
+      unit: 'Anfragen pro Woche',
+      steps: [
+        { text: 'Anfrage im Portal öffnen und lesen', minutesBefore: 2, minutesAfter: 0, afterText: 'Anfrage wird automatisch übernommen' },
+        { text: 'Kontaktdaten in die Maklersoftware übertragen', minutesBefore: 3, minutesAfter: 0, afterText: 'Kontakt wird angelegt' },
+        { text: 'Antwort schreiben und Exposé anhängen', minutesBefore: 4, minutesAfter: 0, afterText: 'Antwort mit Exposé geht sofort raus' },
+        { text: 'Rückfragen zu Budget und Wunschtermin stellen', minutesBefore: 3, minutesAfter: 0, afterText: 'Kurze Fragen vorab per Formular' },
+        { text: 'Besichtigungstermin abstimmen', minutesBefore: 6, minutesAfter: 1, afterText: 'Interessent bucht selbst, Sie werfen einen Blick drauf' },
+        { text: 'Erinnerung vor dem Termin schicken', minutesBefore: 2, minutesAfter: 0, afterText: 'Erinnerung geht automatisch raus' },
+      ],
+    },
+    weekBlocks: [
+      { day: 0, label: 'Anfrage beantworten' },
+      { day: 0, label: 'Exposé verschicken' },
+      { day: 0, label: 'Termin abstimmen' },
+      { day: 1, label: 'Exposé anpassen' },
+      { day: 1, label: 'Selbstauskunft anfordern' },
+      { day: 1, label: 'Anfrage nachfassen' },
+      { day: 2, label: 'Besichtigung bestätigen' },
+      { day: 2, label: 'Anfrage beantworten' },
+      { day: 2, label: 'Unterlagen prüfen' },
+      { day: 3, label: 'Termin verschieben' },
+      { day: 3, label: 'Exposé verschicken' },
+      { day: 3, label: 'Anfrage nachfassen' },
+      { day: 4, label: 'Anfrage beantworten' },
+      { day: 4, label: 'Besichtigung bestätigen' },
+      { day: 4, label: 'Unterlagen nachfordern' },
+      { day: 4, label: 'Exposé verschicken' },
+    ],
+    calculator: { hoursPerWeek: 8, hourlyRate: 90 },
+    metaDescription:
+      'Prozessautomatisierung für Immobilienmakler: Portal-Anfragen, Exposés und Besichtigungen in 4 Wochen automatisiert. Mit Garantie.',
+  },
+  {
+    slug: 'steuerberater',
+    name: 'Steuerberater',
+    short: 'Steuerberater',
+    audience: 'Steuerkanzleien',
+    audienceDative: 'Steuerkanzleien',
+    trades: 'Kanzleien',
+    teaser: 'Weniger Belegen hinterherlaufen, schneller neue Mandanten aufnehmen.',
+    routines: [
+      { title: 'Fehlende Belege anfordern', text: 'Mandanten bekommen eine Liste, was fehlt, und eine freundliche Erinnerung.' },
+      { title: 'Neue Mandanten aufnehmen', text: 'Unterlagen und Vollmachten kommen gesammelt über ein Formular.' },
+    ],
+    hero: {
+      eyebrow: 'Für Steuerkanzleien',
+      title: 'Weniger Belegen hinterherlaufen. Mehr Zeit für die Beratung.',
+      lead: SHARED_LEAD,
+    },
+    scenes: [
+      {
+        tag: 'Belege',
+        title: 'Monatsende. Bei der Hälfte der Mandanten fehlt etwas.',
+        text: 'Listen erstellen, E-Mails schreiben, nachtelefonieren. Ihre Fachkräfte machen Botendienste statt Buchhaltung.',
+        hours: 'ca. 4 bis 6 Std. pro Woche',
+      },
+      {
+        tag: 'Posteingang',
+        title: 'Belege kommen als Foto, als PDF, als ZIP und auf Papier.',
+        text: 'Alles muss geöffnet, benannt und zugeordnet werden, bevor die eigentliche Arbeit beginnt.',
+        hours: 'ca. 2 bis 4 Std. pro Woche',
+      },
+      {
+        tag: 'Neue Mandanten',
+        title: 'Der neue Mandant ist da. Die Unterlagen noch nicht.',
+        text: 'Vollmachten, Fragebögen, Bankdaten: Bis alles vollständig ist, gehen viele E-Mails hin und her.',
+        hours: 'ca. 1 bis 2 Std. pro Woche',
+      },
+    ],
+    moreRoutines: [
+      { title: 'Fehlende Belege anfordern', text: 'Die Kanzlei sieht, was fehlt. Mandanten bekommen eine klare Liste und eine Erinnerung, bis alles da ist.' },
+      { title: 'Belege sortieren', text: 'Eingehende Belege werden benannt und dem richtigen Mandanten zugeordnet. Ihr Team prüft nur noch.' },
+      { title: 'Mandanten aufnehmen', text: 'Neue Mandanten füllen ein Formular aus und laden Unterlagen hoch. Fehlt etwas, wird nachgefragt.' },
+      { title: 'Fristen im Blick behalten', text: 'Rechtzeitig vor einer Frist gehen Hinweise an Mandanten und Team.' },
+    ],
+    example: {
+      title: 'Fehlende Belege bei einem Mandanten anfordern.',
+      context: 'Beispielablauf. Die Minuten sind typische Werte, kein Kundenfall.',
+      perWeek: 15,
+      unit: 'Mandanten pro Woche',
+      steps: [
+        { text: 'Kontoauszug mit vorhandenen Belegen abgleichen', minutesBefore: 10, minutesAfter: 3, afterText: 'Abgleich läuft vorab, Ihr Team prüft die Liste' },
+        { text: 'Liste der fehlenden Belege schreiben', minutesBefore: 5, minutesAfter: 0, afterText: 'Liste entsteht automatisch' },
+        { text: 'E-Mail an den Mandanten formulieren', minutesBefore: 4, minutesAfter: 0, afterText: 'E-Mail mit Liste geht raus' },
+        { text: 'Nach einer Woche erinnern', minutesBefore: 3, minutesAfter: 0, afterText: 'Erinnerung geht automatisch raus' },
+        { text: 'Eingegangene Belege zuordnen', minutesBefore: 6, minutesAfter: 1, afterText: 'Belege werden zugeordnet, Ihr Team schaut kurz drauf' },
+        { text: 'Nachtelefonieren, wenn immer noch etwas fehlt', minutesBefore: 5, minutesAfter: 2, afterText: 'Nur noch bei den wenigen, die nicht reagieren' },
+      ],
+    },
+    weekBlocks: [
+      { day: 0, label: 'Beleg nachfordern' },
+      { day: 0, label: 'Belege zuordnen' },
+      { day: 0, label: 'Mandant erinnern' },
+      { day: 1, label: 'Vollmacht anfordern' },
+      { day: 1, label: 'Beleg nachfordern' },
+      { day: 1, label: 'Frist prüfen' },
+      { day: 2, label: 'Belege zuordnen' },
+      { day: 2, label: 'Fragebogen nachhalten' },
+      { day: 2, label: 'Mandant erinnern' },
+      { day: 3, label: 'Beleg nachfordern' },
+      { day: 3, label: 'Unterlagen sortieren' },
+      { day: 3, label: 'Frist prüfen' },
+      { day: 4, label: 'Mandant erinnern' },
+      { day: 4, label: 'Belege zuordnen' },
+      { day: 4, label: 'Beleg nachfordern' },
+      { day: 4, label: 'Ablage sortieren' },
+    ],
+    calculator: { hoursPerWeek: 7, hourlyRate: 85 },
+    metaDescription:
+      'Prozessautomatisierung für Steuerkanzleien: Belege anfordern, zuordnen und Mandanten aufnehmen, in 4 Wochen automatisiert. Mit Garantie.',
+  },
+];
+
+export function getIndustry(slug: string): Industry | undefined {
+  return INDUSTRIES.find((industry) => industry.slug === slug);
+}

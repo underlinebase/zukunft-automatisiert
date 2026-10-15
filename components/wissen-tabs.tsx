@@ -1,33 +1,35 @@
 'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import type { Article } from '@/lib/types';
 
+const ALL = 'Alle';
+
 export default function WissenTabs({ articles }: { articles: Article[] }) {
-  const cats = ['ALLE', ...Array.from(new Set(articles.map(a => a.category)))];
-  const [tab, setTab] = useState('ALLE');
-  const filtered = tab === 'ALLE' ? articles : articles.filter(a => a.category === tab);
+  const categories = [ALL, ...Array.from(new Set(articles.map((article) => article.category)))];
+  const [active, setActive] = useState(ALL);
+  const filtered = active === ALL ? articles : articles.filter((article) => article.category === active);
 
   return (
     <>
-      <div className="tabs">
-        {cats.map(t => (
-          <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>{t}</button>
+      <div className="tabs" role="group" aria-label="Nach Thema filtern">
+        {categories.map((category) => (
+          <button key={category} type="button" aria-pressed={active === category} onClick={() => setActive(category)}>
+            {category}
+          </button>
         ))}
       </div>
-      <div className="wissen-list mag-list">
-        {filtered.map((a, i) => (
-          <Link key={a.slug} className="wissen-item" href={`/wissen/${a.slug}`}>
-            <div className="idx">№ {String(i + 1).padStart(3, '0')}</div>
-            <div>
-              <h3 className="tight">{a.title}</h3>
-              <div className="mono muted" style={{ marginTop: 8, fontSize: 11, letterSpacing: '0.14em' }}>{a.category}</div>
-            </div>
-            <div className="date">{a.date}</div>
-            <div className="read">{a.read_minutes} MIN</div>
-          </Link>
+      <ul className="article-list">
+        {filtered.map((article) => (
+          <li key={article.slug}>
+            <Link href={`/wissen/${article.slug}`}>
+              <h2>{article.title}</h2>
+              <span className="article-list__meta">{article.category} · {article.read_minutes} Min.</span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 }

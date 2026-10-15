@@ -2,65 +2,70 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getArticle, getArticles } from '@/lib/db';
+import { CONTACT_ANCHOR } from '@/lib/content/site';
+import { ArrowIcon } from '@/components/ui/icons';
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
 export async function generateStaticParams() {
   const articles = await getArticles();
-  return articles.map(a => ({ slug: a.slug }));
+  return articles.map((article) => ({ slug: article.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const a = await getArticle(slug);
-  if (!a) return {};
+  const article = await getArticle(slug);
+  if (!article) return {};
   return {
-    title: a.title,
-    description: a.lead.slice(0, 160),
+    title: article.title,
+    description: article.lead.slice(0, 160),
     alternates: { canonical: `/wissen/${slug}` },
-    openGraph: { type: 'article', publishedTime: a.date },
+    openGraph: { type: 'article' },
   };
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
-  const [a, all] = await Promise.all([getArticle(slug), getArticles()]);
-  if (!a) notFound();
-  const idx = all.findIndex(x => x.slug === slug);
-  const next = all[(idx + 1) % all.length];
+  const [article, all] = await Promise.all([getArticle(slug), getArticles()]);
+  if (!article) notFound();
+  const index = all.findIndex((item) => item.slug === slug);
+  const next = all[(index + 1) % all.length];
 
   return (
-    <main className="page">
-      <div className="container" style={{ paddingTop: 64, paddingBottom: 0 }}>
-        <div className="crumbs">
-          <Link href="/">START</Link><span className="sep">/</span>
-          <Link href="/wissen">WISSEN</Link><span className="sep">/</span>
-          <span>{a.category}</span>
-        </div>
-      </div>
-
+    <div className="container">
       <article className="article">
         <div className="article__body">
-          <div className="eyebrow"><span className="sect">§</span> {a.category} · {a.date} · {a.read_minutes} MIN</div>
-          <h1 className="tight" style={{ marginTop: 24 }}>{a.title}</h1>
-          <p className="lead">{a.lead}</p>
-          {a.body.map((b, i) => {
-            if (b.kind === 'h2') return <h2 key={i}>{b.text}</h2>;
-            if (b.kind === 'q') return <blockquote key={i}>{b.text}</blockquote>;
-            return <p key={i}>{b.text}</p>;
+          <nav className="crumbs" aria-label="Brotkrumen" style={{ marginBottom: 24 }}>
+            <Link href="/">Start</Link><span aria-hidden="true">/</span>
+            <Link href="/wissen">Wissen</Link><span aria-hidden="true">/</span>
+            <span>{article.category}</span>
+          </nav>
+          <span className="label" style={{ marginBottom: 16 }}>{article.category} · {article.read_minutes} Min. Lesezeit</span>
+          <h1>{article.title}</h1>
+          <p className="lead">{article.lead}</p>
+          {article.body.map((block, i) => {
+            if (block.kind === 'h2') return <h2 key={i}>{block.text}</h2>;
+            if (block.kind === 'q') return <blockquote key={i}>{block.text}</blockquote>;
+            return <p key={i}>{block.text}</p>;
           })}
-          <div style={{ marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--hairline)', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 24 }}>
-            <Link href={`/wissen/${next.slug}`} className="link-mono">NÄCHSTE NOTIZ <span aria-hidden="true">→</span></Link>
-            <Link href="/kontakt" className="link-mono">MIT MARCO SPRECHEN <span aria-hidden="true">→</span></Link>
+          <div className="article__footer">
+            {next && next.slug !== article.slug ? (
+              <Link href={`/wissen/${next.slug}`} className="text-link">Nächste Notiz <ArrowIcon /></Link>
+            ) : <span />}
+            <Link href={CONTACT_ANCHOR} className="text-link">Ablauf schildern <ArrowIcon /></Link>
           </div>
         </div>
-        <aside className="marginalia">
-          <h4>NOTIZEN</h4>
-          <ol>{a.notes.map((n, i) => <li key={i}>{n}</li>)}</ol>
-          <h4>METADATEN</h4>
-          <div>STAND: {a.date}</div>
-          <div>LESEZEIT: {a.read_minutes} MIN</div>
-          <div>KATEGORIE: {a.category}</div>
-        </aside>
+        {article.notes.length > 0 ? (
+          <aside className="marginalia">
+            <h2>Anmerkungen</h2>
+            <ol>{article.notes.map((note) => <li key={note}>{note}</li>)}</ol>
+            <h2>Stand</h2>
+            <p>{article.date}</p>
+          </aside>
+        ) : null}
       </article>
-    </main>
+    </div>
   );
 }

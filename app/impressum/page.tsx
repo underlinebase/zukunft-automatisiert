@@ -8,16 +8,15 @@ export const metadata: Metadata = {
 
 export default function ImpressumPage() {
   return (
-    <main className="page">
+    <>
       <section className="page-hero">
-        <div className="container">
-          <div className="crumbs"><Link href="/">START</Link><span className="sep">/</span><span>IMPRESSUM</span></div>
-          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> IMPRESSUM</div>
-          <h1 className="tight">Impressum.</h1>
+        <div className="container page-hero__inner">
+          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Impressum</span></nav>
+          <h1>Impressum</h1>
         </div>
       </section>
       <section className="container">
-        <div className="legal">
+        <div className="prose">
           <h2>Anbieter</h2>
           <p>SEOLOAD LLC<br />Betreiber: Marco Gundlach<br />2880 W Oakland Park BLVD STE 225C<br />Florida 33311<br />USA</p>
 
@@ -40,6 +39,6 @@ export default function ImpressumPage() {
           <p>Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
         </div>
       </section>
-    </main>
+    </>
   );
 }

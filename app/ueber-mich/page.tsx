@@ -1,72 +1,75 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { CLOSING, EXPERIENCE } from '@/lib/content/home';
+import { CONTACT_ANCHOR } from '@/lib/content/site';
+import Experience from '@/components/sections/experience';
+import Closing from '@/components/sections/closing';
+import { ArrowIcon } from '@/components/ui/icons';
 
 export const metadata: Metadata = {
   title: 'Über mich',
-  description: 'Marco Gundlach - Prozess-Surgeon, n8n-Engineer. 14+ Jahre Digitalisierung im Mittelstand.',
+  description:
+    'Marco Gundlach: 14 Jahre Digitalisierung und IT-Projektleitung, heute Berater für Prozessautomatisierung für Inhaber im DACH-Raum. Der KI-Realist.',
   alternates: { canonical: '/ueber-mich' },
 };
 
+const ESSAY = [
+  'Viele Jahre habe ich IT-Projekte geleitet, oft in großen Unternehmen wie Hugo Boss, Fressnapf oder am Flughafen Düsseldorf. Dort ging es um viele Beteiligte, lange Abstimmungen und große Budgets. Ich habe gelernt, wie man Abläufe sauber aufnimmt und so umsetzt, dass sie im Alltag funktionieren.',
+  'Ich habe auch gesehen, wie viel Zeit in Projekte fließt, die am Ende niemand nutzt. Folien, Workshops, Konzepte. Für einen Betrieb mit zehn oder zwanzig Leuten passt das nicht. Dort zählt, ob am Freitag weniger Papierkram auf dem Tisch liegt.',
+  'Deshalb arbeite ich heute anders. Ein Ablauf, 4 Wochen, ein fester Preis. Sie sprechen die ganze Zeit mit mir, nicht mit einem Team, das Sie nie sehen.',
+  'Zur KI habe ich eine nüchterne Haltung. Sie kann Texte lesen, sortieren und Entwürfe schreiben. Sie kann aber längst nicht alles, was gerade versprochen wird. Wenn ein Ablauf ohne KI zuverlässiger läuft, bauen wir ihn ohne.',
+  '[PERSÖNLICHER SATZ, z. B. wo Sie leben oder was Sie neben der Arbeit machen]',
+];
+
 const VITA = [
-  { y: '2026', s: 'Zukunft. Automatisiert. - eigenes Mandat für Premium-Engagements.' },
-  { y: '2024', s: 'FlowResults - Automatisierungs-Marke für mittelständische Operations.' },
-  { y: '2022', s: 'Lawsearch24 - Aufbau einer juristischen Such-Infrastruktur.' },
-  { y: '2018', s: 'Zertifizierter Product Owner und Scrum Master.' },
-  { y: '2014', s: 'Wechsel von Konzern zu Beratung. Schwerpunkt Digitalisierung Mittelstand.' },
-  { y: '2010', s: 'Erste Programmier-Mandate parallel zum Studium. Schwerpunkt Workflow-Automatisierung.' },
+  { year: '2026', text: 'Zukunft. Automatisiert.: Automatisierung für Inhaber im DACH-Raum.' },
+  { year: '2024', text: 'FlowResults: Automatisierung für mittelständische Betriebe.' },
+  { year: '2022', text: 'Lawsearch24: Aufbau einer juristischen Suchplattform.' },
+  { year: '2018', text: 'Zertifizierter Product Owner und Scrum Master.' },
+  { year: '2014', text: 'Wechsel in die Beratung, Schwerpunkt Digitalisierung im Mittelstand.' },
+  { year: '2010', text: 'Erste Programmier-Aufträge parallel zum Studium.' },
 ];
 
 export default function AboutPage() {
   return (
-    <main className="page">
+    <>
       <section className="page-hero">
-        <div className="container">
-          <div className="crumbs">
-            <Link href="/">START</Link><span className="sep">/</span><span>ÜBER MICH</span>
-          </div>
-          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> ÜBER MICH</div>
-          <h1 className="tight">Marco Gundlach. Prozess-Surgeon, n8n-Engineer.</h1>
+        <div className="container page-hero__inner">
+          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Über mich</span></nav>
+          <span className="label">Über mich</span>
+          <h1>Ich bin Marco Gundlach. Sie arbeiten direkt mit mir.</h1>
+          <p className="lead">14 Jahre Digitalisierung und IT-Projektleitung. Heute automatisiere ich Abläufe für Inhaber im DACH-Raum.</p>
         </div>
       </section>
 
-      <section className="container">
-        <div className="about-grid">
-          <div>
-            <div className="about-grid__photo">
-              <Image
-                src="/marco-gundlach.jpg"
-                alt="Marco Gundlach"
-                width={800}
-                height={1000}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-                priority
-              />
-            </div>
-            <div className="vita">
-              <div className="eyebrow" style={{ padding: '14px 0', borderBottom: '1px solid var(--hairline)' }}>
-                <span className="sect">§</span> VITA
+      <section className="container about-page">
+        <div className="about-page__aside">
+          <figure className="about-page__photo" style={{ margin: 0 }}>
+            <Image src="/marco-gundlach.jpg" alt="Marco Gundlach" width={800} height={1000} sizes="(min-width: 1000px) 35vw, 100vw" priority />
+          </figure>
+          <div className="vita">
+            <span className="label">Stationen</span>
+            {VITA.map((entry) => (
+              <div className="vita__row" key={entry.year}>
+                <span className="vita__year">{entry.year}</span>
+                <span>{entry.text}</span>
               </div>
-              {VITA.map((v, i) => (
-                <div className="vita__row" key={i}>
-                  <div className="y">{v.y}</div>
-                  <div>{v.s}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="about-essay">
-            <p>Ich bin nicht in die Beratung gegangen, um zu beraten. Ich bin gegangen, weil ich gesehen habe, was passiert, wenn Beratung ohne Werkzeug aufhört.</p>
-            <p>Vierzehn Jahre Digitalisierung im Mittelstand haben mir eine einfache Erkenntnis hinterlassen: Der Wert eines externen Eingriffs entsteht in der Implementation, nicht im Workshop.</p>
-            <p>Mein Werkzeug ist n8n, weil es das einzige Werkzeug ist, das im Mittelstand drei Bedingungen gleichzeitig erfüllt: es läuft auf Ihrer Infrastruktur, es ist erweiterbar mit Code, und es ist verständlich für Operatoren ohne Engineering-Hintergrund.</p>
-            <p>Ich arbeite alleine, mit ausgewählten Implementations-Partnern. Ich nehme drei bis sechs Mandate pro Jahr an. Ich gehe nicht zu Pitch-Terminen, in denen ich gegen drei andere auftrete.</p>
-            <p>Ich operiere remote aus dem DACH-Raum, mit Vor-Ort-Terminen für Kick-off und Übergabe. Ich bin per E-Mail erreichbar, nicht per Slack. Ich antworte innerhalb von 48 Stunden, außer ich bin in einem Eingriff.</p>
-            <div style={{ marginTop: 48 }}>
-              <Link className="btn btn--primary" href="/kontakt">Termin buchen <span className="arr">→</span></Link>
-            </div>
+            ))}
           </div>
         </div>
+        <div className="about-page__essay">
+          {ESSAY.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <Link className="btn btn--primary" href={CONTACT_ANCHOR}>
+            Ablauf schildern <ArrowIcon />
+          </Link>
+        </div>
       </section>
-    </main>
+
+      <Experience content={EXPERIENCE} />
+      <Closing content={CLOSING} />
+    </>
   );
 }
