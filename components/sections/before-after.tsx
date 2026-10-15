@@ -28,6 +28,10 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
   const before = minutesPerCase(example, 'before');
   const after = minutesPerCase(example, 'after');
   const saved = savedMinutesPerWeek(example);
+  // Schritte, die nicht komplett wegfallen, offen benennen (z. B. Prüfen und Freigeben).
+  const remaining = example.steps
+    .filter((step) => step.minutesAfter > 0)
+    .map((step) => `${step.keeps ?? step.text} (ca. ${step.minutesAfter} Min.)`);
 
   useMotion(sectionRef, ({ gsap }) => {
     const rows = gsap.utils.toArray<HTMLElement>('.ba-step');
@@ -70,14 +74,17 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
           <h2 id="ba-title">{example.title}</h2>
           <p className="muted">{example.context}</p>
           <div className="ba-summary">
-            <p className="ba-summary__row">
-              <span>Zeit pro Vorgang</span>
-              <strong className="num"><span className="ba-minutes">{after}</span> Min.</strong>
-            </p>
             <p className="ba-summary__row ba-summary__row--muted">
-              <span>Vorher</span>
+              <span>Vorher, pro Vorgang</span>
               <span className="num">{before} Min.</span>
             </p>
+            <p className="ba-summary__row">
+              <span>Nachher, pro Vorgang</span>
+              <strong className="num"><span className="ba-minutes">{after}</span> Min.</strong>
+            </p>
+            {remaining.length > 0 ? (
+              <p className="ba-summary__keeps">Was bei Ihnen bleibt: {remaining.join(', ')}.</p>
+            ) : null}
             <p className="ba-saved">
               <span className="ba-saved__label">Gespart bei {example.perWeek} {example.unit}</span>
               <strong className="ba-saved__value num">{formatHours(saved)}</strong>

@@ -5,6 +5,8 @@ import { useMotion } from '@/lib/motion/use-motion';
 
 interface HeroTitleProps {
   text: string;
+  /** Optionale erste Zeile der H1 mit dem Suchbegriff (Landingpages). Wird nicht animiert. */
+  kicker?: string;
 }
 
 /** Ab dieser Zeit nach dem Laden ist der Titel per CSS-Fallback schon sichtbar. Dann nicht mehr animieren. */
@@ -14,8 +16,8 @@ const LATE_START_MS = 1200;
  * Hero-Überschrift: Zeilen gleiten einmalig nacheinander herein.
  * Ohne JavaScript oder bei reduzierter Bewegung steht der Text sofort da.
  */
-export default function HeroTitle({ text }: HeroTitleProps) {
-  const ref = useRef<HTMLHeadingElement>(null);
+export default function HeroTitle({ text, kicker }: HeroTitleProps) {
+  const ref = useRef<HTMLSpanElement>(null);
 
   useMotion(ref, ({ gsap, SplitText }) => {
     const element = ref.current;
@@ -45,8 +47,11 @@ export default function HeroTitle({ text }: HeroTitleProps) {
   });
 
   return (
-    <h1 className="hero-title" ref={ref}>
-      {text}
+    <h1 className={`hero-title${kicker ? ' hero-title--kicker' : ''}`}>
+      {kicker ? <span className="hero-title__kicker">{kicker} </span> : null}
+      <span className="hero-title__main" ref={ref}>
+        {text}
+      </span>
     </h1>
   );
 }

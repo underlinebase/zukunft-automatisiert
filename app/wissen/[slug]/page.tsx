@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getArticle, getArticles } from '@/lib/db';
-import { CONTACT_ANCHOR } from '@/lib/content/site';
+import { CONTACT_PAGE } from '@/lib/content/site';
 import { ArrowIcon } from '@/components/ui/icons';
 
 interface PageProps {
@@ -54,7 +54,7 @@ export default async function ArticlePage({ params }: PageProps) {
             {next && next.slug !== article.slug ? (
               <Link href={`/wissen/${next.slug}`} className="text-link">Nächste Notiz <ArrowIcon /></Link>
             ) : <span />}
-            <Link href={CONTACT_ANCHOR} className="text-link">Ablauf schildern <ArrowIcon /></Link>
+            <Link href={CONTACT_PAGE} className="text-link">Ablauf schildern <ArrowIcon /></Link>
           </div>
         </div>
         {article.notes.length > 0 ? (

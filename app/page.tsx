@@ -33,14 +33,19 @@ import AboutTeaser from '@/components/sections/about-teaser';
 import Experience from '@/components/sections/experience';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
+import JsonLd from '@/components/seo/json-ld';
+import { faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
+const SCHEMA = graph(organizationSchema(), personSchema(), faqSchema(FAQS));
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={SCHEMA} />
       <Hero eyebrow={HERO.eyebrow} title={HERO.title} lead={HERO.lead} weekBlocks={HOME_WEEK_BLOCKS} />
       <FactsBar facts={FACTS} />
       <Scenes intro={SCENES_INTRO} scenes={SCENES} />

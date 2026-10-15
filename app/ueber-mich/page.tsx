@@ -2,44 +2,40 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CLOSING, EXPERIENCE } from '@/lib/content/home';
+import { ABOUT_PAGE, CREDENTIALS, STATIONS } from '@/lib/content/about';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
+import { breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import JsonLd from '@/components/seo/json-ld';
 import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 
 export const metadata: Metadata = {
-  title: 'Über mich',
+  title: 'Über mich: Marco Gundlach, der KI-Realist',
   description:
-    'Marco Gundlach: 14 Jahre Digitalisierung und IT-Projektleitung, heute Berater für Prozessautomatisierung für Inhaber im DACH-Raum. Der KI-Realist.',
+    'Marco Gundlach: über 14 Jahre Digitalisierungsprojekte, unter anderem für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Realist Abläufe für Inhaber.',
   alternates: { canonical: '/ueber-mich' },
 };
 
-const ESSAY = [
-  'Viele Jahre habe ich IT-Projekte geleitet, oft in großen Unternehmen wie Hugo Boss, Fressnapf oder am Flughafen Düsseldorf. Dort ging es um viele Beteiligte, lange Abstimmungen und große Budgets. Ich habe gelernt, wie man Abläufe sauber aufnimmt und so umsetzt, dass sie im Alltag funktionieren.',
-  'Ich habe auch gesehen, wie viel Zeit in Projekte fließt, die am Ende niemand nutzt. Folien, Workshops, Konzepte. Für einen Betrieb mit zehn oder zwanzig Leuten passt das nicht. Dort zählt, ob am Freitag weniger Papierkram auf dem Tisch liegt.',
-  'Deshalb arbeite ich heute anders. Ein Ablauf, 4 Wochen, ein fester Preis. Sie sprechen die ganze Zeit mit mir, nicht mit einem Team, das Sie nie sehen.',
-  'Zur KI habe ich eine nüchterne Haltung. Sie kann Texte lesen, sortieren und Entwürfe schreiben. Sie kann aber längst nicht alles, was gerade versprochen wird. Wenn ein Ablauf ohne KI zuverlässiger läuft, bauen wir ihn ohne.',
-  '[PERSÖNLICHER SATZ, z. B. wo Sie leben oder was Sie neben der Arbeit machen]',
-];
-
-const VITA = [
-  { year: '2026', text: 'Zukunft. Automatisiert.: Automatisierung für Inhaber im DACH-Raum.' },
-  { year: '2024', text: 'FlowResults: Automatisierung für mittelständische Betriebe.' },
-  { year: '2022', text: 'Lawsearch24: Aufbau einer juristischen Suchplattform.' },
-  { year: '2018', text: 'Zertifizierter Product Owner und Scrum Master.' },
-  { year: '2014', text: 'Wechsel in die Beratung, Schwerpunkt Digitalisierung im Mittelstand.' },
-  { year: '2010', text: 'Erste Programmier-Aufträge parallel zum Studium.' },
-];
+const SCHEMA = graph(
+  personSchema(),
+  organizationSchema(),
+  breadcrumbSchema([
+    { name: 'Start', path: '/' },
+    { name: 'Über mich', path: '/ueber-mich' },
+  ]),
+);
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={SCHEMA} />
       <section className="page-hero">
         <div className="container page-hero__inner">
           <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Über mich</span></nav>
           <span className="label">Über mich</span>
-          <h1>Ich bin Marco Gundlach. Sie arbeiten direkt mit mir.</h1>
-          <p className="lead">14 Jahre Digitalisierung und IT-Projektleitung. Heute automatisiere ich Abläufe für Inhaber im DACH-Raum.</p>
+          <h1>{ABOUT_PAGE.title}</h1>
+          <p className="lead">{ABOUT_PAGE.lead}</p>
         </div>
       </section>
 
@@ -48,23 +44,44 @@ export default function AboutPage() {
           <figure className="about-page__photo" style={{ margin: 0 }}>
             <Image src="/marco-gundlach.jpg" alt="Marco Gundlach" width={800} height={1000} sizes="(min-width: 1000px) 35vw, 100vw" priority />
           </figure>
-          <div className="vita">
-            <span className="label">Stationen</span>
-            {VITA.map((entry) => (
-              <div className="vita__row" key={entry.year}>
-                <span className="vita__year">{entry.year}</span>
-                <span>{entry.text}</span>
-              </div>
-            ))}
-          </div>
         </div>
         <div className="about-page__essay">
-          {ESSAY.map((paragraph) => (
+          {ABOUT_PAGE.essay.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
           <Link className="btn btn--primary" href={CONTACT_ANCHOR}>
             Ablauf schildern <ArrowIcon />
           </Link>
+
+          <div className="vita" aria-labelledby="stationen-title">
+            <h2 id="stationen-title" className="vita__title">Stationen</h2>
+            <ol className="vita__list">
+              {STATIONS.map((station) => (
+                <li className="vita__row" key={`${station.period}-${station.role}`}>
+                  <span className="vita__year">{station.period}</span>
+                  <span>
+                    <strong>{station.role}</strong>, {station.org}
+                    <span className="vita__text">{station.text}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="vita" aria-labelledby="zertifikate-title">
+            <h2 id="zertifikate-title" className="vita__title">Zertifikate</h2>
+            <ul className="vita__list">
+              {CREDENTIALS.map((credential) => (
+                <li className="vita__row" key={credential.name}>
+                  <span className="vita__year">{credential.year ?? ''}</span>
+                  <span>
+                    <strong>{credential.name}</strong>
+                    <span className="vita__text">{credential.issuer}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

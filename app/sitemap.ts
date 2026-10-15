@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getArticles } from '@/lib/db';
-import { INDUSTRIES } from '@/lib/content/branchen';
+import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 import { SITE } from '@/lib/content/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const industryPages: MetadataRoute.Sitemap = INDUSTRIES.map((industry) => ({
-    url: `${base}/branchen/${industry.slug}`,
+    url: `${base}${industryHref(industry.slug)}`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.9,

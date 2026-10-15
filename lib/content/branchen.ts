@@ -18,10 +18,34 @@ export const INDUSTRIES: Industry[] = [
       { title: 'Fotos und Aufmaße ablegen', text: 'Bilder vom Handy landen direkt im richtigen Kundenordner.' },
     ],
     hero: {
-      eyebrow: 'Für Handwerksbetriebe · SHK, Elektro, Dach',
+      kicker: 'Automatisierung für Handwerksbetriebe',
       title: 'Schluss mit Angeboten am Sonntagabend.',
       lead: SHARED_LEAD,
     },
+    seo: {
+      title: 'Automatisierung für Handwerksbetriebe (SHK, Elektro, Dach)',
+      description:
+        'Angebote, Nachfassen, Fotos und Aufmaße: Ich automatisiere den Büro-Ablauf, der Ihren Handwerksbetrieb am meisten Zeit kostet. In 4 Wochen, mit Garantie.',
+      serviceType: 'Prozessautomatisierung für Handwerksbetriebe',
+    },
+    faqs: [
+      {
+        q: 'Funktioniert das mit meiner Handwerkersoftware?',
+        a: 'Meistens ja. Viele Programme lassen sich über eine Schnittstelle, über E-Mail oder über Exporte anbinden. Das prüfe ich im ersten Gespräch, bevor Sie etwas bezahlen.',
+      },
+      {
+        q: 'Meine Leute sind auf der Baustelle, nicht am Computer. Geht das trotzdem?',
+        a: 'Gerade dann. Fotos und Notizen lassen sich vom Handy aus schicken. Der Rest passiert im Hintergrund, ohne dass jemand im Büro sortieren muss.',
+      },
+      {
+        q: 'Schreibt dann eine KI meine Angebote?',
+        a: 'Nein. Sie bekommen einen Entwurf aus Ihren eigenen Positionen und Preisen. Prüfen und freigeben bleibt bei Ihnen.',
+      },
+      {
+        q: 'Lohnt sich das für einen kleineren Betrieb?',
+        a: 'Wenn ein Ablauf jede Woche mehrere Stunden kostet, meistens ja. Rechnen Sie es mit dem Zeitrechner nach. Rechnet es sich nicht, sage ich Ihnen das.',
+      },
+    ],
     scenes: [
       {
         tag: 'Angebote',
@@ -68,8 +92,6 @@ export const INDUSTRIES: Industry[] = [
       { day: 4, label: 'Angebot schreiben' },
     ],
     calculator: { hoursPerWeek: 6, hourlyRate: 70 },
-    metaDescription:
-      'Prozessautomatisierung für Handwerksbetriebe (SHK, Elektro, Dach): Angebote, Nachfassen und Ablage in 4 Wochen automatisiert. Mit Garantie.',
   },
   {
     slug: 'immobilienmakler',
@@ -84,10 +106,34 @@ export const INDUSTRIES: Industry[] = [
       { title: 'Besichtigungen abstimmen', text: 'Interessenten wählen selbst einen freien Termin aus Ihrem Kalender.' },
     ],
     hero: {
-      eyebrow: 'Für Immobilienmakler · Vermietung und Verkauf',
+      kicker: 'Automatisierung für Immobilienmakler',
       title: 'Jede Anfrage beantwortet, bevor der Abend kommt.',
       lead: SHARED_LEAD,
     },
+    seo: {
+      title: 'Automatisierung für Immobilienmakler: Anfragen und Termine',
+      description:
+        'Portal-Anfragen sofort beantworten, Exposés verschicken, Besichtigungen ohne Telefon-Pingpong: Ich automatisiere Ihren zeitraubendsten Ablauf in 4 Wochen.',
+      serviceType: 'Prozessautomatisierung für Immobilienmakler',
+    },
+    faqs: [
+      {
+        q: 'Funktioniert das mit meiner Maklersoftware und den Portalen?',
+        a: 'Anfragen von Portalen kommen meist per E-Mail an. Die lassen sich zuverlässig auslesen. Ob Ihre Maklersoftware eine Schnittstelle hat, prüfe ich vor dem Start.',
+      },
+      {
+        q: 'Wirkt eine automatische Antwort nicht unpersönlich?',
+        a: 'Nicht, wenn sie gut geschrieben ist und schnell kommt. Interessenten bekommen Ihre Worte, Ihr Exposé und einen klaren nächsten Schritt. Das persönliche Gespräch führen weiterhin Sie.',
+      },
+      {
+        q: 'Was passiert mit den Daten der Interessenten?',
+        a: 'Die Daten bleiben in Ihren Systemen oder auf Servern in der EU. Selbstauskünfte werden nur so lange gespeichert, wie Sie sie brauchen.',
+      },
+      {
+        q: 'Kann ich Besichtigungen weiter selbst steuern?',
+        a: 'Ja. Sie legen fest, welche Zeiten frei sind. Interessenten wählen nur aus diesen Zeiten, und Sie sehen jede Buchung.',
+      },
+    ],
     scenes: [
       {
         tag: 'Portal-Anfragen',
@@ -124,7 +170,7 @@ export const INDUSTRIES: Industry[] = [
         { text: 'Kontaktdaten in die Maklersoftware übertragen', minutesBefore: 3, minutesAfter: 0, afterText: 'Kontakt wird angelegt' },
         { text: 'Antwort schreiben und Exposé anhängen', minutesBefore: 4, minutesAfter: 0, afterText: 'Antwort mit Exposé geht sofort raus' },
         { text: 'Rückfragen zu Budget und Wunschtermin stellen', minutesBefore: 3, minutesAfter: 0, afterText: 'Kurze Fragen vorab per Formular' },
-        { text: 'Besichtigungstermin abstimmen', minutesBefore: 6, minutesAfter: 1, afterText: 'Interessent bucht selbst, Sie werfen einen Blick drauf' },
+        { text: 'Besichtigungstermin abstimmen', minutesBefore: 6, minutesAfter: 1, afterText: 'Interessent bucht selbst, Sie werfen einen Blick drauf', keeps: 'gebuchte Termine kurz ansehen' },
         { text: 'Erinnerung vor dem Termin schicken', minutesBefore: 2, minutesAfter: 0, afterText: 'Erinnerung geht automatisch raus' },
       ],
     },
@@ -147,8 +193,6 @@ export const INDUSTRIES: Industry[] = [
       { day: 4, label: 'Exposé verschicken' },
     ],
     calculator: { hoursPerWeek: 8, hourlyRate: 90 },
-    metaDescription:
-      'Prozessautomatisierung für Immobilienmakler: Portal-Anfragen, Exposés und Besichtigungen in 4 Wochen automatisiert. Mit Garantie.',
   },
   {
     slug: 'steuerberater',
@@ -163,10 +207,34 @@ export const INDUSTRIES: Industry[] = [
       { title: 'Neue Mandanten aufnehmen', text: 'Unterlagen und Vollmachten kommen gesammelt über ein Formular.' },
     ],
     hero: {
-      eyebrow: 'Für Steuerkanzleien',
+      kicker: 'Automatisierung für Steuerkanzleien',
       title: 'Weniger Belegen hinterherlaufen. Mehr Zeit für die Beratung.',
       lead: SHARED_LEAD,
     },
+    seo: {
+      title: 'Automatisierung für Steuerberater: Belege und Mandanten',
+      description:
+        'Fehlende Belege anfordern, zuordnen, neue Mandanten aufnehmen: Ich automatisiere den Ablauf, der Ihre Kanzlei am meisten Zeit kostet. In 4 Wochen, mit Garantie.',
+      serviceType: 'Prozessautomatisierung für Steuerkanzleien',
+    },
+    faqs: [
+      {
+        q: 'Funktioniert das mit DATEV?',
+        a: 'Das hängt davon ab, wie Ihre Kanzlei arbeitet. Viele Schritte rund um Belege und Mandantenkommunikation lassen sich vor der Buchhaltung automatisieren, zum Beispiel das Anfordern und Sortieren. Welche Anbindung bei Ihnen möglich ist, prüfe ich vor dem Start.',
+      },
+      {
+        q: 'Wie steht es um Verschwiegenheit und Datenschutz?',
+        a: 'Mandantendaten bleiben unter Ihrer Kontrolle, auf Servern in der EU und mit Vertrag zur Auftragsverarbeitung. Vor dem Start verpflichte ich mich schriftlich zur Verschwiegenheit. KI setze ich nur ein, wo sie nötig ist, und nur mit Diensten, die keine Daten zum Training verwenden.',
+      },
+      {
+        q: 'Ersetzt das meine Fachkräfte?',
+        a: 'Nein. Es nimmt ihnen das Hinterherlaufen ab, damit mehr Zeit für die fachliche Arbeit bleibt.',
+      },
+      {
+        q: 'Wann ist der beste Zeitpunkt für den Start?',
+        a: 'Nicht mitten in der Abgabesaison. Die Aufnahme in Woche 1 braucht etwa zwei Stunden Ihrer Zeit. Planen Sie das in einer ruhigeren Phase.',
+      },
+    ],
     scenes: [
       {
         tag: 'Belege',
@@ -199,12 +267,12 @@ export const INDUSTRIES: Industry[] = [
       perWeek: 15,
       unit: 'Mandanten pro Woche',
       steps: [
-        { text: 'Kontoauszug mit vorhandenen Belegen abgleichen', minutesBefore: 10, minutesAfter: 3, afterText: 'Abgleich läuft vorab, Ihr Team prüft die Liste' },
+        { text: 'Kontoauszug mit vorhandenen Belegen abgleichen', minutesBefore: 10, minutesAfter: 3, afterText: 'Abgleich läuft vorab, Ihr Team prüft die Liste', keeps: 'die Abgleichliste prüfen' },
         { text: 'Liste der fehlenden Belege schreiben', minutesBefore: 5, minutesAfter: 0, afterText: 'Liste entsteht automatisch' },
         { text: 'E-Mail an den Mandanten formulieren', minutesBefore: 4, minutesAfter: 0, afterText: 'E-Mail mit Liste geht raus' },
         { text: 'Nach einer Woche erinnern', minutesBefore: 3, minutesAfter: 0, afterText: 'Erinnerung geht automatisch raus' },
-        { text: 'Eingegangene Belege zuordnen', minutesBefore: 6, minutesAfter: 1, afterText: 'Belege werden zugeordnet, Ihr Team schaut kurz drauf' },
-        { text: 'Nachtelefonieren, wenn immer noch etwas fehlt', minutesBefore: 5, minutesAfter: 2, afterText: 'Nur noch bei den wenigen, die nicht reagieren' },
+        { text: 'Eingegangene Belege zuordnen', minutesBefore: 6, minutesAfter: 1, afterText: 'Belege werden zugeordnet, Ihr Team schaut kurz drauf', keeps: 'zugeordnete Belege kurz ansehen' },
+        { text: 'Nachtelefonieren, wenn immer noch etwas fehlt', minutesBefore: 5, minutesAfter: 2, afterText: 'Nur noch bei den wenigen, die nicht reagieren', keeps: 'bei wenigen Mandanten nachtelefonieren' },
       ],
     },
     weekBlocks: [
@@ -226,11 +294,24 @@ export const INDUSTRIES: Industry[] = [
       { day: 4, label: 'Ablage sortieren' },
     ],
     calculator: { hoursPerWeek: 7, hourlyRate: 85 },
-    metaDescription:
-      'Prozessautomatisierung für Steuerkanzleien: Belege anfordern, zuordnen und Mandanten aufnehmen, in 4 Wochen automatisiert. Mit Garantie.',
   },
 ];
 
 export function getIndustry(slug: string): Industry | undefined {
   return INDUSTRIES.find((industry) => industry.slug === slug);
 }
+
+/** Landingpages liegen direkt unter der Domain, z. B. /steuerberater. */
+export function industryHref(slug: string): string {
+  return `/${slug}`;
+}
+
+export interface IndustryLink {
+  href: string;
+  label: string;
+}
+
+export const INDUSTRY_LINKS: IndustryLink[] = INDUSTRIES.map((industry) => ({
+  href: industryHref(industry.slug),
+  label: industry.name,
+}));

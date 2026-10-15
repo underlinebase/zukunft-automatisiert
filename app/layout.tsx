@@ -6,7 +6,10 @@ import './styles/week.css';
 import './styles/pages.css';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
-import { SITE } from '@/lib/content/site';
+import { SITE, buildNav } from '@/lib/content/site';
+import { INDUSTRY_LINKS } from '@/lib/content/branchen';
+
+const NAV = buildNav(INDUSTRY_LINKS);
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -16,9 +19,9 @@ const fraunces = Fraunces({
 });
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' });
 
-const TITLE = 'Den Ablauf, der Sie Stunden kostet, automatisiert in 4 Wochen';
+const TITLE = 'Prozessautomatisierung in 4 Wochen, vom KI-Realisten';
 const DESCRIPTION =
-  'Marco Gundlach automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet, in 4 Wochen. Für Handwerk, Immobilienmakler und Steuerkanzleien. Läuft es nicht, arbeitet er kostenlos weiter.';
+  'Marco Gundlach, der KI-Realist, automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis. Läuft es nicht, arbeitet er kostenlos weiter.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -40,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script dangerouslySetInnerHTML={{ __html: JS_FLAG }} />
         <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
-        <SiteHeader />
+        <SiteHeader nav={NAV} />
         <main id="inhalt">{children}</main>
         <SiteFooter />
       </body>

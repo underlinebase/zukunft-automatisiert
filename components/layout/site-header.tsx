@@ -1,22 +1,37 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CONTACT_ANCHOR, NAV_ITEMS } from '@/lib/content/site';
+import { CONTACT_ANCHOR, CONTACT_PAGE } from '@/lib/content/site';
 import type { NavItem } from '@/lib/content/site';
 import Logo from './logo';
 
-export default function SiteHeader() {
+interface SiteHeaderProps {
+  nav: NavItem[];
+}
+
+export default function SiteHeader({ nav: NAV_ITEMS }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const [lastPath, setLastPath] = useState(pathname);
+  const firstRender = useRef(true);
 
   // Menü bei Seitenwechsel schließen (State-Anpassung während des Renderns statt Effekt).
   if (pathname !== lastPath) {
     setLastPath(pathname);
     setOpen(false);
   }
+
+  // Beim Wechsel zwischen gleich aufgebauten Seiten (z. B. zwei Landingpages) oben beginnen,
+  // sonst wirkt der Klick, als sei nichts passiert. Sprungmarken (#…) bleiben unberührt.
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    if (!window.location.hash) window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -29,7 +44,11 @@ export default function SiteHeader() {
 
   const close = () => setOpen(false);
 
-  // Aktiv: echte Seiten (z. B. /wissen/…) und Unterseiten eines Menüpunkts (z. B. /branchen/…).
+  // Seiten mit Abschluss-Formular springen dorthin, alle anderen gehen zur Kontaktseite.
+  const pagesWithForm = ['/', '/ueber-mich', ...NAV_ITEMS.flatMap((item) => item.children?.map((child) => child.href) ?? [])];
+  const contactHref = pagesWithForm.includes(pathname) ? CONTACT_ANCHOR : CONTACT_PAGE;
+
+  // Aktiv: echte Seiten (z. B. /wissen/…) und Unterseiten eines Menüpunkts (z. B. /steuerberater).
   const isActive = (item: NavItem) => {
     if (!item.href.startsWith('/#') && (pathname === item.href || pathname.startsWith(`${item.href}/`))) return true;
     return item.children?.some((child) => pathname === child.href) ?? false;
@@ -71,7 +90,7 @@ export default function SiteHeader() {
               </li>
             ))}
           </ul>
-          <Link href={CONTACT_ANCHOR} className="btn btn--primary site-nav__cta" onClick={close}>
+          <Link href={contactHref} className="btn btn--primary site-nav__cta" onClick={close}>
             Ablauf schildern
           </Link>
         </nav>

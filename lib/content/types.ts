@@ -32,6 +32,8 @@ export interface ProcessStep {
   /** Minuten, die nach der Automatisierung übrig bleiben. 0 = läuft komplett allein. */
   minutesAfter: number;
   afterText?: string;
+  /** Was beim Inhaber bleibt, wenn minutesAfter > 0, z. B. „den Entwurf prüfen und freigeben“. */
+  keeps?: string;
 }
 
 export interface BeforeAfterExample {
@@ -43,6 +45,8 @@ export interface BeforeAfterExample {
 }
 
 export interface Faq {
+  /** Feste Kennung, um allgemeine Fragen auf Landingpages gezielt einzubinden. */
+  id?: string;
   q: string;
   a: string;
 }
@@ -74,7 +78,8 @@ export interface Industry {
   teaser: string;
   routines: Routine[];
   hero: {
-    eyebrow: string;
+    /** Suchbegriff, der als erste Zeile in der H1 steht (SEO), z. B. „Automatisierung für Handwerksbetriebe“. */
+    kicker: string;
     title: string;
     lead: string;
   };
@@ -83,5 +88,14 @@ export interface Industry {
   example: BeforeAfterExample;
   weekBlocks: WeekBlockLabel[];
   calculator: CalculatorDefaults;
-  metaDescription: string;
+  /** Branchenspezifische Fragen; auf der Landingpage vor den allgemeinen Fragen. */
+  faqs: Faq[];
+  seo: {
+    /** Seitentitel ohne Markenzusatz, höchstens etwa 55 Zeichen. */
+    title: string;
+    /** Meta-Beschreibung, höchstens etwa 155 Zeichen. */
+    description: string;
+    /** Bezeichnung der Dienstleistung für strukturierte Daten. */
+    serviceType: string;
+  };
 }

@@ -11,7 +11,7 @@ import type {
 } from './types';
 
 export const HERO = {
-  eyebrow: 'Prozessautomatisierung für Inhaber',
+  eyebrow: 'Der KI-Realist · Automatisierung für Inhaber',
   title: 'Den Ablauf, der Sie jede Woche Stunden kostet, automatisiere ich in 4 Wochen.',
   lead: 'Klappt das nicht, arbeite ich kostenlos weiter. Ohne KI-Zauber, ohne Software-Zoo. Sie arbeiten direkt mit mir.',
 };
@@ -20,7 +20,7 @@ export const FACTS: Fact[] = [
   { label: 'Für wen', value: 'Inhaber, die selbst entscheiden', text: 'Handwerk, Makler und Steuerkanzleien ab etwa 20.000 € Monatsumsatz.' },
   { label: 'Was', value: 'Ein Ablauf', text: 'Der, der in Ihrem Betrieb am meisten Zeit frisst.' },
   { label: 'Wie lange', value: '4 Wochen', text: 'Von der ersten Aufnahme bis zur Übergabe an Ihr Team.' },
-  { label: 'Preis', value: SITE.price, text: `Festpreis. Betreuung danach optional ab ${SITE.carePrice} im Monat.` },
+  { label: 'Preis', value: 'Festpreis, der sich rechnen muss', text: 'Sie bekommen ihn nach dem Erstgespräch schriftlich. Rechnet er sich nicht im ersten Jahr, rate ich Ihnen ab.' },
   { label: 'Garantie', value: 'Läuft es nicht, arbeite ich weiter', text: 'Kostenlos, bis der Ablauf im Alltag läuft.' },
 ];
 
@@ -112,15 +112,15 @@ export const WEEKS: WeekStep[] = [
 
 export const HOME_EXAMPLE: BeforeAfterExample = {
   title: 'Eine Angebotsanfrage im Handwerksbetrieb.',
-  context: 'Beispielablauf. Die Minuten sind typische Werte, kein Kundenfall.',
+  context: 'Beispielablauf mit typischen Minutenwerten, kein Kundenfall. Was sich bei Ihnen automatisieren lässt, hängt von Ihrer Software ab. Das prüfe ich vorher.',
   perWeek: 10,
   unit: 'Anfragen pro Woche',
   steps: [
-    { text: 'Anfrage aus E-Mail und Anrufbeantworter zusammensuchen', minutesBefore: 5, minutesAfter: 0, afterText: 'Anfragen landen gesammelt an einer Stelle' },
-    { text: 'Kundendaten in die Branchensoftware abtippen', minutesBefore: 6, minutesAfter: 0, afterText: 'Kundendaten werden übernommen' },
-    { text: 'Aufmaß-Notizen und Fotos ordnen', minutesBefore: 8, minutesAfter: 0, afterText: 'Fotos liegen im richtigen Kundenordner' },
-    { text: 'Angebot aus Textbausteinen zusammensetzen', minutesBefore: 15, minutesAfter: 8, afterText: 'Entwurf liegt bereit, Sie prüfen und ergänzen' },
-    { text: 'Angebot als PDF verschicken', minutesBefore: 3, minutesAfter: 0, afterText: 'Versand nach Ihrer Freigabe' },
+    { text: 'Anfrage aus E-Mail und Kontaktformular zusammensuchen', minutesBefore: 5, minutesAfter: 0, afterText: 'Anfragen landen gesammelt an einer Stelle' },
+    { text: 'Kundendaten in die Handwerkersoftware abtippen', minutesBefore: 6, minutesAfter: 0, afterText: 'Kundendaten werden übernommen' },
+    { text: 'Fotos und Aufmaß vom Handy in den Kundenordner sortieren', minutesBefore: 8, minutesAfter: 0, afterText: 'Fotos landen im richtigen Kundenordner' },
+    { text: 'Angebot aus Textbausteinen zusammensetzen', minutesBefore: 15, minutesAfter: 8, afterText: 'Entwurf liegt bereit. Sie prüfen, ergänzen und geben frei', keeps: 'den Angebotsentwurf prüfen und freigeben' },
+    { text: 'Angebot als PDF verschicken', minutesBefore: 3, minutesAfter: 0, afterText: 'Geht nach Ihrer Freigabe automatisch raus' },
     { text: 'Nach einer Woche nachfassen', minutesBefore: 5, minutesAfter: 0, afterText: 'Freundliche Erinnerung geht automatisch raus' },
   ],
 };
@@ -163,12 +163,12 @@ export const INDUSTRIES_INTRO = {
 };
 
 export const ABOUT = {
-  eyebrow: 'Über mich',
+  eyebrow: 'Über mich · Der KI-Realist',
   title: 'Ich bin Marco Gundlach. Sie arbeiten direkt mit mir.',
   text: [
-    '14 Jahre lang habe ich Digitalisierungs- und IT-Projekte geleitet, viele davon in großen Unternehmen. Dort habe ich gelernt, Abläufe sauber aufzusetzen. Ich habe auch gesehen, wie viel Geld in Projekte fließt, die am Ende niemand nutzt.',
+    'Seit über 14 Jahren leite ich Digitalisierungsprojekte, unter anderem für Hugo Boss, Fressnapf und Aktion Mensch. Dort habe ich gelernt, Abläufe sauber aufzusetzen. Ich habe auch gesehen, wie viel Geld in Projekte fließt, die am Ende niemand nutzt.',
     'Heute arbeite ich mit Inhabern, die für so etwas keine Zeit haben. Ich höre zu, baue einen Ablauf, der funktioniert, und gehe erst, wenn er läuft.',
-    'Zur KI habe ich eine nüchterne Haltung. Sie kann einiges, aber weniger, als oft versprochen wird. Wenn etwas ohne KI besser läuft, bauen wir es ohne.',
+    'Ich nenne mich den KI-Realisten. Ich setze KI jeden Tag ein und habe mich zu ihren Fähigkeiten und Grenzen zertifizieren lassen. Gerade deshalb sage ich Ihnen, wann sie hilft und wann eine einfache Regel besser ist.',
   ],
   photoAlt: 'Marco Gundlach',
 };
@@ -178,7 +178,13 @@ export const EXPERIENCE = {
   title: 'Projekterfahrung aus großen Unternehmen.',
   note: 'Frühere Projekte als IT-Projektleiter. Das sind keine Kunden dieses Angebots.',
   companies: ['Hugo Boss', 'Fressnapf', 'Aktion Mensch', 'APCOA', 'Flughafen Düsseldorf'],
-  certificates: ['Zertifizierter Product Owner', 'Zertifizierter Scrum Master', '[WEITERE ZERTIFIKATE]'],
+  certificates: [
+    'Claude Academy: KI-Fähigkeiten und -Grenzen (Anthropic)',
+    'Professional Scrum Master II (Scrum.org)',
+    'Professional Scrum Product Owner II (Scrum.org)',
+    'ITIL 4 Foundation',
+    'Geprüfter Ausbilder (IHK)',
+  ],
   pilot: {
     label: 'Pilotkunden gesucht',
     title: 'Sie könnten einer der ersten Betriebe sein.',
@@ -194,26 +200,37 @@ export const FAQ_INTRO = {
 
 export const FAQS: Faq[] = [
   {
+    id: 'hype',
     q: 'Ist KI nicht nur Hype?',
     a: 'Vieles davon, ja. Für die meisten Abläufe brauchen Sie keine KI, sondern klare Regeln, die zuverlässig abgearbeitet werden. KI setze ich nur dort ein, wo sie wirklich hilft. Zum Beispiel, wenn Text aus E-Mails oder schlecht gescannten Belegen gelesen werden muss.',
   },
   {
+    id: 'daten',
     q: 'Was passiert mit meinen Daten?',
     a: 'Ihre Daten bleiben bei Ihnen oder auf Servern in der EU. Wo nötig, schließen wir einen Vertrag zur Auftragsverarbeitung. Ich nutze keine Dienste, die Ihre Daten zum Training von KI-Modellen verwenden. [SERVERSTANDORT UND HOSTING-ANBIETER]',
   },
   {
+    id: 'zeit',
     q: 'Wie viel Zeit muss ich investieren?',
     a: 'Rund 5 Stunden, verteilt auf 4 Wochen. Etwa 2 Stunden für die Aufnahme, eine Stunde zum Testen und anderthalb Stunden für die Übergabe. Den Rest erledige ich.',
   },
   {
+    id: 'danach',
     q: 'Was passiert nach den 4 Wochen?',
     a: 'Der Ablauf gehört Ihnen und läuft weiter. Sie können ihn selbst betreuen oder mich damit beauftragen. Eine Mindestlaufzeit gibt es nicht. Viele nehmen sich danach den nächsten Ablauf vor.',
   },
   {
-    q: 'Was kostet die Betreuung?',
-    a: `Ab ${SITE.carePrice} im Monat, monatlich kündbar. Dafür prüfe ich, ob alles läuft, passe Kleinigkeiten an und bin erreichbar, wenn sich an Ihrer Software etwas ändert.`,
+    id: 'kosten',
+    q: 'Was kostet das?',
+    a: 'Einen Festpreis, den Sie nach dem ersten Gespräch schriftlich bekommen. Er richtet sich nach dem Ablauf, nicht nach meinen Stunden. Mein Maßstab: Die Automatisierung muss sich innerhalb eines Jahres bezahlt machen. Was Sie der Ablauf heute kostet, zeigt Ihnen der Zeitrechner. Liegt der Preis darüber, rate ich Ihnen ab.',
   },
   {
+    id: 'betreuung',
+    q: 'Was kostet die Betreuung danach?',
+    a: 'Einen festen Monatsbetrag, den wir vor dem Start vereinbaren. Er hängt davon ab, wie viele Abläufe laufen. Die Betreuung ist freiwillig und monatlich kündbar. Dafür prüfe ich, ob alles läuft, passe Kleinigkeiten an und bin erreichbar, wenn sich an Ihrer Software etwas ändert.',
+  },
+  {
+    id: 'software',
     q: 'Welche Software nutzen Sie?',
     a: 'Meistens n8n. Damit lassen sich Programme verbinden, die Sie schon nutzen, etwa E-Mail, Kalender, Branchensoftware oder Buchhaltung. n8n kann auf einem Server in Deutschland laufen, und Sie zahlen keine Lizenz pro Nutzer. Wo es passt, ergänze ich kleine Programme oder eine KI-Schnittstelle.',
   },
@@ -245,3 +262,9 @@ export const HOME_WEEK_BLOCKS: WeekBlockLabel[] = [
   { day: 4, label: 'Ablage sortieren' },
   { day: 4, label: 'Exposé verschicken' },
 ];
+
+/** Allgemeine Fragen, die auf jeder Landingpage nach den Branchenfragen stehen. */
+const LANDING_FAQ_IDS = ['kosten', 'zeit', 'hype', 'danach', 'software'];
+export const LANDING_GENERAL_FAQS: Faq[] = LANDING_FAQ_IDS.map((id) => FAQS.find((faq) => faq.id === id)).filter(
+  (faq): faq is Faq => faq !== undefined,
+);

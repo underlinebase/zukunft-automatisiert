@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { SITE } from '@/lib/content/site';
-import { INDUSTRIES } from '@/lib/content/branchen';
+import { INDUSTRY_LINKS } from '@/lib/content/branchen';
 import Logo from './logo';
 
 export default function SiteFooter() {
@@ -11,14 +11,16 @@ export default function SiteFooter() {
         <div className="site-footer__grid">
           <div className="site-footer__brand">
             <Logo inverse />
-            <p>Prozessautomatisierung für Inhaber im DACH-Raum. Ein Ablauf, 4 Wochen, direkt mit {SITE.owner}.</p>
+            <p>
+              {SITE.owner}, der KI-Realist. Prozessautomatisierung für Inhaber im DACH-Raum, von {SITE.location} aus. Ein Ablauf, 4 Wochen, Festpreis.
+            </p>
           </div>
           <nav aria-label="Branchen">
             <h2 className="site-footer__title">Branchen</h2>
             <ul>
-              {INDUSTRIES.map((industry) => (
-                <li key={industry.slug}>
-                  <Link href={`/branchen/${industry.slug}`}>{industry.name}</Link>
+              {INDUSTRY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>

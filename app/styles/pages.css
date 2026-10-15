@@ -170,8 +170,11 @@
 @media (min-width: 1000px) { .about-page__aside { position: sticky; top: 112px; } }
 .about-page__essay { display: grid; gap: 20px; justify-items: start; }
 .about-page__essay p { margin: 0; font-size: clamp(18px, 1.4vw, 20px); }
-.vita { margin-top: 32px; }
-.vita__row { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--c-line); font-size: 16px; }
+.vita { margin-top: 32px; width: 100%; }
+.vita__title { font-size: clamp(22px, 2vw, 28px); margin-bottom: 12px; }
+.vita__list { list-style: none; margin: 0; padding: 0; }
+.vita__text { display: block; color: var(--c-text-muted); margin-top: 2px; }
+.vita__row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--c-line); font-size: 16px; }
 .vita__year { font-weight: 700; color: var(--c-brand); font-variant-numeric: tabular-nums; }
 
 /* ---------- Kontakt ---------- */
