@@ -88,11 +88,15 @@ export default function TimeCalculator({ defaults }: TimeCalculatorProps) {
         />
       </div>
 
-      <div className="calculator__result" aria-live="polite">
+      <div className="calculator__result">
         <p className="calculator__formula num">
           {hoursPerWeek} Std. × {hourlyRate} € × {WORK_WEEKS_PER_YEAR} Arbeitswochen
         </p>
-        <div className="calculator__numbers">
+        {/* Screenreader hören nur den Endwert, nicht jeden Zwischenschritt der Zählanimation. */}
+        <p className="visually-hidden" aria-live="polite">
+          {formatNumber(hoursPerYear)} Stunden und {formatNumber(costPerYear)} Euro pro Jahr.
+        </p>
+        <div className="calculator__numbers" aria-hidden="true">
           <p>
             <span className="calculator__big num"><CountUp value={hoursPerYear} /> Std.</span>
             <span className="calculator__caption">pro Jahr</span>

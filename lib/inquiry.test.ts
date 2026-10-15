@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
-import { validateInquiry } from './inquiry';
+import { HONEYPOT_FIELD, validateInquiry } from './inquiry';
 
 const valid = {
   name: 'Petra Muster',
   email: 'petra@example.de',
   ablauf: 'Wir schreiben jede Woche zwanzig Angebote von Hand.',
-  website: '',
+  [HONEYPOT_FIELD]: '',
 };
 
 describe('validateInquiry', () => {
@@ -18,14 +18,14 @@ describe('validateInquiry', () => {
   });
 
   test('returns field errors for missing values', () => {
-    const result = validateInquiry({ name: '', email: 'kein-at', ablauf: 'kurz', website: '' });
+    const result = validateInquiry({ name: '', email: 'kein-at', ablauf: 'kurz', [HONEYPOT_FIELD]: '' });
     expect(result.ok).toBe(false);
     if (result.ok) return;
     expect(Object.keys(result.errors).sort()).toEqual(['ablauf', 'email', 'name']);
   });
 
   test('flags a filled honeypot as spam', () => {
-    const result = validateInquiry({ ...valid, website: 'https://spam.example' });
+    const result = validateInquiry({ ...valid, [HONEYPOT_FIELD]: 'https://spam.example' });
     expect(result).toEqual({ ok: false, errors: {}, spam: true });
   });
 

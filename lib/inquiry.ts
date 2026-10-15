@@ -11,6 +11,9 @@ export const INQUIRY_LIMITS = {
 
 export type InquiryField = 'name' | 'email' | 'ablauf';
 
+/** Unauffälliger Name, damit Browser-Autofill das Feld nicht befüllt. */
+export const HONEYPOT_FIELD = 'hp_check';
+
 export interface InquiryData {
   name: string;
   email: string;
@@ -33,7 +36,7 @@ export function validateInquiry(raw: unknown): InquiryResult {
   const input = raw as Record<string, unknown>;
 
   // Honeypot: Menschen sehen dieses Feld nicht.
-  if (asText(input.website) !== '') return { ok: false, errors: {}, spam: true };
+  if (asText(input[HONEYPOT_FIELD]) !== '') return { ok: false, errors: {}, spam: true };
 
   const name = asText(input.name);
   const email = asText(input.email);

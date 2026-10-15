@@ -175,11 +175,32 @@ async function waitForFonts(palette: ScenePalette) {
   }
 }
 
-export async function createWeekScene(host: HTMLElement, blocks: PlacedBlock[]): Promise<WeekScene> {
+/**
+ * Baut die Szene. `onContextLost` wird aufgerufen, wenn der Browser den GPU-Kontext entzieht;
+ * die aufrufende Komponente schaltet dann auf die flache Ansicht zurück.
+ */
+export async function createWeekScene(host: HTMLElement, blocks: PlacedBlock[], onContextLost: () => void): Promise<WeekScene> {
   const palette = readPalette();
   await waitForFonts(palette);
 
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
+  try {
+    return buildScene(renderer, host, blocks, palette, onContextLost);
+  } catch (error: unknown) {
+    renderer.forceContextLoss();
+    renderer.dispose();
+    renderer.domElement.remove();
+    throw error;
+  }
+}
+
+function buildScene(
+  renderer: WebGLRenderer,
+  host: HTMLElement,
+  blocks: PlacedBlock[],
+  palette: ScenePalette,
+  onContextLost: () => void,
+): WeekScene {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.shadowMap.enabled = true;
@@ -190,6 +211,11 @@ export async function createWeekScene(host: HTMLElement, blocks: PlacedBlock[]):
   canvas.setAttribute('aria-hidden', 'true');
   canvas.className = 'week-3d__canvas';
   host.appendChild(canvas);
+  const handleContextLost = (event: Event) => {
+    event.preventDefault();
+    onContextLost();
+  };
+  canvas.addEventListener('webglcontextlost', handleContextLost);
 
   const scene = new Scene();
   const camera = new PerspectiveCamera(FOV, 1, 0.1, 100);
@@ -311,8 +337,11 @@ export async function createWeekScene(host: HTMLElement, blocks: PlacedBlock[]):
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
       window.removeEventListener('pointermove', onPointer);
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
       disposeTree(scene);
       checkMap.dispose();
+      // Kontext aktiv freigeben, sonst sammeln sich bei Breakpoint-Wechseln WebGL-Kontexte an.
+      renderer.forceContextLoss();
       renderer.dispose();
       canvas.remove();
     },

@@ -54,6 +54,12 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
     timeline.fromTo(counter, { minutes: before }, { minutes: after, duration: rows.length, ease: 'none' }, 0);
     timeline.fromTo(counter, { saved: 0 }, { saved, duration: 0.8 }, rows.length - 0.4);
     render();
+
+    // Beim Zurücksetzen (Breakpoint, reduzierte Bewegung) wieder die Endwerte zeigen.
+    return () => {
+      if (minutesEl) minutesEl.textContent = String(after);
+      if (savedEl) savedEl.textContent = formatHours(saved);
+    };
   });
 
   return (

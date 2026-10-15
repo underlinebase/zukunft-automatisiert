@@ -1,9 +1,9 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import Link from 'next/link';
-import { INQUIRY_LIMITS, validateInquiry } from '@/lib/inquiry';
+import { HONEYPOT_FIELD, INQUIRY_LIMITS, validateInquiry } from '@/lib/inquiry';
 import type { InquiryField } from '@/lib/inquiry';
 import { SITE } from '@/lib/content/site';
 
@@ -34,6 +34,16 @@ export default function InquiryForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [message, setMessage] = useState('');
   const id = useId();
+  const formRef = useRef<HTMLFormElement>(null);
+  const thanksRef = useRef<HTMLHeadingElement>(null);
+
+  // Barrierefreiheit: Fokus auf das erste fehlerhafte Feld bzw. auf die Bestätigung setzen.
+  useEffect(() => {
+    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+  }, [errors]);
+  useEffect(() => {
+    if (status === 'sent') thanksRef.current?.focus();
+  }, [status]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -42,7 +52,7 @@ export default function InquiryForm() {
       name: String(form.get('name') ?? ''),
       email: String(form.get('email') ?? ''),
       ablauf: String(form.get('ablauf') ?? ''),
-      website: String(form.get('website') ?? ''),
+      [HONEYPOT_FIELD]: String(form.get(HONEYPOT_FIELD) ?? ''),
     };
 
     const check = validateInquiry(payload);
@@ -72,7 +82,7 @@ export default function InquiryForm() {
   if (status === 'sent') {
     return (
       <div className="inquiry inquiry--sent" role="status">
-        <h3>Danke, Ihre Schilderung ist da.</h3>
+        <h3 ref={thanksRef} tabIndex={-1}>Danke, Ihre Schilderung ist da.</h3>
         <p>Ich melde mich innerhalb von {SITE.responseTime} persönlich bei Ihnen.</p>
       </div>
     );
@@ -83,7 +93,7 @@ export default function InquiryForm() {
   const describedBy = (field: InquiryField) => (errors[field] ? `${id}-${field}-error` : undefined);
 
   return (
-    <form className="inquiry" onSubmit={handleSubmit} noValidate>
+    <form className="inquiry" onSubmit={handleSubmit} noValidate ref={formRef}>
       <h3 className="inquiry__title">Ablauf in 3 Sätzen schildern</h3>
       <div className="field">
         <label htmlFor={`${id}-name`}>Ihr Name</label>
@@ -126,9 +136,10 @@ export default function InquiryForm() {
         />
         {fieldError('ablauf')}
       </div>
-      <div className="honeypot" aria-hidden="true">
-        <label htmlFor={`${id}-website`}>Website</label>
-        <input id={`${id}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
+      {/* Falle für Bots. inert: nicht fokussierbar, für Hilfsmittel unsichtbar, kein Autofill-Ziel. */}
+      <div className="honeypot" inert>
+        <label htmlFor={`${id}-hp`}>Bitte leer lassen</label>
+        <input id={`${id}-hp`} name={HONEYPOT_FIELD} type="text" tabIndex={-1} autoComplete="off" />
       </div>
       {status === 'error' ? <p className="form-error" role="alert">{message}</p> : null}
       <button type="submit" className="btn btn--primary btn--block" disabled={status === 'sending'}>

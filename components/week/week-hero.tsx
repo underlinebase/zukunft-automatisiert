@@ -76,11 +76,19 @@ export default function WeekHero({ blocks }: WeekHeroProps) {
       });
       apply();
 
+      // GPU-Kontext verloren: Szene abbauen und auf die flache Ansicht zurückfallen.
+      const fallBackToFlat = () => {
+        scene?.dispose();
+        scene = null;
+        root.classList.remove('is-3d');
+        applyFlatProgress(flat, proxy.p);
+      };
+
       let idle: IdleHandle | null = null;
       if (desktop) {
         idle = whenIdle(() => {
           import('@/lib/week/scene')
-            .then(({ createWeekScene }) => createWeekScene(host, placed))
+            .then(({ createWeekScene }) => createWeekScene(host, placed, fallBackToFlat))
             .then((created) => {
               if (!active || unmounted) {
                 created.dispose();

@@ -9,16 +9,48 @@ const RATE_WINDOW_MS = 10 * 60 * 1000;
 const RATE_MAX_REQUESTS = 5;
 const FALLBACK_MESSAGE = `Das Formular ist gerade nicht erreichbar. Bitte schreiben Sie direkt an ${DEFAULT_RECIPIENT}.`;
 
-// Einfache Drosselung pro Instanz. Schützt vor versehentlichem Mehrfachsenden und simplen Bots.
-let recentRequests = new Map<string, number[]>();
+const MAX_BODY_BYTES = 8 * 1024;
+const MAX_TRACKED_IPS = 5000;
+
+// Einfache Drosselung pro Server-Instanz gegen Mehrfachsenden und simple Bots.
+// Kein Ersatz für ein instanzübergreifendes Limit (z. B. Vercel WAF Rate Limiting).
+// Bewusst in place verändert: Der Speicher ist modulintern und wird regelmäßig bereinigt.
+const recentRequests = new Map<string, number[]>();
+
+function pruneOldEntries(windowStart: number): void {
+  for (const [ip, times] of recentRequests) {
+    if (times.every((time) => time <= windowStart)) recentRequests.delete(ip);
+  }
+}
 
 function isRateLimited(ip: string, now: number): boolean {
   const windowStart = now - RATE_WINDOW_MS;
+  if (recentRequests.size > MAX_TRACKED_IPS) pruneOldEntries(windowStart);
   const previous = (recentRequests.get(ip) ?? []).filter((time) => time > windowStart);
-  const next = new Map(recentRequests);
-  next.set(ip, [...previous, now]);
-  recentRequests = next;
+  recentRequests.set(ip, [...previous, now]);
   return previous.length >= RATE_MAX_REQUESTS;
+}
+
+/** Auf Vercel setzt die Plattform x-real-ip selbst; Fallback ist der erste x-forwarded-for-Eintrag. */
+function clientIp(request: NextRequest): string {
+  return (
+    request.headers.get('x-real-ip')?.trim() ||
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    'unbekannt'
+  );
+}
+
+/** Nur JSON-Anfragen von der eigenen Seite annehmen (verhindert fremde HTML-Formulare). */
+function isAllowedRequest(request: NextRequest): boolean {
+  const contentType = request.headers.get('content-type') ?? '';
+  if (!contentType.toLowerCase().startsWith('application/json')) return false;
+  const origin = request.headers.get('origin');
+  if (!origin) return true;
+  try {
+    return new URL(origin).host === request.headers.get('host');
+  } catch {
+    return false;
+  }
 }
 
 function reply(status: number, body: { success: boolean; error?: string; errors?: Record<string, string> }) {
@@ -45,14 +77,20 @@ async function sendMail(data: InquiryData, apiKey: string, sender: string, recip
 }
 
 export async function POST(request: NextRequest) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unbekannt';
-  if (isRateLimited(ip, Date.now())) {
+  if (!isAllowedRequest(request)) {
+    return reply(415, { success: false, error: 'Die Anfrage konnte nicht gelesen werden.' });
+  }
+  if (isRateLimited(clientIp(request), Date.now())) {
     return reply(429, { success: false, error: 'Sie haben gerade mehrere Anfragen geschickt. Bitte versuchen Sie es in ein paar Minuten noch einmal.' });
   }
 
   let body: unknown;
   try {
-    body = await request.json();
+    const raw = await request.text();
+    if (raw.length > MAX_BODY_BYTES) {
+      return reply(413, { success: false, error: 'Die Anfrage ist zu lang.' });
+    }
+    body = JSON.parse(raw);
   } catch {
     return reply(400, { success: false, error: 'Die Anfrage konnte nicht gelesen werden.' });
   }
