@@ -187,8 +187,8 @@ export const EXPERIENCE = {
   ],
   pilot: {
     label: 'Pilotkunden gesucht',
-    title: 'Sie könnten einer der ersten Betriebe sein.',
-    text: 'Dieses Angebot ist neu. Für die ersten Betriebe gibt es [KONDITION FÜR PILOTKUNDEN]. Im Gegenzug darf ich über das Ergebnis berichten, nur mit Ihrem Einverständnis.',
+    title: 'Drei Pilotplätze zum Pilotpreis von 1.999 € netto.',
+    text: 'Dieses Angebot ist neu. Die ersten drei Betriebe bekommen ihren Ablauf zum Pilotpreis von 1.999 € zzgl. USt., mit derselben Garantie. Im Gegenzug darf ich das Ergebnis als Fallbeispiel mit Vorher-Nachher-Zahlen zeigen und Sie kurz zu Wort kommen lassen. Beides nur mit Ihrem Einverständnis.',
     cta: 'Als Pilotkunde melden',
   },
 };
