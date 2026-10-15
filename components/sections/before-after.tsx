@@ -2,12 +2,15 @@
 
 import { useRef } from 'react';
 import type { BeforeAfterExample } from '@/lib/content/types';
-import { formatHours, minutesPerCase, savedMinutesPerWeek } from '@/lib/calculator';
+import { formatHours, minutesPerCase, progressAfterEachStep, savedMinutesPerWeek } from '@/lib/calculator';
 import { useMotion } from '@/lib/motion/use-motion';
 
 interface BeforeAfterProps {
   example: BeforeAfterExample;
 }
+
+/** Sekunden, die das einmalige Hochzählen auf dem Handy dauert. */
+const MOBILE_COUNT_DURATION = 1.4;
 
 function StepCheck() {
   return (
@@ -28,12 +31,13 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
   const before = minutesPerCase(example, 'before');
   const after = minutesPerCase(example, 'after');
   const saved = savedMinutesPerWeek(example);
+  const stepProgress = progressAfterEachStep(example);
   // Schritte, die nicht komplett wegfallen, offen benennen (z. B. Prüfen und Freigeben).
   const remaining = example.steps
     .filter((step) => step.minutesAfter > 0)
     .map((step) => `${step.keeps ?? step.text} (ca. ${step.minutesAfter} Min.)`);
 
-  useMotion(sectionRef, ({ gsap }) => {
+  useMotion(sectionRef, ({ gsap, isDesktop }) => {
     const rows = gsap.utils.toArray<HTMLElement>('.ba-step');
     const minutesEl = sectionRef.current?.querySelector('.ba-minutes');
     const savedEl = sectionRef.current?.querySelector('.ba-saved__value');
@@ -43,10 +47,14 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
       if (savedEl) savedEl.textContent = formatHours(counter.saved);
     };
 
+    // Desktop: Der Zusammenfassungs-Kasten steht daneben und ist während des ganzen Ablaufs sichtbar.
+    // Die Zahlen wachsen dort mit jedem Haken mit.
     const timeline = gsap.timeline({
       defaults: { ease: 'power1.out' },
-      scrollTrigger: { trigger: '.ba-list', start: 'top 72%', end: 'bottom 50%', scrub: 0.5 },
-      onUpdate: render,
+      scrollTrigger: isDesktop
+        ? { trigger: '.ba-list', start: 'top 40%', end: 'bottom 65%', scrub: 0.5 }
+        : { trigger: '.ba-list', start: 'top 80%', end: 'bottom 75%', scrub: 0.5 },
+      onUpdate: isDesktop ? render : undefined,
     });
     rows.forEach((row, index) => {
       const at = index;
@@ -54,9 +62,22 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
       timeline.from(row.querySelector('.ba-step__tick'), { opacity: 0, duration: 0.2 }, at + 0.15);
       timeline.from(row, { '--done': 0, duration: 0.5 }, at + 0.2);
       timeline.from(row.querySelector('.ba-step__after'), { opacity: 0, y: -4, duration: 0.4 }, at + 0.35);
+      const reached = stepProgress[index];
+      if (isDesktop && reached) {
+        timeline.to(counter, { minutes: reached.minutesPerCase, saved: reached.savedPerWeek, duration: 0.5 }, at + 0.2);
+      }
     });
-    timeline.fromTo(counter, { minutes: before }, { minutes: after, duration: rows.length, ease: 'none' }, 0);
-    timeline.fromTo(counter, { saved: 0 }, { saved, duration: 0.8 }, rows.length - 0.4);
+    // Mobil steht der Kasten über der Liste: Zahlen einmal hochzählen, sobald er ins Bild kommt.
+    if (!isDesktop) {
+      gsap.to(counter, {
+        minutes: after,
+        saved,
+        duration: MOBILE_COUNT_DURATION,
+        ease: 'power2.out',
+        onUpdate: render,
+        scrollTrigger: { trigger: '.ba-saved', start: 'bottom 90%', once: true },
+      });
+    }
     render();
 
     // Beim Zurücksetzen (Breakpoint, reduzierte Bewegung) wieder die Endwerte zeigen.

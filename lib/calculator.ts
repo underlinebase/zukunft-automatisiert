@@ -25,6 +25,21 @@ export function savedMinutesPerWeek(example: BeforeAfterExample): number {
   return (minutesPerCase(example, 'before') - minutesPerCase(example, 'after')) * example.perWeek;
 }
 
+export interface StepProgress {
+  minutesPerCase: number;
+  savedPerWeek: number;
+}
+
+/** Zwischenstände, nachdem Schritt 1, 2, … automatisiert ist. Für die Zähler der Vorher/Nachher-Animation. */
+export function progressAfterEachStep(example: BeforeAfterExample): StepProgress[] {
+  const before = minutesPerCase(example, 'before');
+  let savedPerCase = 0;
+  return example.steps.map((step) => {
+    savedPerCase += step.minutesBefore - step.minutesAfter;
+    return { minutesPerCase: before - savedPerCase, savedPerWeek: savedPerCase * example.perWeek };
+  });
+}
+
 const euro = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
 const hours = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 });
 
