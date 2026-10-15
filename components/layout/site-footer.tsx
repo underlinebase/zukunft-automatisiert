@@ -11,7 +11,7 @@ export default function SiteFooter() {
           <div className="site-footer__brand">
             <Logo inverse />
             <p>
-              {SITE.owner}, der KI-Realist. Prozessautomatisierung für Inhaber im DACH-Raum, von {SITE.location} aus. Ein Ablauf, 4 Wochen, Festpreis.
+              {SITE.owner}, der KI-Realist. Prozessautomatisierung für Inhaber in Deutschland, von {SITE.location} aus. Ein Ablauf, 4 Wochen, Festpreis.
             </p>
           </div>
           <nav aria-label="Weitere Seiten">

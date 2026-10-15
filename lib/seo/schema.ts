@@ -8,7 +8,7 @@ type JsonLd = Record<string, unknown>;
 
 const ORG_ID = `${SITE.url}/#organisation`;
 const PERSON_ID = `${SITE.url}/#marco-gundlach`;
-const AREA_SERVED = ['Deutschland', 'Österreich', 'Schweiz'].map((name) => ({ '@type': 'Country', name }));
+const AREA_SERVED = ['Deutschland'].map((name) => ({ '@type': 'Country', name }));
 
 export function organizationSchema(): JsonLd {
   return {

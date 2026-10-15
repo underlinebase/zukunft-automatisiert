@@ -17,7 +17,7 @@ export const HERO = {
 };
 
 export const FACTS: Fact[] = [
-  { label: 'Für wen', value: 'Inhaber, die selbst entscheiden', text: 'Handwerk, Makler und Steuerkanzleien ab etwa 20.000 € Monatsumsatz.' },
+  { label: 'Für wen', value: 'Inhaber, die selbst entscheiden', text: 'Handwerk, Makler, Kanzleien, Agenturen und Coaches ab etwa 20.000 € Monatsumsatz.' },
   { label: 'Was', value: 'Ein Ablauf', text: 'Der, der in Ihrem Betrieb am meisten Zeit frisst.' },
   { label: 'Wie lange', value: '4 Wochen', text: 'Von der ersten Aufnahme bis zur Übergabe an Ihr Team.' },
   { label: 'Preis', value: 'Festpreis, der sich rechnen muss', text: 'Sie bekommen ihn nach dem Erstgespräch schriftlich. Rechnet er sich nicht im ersten Jahr, rate ich Ihnen ab.' },
@@ -207,7 +207,7 @@ export const FAQS: Faq[] = [
   {
     id: 'daten',
     q: 'Was passiert mit meinen Daten?',
-    a: 'Ihre Daten bleiben bei Ihnen oder auf Servern in der EU. Wo nötig, schließen wir einen Vertrag zur Auftragsverarbeitung. Ich nutze keine Dienste, die Ihre Daten zum Training von KI-Modellen verwenden. [SERVERSTANDORT UND HOSTING-ANBIETER]',
+    a: 'Ihre Daten bleiben bei Ihnen oder auf Servern von Hostinger in einem Rechenzentrum in der EU. Wo nötig, schließen wir einen Vertrag zur Auftragsverarbeitung. Ich nutze keine Dienste, die Ihre Daten zum Training von KI-Modellen verwenden.',
   },
   {
     id: 'zeit',
@@ -232,7 +232,7 @@ export const FAQS: Faq[] = [
   {
     id: 'software',
     q: 'Welche Software nutzen Sie?',
-    a: 'Meistens n8n. Damit lassen sich Programme verbinden, die Sie schon nutzen, etwa E-Mail, Kalender, Branchensoftware oder Buchhaltung. n8n kann auf einem Server in Deutschland laufen, und Sie zahlen keine Lizenz pro Nutzer. Wo es passt, ergänze ich kleine Programme oder eine KI-Schnittstelle.',
+    a: 'Meistens n8n. Damit lassen sich Programme verbinden, die Sie schon nutzen, etwa E-Mail, Kalender, Branchensoftware oder Buchhaltung. n8n kann auf einem eigenen Server in der EU laufen, und Sie zahlen keine Lizenz pro Nutzer. Wo es passt, ergänze ich kleine Programme oder eine KI-Schnittstelle.',
   },
 ];
 

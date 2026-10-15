@@ -52,7 +52,7 @@ export const ARTICLES: Article[] = [
     ],
     notes: [
       'Datenschutz: Für Kundendaten kommen nur Dienste infrage, die keine Daten zum Training verwenden und einen Vertrag zur Auftragsverarbeitung anbieten.',
-      '[WELCHE KI-DIENSTE SIE KONKRET EINSETZEN]',
+      'Ich setze Modelle von Anthropic (Claude) und OpenAI ein, jeweils über die Schnittstelle für Unternehmen. Dort werden Ihre Daten nicht zum Training verwendet.',
     ],
   },
   {
@@ -92,14 +92,14 @@ export const ARTICLES: Article[] = [
       { kind: 'h2', text: 'Warum keine fertige Komplettlösung?' },
       { kind: 'p', text: 'Komplettlösungen versprechen, alles in einem zu können. In der Praxis heißt das oft: neue Software, neue Abläufe, Schulung für das ganze Team und eine Lizenz pro Nutzer. Für einen Betrieb mit zehn oder zwanzig Leuten ist das viel Aufwand für ein Problem, das sich mit einer Verbindung lösen lässt.' },
       { kind: 'h2', text: 'Was für n8n spricht' },
-      { kind: 'p', text: 'n8n kann auf einem Server in Deutschland laufen. Ihre Daten bleiben damit in Ihrer Hand. Es gibt keine Kosten pro Nutzer. Und weil die Abläufe offen einsehbar sind, sind Sie nicht an mich gebunden. Ein anderer Dienstleister kann jederzeit übernehmen.' },
+      { kind: 'p', text: 'n8n kann auf einem eigenen Server in der EU laufen. Ihre Daten bleiben damit in Ihrer Hand. Es gibt keine Kosten pro Nutzer. Und weil die Abläufe offen einsehbar sind, sind Sie nicht an mich gebunden. Ein anderer Dienstleister kann jederzeit übernehmen.' },
       { kind: 'q', text: 'Was ich baue, gehört Ihnen. Das gilt auch für das Werkzeug, auf dem es läuft.' },
       { kind: 'h2', text: 'Wann ich etwas anderes nehme' },
       { kind: 'p', text: 'Bringt Ihre Software schon eine passende Funktion mit, nehmen wir die. Manchmal reicht eine kleine Einstellung im Kalender oder im E-Mail-Programm. Das sage ich Ihnen dann, statt etwas zu bauen, das Sie nicht brauchen.' },
     ],
     notes: [
       'n8n wird von der n8n GmbH in Berlin entwickelt. Der Quellcode ist offen einsehbar.',
-      '[HOSTING-ANBIETER UND SERVERSTANDORT]',
+      'Meine n8n-Installationen laufen bei Hostinger in einem Rechenzentrum in der EU.',
     ],
   },
   {
