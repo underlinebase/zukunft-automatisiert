@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { INDUSTRIES, INDUSTRY_LINKS, industryHref } from './branchen';
 import { FAQS, LANDING_GENERAL_FAQS } from './home';
+import { ARTICLES } from './articles';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo/schema';
 
 const RESERVED_PATHS = ['ueber-mich', 'kontakt', 'wissen', 'impressum', 'datenschutz', 'api'];
@@ -68,5 +69,27 @@ describe('structured data', () => {
     const schema = serviceSchema(industry, industryHref(industry.slug));
     expect(schema.serviceType).toBe(industry.seo.serviceType);
     expect(schema.url).toBe(`https://zukunft-automatisiert.de/${industry.slug}`);
+  });
+});
+
+describe('Wissen-Artikel: keine typischen KI-Muster', () => {
+  // Quelle: Wikipedia „Anzeichen für KI-generierte Inhalte“ und die Stilregeln aus dem Briefing.
+  const FORBIDDEN: RegExp[] = [
+    /—/,
+    /\bnahtlos/i, /ganzheitlich/i, /holistisch/i, /maßgeschneidert/i, /essenziell/i, /\bzentral/i,
+    /tiefgreifend/i, /transformativ/i, /optimier/i, /\bnutz(e|en|t|te|ten)?\b/i, /ermöglich/i, /landschaft/i,
+    /in der heutigen/i, /es ist wichtig/i, /zusammenfassend/i, /abschließend/i, /tauchen wir/i,
+    /kein geheimnis/i, /nicht nur\b/i, /darüber hinaus/i, /\bzudem\b/i, /des weiteren/i, /\brobust/i,
+    /umfassend/i, /maximier/i, /\bförder/i, /entscheidend/i, /bahnbrechend/i, /nächste level/i, /unterm strich/i,
+  ];
+
+  test.each(ARTICLES.map((article) => [article.slug, article] as const))('%s', (_slug, article) => {
+    const text = [article.title, article.lead, ...article.body.map((block) => block.text), ...article.notes].join('\n');
+    const hits = FORBIDDEN.filter((pattern) => pattern.test(text)).map(String);
+    expect(hits).toEqual([]);
+  });
+
+  test('have unique slugs', () => {
+    expect(new Set(ARTICLES.map((article) => article.slug)).size).toBe(ARTICLES.length);
   });
 });
