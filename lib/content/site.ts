@@ -13,17 +13,30 @@ export const SITE = {
   responseTime: '24 Stunden',
 } as const;
 
-export interface NavItem {
+export interface NavLink {
   href: string;
   label: string;
+}
+
+export interface NavItem extends NavLink {
   hint?: string;
+  children?: NavLink[];
 }
 
 export const NAV_ITEMS: NavItem[] = [
   { href: '/#angebot', label: 'Angebot', hint: `Ein Ablauf in 4 Wochen · ${SITE.price}` },
-  { href: '/#branchen', label: 'Branchen' },
+  {
+    href: '/#branchen',
+    label: 'Branchen',
+    children: [
+      { href: '/branchen/handwerk', label: 'Handwerk' },
+      { href: '/branchen/immobilienmakler', label: 'Immobilienmakler' },
+      { href: '/branchen/steuerberater', label: 'Steuerberater' },
+    ],
+  },
   { href: '/#so-laeuft-es', label: 'So läuft es' },
   { href: '/ueber-mich', label: 'Über mich' },
+  { href: '/wissen', label: 'Wissen' },
   { href: '/#fragen', label: 'Fragen' },
 ];
 
