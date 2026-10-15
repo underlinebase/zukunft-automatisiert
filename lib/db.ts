@@ -1,13 +1,14 @@
 import { supabase } from './supabase';
 import type { Service, Case, Article, NewsItem } from './types';
+import { STATIC_SERVICES, STATIC_CASES, STATIC_ARTICLES, STATIC_NEWS } from './static-data';
 
 export async function getServices(): Promise<Service[]> {
   const { data, error } = await supabase
     .from('services')
     .select('*')
     .order('idx');
-  if (error) return [];
-  return data ?? [];
+  if (error || !data || data.length === 0) return STATIC_SERVICES;
+  return data;
 }
 
 export async function getService(slug: string): Promise<Service | null> {
@@ -16,7 +17,7 @@ export async function getService(slug: string): Promise<Service | null> {
     .select('*')
     .eq('slug', slug)
     .single();
-  if (error) return null;
+  if (error || !data) return STATIC_SERVICES.find(s => s.slug === slug) ?? null;
   return data;
 }
 
@@ -25,8 +26,8 @@ export async function getCases(): Promise<Case[]> {
     .from('cases')
     .select('*')
     .order('idx');
-  if (error) return [];
-  return data ?? [];
+  if (error || !data || data.length === 0) return STATIC_CASES;
+  return data;
 }
 
 export async function getCase(slug: string): Promise<Case | null> {
@@ -35,7 +36,7 @@ export async function getCase(slug: string): Promise<Case | null> {
     .select('*')
     .eq('slug', slug)
     .single();
-  if (error) return null;
+  if (error || !data) return STATIC_CASES.find(c => c.slug === slug) ?? null;
   return data;
 }
 
@@ -44,8 +45,8 @@ export async function getArticles(): Promise<Article[]> {
     .from('articles')
     .select('*')
     .order('id');
-  if (error) return [];
-  return data ?? [];
+  if (error || !data || data.length === 0) return STATIC_ARTICLES;
+  return data;
 }
 
 export async function getArticle(slug: string): Promise<Article | null> {
@@ -54,7 +55,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
     .select('*')
     .eq('slug', slug)
     .single();
-  if (error) return null;
+  if (error || !data) return STATIC_ARTICLES.find(a => a.slug === slug) ?? null;
   return data;
 }
 
@@ -63,6 +64,6 @@ export async function getNews(): Promise<NewsItem[]> {
     .from('news')
     .select('*')
     .order('id', { ascending: false });
-  if (error) return [];
-  return data ?? [];
+  if (error || !data || data.length === 0) return STATIC_NEWS;
+  return data;
 }

@@ -36,7 +36,7 @@ export default async function LeistungDetailPage({ params }: { params: Promise<{
             <Link href="/leistungen">LEISTUNGEN</Link><span className="sep">/</span>
             <span>{s.title.toUpperCase()}</span>
           </div>
-          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> {s.idx} — {s.title.toUpperCase()}</div>
+          <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> {s.idx} - {s.title.toUpperCase()}</div>
           <h1 className="tight">{s.teaser.split('.')[0]}.</h1>
           <p className="lead">{s.teaser}</p>
           <div style={{ marginTop: 40 }}>
@@ -52,22 +52,22 @@ export default async function LeistungDetailPage({ params }: { params: Promise<{
           <aside className="svc-overview__side">
             <div>INHALT</div>
             <ul>
-              <li><a href="#problem">01 — Problem</a></li>
-              <li><a href="#vorgehen">02 — Vorgehen</a></li>
-              <li><a href="#deliverable">03 — Deliverables</a></li>
-              <li><a href="#investment">04 — Investment</a></li>
-              <li><a href="#faq">05 — FAQ</a></li>
+              <li><a href="#problem">01 - Problem</a></li>
+              <li><a href="#vorgehen">02 - Vorgehen</a></li>
+              <li><a href="#deliverable">03 - Deliverables</a></li>
+              <li><a href="#investment">04 - Investment</a></li>
+              <li><a href="#faq">05 - FAQ</a></li>
             </ul>
           </aside>
 
           <div>
             <div className="svc-block" id="problem">
-              <div className="eyebrow"><span className="sect">§</span> 01 — PROBLEM</div>
+              <div className="eyebrow"><span className="sect">§</span> 01 - PROBLEM</div>
               <h2 className="tight" style={{ marginTop: 16 }}>{s.problem}</h2>
             </div>
 
             <div className="svc-block" id="vorgehen">
-              <div className="eyebrow"><span className="sect">§</span> 02 — VORGEHEN</div>
+              <div className="eyebrow"><span className="sect">§</span> 02 - VORGEHEN</div>
               <h2 className="tight" style={{ marginTop: 16 }}>Vier Schritte. Linear, nicht zirkulär.</h2>
               <div className="steps-tech">
                 {s.steps.map((step, i) => (
@@ -80,7 +80,7 @@ export default async function LeistungDetailPage({ params }: { params: Promise<{
             </div>
 
             <div className="svc-block" id="deliverable">
-              <div className="eyebrow"><span className="sect">§</span> 03 — DELIVERABLES</div>
+              <div className="eyebrow"><span className="sect">§</span> 03 - DELIVERABLES</div>
               <h2 className="tight" style={{ marginTop: 16 }}>Was Sie nach Übergabe in der Hand halten.</h2>
               <div className="deliverables" style={{ marginTop: 32 }}>
                 {s.delivers.map((d, i) => (
@@ -94,7 +94,7 @@ export default async function LeistungDetailPage({ params }: { params: Promise<{
             </div>
 
             <div className="svc-block" id="investment">
-              <div className="eyebrow"><span className="sect">§</span> 04 — INVESTMENT</div>
+              <div className="eyebrow"><span className="sect">§</span> 04 - INVESTMENT</div>
               <h2 className="tight" style={{ marginTop: 16 }}>Transparent in Euro. Kein „auf Anfrage".</h2>
               <p className="muted" style={{ marginTop: 16 }}>
                 Premium signalisiert man durch Transparenz, nicht durch Verschleierung.
@@ -107,7 +107,7 @@ export default async function LeistungDetailPage({ params }: { params: Promise<{
             </div>
 
             <div className="svc-block" id="faq">
-              <div className="eyebrow"><span className="sect">§</span> 05 — FAQ</div>
+              <div className="eyebrow"><span className="sect">§</span> 05 - FAQ</div>
               <h2 className="tight" style={{ marginTop: 16, marginBottom: 32 }}>Häufig gestellt.</h2>
               <FAQ items={s.faq} />
             </div>

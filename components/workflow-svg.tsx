@@ -4,11 +4,12 @@ import { useEffect, useMemo, useState } from 'react';
 export default function WorkflowSVG() {
   const [reduced, setReduced] = useState(false);
   const [activeEdge, setActiveEdge] = useState(0);
-  const [revealedNodes, setRevealedNodes] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     setReduced(mq.matches);
+    setMounted(true);
     const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -28,16 +29,6 @@ export default function WorkflowSVG() {
   const edges = useMemo(() => ([
     [0,1],[0,2],[1,3],[2,3],[3,6],[2,4],[4,5],[5,7],[3,5],
   ]), []);
-
-  useEffect(() => {
-    if (reduced) { setRevealedNodes(nodes.length); return; }
-    let i = 0;
-    const id = setInterval(() => {
-      i += 1; setRevealedNodes(i);
-      if (i >= nodes.length) clearInterval(id);
-    }, 350);
-    return () => clearInterval(id);
-  }, [reduced, nodes.length]);
 
   useEffect(() => {
     if (reduced) return;
@@ -65,29 +56,26 @@ export default function WorkflowSVG() {
       </g>
       {edges.map(([a, b], i) => {
         const A = nodes[a], B = nodes[b];
-        const visible = a < revealedNodes && b < revealedNodes;
-        const isActive = i === activeEdge;
+        const isActive = mounted && i === activeEdge;
         const mx = (A.x + B.x) / 2;
         const d = `M ${A.x} ${A.y} Q ${mx} ${A.y} ${B.x} ${B.y}`;
         return (
           <path key={i} d={d}
             className={isActive ? 'wf-edge-active' : 'wf-edge'}
-            style={{ opacity: visible ? (isActive ? 1 : 0.45) : 0, transition: 'opacity .8s ease' }} />
+            style={{ opacity: isActive ? 1 : 0.45 }} />
         );
       })}
       {nodes.map((n, idx) => {
-        const visible = idx < revealedNodes;
-        const isActive = edges[activeEdge] && (edges[activeEdge][0] === idx || edges[activeEdge][1] === idx);
-        const opacity = visible ? 1 : 0;
+        const isActive = mounted && edges[activeEdge] && (edges[activeEdge][0] === idx || edges[activeEdge][1] === idx);
         const cls = `wf-node ${isActive ? 'wf-node--active' : ''}`;
-        const style = { opacity, transition: 'opacity .8s ease' };
+        const style = { opacity: 1 };
         if (n.shape === 'circle') return <circle key={n.id} cx={n.x} cy={n.y} r={6} className={cls} style={style} />;
         if (n.shape === 'diamond') return <rect key={n.id} x={n.x - 6} y={n.y - 6} width={12} height={12} transform={`rotate(45 ${n.x} ${n.y})`} className={cls} style={style} />;
         return <rect key={n.id} x={n.x - 6} y={n.y - 6} width={12} height={12} className={cls} style={style} />;
       })}
-      {nodes.map((n, i) => (
+      {nodes.map((n) => (
         <text key={'l' + n.id} x={n.x + 12} y={n.y + 3} className="wf-node-label"
-          style={{ opacity: i < revealedNodes ? 0.7 : 0, transition: 'opacity .8s ease' }}>
+          style={{ opacity: 0.7 }}>
           {n.label}
         </text>
       ))}

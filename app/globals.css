@@ -1,10 +1,10 @@
 /* =============================================================
-   Zukunft. Automatisiert. — Design Tokens & Base
+   Zukunft. Automatisiert. - Design Tokens & Base
    ============================================================= */
 :root {
   --bone:      #F5F2EC;
   --bone-2:    #EFEAE0;
-  --carbon:    #0A0A0A;
+  --carbon:    #1A1A1A;
   --surgical:  #1B4965;
   --steel:     #6B7280;
   --pulse:     #3FAE5A;
@@ -365,7 +365,7 @@ main.page { animation: fade .4s ease both; }
 .methodik__sticky p { color: var(--steel); margin-top: 24px; }
 .methodik__steps { display: flex; flex-direction: column; gap: 0; position: relative; }
 .methodik__step {
-  display: grid; grid-template-columns: 80px 1fr 200px;
+  display: grid; grid-template-columns: 140px 1fr 200px;
   gap: 32px; align-items: start;
   padding: 48px 0;
   border-top: 1px solid var(--hairline);
@@ -396,10 +396,11 @@ main.page { animation: fade .4s ease both; }
 .beweis-card:last-child { border-right: 0; }
 .beweis-card .num {
   font-family: "Geist Mono", monospace;
-  font-size: clamp(48px, 6vw, 96px);
+  font-size: clamp(24px, 2.8vw, 48px);
   font-weight: 300;
   letter-spacing: -0.04em;
   line-height: 0.95;
+  white-space: nowrap;
   color: var(--carbon);
 }
 .beweis-card .num .unit { color: var(--steel); font-size: 0.5em; vertical-align: top; margin-left: 4px; letter-spacing: 0; }

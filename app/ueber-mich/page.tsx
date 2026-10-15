@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Über mich',
-  description: 'Marco Gundlach — Prozess-Surgeon, n8n-Engineer. 14+ Jahre Digitalisierung im Mittelstand.',
+  description: 'Marco Gundlach - Prozess-Surgeon, n8n-Engineer. 14+ Jahre Digitalisierung im Mittelstand.',
   alternates: { canonical: '/ueber-mich' },
 };
 
 const VITA = [
-  { y: '2026', s: 'Zukunft. Automatisiert. — eigenes Mandat für Premium-Engagements.' },
-  { y: '2024', s: 'FlowResults — Automatisierungs-Marke für mittelständische Operations.' },
-  { y: '2022', s: 'Lawsearch24 — Aufbau einer juristischen Such-Infrastruktur.' },
+  { y: '2026', s: 'Zukunft. Automatisiert. - eigenes Mandat für Premium-Engagements.' },
+  { y: '2024', s: 'FlowResults - Automatisierungs-Marke für mittelständische Operations.' },
+  { y: '2022', s: 'Lawsearch24 - Aufbau einer juristischen Such-Infrastruktur.' },
   { y: '2018', s: 'Zertifizierter Product Owner und Scrum Master.' },
   { y: '2014', s: 'Wechsel von Konzern zu Beratung. Schwerpunkt Digitalisierung Mittelstand.' },
   { y: '2010', s: 'Erste Programmier-Mandate parallel zum Studium. Schwerpunkt Workflow-Automatisierung.' },
@@ -33,7 +34,14 @@ export default function AboutPage() {
         <div className="about-grid">
           <div>
             <div className="about-grid__photo">
-              <span>PORTRAIT — SCHWARZWEISS<br />4:5 · NÜCHTERN</span>
+              <Image
+                src="/marco-gundlach.jpg"
+                alt="Marco Gundlach"
+                width={800}
+                height={1000}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+                priority
+              />
             </div>
             <div className="vita">
               <div className="eyebrow" style={{ padding: '14px 0', borderBottom: '1px solid var(--hairline)' }}>

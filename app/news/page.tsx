@@ -19,7 +19,7 @@ export default async function NewsPage() {
           </div>
           <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> AKTUELLES</div>
           <h1 className="tight">Operative Hinweise. Selten, kurz.</h1>
-          <p className="lead">Termine, Verfügbarkeit, Veröffentlichungen. Vier bis sechs Einträge pro Jahr — nicht mehr.</p>
+          <p className="lead">Termine, Verfügbarkeit, Veröffentlichungen. Vier bis sechs Einträge pro Jahr - nicht mehr.</p>
         </div>
       </section>
       <section className="section">

@@ -55,7 +55,7 @@ export default function Footer() {
             <ul>
               <li><Link href="/impressum">Impressum</Link></li>
               <li><Link href="/datenschutz">Datenschutz</Link></li>
-              <li><a href="https://linkedin.com/in/marco-gundlach" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
+              <li><a href="https://www.linkedin.com/in/marcogundlach/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
             </ul>
           </div>
         </div>

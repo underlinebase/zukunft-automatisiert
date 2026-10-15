@@ -11,7 +11,7 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 export const metadata: Metadata = {
   metadataBase: new URL('https://zukunft-automatisiert.de'),
   title: {
-    default: 'Zukunft. Automatisiert. — Prozess-Surgeon für Mittelständler',
+    default: 'Zukunft. Automatisiert. - Prozess-Surgeon für Mittelständler',
     template: '%s · Zukunft. Automatisiert.',
   },
   description: 'Prozess-Diagnose, Automatisierung mit n8n und Unternehmensgedächtnis für Mittelständler. Marco Gundlach. 14+ Jahre Digitalisierung.',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'de_DE',
     siteName: 'Zukunft. Automatisiert.',
-    title: 'Zukunft. Automatisiert. — Prozess-Surgeon für Mittelständler',
+    title: 'Zukunft. Automatisiert. - Prozess-Surgeon für Mittelständler',
     description: 'Prozess-Diagnose, Automatisierung mit n8n und Unternehmensgedächtnis für Mittelständler.',
   },
   twitter: {

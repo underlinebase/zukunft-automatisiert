@@ -9,7 +9,7 @@ import RevealLines from '@/components/reveal-lines';
 import MethodSketch from '@/components/method-sketch';
 
 export const metadata: Metadata = {
-  title: 'Zukunft. Automatisiert. — Prozess-Surgeon für Mittelständler',
+  title: 'Zukunft. Automatisiert. - Prozess-Surgeon für Mittelständler',
   alternates: { canonical: '/' },
 };
 
@@ -61,11 +61,11 @@ export default async function HomePage() {
       <section className="section section--alt">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow"><span className="sect">§</span> 02 — DREI EINGRIFFE</div>
+            <div className="eyebrow"><span className="sect">§</span> 02 - DREI EINGRIFFE</div>
             <div className="grid-12">
               <h2 className="col-span-8 tight">Drei klar abgegrenzte Eingriffe. Kein Bauchladen.</h2>
               <p className="col-span-4 muted" style={{ alignSelf: 'end' }}>
-                Sie buchen, was Sie brauchen — Diagnose, Implementation, oder ein laufendes Gedächtnis-System.
+                Sie buchen, was Sie brauchen - Diagnose, Implementation, oder ein laufendes Gedächtnis-System.
                 Häufig in dieser Reihenfolge.
               </p>
             </div>
@@ -95,7 +95,7 @@ export default async function HomePage() {
       <section className="methodik" id="methodik">
         <div className="container">
           <div className="section-head" style={{ marginBottom: 64 }}>
-            <div className="eyebrow"><span className="sect">§</span> 03 — METHODIK</div>
+            <div className="eyebrow"><span className="sect">§</span> 03 - METHODIK</div>
             <div className="reveal-line" />
           </div>
           <div className="methodik__inner">
@@ -103,7 +103,7 @@ export default async function HomePage() {
               <h2 className="tight">Wie wir arbeiten.</h2>
               <p>
                 Vier Schritte. Keine Workshops, in denen sich Ihr Team selbst beraten muss. Wir bringen
-                das Werkzeug — und gehen mit funktionierender Implementation wieder.
+                das Werkzeug - und gehen mit funktionierender Implementation wieder.
               </p>
               <div style={{ marginTop: 32 }}>
                 <Link href="/leistungen" className="link-mono">
@@ -138,7 +138,7 @@ export default async function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow"><span className="sect">§</span> 04 — BEWEIS</div>
+            <div className="eyebrow"><span className="sect">§</span> 04 - BEWEIS</div>
             <div className="grid-12">
               <h2 className="col-span-8 tight">Drei Eingriffe. Drei Zahlen.</h2>
               <p className="col-span-4 muted" style={{ alignSelf: 'end' }}>
@@ -167,7 +167,7 @@ export default async function HomePage() {
       <section className="section section--alt">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow"><span className="sect">§</span> 05 — WISSEN</div>
+            <div className="eyebrow"><span className="sect">§</span> 05 - WISSEN</div>
             <div className="grid-12">
               <h2 className="col-span-8 tight">Operations-Berichte aus der Werkstatt.</h2>
               <p className="col-span-4 muted" style={{ alignSelf: 'end' }}>
@@ -195,7 +195,7 @@ export default async function HomePage() {
         <div className="container">
           <div className="grid-12">
             <div className="col-span-7">
-              <div className="eyebrow"><span className="sect">§</span> 06 — BERICHT</div>
+              <div className="eyebrow"><span className="sect">§</span> 06 - BERICHT</div>
               <h2 className="tight" style={{ marginTop: 24 }}>
                 Sie wollen alle 14 Tage einen Operations-Bericht aus der Werkstatt?
               </h2>

@@ -31,15 +31,19 @@ export default function KontaktPage() {
             <h2 className="tight">Drei Wege. Empfohlen ist Kalender.</h2>
             <div className="channels">
               {[
-                { k: 'KALENDER', v: 'cal.com / marco-gundlach / diagnose' },
+                { k: 'KALENDER', v: 'cal.com/marco-g-ppa25o', href: 'https://cal.com/marco-g-ppa25o' },
                 { k: 'E-MAIL', v: 'marco@zukunft-automatisiert.de' },
-                { k: 'LINKEDIN', v: 'linkedin.com / in / marco-gundlach' },
+                { k: 'LINKEDIN', v: 'linkedin.com/in/marcogundlach', href: 'https://www.linkedin.com/in/marcogundlach/' },
                 { k: 'POST', v: 'M. Gundlach · Postfach 12 04 · 22769 Hamburg' },
                 { k: 'REAKTION', v: '≤ 48 Std. Werktags.' },
               ].map((c, i) => (
                 <div className="channel" key={i}>
                   <div className="k">{c.k}</div>
-                  <div className="v">{c.v}</div>
+                  <div className="v">
+                    {(c as { k: string; v: string; href?: string }).href
+                      ? <a href={(c as { href: string }).href} target="_blank" rel="noreferrer">{c.v}</a>
+                      : c.v}
+                  </div>
                 </div>
               ))}
             </div>

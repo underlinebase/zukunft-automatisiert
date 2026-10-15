@@ -22,7 +22,7 @@ export default async function LeistungenPage() {
           <div className="eyebrow" style={{ marginTop: 40 }}><span className="sect">§</span> LEISTUNGEN</div>
           <h1 className="tight">Drei Eingriffe. Klar abgegrenzt. Häufig in dieser Reihenfolge.</h1>
           <p className="lead">
-            Sie buchen, was Sie brauchen — Diagnose, Implementation, oder ein laufendes Gedächtnis-Mandat.
+            Sie buchen, was Sie brauchen - Diagnose, Implementation, oder ein laufendes Gedächtnis-Mandat.
             Jeder Eingriff hat eine eigene Sub-Page mit Vorgehen, Deliverables und Investment-Range.
           </p>
         </div>
@@ -62,7 +62,7 @@ export default async function LeistungenPage() {
             <div className="col-span-5 muted" style={{ alignSelf: 'end' }}>
               <p>
                 Wir empfehlen, ohne abgeschlossene Diagnose nicht direkt in eine Implementation zu gehen. Der häufigste
-                Grund für gescheiterte Automatisierung ist nicht die Technik — es ist der falsch priorisierte Eingriff.
+                Grund für gescheiterte Automatisierung ist nicht die Technik - es ist der falsch priorisierte Eingriff.
               </p>
               <Link className="link-mono" href="/kontakt">
                 Diagnose buchen <span aria-hidden="true">→</span>

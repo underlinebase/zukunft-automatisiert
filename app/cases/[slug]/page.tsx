@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const c = await getCase(slug);
   if (!c) return {};
   return {
-    title: `Operations-Bericht № ${c.idx} — ${c.headline_label}`,
+    title: `Operations-Bericht № ${c.idx} - ${c.headline_label}`,
     description: c.diagnose.slice(0, 160),
     alternates: { canonical: `/cases/${slug}` },
   };
