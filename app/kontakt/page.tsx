@@ -28,7 +28,7 @@ export default function KontaktPage() {
 
       <section className="container contact-page">
         <InquiryForm />
-        <div>
+        <div className="contact-page__call">
           <h2>30 Minuten sprechen</h2>
           <p className="muted">Am Telefon oder per Video. Sie erzählen, ich frage nach. Danach wissen Sie, ob sich eine Automatisierung lohnt.</p>
           <dl className="contact-channels">

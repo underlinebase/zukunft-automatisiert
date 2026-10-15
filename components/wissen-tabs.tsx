@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { formatCategory } from '@/lib/types';
 import type { Article } from '@/lib/types';
 
 const ALL = 'Alle';
@@ -17,7 +16,7 @@ export default function WissenTabs({ articles }: { articles: Article[] }) {
       <div className="tabs" role="group" aria-label="Nach Thema filtern">
         {categories.map((category) => (
           <button key={category} type="button" aria-pressed={active === category} onClick={() => setActive(category)}>
-            {category === ALL ? ALL : formatCategory(category)}
+            {category}
           </button>
         ))}
       </div>
@@ -26,7 +25,7 @@ export default function WissenTabs({ articles }: { articles: Article[] }) {
           <li key={article.slug}>
             <Link href={`/wissen/${article.slug}`}>
               <h2>{article.title}</h2>
-              <span className="article-list__meta">{formatCategory(article.category)} · {article.read_minutes} Min.</span>
+              <span className="article-list__meta">{article.category} · {article.read_minutes} Min.</span>
             </Link>
           </li>
         ))}

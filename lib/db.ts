@@ -1,22 +1,13 @@
-import { supabase } from './supabase';
 import type { Article } from './types';
-import { STATIC_ARTICLES } from './static-data';
+import { ARTICLES } from './content/articles';
+
+// Die Artikel liegen im Code (lib/content/articles.ts). Die Funktionen bleiben async,
+// damit sich später eine externe Quelle (z. B. ein CMS) ohne Änderung der Seiten anbinden lässt.
 
 export async function getArticles(): Promise<Article[]> {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .order('id');
-  if (error || !data || data.length === 0) return STATIC_ARTICLES;
-  return data;
+  return ARTICLES;
 }
 
 export async function getArticle(slug: string): Promise<Article | null> {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('slug', slug)
-    .single();
-  if (error || !data) return STATIC_ARTICLES.find(a => a.slug === slug) ?? null;
-  return data;
+  return ARTICLES.find((article) => article.slug === slug) ?? null;
 }

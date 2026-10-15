@@ -156,7 +156,7 @@
 .crumbs a:hover { color: var(--c-brand); text-decoration: underline; }
 
 /* ---------- Fließtext (Rechtliches, Artikel) ---------- */
-.prose { max-width: 760px; padding: var(--section-y) 0; }
+.prose { max-width: 760px; padding-block: var(--section-y); }
 .prose h2 { font-size: clamp(24px, 2.4vw, 30px); margin: 48px 0 12px; }
 .prose h2:first-child { margin-top: 0; }
 .prose h3 { font-size: 20px; margin: 28px 0 8px; }
@@ -164,7 +164,7 @@
 .prose ul { padding-left: 20px; }
 
 /* ---------- Über mich ---------- */
-.about-page { display: grid; gap: 48px; padding: var(--section-y) 0; }
+.about-page { display: grid; gap: 48px; padding-block: var(--section-y); }
 @media (min-width: 1000px) { .about-page { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start; } }
 .about-page__photo img { width: 100%; height: auto; border-radius: var(--radius-card); filter: saturate(0.72) contrast(1.03); }
 @media (min-width: 1000px) { .about-page__aside { position: sticky; top: 112px; } }
@@ -175,7 +175,7 @@
 .vita__year { font-weight: 700; color: var(--c-brand); font-variant-numeric: tabular-nums; }
 
 /* ---------- Kontakt ---------- */
-.contact-page { display: grid; gap: 48px; padding: var(--section-y) 0; }
+.contact-page { display: grid; gap: 48px; padding-block: var(--section-y); }
 @media (min-width: 1024px) { .contact-page { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
 .contact-page .inquiry { border: 1px solid var(--c-line); }
 .contact-page .inquiry h3 { color: var(--c-brand); }
@@ -204,7 +204,7 @@
 .article-list a:hover h2 { color: var(--c-brand); }
 .article-list__meta { font-size: 15px; color: var(--c-text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-.article { display: grid; gap: 48px; padding: var(--section-y) 0; }
+.article { display: grid; gap: 48px; padding-block: var(--section-y); }
 @media (min-width: 1100px) { .article { grid-template-columns: minmax(0, 720px) 280px; gap: 80px; } }
 .article__body { display: grid; gap: 0; }
 .article__body h1 { font-size: clamp(34px, 4vw, 54px); margin-bottom: 24px; }
@@ -228,4 +228,7 @@
 .newsletter-done { margin: 0; font-weight: 600; color: var(--c-brand); }
 
 /* ---------- 404 ---------- */
-.not-found { padding: var(--section-y) 0; display: grid; gap: 20px; justify-items: start; }
+.not-found { padding-block: var(--section-y); display: grid; gap: 20px; justify-items: start; }
+.contact-page__call { display: grid; gap: 16px; align-content: start; }
+.contact-page__call p { margin: 0; }
+.contact-page__call .booking { margin-top: 16px; }

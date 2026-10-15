@@ -27,7 +27,7 @@ export default async function WissenPage() {
           <WissenTabs articles={articles} />
           <div className="newsletter-box">
             <h2>Neue Notizen per E-Mail</h2>
-            <p className="muted">Etwa alle zwei Wochen. Abmelden geht jederzeit mit einem Klick.</p>
+            <p className="muted">Eine kurze E-Mail, wenn ein neuer Beitrag erscheint. Abmelden geht jederzeit mit einem Klick.</p>
             <NewsletterForm />
           </div>
         </div>

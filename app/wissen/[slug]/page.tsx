@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getArticle, getArticles } from '@/lib/db';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
-import { formatCategory } from '@/lib/types';
 import { ArrowIcon } from '@/components/ui/icons';
 
 interface PageProps {
@@ -41,9 +40,9 @@ export default async function ArticlePage({ params }: PageProps) {
           <nav className="crumbs" aria-label="Brotkrumen" style={{ marginBottom: 24 }}>
             <Link href="/">Start</Link><span aria-hidden="true">/</span>
             <Link href="/wissen">Wissen</Link><span aria-hidden="true">/</span>
-            <span>{formatCategory(article.category)}</span>
+            <span>{article.category}</span>
           </nav>
-          <span className="label" style={{ marginBottom: 16 }}>{formatCategory(article.category)} · {article.read_minutes} Min. Lesezeit</span>
+          <span className="label" style={{ marginBottom: 16 }}>{article.category} · {article.read_minutes} Min. Lesezeit</span>
           <h1>{article.title}</h1>
           <p className="lead">{article.lead}</p>
           {article.body.map((block, i) => {
