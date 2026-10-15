@@ -9,6 +9,8 @@
 
 /* ---------- Hero ---------- */
 .hero__pin { padding: 48px 0 64px; background: var(--c-bg); }
+/* Der 3D-Kalender ragt bewusst über die Woche hinaus; am Seitenrand abschneiden, damit mobil nichts seitlich scrollt. */
+.hero__pin { overflow-x: clip; }
 @media (min-width: 1024px) {
   .hero__pin { min-height: calc(100svh - 76px); display: flex; align-items: center; padding: 64px 0; }
 }
