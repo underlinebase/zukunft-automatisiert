@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getArticle, getArticles } from '@/lib/db';
-import { CONTACT_PAGE } from '@/lib/content/site';
+import { CONTACT_PAGE, SITE } from '@/lib/content/site';
+import JsonLd from '@/components/seo/json-ld';
+import { metaDescription, seoTitle } from '@/lib/seo/meta';
+import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
 
 interface PageProps {
@@ -18,11 +21,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const article = await getArticle(slug);
   if (!article) return {};
+  const path = `/wissen/${slug}`;
+  const description = metaDescription(article.lead);
   return {
-    title: article.title,
-    description: article.lead.slice(0, 160),
-    alternates: { canonical: `/wissen/${slug}` },
-    openGraph: { type: 'article' },
+    title: seoTitle(article.seoTitle ?? article.title),
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'article',
+      url: path,
+      title: article.title,
+      description,
+      publishedTime: article.datePublished,
+      authors: [SITE.owner],
+      section: article.category,
+    },
   };
 }
 
@@ -32,9 +45,20 @@ export default async function ArticlePage({ params }: PageProps) {
   if (!article) notFound();
   const index = all.findIndex((item) => item.slug === slug);
   const next = all[(index + 1) % all.length];
+  const schema = graph(
+    articleSchema(article),
+    personSchema(),
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: 'Start', path: '/' },
+      { name: 'Wissen', path: '/wissen' },
+      { name: article.title, path: `/wissen/${article.slug}` },
+    ]),
+  );
 
   return (
     <div className="container">
+      <JsonLd data={schema} />
       <article className="article">
         <div className="article__body">
           <nav className="crumbs" aria-label="Brotkrumen" style={{ marginBottom: 24 }}>
@@ -44,6 +68,11 @@ export default async function ArticlePage({ params }: PageProps) {
           </nav>
           <span className="label" style={{ marginBottom: 16 }}>{article.category} · {article.read_minutes} Min. Lesezeit</span>
           <h1>{article.title}</h1>
+          <p className="article__byline">
+            Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten
+            <span aria-hidden="true"> · </span>
+            <time dateTime={article.datePublished}>{article.date}</time>
+          </p>
           <p className="lead">{article.lead}</p>
           {article.body.map((block, i) => {
             if (block.kind === 'h2') return <h2 key={i}>{block.text}</h2>;

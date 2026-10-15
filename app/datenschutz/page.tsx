@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Datenschutz',
+  description: 'Datenschutzerklärung von Zukunft. Automatisiert.: welche Daten auf dieser Website verarbeitet werden und warum.',
   robots: { index: false },
 };
 

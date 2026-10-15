@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Impressum',
+  description: 'Impressum von Zukunft. Automatisiert., Betreiber Marco Gundlach.',
   robots: { index: false },
 };
 

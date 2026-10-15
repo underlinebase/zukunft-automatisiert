@@ -4,20 +4,22 @@ import Link from 'next/link';
 import { CLOSING, EXPERIENCE } from '@/lib/content/home';
 import { ABOUT_PAGE, CREDENTIALS, STATIONS } from '@/lib/content/about';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
-import { breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import { breadcrumbSchema, graph, organizationSchema, personSchema, profilePageSchema } from '@/lib/seo/schema';
+import { seoTitle } from '@/lib/seo/meta';
 import JsonLd from '@/components/seo/json-ld';
 import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 
 export const metadata: Metadata = {
-  title: 'Über mich: Marco Gundlach, der KI-Realist',
+  title: seoTitle('Über mich: Marco Gundlach, der KI-Realist'),
   description:
-    'Marco Gundlach: über 14 Jahre Digitalisierungsprojekte, unter anderem für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Realist Abläufe für Inhaber.',
+    'Marco Gundlach: über 14 Jahre Digitalisierungsprojekte, etwa für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Realist Abläufe für Inhaber.',
   alternates: { canonical: '/ueber-mich' },
 };
 
 const SCHEMA = graph(
+  profilePageSchema(),
   personSchema(),
   organizationSchema(),
   breadcrumbSchema([

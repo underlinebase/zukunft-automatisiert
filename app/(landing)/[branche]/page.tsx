@@ -4,6 +4,7 @@ import { INDUSTRIES, getIndustry, industryHref } from '@/lib/content/branchen';
 import { CLOSING, FAQ_INTRO, GUARANTEE, LANDING_GENERAL_FAQS, WEEKS, WEEKS_INTRO } from '@/lib/content/home';
 import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, serviceSchema } from '@/lib/seo/schema';
 import JsonLd from '@/components/seo/json-ld';
+import { seoTitle } from '@/lib/seo/meta';
 import LandingHero from '@/components/landing/landing-hero';
 import PainPoints from '@/components/landing/pain-points';
 import RoutineCompare from '@/components/landing/routine-compare';
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!industry) return {};
   const path = industryHref(industry.slug);
   return {
-    title: industry.seo.title,
+    title: seoTitle(industry.seo.title),
     description: industry.seo.description,
     alternates: { canonical: path },
     openGraph: { type: 'website', url: path, title: industry.seo.title, description: industry.seo.description },

@@ -34,13 +34,13 @@ import Experience from '@/components/sections/experience';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import JsonLd from '@/components/seo/json-ld';
-import { faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import { faqSchema, graph, organizationSchema, personSchema, websiteSchema } from '@/lib/seo/schema';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const SCHEMA = graph(organizationSchema(), personSchema(), faqSchema(FAQS));
+const SCHEMA = graph(websiteSchema(), organizationSchema(), personSchema(), faqSchema(FAQS));
 
 export default function HomePage() {
   return (

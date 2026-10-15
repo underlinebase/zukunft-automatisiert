@@ -2,18 +2,31 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE } from '@/lib/content/site';
 import InquiryForm from '@/components/sections/inquiry-form';
+import JsonLd from '@/components/seo/json-ld';
+import { seoTitle } from '@/lib/seo/meta';
+import { breadcrumbSchema, contactPageSchema, graph, organizationSchema } from '@/lib/seo/schema';
 
 export const metadata: Metadata = {
-  title: 'Kontakt',
+  title: seoTitle('Kontakt: Ablauf schildern oder 30 Minuten sprechen'),
   description: 'Schildern Sie Ihren Ablauf in drei Sätzen oder buchen Sie 30 Minuten. Antwort in 24 Stunden.',
   alternates: { canonical: '/kontakt' },
 };
+
+const SCHEMA = graph(
+  contactPageSchema(),
+  organizationSchema(),
+  breadcrumbSchema([
+    { name: 'Start', path: '/' },
+    { name: 'Kontakt', path: '/kontakt' },
+  ]),
+);
 
 const BOOKING_EMBED = `${SITE.calUrl}?embed=true&theme=light&layout=month_view&locale=de`;
 
 export default function KontaktPage() {
   return (
     <>
+      <JsonLd data={SCHEMA} />
       <section className="page-hero">
         <div className="container page-hero__inner">
           <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Kontakt</span></nav>

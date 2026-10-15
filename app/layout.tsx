@@ -18,9 +18,10 @@ const fraunces = Fraunces({
 });
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' });
 
-const TITLE = 'Prozessautomatisierung in 4 Wochen, vom KI-Realisten';
+// Mit Markenzusatz genau 60 Zeichen, damit der Titel in den Suchergebnissen nicht abgeschnitten wird.
+const TITLE = 'Prozessautomatisierung in 4 Wochen';
 const DESCRIPTION =
-  'Marco Gundlach, der KI-Realist, automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis. Läuft es nicht, arbeitet er kostenlos weiter.';
+  'Marco Gundlach, der KI-Realist, automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis, mit Garantie.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   authors: [{ name: SITE.owner }],
   creator: SITE.owner,
-  openGraph: { type: 'website', locale: 'de_DE', siteName: SITE.name, title: TITLE, description: DESCRIPTION },
+  openGraph: { type: 'website', locale: 'de_DE', siteName: SITE.name, url: '/', title: TITLE, description: DESCRIPTION },
   twitter: { card: 'summary_large_image', title: SITE.name, description: DESCRIPTION },
   robots: { index: true, follow: true },
 };

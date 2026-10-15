@@ -2,7 +2,8 @@
 
 export const SITE = {
   name: 'Zukunft. Automatisiert.',
-  url: 'https://zukunft-automatisiert.de',
+  // Kanonische Adresse: Die Domain ohne www leitet bei Vercel auf www weiter.
+  url: 'https://www.zukunft-automatisiert.de',
   owner: 'Marco Gundlach',
   role: 'Der KI-Realist',
   email: 'marco@zukunft-automatisiert.de',

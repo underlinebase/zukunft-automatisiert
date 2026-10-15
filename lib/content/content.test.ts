@@ -59,7 +59,7 @@ describe('structured data', () => {
     ]);
     const items = schema.itemListElement as { position: number; item: string }[];
     expect(items.map((item) => item.position)).toEqual([1, 2]);
-    expect(items[1].item).toBe('https://zukunft-automatisiert.de/handwerk');
+    expect(items[1].item).toBe('https://www.zukunft-automatisiert.de/handwerk');
   });
 
   test('mirrors the visible FAQ texts', () => {
@@ -73,7 +73,7 @@ describe('structured data', () => {
     const industry = INDUSTRIES[0];
     const schema = serviceSchema(industry, industryHref(industry.slug));
     expect(schema.serviceType).toBe(industry.seo.serviceType);
-    expect(schema.url).toBe(`https://zukunft-automatisiert.de/${industry.slug}`);
+    expect(schema.url).toBe(`https://www.zukunft-automatisiert.de/${industry.slug}`);
   });
 });
 

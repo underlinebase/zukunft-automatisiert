@@ -32,6 +32,9 @@ export default function HeroTitle({ text, kicker }: HeroTitleProps) {
       mask: 'lines',
       linesClass: 'hero-title__line',
       autoSplit: true,
+      // Nur Zeilen, keine Einzelbuchstaben: Der Text bleibt für Screenreader lesbar.
+      // Kein aria-label auf dem <span>, das ist dort laut ARIA nicht erlaubt.
+      aria: 'none',
       onSplit(self) {
         gsap.set(element, { visibility: 'visible' });
         return gsap.from(self.lines, {
