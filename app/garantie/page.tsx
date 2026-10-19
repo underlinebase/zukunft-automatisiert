@@ -29,7 +29,7 @@ const PATH_ANCHOR = 'pruefung';
 
 export const metadata: Metadata = {
   // Suchbegriff vorn, das Versprechen gleich im Titel.
-  title: seoTitle('Garantie: Läuft der Ablauf nicht, arbeite ich weiter'),
+  title: seoTitle('Garantie: Läuft der Ablauf nicht, bessere ich nach'),
   description: GARANTIE_PAGE.description,
   alternates: { canonical: GARANTIE_PAGE.path },
   robots: GARANTIE_PAGE.listed ? undefined : { index: false, follow: true },

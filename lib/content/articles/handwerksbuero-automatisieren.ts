@@ -46,7 +46,7 @@ export const handwerksbueroAutomatisieren: Article = {
     { kind: 'p', text: 'Am Ende steht dieser Ablauf, weil er auf sauberen Rechnungsdaten aufbaut und weil es beim Geld eintreiben auf Fingerspitzengefühl ankommt. Ein Kunde, der seit zwanzig Jahren pünktlich zahlt, sollte nicht dieselbe Mail bekommen wie ein Neukunde.' },
     { kind: 'h2', text: 'Muss ich alle sieben Abläufe automatisieren?' },
     { kind: 'p', text: 'Nein. Viele Betriebe kommen mit zwei oder drei Abläufen sehr gut aus. Ein einziger Ablauf, der zuverlässig läuft, bringt mehr als fünf halbe. Ich empfehle, eine Woche lang aufzuschreiben, wo Ihre Bürozeit hingeht, und dann mit dem Ablauf anzufangen, der am meisten frisst. Die Reihenfolge oben hilft Ihnen, die nächsten Schritte zu planen.' },
-    { kind: 'p', text: 'Ich automatisiere pro Projekt einen Ablauf in vier Wochen, zum Festpreis und mit Garantie: Läuft er nicht im Alltag, arbeite ich kostenlos weiter. Danach entscheiden Sie in Ruhe, ob und wann der nächste dran ist. Die Abläufe laufen mit n8n auf Servern in der EU und gehören Ihnen.' },
+    { kind: 'p', text: 'Ich automatisiere pro Projekt einen Ablauf in vier Wochen, zum Festpreis und mit Garantie: Läuft er nicht im Alltag, bessere ich im vereinbarten Umfang ohne Aufpreis nach. Danach entscheiden Sie in Ruhe, ob und wann der nächste dran ist. Die Abläufe laufen mit n8n auf Servern in der EU und gehören Ihnen.' },
   ],
   notes: [
     'Ob Anfragen, Angebote oder Zahlungen direkt in Ihre Handwerkersoftware fließen können, hängt von deren Schnittstellen ab. Das prüfe ich vor dem Start.',

@@ -44,7 +44,7 @@ export const wasKostetKiAutomatisierung: Article = {
 
     { kind: 'h2', text: 'Warum ein Festpreis und kein Stundensatz?' },
     { kind: 'p', text: 'Bei Abrechnung nach Stunden trägt der Kunde das Risiko. Dauert es länger, zahlen Sie mehr. Mit einem Festpreis muss ich vorher genau hinschauen, wie aufwendig Ihr Ablauf ist. Verschätze ich mich, ist das mein Problem. Deshalb gibt es den Preis auch erst nach dem Erstgespräch: Vorher weiß ich schlicht nicht genug.' },
-    { kind: 'p', text: 'Dazu kommt die Garantie. Läuft der Ablauf nach vier Wochen nicht, arbeite ich kostenlos weiter, bis er im Alltag läuft. Was „läuft“ heißt, halten wir zu Beginn schriftlich fest. Mehr Umsatz verspreche ich nicht. Ich verspreche Zeit.' },
+    { kind: 'p', text: 'Dazu kommt die Garantie. Läuft der Ablauf nach vier Wochen nicht, bessere ich ohne Aufpreis nach, bis er den vereinbarten Umfang erfüllt. Was „läuft“ heißt, halten wir zu Beginn schriftlich fest. Mehr Umsatz verspreche ich nicht. Ich verspreche Zeit.' },
 
     { kind: 'h2', text: 'KI-Beratung: Kosten, die sich vermeiden lassen' },
     { kind: 'p', text: 'Das meiste Geld geht nicht beim Bau verloren, sondern drumherum. Ein Workshop, aus dem nichts folgt. Eine Software mit Lizenz pro Nutzer, die nach drei Monaten keiner mehr öffnet. Eine Lösung, die nur der Dienstleister versteht und für jede Änderung neu beauftragt werden muss.' },

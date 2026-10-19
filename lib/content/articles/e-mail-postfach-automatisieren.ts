@@ -47,7 +47,7 @@ export const eMailPostfachAutomatisieren: Article = {
     { kind: 'p', text: 'Welche Fragen Sie jedem Dienstleister stellen sollten, bevor er an Ihr Postfach darf, habe ich im Artikel zum Datenschutz bei Automatisierung aufgeschrieben. Er ersetzt keine Rechtsberatung, hilft aber beim ersten Gespräch.' },
     { kind: 'h2', text: 'Wo fange ich an?' },
     { kind: 'p', text: 'Nicht beim ganzen Postfach. Achten Sie eine Woche lang darauf, welche Art von Mail Sie am meisten Zeit kostet. Oft sind es Anfragen, manchmal Rechnungen, manchmal die ewigen Terminabstimmungen. Mit dieser einen Sorte fangen wir an. Läuft sie, kommt die nächste dazu.' },
-    { kind: 'p', text: 'So arbeite ich auch: ein Ablauf in vier Wochen, zum Festpreis. Läuft er nach vier Wochen nicht, arbeite ich kostenlos weiter. Wenn Sie wissen wollen, ob sich das für Ihr Postfach lohnt, schildern Sie mir in drei Sätzen, was dort jeden Tag ankommt.' },
+    { kind: 'p', text: 'So arbeite ich auch: ein Ablauf in vier Wochen, zum Festpreis. Läuft er nach vier Wochen nicht, bessere ich im vereinbarten Umfang ohne Aufpreis nach. Wenn Sie wissen wollen, ob sich das für Ihr Postfach lohnt, schildern Sie mir in drei Sätzen, was dort jeden Tag ankommt.' },
   ],
   notes: [
     'Labels und Ordner funktionieren in Gmail und Microsoft 365 etwas unterschiedlich. Welche Variante passt, hängt von Ihrem Postfach ab.',

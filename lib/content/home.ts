@@ -13,7 +13,7 @@ import type {
 export const HERO = {
   eyebrow: 'KI-Berater · Prozessautomatisierung für Inhaber',
   title: 'Den Ablauf, der Sie jede Woche Stunden kostet, automatisiere ich in 4 Wochen.',
-  lead: 'Klappt das nicht, arbeite ich kostenlos weiter. Ohne KI-Zauber, ohne Software-Zoo. Sie arbeiten direkt mit mir.',
+  lead: 'Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach. Ohne KI-Zauber, ohne Software-Zoo. Sie arbeiten direkt mit mir.',
 };
 
 export const FACTS: Fact[] = [
@@ -21,7 +21,7 @@ export const FACTS: Fact[] = [
   { label: 'Was', value: 'Ein Ablauf', text: 'Der, der in Ihrem Betrieb am meisten Zeit frisst.' },
   { label: 'Wie lange', value: '4 Wochen', text: 'Von der ersten Aufnahme bis zur Übergabe an Ihr Team.' },
   { label: 'Preis', value: 'Festpreis, der sich rechnen muss', text: 'Sie bekommen ihn nach dem Erstgespräch schriftlich. Rechnet er sich nicht im ersten Jahr, rate ich Ihnen ab.' },
-  { label: 'Garantie', value: 'Läuft es nicht, arbeite ich weiter', text: 'Kostenlos, bis der Ablauf im Alltag läuft.' },
+  { label: 'Garantie', value: 'Läuft es nicht, bessere ich nach', text: 'Ohne Aufpreis, bis der vereinbarte Ablauf im Alltag läuft.' },
 ];
 
 export const SCENES_INTRO = {
@@ -127,12 +127,13 @@ export const HOME_EXAMPLE: BeforeAfterExample = {
 
 export const GUARANTEE = {
   eyebrow: 'Garantie',
-  title: 'Läuft der Ablauf nach 4 Wochen nicht, arbeite ich kostenlos weiter.',
-  lead: 'Das Risiko liegt bei mir. Damit klar ist, worüber wir reden:',
+  title: 'Läuft der vereinbarte Ablauf nach 4 Wochen nicht, bessere ich ohne Aufpreis nach.',
+  lead: 'Für den vereinbarten Umfang trage ich das Risiko. Damit klar ist, worüber wir reden:',
   points: [
     { label: 'Was „läuft“ heißt', text: 'Der vereinbarte Ablauf erledigt seine Aufgabe im Alltag, mit Ihren echten Daten, ohne dass Sie nachhelfen müssen.' },
     { label: 'Woran wir das messen', text: 'Wir halten zu Beginn schriftlich fest, was der Ablauf können soll. Daran messen wir am Ende.' },
     { label: 'Was ich nicht zusage', text: 'Mehr Umsatz. Ich verspreche Ihnen Zeit, keine Umsatzzahlen.' },
+    { label: 'Was nicht dazugehört', text: 'Wünsche, die über den vereinbarten Umfang hinausgehen. Die biete ich Ihnen gern an, nach Aufwand und mit Preis vorab.' },
   ],
 };
 

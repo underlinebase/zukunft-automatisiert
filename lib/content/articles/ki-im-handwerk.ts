@@ -44,7 +44,7 @@ export const kiImHandwerk: Article = {
     { kind: 'p', text: 'Eine neue Software für alles, wenn die alte im Kern funktioniert. Oft reicht es, die Programme zu verbinden, die Sie schon haben. Und alles, was nur ein paarmal im Jahr vorkommt. Da lohnt sich der Aufwand selten.' },
     { kind: 'h2', text: 'Wie viel Automatisierung braucht ein kleiner Handwerksbetrieb?' },
     { kind: 'p', text: 'Weniger, als die meisten Anbieter Ihnen erzählen. Ein einziger Ablauf, der gut läuft, bringt mehr als fünf halbe. Ich empfehle, mit der Station anzufangen, die Sie jede Woche am meisten Zeit kostet. Schreiben Sie dafür eine Woche lang mit, wo Ihre Bürozeit hingeht. Bei vielen Handwerkern sind es die Angebote und das Nachfassen. Bei anderen ist es die Terminabstimmung oder das Sortieren der Fotos.' },
-    { kind: 'p', text: 'Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis, den Sie nach dem Erstgespräch schriftlich bekommen. Ich arbeite remote mit Betrieben in ganz Deutschland, meist per Video. Läuft der Ablauf nach vier Wochen nicht, arbeite ich kostenlos weiter. Was ich speziell für Handwerksbetriebe mache, steht auf meiner Seite fürs Handwerk.' },
+    { kind: 'p', text: 'Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis, den Sie nach dem Erstgespräch schriftlich bekommen. Ich arbeite remote mit Betrieben in ganz Deutschland, meist per Video. Läuft der Ablauf nach vier Wochen nicht, bessere ich im vereinbarten Umfang ohne Aufpreis nach. Was ich speziell für Handwerksbetriebe mache, steht auf meiner Seite fürs Handwerk.' },
   ],
   notes: [
     'Ob sich Anfragen oder Angebote direkt in Ihre Handwerkersoftware übernehmen lassen, hängt von deren Schnittstellen ab. Das prüfe ich vor dem Start.',

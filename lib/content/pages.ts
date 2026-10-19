@@ -24,7 +24,7 @@ export const GARANTIE_PAGE: SitePage = {
   path: '/garantie',
   name: 'Garantie',
   description:
-    'Läuft der automatisierte Ablauf nach 4 Wochen nicht, arbeite ich kostenlos weiter. Was die Garantie genau umfasst und was nicht.',
+    'Läuft der automatisierte Ablauf nach 4 Wochen nicht, bessere ich im vereinbarten Umfang ohne Aufpreis nach. Was die Garantie genau umfasst und was nicht.',
   priority: 0.7,
   listed: true,
 };

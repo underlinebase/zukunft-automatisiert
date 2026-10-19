@@ -42,7 +42,7 @@ export const kiFuerImmobilienmakler: Article = {
     { kind: 'p', text: 'Auch automatisierte Eigentümer-Akquise per Massenmail rate ich ab. Werbemails an Verbraucher ohne deren Einwilligung sind nach dem Wettbewerbsrecht unzulässig. Und eine KI, die im Namen des Maklers mit Interessenten verhandelt, halte ich für eine schlechte Idee. Vertrauen ist in diesem Geschäft alles.' },
     { kind: 'h2', text: 'Womit sollte ein Maklerbüro anfangen?' },
     { kind: 'p', text: 'Mit dem Ablauf, der Sie jede Woche am meisten Zeit kostet. In vielen Büros sind das die Portal-Anfragen, in anderen die Exposés oder das Nachlaufen hinter Unterlagen. Wie viel Zeit allein bei den Anfragen zusammenkommt, zeigt ein Rechenbeispiel mit Minutenwerten in einem eigenen Artikel.' },
-    { kind: 'p', text: 'Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis, den Sie nach dem Erstgespräch schriftlich bekommen. Läuft er danach nicht im Alltag, arbeite ich kostenlos weiter. Ich arbeite remote mit Maklerbüros in ganz Deutschland, meist per Video.' },
+    { kind: 'p', text: 'Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis, den Sie nach dem Erstgespräch schriftlich bekommen. Läuft er danach nicht im Alltag, bessere ich im vereinbarten Umfang ohne Aufpreis nach. Ich arbeite remote mit Maklerbüros in ganz Deutschland, meist per Video.' },
   ],
   notes: [
     'Pflichtangaben in Immobilienanzeigen: § 87 Gebäudeenergiegesetz (GEG). Textform für Maklerverträge über Wohnungen und Einfamilienhäuser: § 656a BGB. Werbung per E-Mail ohne Einwilligung: § 7 Abs. 2 UWG. Keine Rechtsberatung.',

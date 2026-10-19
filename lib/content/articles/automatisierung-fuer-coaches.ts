@@ -42,7 +42,7 @@ export const automatisierungFuerCoaches: Article = {
     { kind: 'h2', text: 'Wie viel Zeit spart das? Ein Rechenbeispiel' },
     { kind: 'p', text: 'Die folgenden Zahlen sind Annahmen, keine Messwerte. Rechnen Sie mit Ihren eigenen nach. Nehmen wir acht Anfragen pro Woche an, und jede kostet heute mit Antwort, Terminabstimmung und Nachfragen rund 15 Minuten. Das sind 120 Minuten pro Woche. Mit Sammelliste, Sofortantwort und Buchungsseite bleiben vielleicht drei Minuten pro Anfrage, also 24 Minuten. Ersparnis: rund 96 Minuten pro Woche, auf den Monat gerechnet etwa sieben Stunden.' },
     { kind: 'p', text: 'Dazu kommt das Onboarding. Bei vier neuen Klienten im Monat und heute 45 Minuten für Angebot, Rechnung, Fragebogen und Erinnerungen, die auf zehn Minuten sinken, sparen Sie weitere 140 Minuten. Zusammen sind das in diesem Beispiel gut neun Stunden im Monat. Wichtiger als die Zahl ist für viele Coaches aber etwas anderes: Keine Anfrage geht mehr verloren.' },
-    { kind: 'p', text: 'Fangen Sie mit dem Schritt an, der bei Ihnen am häufigsten liegen bleibt. Ich automatisiere diesen einen Ablauf in vier Wochen zum Festpreis. Läuft er danach nicht, arbeite ich kostenlos weiter, bis er läuft.' },
+    { kind: 'p', text: 'Fangen Sie mit dem Schritt an, der bei Ihnen am häufigsten liegen bleibt. Ich automatisiere diesen einen Ablauf in vier Wochen zum Festpreis. Läuft er danach nicht, bessere ich ohne Aufpreis nach, bis er den vereinbarten Umfang erfüllt.' },
   ],
   notes: [
     'Das Rechenbeispiel beruht auf Annahmen. Ihre eigenen Werte können deutlich abweichen.',

@@ -4,12 +4,12 @@
 import { GUARANTEE, HOME_EXAMPLE, WEEKS } from './home';
 import type { Faq } from './types';
 
-const [MEANING, MEASURE, NOT_PROMISED] = GUARANTEE.points;
+const [MEANING, MEASURE, NOT_PROMISED, OUT_OF_SCOPE] = GUARANTEE.points;
 
 export const GARANTIE_HERO = {
   eyebrow: 'Garantie',
   title: GUARANTEE.title,
-  lead: 'Sie zahlen einen Festpreis für einen Ablauf, der läuft. Schafft er das nach den 4 Wochen nicht, arbeite ich ohne weitere Rechnung weiter, bis er im Alltag läuft. Hier steht, was das genau heißt und wo die Grenzen sind.',
+  lead: 'Sie zahlen einen Festpreis für einen Ablauf, der im vereinbarten Umfang läuft. Schafft er das nach den 4 Wochen nicht, bessere ich ohne Aufpreis nach. Hier steht, was zum Umfang gehört und was nicht.',
   primaryCta: 'Ablauf schildern',
   secondaryCta: 'So prüfen wir am Ende',
 };
@@ -19,8 +19,8 @@ export const GARANTIE_PROMISE = {
   title: 'Was ich Ihnen verspreche.',
   text: [
     'Nach dem Erstgespräch bekommen Sie einen Festpreis, schriftlich. Dafür automatisiere ich in 4 Wochen den einen Ablauf, der Sie jede Woche am meisten Zeit kostet.',
-    'Läuft dieser Ablauf am Ende nicht, arbeite ich kostenlos weiter. So lange, bis er im Alltag läuft. Am Festpreis ändert das nichts.',
-    'Üblich ist so eine Zusage nicht. Oft wird nach Aufwand abgerechnet: Dauert es länger, zahlen Sie mehr. Bei mir ist es umgekehrt. Das Risiko liegt bei mir.',
+    'Was der Ablauf können soll, halten wir in Woche 1 schriftlich fest. Das ist der vereinbarte Umfang. Erfüllt der Ablauf diesen Umfang am Ende nicht, bessere ich nach, bis er es tut. Am Festpreis ändert das nichts.',
+    'Üblich ist so eine Zusage nicht. Oft wird nach Aufwand abgerechnet: Dauert es länger, zahlen Sie mehr. Bei mir trägt das Risiko für den vereinbarten Umfang der, der ihn gebaut hat. Neue Wünsche, die unterwegs dazukommen, biete ich Ihnen getrennt an, mit Preis vorab.',
   ],
   pilotNote: 'Das gilt auch für die drei Pilotplätze zum Pilotpreis von 1.999 € netto. Gleiche Garantie, gleicher Maßstab.',
 };
@@ -28,7 +28,7 @@ export const GARANTIE_PROMISE = {
 /** Entscheidungsweg nach den 4 Wochen. Die Grafik baut sich beim Scrollen auf. */
 export const GARANTIE_PATH = {
   eyebrow: 'Nach 4 Wochen',
-  title: 'Am Ende gibt es zwei Ausgänge. Keiner kostet Sie mehr.',
+  title: 'Am Ende gibt es zwei Ausgänge. Für den vereinbarten Umfang kostet keiner mehr.',
   start: {
     label: '4 Wochen',
     title: 'Aufnehmen, bauen, testen, einweisen',
@@ -45,8 +45,8 @@ export const GARANTIE_PATH = {
   },
   no: {
     label: 'Nein',
-    title: 'Ich arbeite kostenlos weiter',
-    text: 'So lange, bis er im Alltag läuft. Dann prüfen wir noch einmal.',
+    title: 'Ich bessere ohne Aufpreis nach',
+    text: 'An dem, was im vereinbarten Umfang fehlt. Dann prüfen wir noch einmal.',
     loop: 'zurück zur Prüfung',
   },
 };
@@ -80,8 +80,16 @@ export const GARANTIE_EXCLUDED = {
       text: 'Ich verspreche Ihnen Zeit, keine Umsatzzahlen. Ob aus der gewonnenen Zeit mehr Aufträge werden, hängt an vielem, das ich nicht in der Hand habe.',
     },
     {
-      label: 'Alles außerhalb des vereinbarten Ablaufs',
-      text: 'Die Garantie gilt für den einen Ablauf, den wir zu Beginn schriftlich festhalten. Kommt unterwegs eine neue Idee dazu, ist das ein eigenes Thema. Oft ist es der nächste Ablauf.',
+      label: OUT_OF_SCOPE.label,
+      text: 'Die Garantie gilt für den Umfang, den wir in Woche 1 schriftlich festhalten. Kommt unterwegs ein neuer Wunsch dazu, etwa ein weiterer Schritt oder eine zusätzliche Software, sage ich Ihnen vorher, was er kostet. Sie entscheiden, ob er jetzt dazukommt, später oder gar nicht.',
+    },
+    {
+      label: 'Änderungen an fremder Software nach der Übergabe',
+      text: 'Ändert ein Anbieter nach der Übergabe seine Schnittstelle oder sein Programm, ist die Anpassung keine Nachbesserung, sondern Betreuung. Die ist freiwillig und monatlich kündbar.',
+    },
+    {
+      label: 'Fehlende Zugänge oder Daten',
+      text: 'Ohne Zugänge und echte Beispielfälle kann ich nicht bauen. Kommen sie später, verschiebt sich der Zeitplan um diese Zeit. Der vereinbarte Umfang bleibt derselbe.',
     },
     {
       label: 'Eine KI, die Mitarbeiter ersetzt',
@@ -99,8 +107,8 @@ export const GARANTIE_PROCESS = {
       text: 'Am Ende von Woche 4 gehen wir die schriftliche Beschreibung aus Woche 1 durch. An echten Fällen aus Ihrem Betrieb, Punkt für Punkt.',
     },
     {
-      title: 'Ich arbeite weiter.',
-      text: 'Erledigt der Ablauf einen Teil seiner Aufgabe nicht, oder müssen Sie noch nachhelfen, arbeite ich daran weiter. Ohne Rechnung.',
+      title: 'Ich bessere nach.',
+      text: 'Erledigt der Ablauf einen Teil des vereinbarten Umfangs nicht, oder müssen Sie dafür noch nachhelfen, bessere ich nach. Ohne Aufpreis.',
     },
     {
       title: 'Wir prüfen noch einmal.',
@@ -133,7 +141,11 @@ export const GARANTIE_FAQ_INTRO = {
 export const GARANTIE_FAQS: Faq[] = [
   {
     q: 'Was passiert, wenn der Ablauf nach 4 Wochen nicht läuft?',
-    a: 'Dann arbeite ich kostenlos weiter, bis er im Alltag läuft. Sie zahlen den vereinbarten Festpreis, nicht mehr. „Läuft“ heißt: Der vereinbarte Ablauf erledigt seine Aufgabe mit Ihren echten Daten, ohne dass Sie nachhelfen müssen.',
+    a: 'Dann bessere ich ohne Aufpreis nach, bis er den vereinbarten Umfang erfüllt. Sie zahlen den Festpreis, nicht mehr. „Läuft“ heißt: Der vereinbarte Ablauf erledigt seine Aufgabe mit Ihren echten Daten, ohne dass Sie nachhelfen müssen.',
+  },
+  {
+    q: 'Was, wenn mir unterwegs noch etwas einfällt?',
+    a: 'Dann schreiben wir es auf und ich sage Ihnen, was es kostet. Was nicht im vereinbarten Umfang steht, gehört nicht zur Garantie, sondern ist ein eigener Auftrag nach Aufwand. Oft ist es der nächste Ablauf.',
   },
   {
     q: 'Wer entscheidet, ob der Ablauf läuft?',

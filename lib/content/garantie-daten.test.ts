@@ -60,9 +60,9 @@ describe('Garantie-Seite', () => {
     euroAmounts.forEach((amount) => expect(amount.replace(/\s/g, '')).toBe('1.999€'));
   });
 
-  test('hat 5 bis 6 Fragen, die ins FAQ-Schema übernommen werden', () => {
+  test('hat 5 bis 8 Fragen, die ins FAQ-Schema übernommen werden', () => {
     expect(GARANTIE_FAQS.length).toBeGreaterThanOrEqual(5);
-    expect(GARANTIE_FAQS.length).toBeLessThanOrEqual(6);
+    expect(GARANTIE_FAQS.length).toBeLessThanOrEqual(8);
     const entities = faqSchema(GARANTIE_FAQS).mainEntity as { name: string }[];
     expect(entities.map((entity) => entity.name)).toEqual(GARANTIE_FAQS.map((faq) => faq.q));
   });

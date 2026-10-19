@@ -55,7 +55,7 @@ export const wasMachtEinKiBerater: Article = {
 
     { kind: 'h2', text: 'Wie ich als KI-Berater arbeite' },
     { kind: 'p', text: 'Ich nehme mir einen Ablauf vor: den, der Sie jede Woche am meisten Zeit kostet. In der ersten Woche zeigen Sie mir, wie er heute läuft. In der zweiten baue ich. In der dritten läuft die Lösung neben Ihrem gewohnten Ablauf mit, und wir prüfen sie an echten Fällen. In der vierten weise ich Sie und Ihr Team ein. Ihr eigener Aufwand liegt bei rund fünf Stunden.' },
-    { kind: 'p', text: 'Den Festpreis bekommen Sie nach dem Erstgespräch schriftlich. Mein Maßstab: Die Automatisierung muss sich innerhalb eines Jahres bezahlt machen, sonst rate ich ab. Läuft der Ablauf nach vier Wochen nicht, arbeite ich kostenlos weiter, bis er im Alltag läuft. Was „läuft“ heißt, halten wir zu Beginn schriftlich fest.' },
+    { kind: 'p', text: 'Den Festpreis bekommen Sie nach dem Erstgespräch schriftlich. Mein Maßstab: Die Automatisierung muss sich innerhalb eines Jahres bezahlt machen, sonst rate ich ab. Läuft der Ablauf nach vier Wochen nicht, bessere ich ohne Aufpreis nach, bis er den vereinbarten Umfang erfüllt. Was „läuft“ heißt, halten wir zu Beginn schriftlich fest.' },
     { kind: 'p', text: 'Ich arbeite remote für Betriebe in ganz Deutschland, meistens per Video. Das klappt besser, als viele vermuten, weil ich ohnehin am Bildschirm sehen muss, wie Ihre Programme aussehen. Wenn ein Termin vor Ort hilft, komme ich vorbei. Was ich baue, gehört Ihnen. Danach können Sie es selbst betreuen oder mich damit beauftragen, monatlich kündbar.' },
 
     { kind: 'h2', text: 'Brauchen Sie überhaupt einen KI-Berater?' },

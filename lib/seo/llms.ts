@@ -25,7 +25,7 @@ export function buildLlmsTxt(): string {
   const intro = [
     `# ${SITE.name}`,
     '',
-    `> ${SITE.owner}, der KI-Realist, automatisiert für Inhaber kleiner Betriebe in Deutschland den Ablauf, der jede Woche am meisten Zeit kostet. Ein Ablauf, 4 Wochen, Festpreis. Läuft er danach nicht, arbeitet er kostenlos weiter.`,
+    `> ${SITE.owner}, der KI-Realist, automatisiert für Inhaber kleiner Betriebe in Deutschland den Ablauf, der jede Woche am meisten Zeit kostet. Ein Ablauf, 4 Wochen, Festpreis. Läuft der vereinbarte Ablauf danach nicht, bessert er ohne Aufpreis nach. Was über den vereinbarten Umfang hinausgeht, wird nach Aufwand angeboten.`,
   ].join('\n');
 
   const person = section(`Über ${SITE.owner}`, [

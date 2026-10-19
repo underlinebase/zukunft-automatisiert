@@ -2,7 +2,7 @@ import { HOME_EXAMPLE } from './home';
 import type { Industry } from './types';
 
 const SHARED_LEAD =
-  'Den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Klappt das nicht, arbeite ich kostenlos weiter.';
+  'Den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach.';
 
 export const INDUSTRIES: Industry[] = [
   {
@@ -289,7 +289,7 @@ export const INDUSTRIES: Industry[] = [
     hero: {
       kicker: 'Automatisierung für Agenturen',
       title: 'Schluss mit Statusmails am Freitagnachmittag.',
-      lead: 'Den Ablauf, der Ihre Agentur jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Klappt das nicht, arbeite ich kostenlos weiter.',
+      lead: 'Den Ablauf, der Ihre Agentur jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach.',
     },
     seo: {
       title: 'Automatisierung für Agenturen: Onboarding und Reporting',
@@ -383,7 +383,7 @@ export const INDUSTRIES: Industry[] = [
     hero: {
       kicker: 'Automatisierung für Coaches',
       title: 'Mehr Zeit für Klienten. Weniger für den Papierkram danach.',
-      lead: 'Den Ablauf, der Sie jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Klappt das nicht, arbeite ich kostenlos weiter.',
+      lead: 'Den Ablauf, der Sie jede Woche am meisten Zeit kostet, automatisiere ich in 4 Wochen. Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach.',
     },
     seo: {
       title: 'Automatisierung für Coaches: Termine und Rechnungen',
