@@ -1,1 +1,135 @@
 /* garantie: Stile dieser Seite. */
+
+/* ---------- Entscheidungsweg nach 4 Wochen ---------- */
+.decision {
+  --decision-line: var(--c-brand);
+  --decision-line-width: 2px;
+  display: grid;
+  justify-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.decision__node {
+  position: relative;
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 22px 20px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  text-align: left;
+}
+.decision__node h3 { font-size: clamp(19px, 2vw, 23px); line-height: 1.3; }
+.decision__node p { margin: 0; color: var(--c-text-muted); font-size: 16px; line-height: 1.55; }
+.decision__node--start, .decision__node--check { max-width: 560px; }
+.decision__node--check { border: 2px solid var(--c-brand); text-align: center; justify-items: center; }
+.decision__tag {
+  justify-self: start;
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--c-surface);
+  color: var(--c-brand);
+}
+.decision__node--check .decision__tag { justify-self: center; }
+.decision__node--yes .decision__tag { background: var(--c-brand); color: #FFFFFF; }
+.decision__node--no { border-color: var(--c-accent); }
+.decision__node--no .decision__tag { background: var(--c-accent); color: #FFFFFF; }
+
+.decision__weeks { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; font-size: 16px; }
+.decision__weeks span { display: inline-block; min-width: 76px; font-weight: 600; color: var(--c-brand); }
+
+/* Verbindungen: werden beim Scrollen von oben nach unten bzw. von der Mitte aus gezeichnet. */
+.decision__seg { position: absolute; display: block; background: var(--decision-line); }
+.decision__connector { position: relative; width: 100%; height: 48px; }
+.decision__seg--trunk { left: calc(50% - var(--decision-line-width) / 2); top: 0; bottom: 0; width: var(--decision-line-width); transform-origin: top center; }
+
+.decision__fork { position: relative; width: 100%; height: 64px; }
+.decision__seg--stem { left: calc(50% - var(--decision-line-width) / 2); top: 0; height: 50%; width: var(--decision-line-width); transform-origin: top center; }
+.decision__seg--bar { left: 25%; right: 25%; top: 50%; height: var(--decision-line-width); transform-origin: center; }
+.decision__seg--leg { top: 50%; bottom: 0; width: var(--decision-line-width); transform-origin: top center; }
+.decision__seg--leg-yes { left: calc(25% - var(--decision-line-width) / 2); }
+.decision__seg--leg-no { left: calc(75% - var(--decision-line-width) / 2); background: var(--c-accent); }
+.decision__seg--leg::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 9px;
+  height: 9px;
+  border-right: var(--decision-line-width) solid;
+  border-bottom: var(--decision-line-width) solid;
+  border-color: inherit;
+  color: inherit;
+  transform: translateX(-50%) rotate(45deg);
+}
+.decision__seg--leg-yes::after { border-color: var(--c-brand); }
+.decision__seg--leg-no::after { border-color: var(--c-accent); }
+
+.decision__outcomes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; width: 100%; }
+@media (min-width: 720px) { .decision__outcomes { gap: 32px; } .decision__node { padding: 26px 28px; } }
+@media (max-width: 479px) {
+  .decision__node { padding: 18px 14px; }
+  .decision__node--yes h3, .decision__node--no h3 { font-size: 18px; }
+  .decision__node p { font-size: 15px; }
+}
+
+.decision__loop { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; font-size: 14px; font-weight: 600; color: var(--c-brand); }
+.decision__loop svg { flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* Strichlänge 1 (pathLength): ohne Animation voll sichtbar. */
+.decision__loop-path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+
+/* ---------- Was „läuft“ heißt ---------- */
+.g-meaning { display: grid; gap: 40px; }
+@media (min-width: 1000px) { .g-meaning { grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; } }
+.g-meaning .section-head { margin-bottom: 28px; }
+.g-meaning__criteria { margin-bottom: 40px; font-size: 18px; }
+.g-subtitle { font-size: clamp(20px, 2vw, 24px); margin: 0 0 16px; }
+.g-example h3 { font-size: 20px; margin-bottom: 6px; }
+.g-example .muted { margin: 0 0 16px; font-size: 15px; }
+.g-example__list { margin: 0; padding-left: 20px; display: grid; gap: 10px; font-size: 16px; }
+@media (min-width: 1000px) { .g-example { position: sticky; top: 108px; } }
+
+/* ---------- Grenzen ---------- */
+.g-excluded { list-style: none; margin: 0; padding: 0; }
+.g-excluded .card { display: grid; gap: 12px; align-content: start; }
+.g-excluded h3 { font-size: 21px; }
+.g-excluded p { margin: 0; }
+
+/* ---------- Wenn etwas hakt ---------- */
+.g-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+@media (min-width: 720px) { .g-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .g-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.g-steps__item { display: grid; gap: 10px; align-content: start; }
+.g-steps__item h3 { font-size: 20px; }
+.g-steps__item p { margin: 0; }
+.g-steps__number {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--c-brand);
+  color: #FFFFFF;
+  font-family: var(--f-serif);
+  font-size: 18px;
+}
+
+/* ---------- Warum ich das anbiete ---------- */
+.g-why__side { display: grid; gap: 32px; }
+.g-quote {
+  margin: 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--c-brand);
+  font-family: var(--f-serif);
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.3;
+  color: var(--c-text);
+}
+.g-quote p { margin: 0; }
