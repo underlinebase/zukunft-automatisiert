@@ -1,5 +1,6 @@
 // Inhalt der /llms.txt: eine kompakte, maschinenlesbare Zusammenfassung für KI-Assistenten
 // (Format nach llmstxt.org). Wird aus denselben Inhalten erzeugt wie die Seiten, damit nichts auseinanderläuft.
+// Artikel und Abläufe verlinken nach llmstxt.org-Konvention auf ihre Markdown-Fassung (Seitenadresse plus „.md“).
 
 import { SITE } from '@/lib/content/site';
 import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
@@ -10,6 +11,7 @@ import { BRANCHEN } from '@/lib/content/ablaeufe/types';
 import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { EXPERIENCE, FACTS, FAQS, GUARANTEE, WEEKS } from '@/lib/content/home';
 import { KI_BERATUNG_PATH, KI_BERATUNG_SEO } from '@/lib/content/ki-beratung';
+import { markdownHref } from './markdown';
 
 function link(title: string, path: string, note?: string): string {
   return `- [${title}](${SITE.url}${path})${note ? `: ${note}` : ''}`;
@@ -61,7 +63,7 @@ export function buildLlmsTxt(): string {
 
   const articles = section(
     'Wissen-Artikel',
-    publishedArticles(ARTICLES).map((article) => link(article.title.replace(/\.$/, ''), `/wissen/${article.slug}`, article.lead)),
+    publishedArticles(ARTICLES).map((article) => link(article.title.replace(/\.$/, ''), markdownHref(`/wissen/${article.slug}`), article.lead)),
   );
 
   const faqs = section(
@@ -71,8 +73,12 @@ export function buildLlmsTxt(): string {
 
   const ablaeufe = section(
     'Ablauf-Bibliothek',
-    publishedAblaeufe().map((ablauf) => link(`${ablauf.title} (${BRANCHEN[ablauf.branche]})`, ablaufHref(ablauf.slug), ablauf.lead)),
+    publishedAblaeufe().map((ablauf) => link(`${ablauf.title} (${BRANCHEN[ablauf.branche]})`, markdownHref(ablaufHref(ablauf.slug)), ablauf.lead)),
   );
 
-  return [intro, person, offer, process, pages, industries, articles, ablaeufe, faqs].join('\n\n') + '\n';
+  const optional = section('Optional', [
+    link('Alle Artikel und Abläufe im Volltext', '/llms-full.txt', 'eine Datei mit allen veröffentlichten Inhalten als Markdown'),
+  ]);
+
+  return [intro, person, offer, process, pages, industries, articles, ablaeufe, faqs, optional].join('\n\n') + '\n';
 }

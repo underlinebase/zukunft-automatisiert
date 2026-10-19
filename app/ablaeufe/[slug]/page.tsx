@@ -14,6 +14,7 @@ import { ablaufSavings } from '@/lib/content/ablaeufe/savings';
 import { BRANCHEN, STUFEN } from '@/lib/content/ablaeufe/types';
 import { formatEuro, formatHours } from '@/lib/calculator';
 import { metaDescription, seoTitle } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import { ablaufSchema, breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 
 // Stündlich neu erzeugen. Geplante Abläufe werden ab ihrem Erscheinungstag beim ersten Aufruf erzeugt.
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: seoTitle(ablauf.seoTitle ?? ablauf.title),
     description: metaDescription(ablauf.lead),
-    alternates: { canonical: ablaufHref(slug) },
+    alternates: { canonical: ablaufHref(slug), types: { 'text/markdown': markdownHref(ablaufHref(slug)) } },
   };
 }
 

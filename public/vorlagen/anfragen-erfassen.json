@@ -1,0 +1,182 @@
+{
+  "name": "Anfragen erfassen (Vorlage zukunft-automatisiert.de)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Anfragen erfassen\n\nIhr Website-Formular schickt die Anfrage an diesen Webhook. Die Felder werden vereinheitlicht, als Zeile in Google Sheets gespeichert, und der Absender bekommt eine Bestätigung.\n\n**Vor dem Start ersetzen:**\n- PLATZHALTER-anfrage im Webhook durch einen eigenen Pfad ersetzen\n- Zugang Google Sheets auswählen, PLATZHALTER_TABELLEN_ID eintragen (Blatt \"Anfragen\" mit den Spalten Eingang, Name, E-Mail, Telefon, Nachricht, Status)\n- Zugang SMTP auswählen, PLATZHALTER_ABSENDER, PLATZHALTER_FIRMENNAME und PLATZHALTER_ANTWORTZEIT eintragen",
+        "height": 400,
+        "width": 440,
+        "color": 7
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b01",
+      "name": "Hinweis",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-560, -160]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "PLATZHALTER-anfrage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b02",
+      "name": "Formular-Eingang",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5bff"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Vereinheitlicht die Felder, egal wie sie im Formular heißen.\nconst erstes = (quelle, namen) => {\n  for (const name of namen) {\n    const wert = quelle[name];\n    if (wert !== undefined && wert !== null && String(wert).trim() !== '') return String(wert).trim();\n  }\n  return '';\n};\n\nreturn $input.all().map((item) => {\n  const daten = item.json.body || item.json;\n  const email = erstes(daten, ['email', 'E-Mail', 'e-mail', 'mail']).toLowerCase();\n  const telefon = erstes(daten, ['telefon', 'Telefon', 'phone', 'tel']).replace(/[^0-9+]/g, '');\n  const vollerName = erstes(daten, ['name', 'Name']);\n  const name = vollerName || [erstes(daten, ['vorname', 'Vorname']), erstes(daten, ['nachname', 'Nachname'])].join(' ').trim();\n  const nachricht = erstes(daten, ['nachricht', 'Nachricht', 'message', 'anliegen']);\n  const gueltig = name !== '' && /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n\n  return {\n    json: {\n      eingang: new Date().toISOString(),\n      name,\n      email,\n      telefon,\n      nachricht,\n      gueltig,\n    },\n  };\n});"
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b03",
+      "name": "Felder vereinheitlichen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5c01",
+              "leftValue": "={{ $json.gueltig }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b04",
+      "name": "Name und E-Mail vorhanden?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PLATZHALTER_TABELLEN_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Anfragen"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Eingang": "={{ $json.eingang }}",
+            "Name": "={{ $json.name }}",
+            "E-Mail": "={{ $json.email }}",
+            "Telefon": "={{ $json.telefon }}",
+            "Nachricht": "={{ $json.nachricht }}",
+            "Status": "neu"
+          },
+          "matchingColumns": [],
+          "schema": [
+            { "id": "Eingang", "displayName": "Eingang", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Name", "displayName": "Name", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "E-Mail", "displayName": "E-Mail", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Telefon", "displayName": "Telefon", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Nachricht", "displayName": "Nachricht", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "Status", "displayName": "Status", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b05",
+      "name": "Zeile in Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [720, -100]
+    },
+    {
+      "parameters": {
+        "fromEmail": "PLATZHALTER_ABSENDER",
+        "toEmail": "={{ $('Felder vereinheitlichen').item.json.email }}",
+        "subject": "Ihre Anfrage ist angekommen",
+        "emailFormat": "text",
+        "text": "=Guten Tag {{ $('Felder vereinheitlichen').item.json.name }},\n\nvielen Dank für Ihre Anfrage. Sie ist bei uns angekommen, und wir melden uns innerhalb von PLATZHALTER_ANTWORTZEIT bei Ihnen.\n\nViele Grüße\nPLATZHALTER_FIRMENNAME",
+        "options": {}
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b06",
+      "name": "Bestätigung an Absender",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [960, -100]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true }",
+        "options": {}
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b07",
+      "name": "Antwort an Formular",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1200, -100]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": false, \"fehler\": \"Bitte Name und E-Mail-Adresse angeben.\" }",
+        "options": {
+          "responseCode": 422
+        }
+      },
+      "id": "8d3f2a71-6b4e-4c0a-b2f1-4e9a7c3d5b08",
+      "name": "Fehler an Formular",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [720, 120]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Formular-Eingang": {
+      "main": [[{ "node": "Felder vereinheitlichen", "type": "main", "index": 0 }]]
+    },
+    "Felder vereinheitlichen": {
+      "main": [[{ "node": "Name und E-Mail vorhanden?", "type": "main", "index": 0 }]]
+    },
+    "Name und E-Mail vorhanden?": {
+      "main": [
+        [{ "node": "Zeile in Google Sheets", "type": "main", "index": 0 }],
+        [{ "node": "Fehler an Formular", "type": "main", "index": 0 }]
+      ]
+    },
+    "Zeile in Google Sheets": {
+      "main": [[{ "node": "Bestätigung an Absender", "type": "main", "index": 0 }]]
+    },
+    "Bestätigung an Absender": {
+      "main": [[{ "node": "Antwort an Formular", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {},
+  "tags": []
+}
