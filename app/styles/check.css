@@ -167,3 +167,6 @@
 .check-noscript { display: grid; gap: 14px; }
 .check-noscript p { margin: 0; }
 .check-noscript__links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Überschriften bekommen per Skript den Fokus (Screenreader). Kein sichtbarer Rahmen dafür. */
+[data-own-motion] [tabindex="-1"]:focus { outline: none; }
