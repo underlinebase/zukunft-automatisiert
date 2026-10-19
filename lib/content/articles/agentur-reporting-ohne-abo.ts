@@ -1,0 +1,56 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-12-22';
+
+export const agenturReportingOhneAbo: Article = {
+  id: 506,
+  slug: 'agentur-reporting-ohne-abo',
+  title: 'Kunden-Reporting automatisieren: mit n8n statt mit dem nächsten Abo',
+  seoTitle: 'Kunden-Reporting automatisieren mit n8n statt Abo',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Werkzeuge',
+  lead: 'Reporting-Tools kosten Agenturen oft pro Kunde oder Datenquelle. Wie Sie Kunden-Reporting mit n8n automatisieren und wann das Abo doch besser passt.',
+  body: [
+    { kind: 'p', text: 'Die ersten Arbeitstage im Monat sehen in vielen Agenturen gleich aus. Die Kundenbetreuer exportieren Zahlen aus Google Ads, aus dem Meta-Werbekonto und aus Google Analytics. Sie kopieren sie in eine Präsentation, passen Diagramme an und schreiben zu jeder Folie zwei Sätze. Bei fünfzehn Kunden ist damit die halbe Woche weg.' },
+    { kind: 'p', text: 'Die übliche Antwort darauf ist ein Reporting-Werkzeug im Abo. Das funktioniert, wird aber mit jedem neuen Kunden und jeder neuen Datenquelle teurer. In diesem Artikel zeige ich den anderen Weg: einen eigenen Ablauf mit n8n, der die Zahlen holt, den Bericht baut und einen Kommentar vorschreibt. Und ich sage ehrlich, wann das Abo die bessere Wahl bleibt.' },
+    { kind: 'h2', text: 'Was kostet das Kunden-Reporting eine Agentur heute wirklich?' },
+    { kind: 'p', text: 'Meistens mehr, als jemand aufgeschrieben hat. Ein Beispiel mit Annahmen, rechnen Sie mit Ihren Zahlen nach: Eine Agentur betreut 15 Kunden mit monatlichem Bericht. Pro Bericht gehen 90 Minuten drauf, für Export, Folien und Kommentar. Das sind 1.350 Minuten oder gut 22 Stunden im Monat. Fast drei volle Arbeitstage, jeden Monat, für Arbeit, die kein Kunde extra bezahlt.' },
+    { kind: 'p', text: 'Dazu kommt der Zeitpunkt. Die Berichte fallen alle in dieselben Tage, in denen auch die Monatsplanung und die Abrechnung anstehen. Wer da einen Bericht vergisst oder zu spät schickt, hat beim Kunden schnell einen schlechten Eindruck hinterlassen.' },
+    { kind: 'h2', text: 'Wie sieht ein automatisierter Monatsreport mit n8n aus?' },
+    { kind: 'p', text: 'Am ersten des Monats startet der Ablauf von selbst. Für jeden Kunden holt er die Zahlen des Vormonats aus den Werbekonten und der Webanalyse. Für Google Analytics und Google Ads bringt n8n eigene Bausteine mit. Andere Plattformen spreche ich über ihre Schnittstellen direkt an. Die Zahlen landen in einer Tabelle, und zwar pro Kunde und Monat. So entsteht nebenbei eine Datenbasis für Jahresvergleiche, die Ihnen gehört.' },
+    { kind: 'p', text: 'Aus der Tabelle rechnet der Ablauf die Veränderungen zum Vormonat und zum Vorjahresmonat. Dann füllt er Ihre Berichtsvorlage, zum Beispiel eine Präsentation im Agenturdesign oder ein PDF. Die Diagramme entstehen aus denselben Daten. Am Ende liegt für jeden Kunden ein fertiger Entwurf im Ordner, und der Kundenbetreuer bekommt eine Nachricht.' },
+    { kind: 'p', text: 'Der Betreuer schaut drüber, ergänzt seine Einschätzung und gibt frei. Erst dann geht der Bericht an den Kunden. Aus 90 Minuten werden so in der Regel 15 bis 20 Minuten für Prüfen und Kommentieren. Das ist die Annahme, mit der ich in solchen Projekten rechne. Ob es bei Ihnen so kommt, hängt von der Zahl der Datenquellen und vom Anspruch an die Berichte ab.' },
+    { kind: 'h2', text: 'Wie sieht der fertige Bericht aus?' },
+    { kind: 'p', text: 'Das legen Sie fest, nicht das Werkzeug. Bewährt hat sich für Agenturen ein schlanker Aufbau. Ganz oben steht eine Zusammenfassung in drei, vier Sätzen: Was ist im Monat passiert, was war gut, was beobachten wir. Danach kommen die fünf bis acht Kennzahlen, auf die es bei diesem Kunden ankommt, jeweils mit Vormonat und Vorjahresmonat. Zwei oder drei Diagramme zeigen den Verlauf über zwölf Monate.' },
+    { kind: 'p', text: 'Am Ende steht ein Abschnitt, den kein Ablauf schreiben kann: Was haben wir im Monat getan, und was planen wir für den nächsten? Den füllt der Kundenbetreuer. Genau dieser Teil ist es, den Kunden lesen und für den sie die Agentur bezahlen. Wenn die Zahlenarbeit wegfällt, bleibt dafür endlich Zeit. Viele Agenturen merken erst nach der Umstellung, wie dünn dieser Abschnitt vorher war, weil am Ende des Berichts die Luft raus war.' },
+    { kind: 'h2', text: 'Wo die KI im Reporting hilft und wo nicht' },
+    { kind: 'p', text: 'Ein KI-Baustein kann aus den Zahlen einen verständlichen Absatz schreiben. Etwa: „Die Kosten pro Anfrage sind im November um 18 Prozent gestiegen, die Zahl der Anfragen blieb gleich.“ Das spart dem Betreuer die Formulierungsarbeit, und es liest sich für den Kunden besser als eine nackte Tabelle.' },
+    { kind: 'p', text: 'Was die KI nicht kann, ist die Ursache kennen. Sie weiß nicht, dass der Kunde im November eine Woche lang den Onlineshop umgebaut hat oder dass ein Wettbewerber Rabattaktionen gefahren ist. Wenn man sie lässt, erfindet sie trotzdem eine Erklärung. Deshalb gebe ich der KI eine klare Regel mit: Zahlen beschreiben, keine Ursachen nennen. Die Einordnung schreibt der Mensch. Und die KI bekommt nur die Kennzahlen, keine Kundendaten.' },
+    { kind: 'h2', text: 'Wann ist ein Reporting-Abo die bessere Wahl?' },
+    { kind: 'p', text: 'Ein Abo passt besser, wenn Ihre Kunden ein interaktives Dashboard erwarten, in dem sie selbst filtern und klicken. Das baue ich mit n8n nicht nach. Es passt auch besser, wenn Sie sehr viele verschiedene Datenquellen haben, die sich häufig ändern. Die Werbeplattformen passen ihre Schnittstellen regelmäßig an. Ein Reporting-Anbieter fängt das für alle Kunden auf. Bei einem eigenen Ablauf ist das Ihre Aufgabe oder die Ihres Dienstleisters.' },
+    { kind: 'p', text: 'Und bei drei oder vier Kunden lohnt sich der Aufbau eines eigenen Ablaufs selten. Mein Maßstab: Der Aufwand muss sich im ersten Jahr bezahlt machen. Ab etwa zehn Kunden mit ähnlichem Bericht sieht die Rechnung meistens anders aus. Darunter rate ich eher zu einem schlanken Abo oder zu einer guten Vorlage.' },
+    { kind: 'h2', text: 'Was muss vor der Umstellung geklärt sein?' },
+    { kind: 'p', text: 'Zuerst die Kennzahlen. Viele Agenturberichte haben über die Jahre 30 oder 40 Werte angesammelt, von denen der Kunde drei liest. Legen Sie pro Kundentyp fest, welche fünf bis acht Kennzahlen wirklich in den Bericht gehören. Das ist die eigentliche Denkarbeit, und sie verbessert die Berichte auch ohne Automatisierung.' },
+    { kind: 'p', text: 'Dann die Zugänge. Für die Schnittstellen der Werbeplattformen braucht die Agentur eigene Entwicklerzugänge, die die Plattformen teils erst prüfen und freigeben. Das kann ein paar Tage dauern, und ich plane es am Anfang ein. Und schließlich die Vorlage: Ein Bericht, den der Ablauf füllen soll, braucht feste Platzhalter. Ihre bestehende Präsentation lässt sich dafür meist umbauen.' },
+    { kind: 'h2', text: 'Wie lange dauert die Umstellung?' },
+    { kind: 'p', text: 'Ich rechne mit vier Wochen. In der ersten legen wir Kennzahlen und Vorlage fest und beantragen die Zugänge. In der zweiten baue ich die Datenanbindung für zwei oder drei Pilotkunden. In der dritten kommen der KI-Kommentar und die Freigabe dazu, und Ihr Team testet mit echten Daten. In der vierten ziehen alle Kunden um, und ich übergebe den Ablauf mit Dokumentation.' },
+    { kind: 'p', text: 'Danach gehört der Ablauf Ihnen. Er läuft auf einem Server in der EU, die Daten bleiben in Ihren Tabellen, und es gibt keine Gebühr pro Kunde. Wenn eine Plattform ihre Schnittstelle ändert, passe ich den Ablauf an, entweder im Rahmen einer monatlich kündbaren Betreuung oder auf Zuruf.' },
+    { kind: 'h2', text: 'Und der Datenschutz?' },
+    { kind: 'p', text: 'Bei reinen Leistungszahlen aus Werbekonten geht es meist um zusammengefasste Werte ohne Personenbezug. Anders sieht es aus, wenn der Bericht Anfragen oder Leads aus dem CRM des Kunden enthält. Dann sind das personenbezogene Daten, und es braucht einen Vertrag zur Auftragsverarbeitung. Ich halte solche Daten aus dem KI-Baustein heraus und zeige im Bericht nur Summen.' },
+    { kind: 'p', text: 'Wenn neben dem Monatsreport auch die wöchentlichen Statusberichte für Projekte Zeit fressen, lässt sich das nach demselben Muster lösen. Ein Ablauf sammelt erledigte Aufgaben und offene Punkte und schreibt einen Entwurf, den die Projektleitung prüft. Fangen Sie aber mit einem der beiden an, nicht mit beiden gleichzeitig.' },
+  ],
+  notes: [
+    'Das Rechenbeispiel beruht auf Annahmen. Die tatsächliche Zeitersparnis hängt von Datenquellen und Berichtsumfang ab.',
+    'n8n bietet eigene Bausteine (Nodes) für Google Analytics und Google Ads, siehe n8n.io/integrations. Andere Plattformen werden über den HTTP-Request-Baustein angebunden.',
+    'Zugänge zu den Werbe-Schnittstellen richten sich nach den Bedingungen der jeweiligen Plattform und können eine Prüfung durch den Anbieter voraussetzen.',
+  ],
+  related: [
+    { label: 'Ablauf: Monatsreport aus den Werbekonten', href: '/ablaeufe/monatsreport-werbekonten' },
+    { label: 'Ablauf: Statusbericht als Entwurf', href: '/ablaeufe/statusbericht-entwurf' },
+    { label: 'n8n, Make oder Zapier?', href: '/wissen/n8n-make-oder-zapier' },
+    { label: 'Warum ich meistens n8n einsetze', href: '/wissen/warum-ich-meistens-n8n-einsetze' },
+  ],
+};

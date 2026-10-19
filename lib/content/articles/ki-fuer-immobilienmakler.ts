@@ -1,0 +1,57 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2027-01-08';
+
+export const kiFuerImmobilienmakler: Article = {
+  id: 508,
+  slug: 'ki-fuer-immobilienmakler',
+  title: 'KI für Immobilienmakler: Was heute zuverlässig funktioniert',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Makler',
+  lead: 'KI für Immobilienmakler im Alltag: Exposé-Entwürfe, Portal-Anfragen, Besichtigungstermine und Unterlagen. Was zuverlässig funktioniert und was nicht.',
+  body: [
+    { kind: 'p', text: 'Wer als Makler in den letzten Monaten auf einer Messe war oder seine Mails gelesen hat, kennt die Versprechen. KI schreibt Exposés in Sekunden, bewertet Immobilien auf Knopfdruck und qualifiziert Interessenten von allein. Einiges davon stimmt. Vieles ist Werbung.' },
+    { kind: 'p', text: 'Ich beschreibe hier vier Stellen im Maklerbüro, an denen KI und Automatisierung heute zuverlässig funktionieren. Und ein paar, bei denen ich abrate. Mein Blick ist der eines Automatisierungs-Architekten, nicht der eines Maklers. Ich kenne die Abläufe aus Gesprächen mit Maklern, die Verhandlung am Küchentisch überlasse ich Ihnen.' },
+    { kind: 'h2', text: 'Wo hilft KI einem Immobilienmakler wirklich?' },
+    { kind: 'p', text: 'Fast immer im Hintergrund. Ein Objekt durchläuft im Büro dieselben Stationen: Unterlagen beim Eigentümer einsammeln, Exposé schreiben, auf Portalen veröffentlichen, Anfragen beantworten, Besichtigungen abstimmen, Rückmeldungen an den Eigentümer geben. Jede dieser Stationen besteht zum großen Teil aus Schreibarbeit und Abstimmung. Dort spart KI Zeit, nicht beim Verkaufen selbst.' },
+    { kind: 'h2', text: 'Kann KI ein Exposé schreiben?' },
+    { kind: 'p', text: 'Einen guten Entwurf, ja. Die Grundlage sind die Objektdaten aus Ihrer Maklersoftware, Ihre Notizen von der Besichtigung und ein paar Exposés, die Ihnen besonders gut gefallen haben. Daraus schreibt die KI Objektbeschreibung, Ausstattung und Lage in Ihrem Ton. Sie lesen den Entwurf, ändern, was nicht passt, und geben frei. Aus einer Stunde Schreiben werden so meist eine Viertelstunde Prüfen.' },
+    { kind: 'p', text: 'Der Ablauf dahinter ist einfach. Sobald Sie ein Objekt in der Maklersoftware auf einen bestimmten Status setzen, etwa „Exposé in Arbeit“, holt er die Daten, schickt sie mit Ihren Vorgaben an das KI-Modell und legt den Entwurf als Dokument oder direkt im Objekt ab. Sie bekommen eine Nachricht. Für Wohnungen, Häuser und Gewerbeobjekte lassen sich unterschiedliche Vorlagen hinterlegen, weil ein Lagerhallen-Exposé anders klingt als eines für eine Altbauwohnung.' },
+    { kind: 'p', text: 'Zwei Regeln gebe ich der KI dabei immer mit. Erstens: Nur Merkmale verwenden, die in den Daten stehen. Sonst taucht plötzlich eine Fußbodenheizung auf, die es nie gab, weil sie bei ähnlichen Objekten oft vorkommt. Zweitens: Pflichtangaben kommen nicht aus der KI. Die Angaben aus dem Energieausweis, die nach § 87 Gebäudeenergiegesetz in kommerzielle Immobilienanzeigen gehören, übernimmt der Ablauf direkt aus den Datenfeldern.' },
+    { kind: 'p', text: 'Bei Bildern bin ich vorsichtig. Mit KI aufgehübschte Fotos oder virtuell möblierte Räume können sinnvoll sein. Kennzeichnen Sie sie aber klar. Ein Interessent, der bei der Besichtigung merkt, dass der Garten auf dem Foto grüner war als in Wirklichkeit, ist verloren.' },
+    { kind: 'h2', text: 'Wie beantworte ich Portal-Anfragen schneller?' },
+    { kind: 'p', text: 'Das ist für viele Büros der Ablauf mit dem größten Effekt. Anfragen von den Portalen kommen per Mail oder direkt in die Maklersoftware. Ein Ablauf legt den Interessenten an, verknüpft ihn mit dem Objekt und schickt innerhalb weniger Minuten eine Antwort mit dem Exposé und den nächsten Schritten. Darin stehen ein paar Fragen, etwa nach dem gewünschten Besichtigungszeitraum und dem Stand der Finanzierung.' },
+    { kind: 'p', text: 'Die KI hilft beim Sortieren. Sie liest die Anfrage und die Antworten und markiert, wer konkrete Angaben gemacht hat und wer nur eine Zeile ohne Telefonnummer geschickt hat. Die Entscheidung, wen Sie zuerst anrufen, treffen weiterhin Sie. Rechtliche Texte wie Hinweise zur Provision oder zum Widerruf schreibt die KI nicht. Die kommen als feste, geprüfte Bausteine in die Mail. Für Maklerverträge über Wohnungen und Einfamilienhäuser verlangt das Gesetz Textform. Wie Sie das sauber abbilden, klären Sie mit Ihrem Anwalt oder Verband, nicht mit einem Sprachmodell.' },
+    { kind: 'h2', text: 'Besichtigungstermine ohne Telefon-Pingpong' },
+    { kind: 'p', text: 'Für jedes Objekt legen Sie Besichtigungsfenster fest. Interessenten, die Sie freigeben, bekommen einen Link und wählen selbst einen Termin. Sie bekommen eine Bestätigung mit Adresse und einen Tag vorher eine Erinnerung. Sagt jemand ab, bekommt der Nächste auf der Warteliste automatisch ein Angebot für den frei gewordenen Termin.' },
+    { kind: 'p', text: 'Nach der Besichtigung fragt der Ablauf nach, ob Interesse besteht, und sammelt die Rückmeldungen. Daraus entsteht ein kurzer Bericht für den Eigentümer: wie viele Besichtigungen, welche Rückmeldungen, welche Einwände. Den Bericht prüfen Sie, bevor er rausgeht. Eigentümer schätzen regelmäßige Rückmeldung, und Ihnen erspart es den Anruf, den Sie sonst jeden Freitag vor sich herschieben.' },
+    { kind: 'h2', text: 'Unterlagen einsammeln, ohne hinterherzutelefonieren' },
+    { kind: 'p', text: 'Grundbuchauszug, Teilungserklärung, Energieausweis, Protokolle der Eigentümerversammlung, Grundrisse. Bis alles da ist, vergehen oft Wochen. Ein Ablauf schickt dem Eigentümer eine Liste mit den fehlenden Unterlagen und einem Link zum Hochladen. Was fehlt, wird nach ein paar Tagen freundlich erinnert. Sie sehen jederzeit den Stand.' },
+    { kind: 'p', text: 'Eine KI kann beim Hochladen einen ersten Blick werfen: Ist das überhaupt ein Grundbuchauszug oder versehentlich die Nebenkostenabrechnung? Das ist ein Hinweis, keine Prüfung. Inhaltlich lesen Sie die Unterlagen selbst.' },
+    { kind: 'h2', text: 'Funktioniert das mit onOffice, FLOWFACT oder Propstack?' },
+    { kind: 'p', text: 'Die gängigen Maklerprogramme haben Schnittstellen, über die sich Objekte, Kontakte und Aktivitäten lesen und teils auch schreiben lassen. Was im Einzelnen geht, hängt vom Anbieter, vom Tarif und von der Freischaltung ab. Manche Funktionen haben die Programme auch schon selbst eingebaut, etwa automatische Antworten auf Anfragen. Dann baue ich nichts nach, was Sie schon bezahlen.' },
+    { kind: 'p', text: 'Deshalb schaue ich mir vor jedem Projekt an, was Ihre Software heute schon kann und wo die Lücke ist. Oft geht es nur um die Verbindung zu anderen Werkzeugen: Kalender, Mailpostfach, Ablage, KI-Baustein. Die baue ich mit n8n auf Servern in der EU.' },
+    { kind: 'h2', text: 'Was ist beim Datenschutz im Maklerbüro zu beachten?' },
+    { kind: 'p', text: 'Im Maklerbüro laufen viele personenbezogene Daten durch: Namen und Telefonnummern von Interessenten, Angaben zur Finanzierung, Unterlagen der Eigentümer mit Grundbuchdaten. Sobald ein KI-Baustein oder ein Automatisierungswerkzeug diese Daten verarbeitet, brauchen Sie mit jedem beteiligten Anbieter einen Vertrag zur Auftragsverarbeitung. Und Sie sollten wissen, wo die Server stehen.' },
+    { kind: 'p', text: 'Ich halte es in meinen Abläufen so: Die KI bekommt nur, was sie für ihre Aufgabe braucht. Für einen Exposé-Entwurf reichen die Objektdaten, Namen der Eigentümer haben darin nichts verloren. Für das Sortieren von Anfragen braucht sie den Text der Anfrage, nicht die komplette Kontakthistorie. Die Abläufe selbst laufen auf Servern in der EU, und für die KI-Modelle wähle ich Anbieter und Einstellungen, bei denen Ihre Daten nicht zum Training verwendet werden. Das ist keine Rechtsberatung. Wenn Sie einen Datenschutzbeauftragten haben, beziehe ich ihn gern ein.' },
+    { kind: 'h2', text: 'Was KI für Makler nicht zuverlässig kann' },
+    { kind: 'p', text: 'Eine belastbare Wertermittlung. Eine KI kann Vergleichsangebote zusammentragen und eine Spanne nennen. Für ein Gespräch mit dem Eigentümer, in dem es um viel Geld geht, reicht das nicht. Hier zählen Ihre Marktkenntnis und anerkannte Bewertungsverfahren.' },
+    { kind: 'p', text: 'Auch automatisierte Eigentümer-Akquise per Massenmail rate ich ab. Werbemails an Verbraucher ohne deren Einwilligung sind nach dem Wettbewerbsrecht unzulässig. Und eine KI, die im Namen des Maklers mit Interessenten verhandelt, halte ich für eine schlechte Idee. Vertrauen ist in diesem Geschäft alles.' },
+    { kind: 'h2', text: 'Womit sollte ein Maklerbüro anfangen?' },
+    { kind: 'p', text: 'Mit dem Ablauf, der Sie jede Woche am meisten Zeit kostet. In vielen Büros sind das die Portal-Anfragen, in anderen die Exposés oder das Nachlaufen hinter Unterlagen. Wie viel Zeit allein bei den Anfragen zusammenkommt, zeigt ein Rechenbeispiel mit Minutenwerten in einem eigenen Artikel.' },
+    { kind: 'p', text: 'Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis, den Sie nach dem Erstgespräch schriftlich bekommen. Läuft er danach nicht im Alltag, arbeite ich kostenlos weiter. Ich arbeite remote mit Maklerbüros in ganz Deutschland, meist per Video.' },
+  ],
+  notes: [
+    'Pflichtangaben in Immobilienanzeigen: § 87 Gebäudeenergiegesetz (GEG). Textform für Maklerverträge über Wohnungen und Einfamilienhäuser: § 656a BGB. Werbung per E-Mail ohne Einwilligung: § 7 Abs. 2 UWG. Keine Rechtsberatung.',
+    'Welche Schnittstellen onOffice, FLOWFACT oder Propstack bieten und was in Ihrem Tarif freigeschaltet ist, prüfe ich vor dem Start anhand der Dokumentation des Anbieters.',
+  ],
+  related: [
+    { label: 'Ablauf: Exposé-Entwurf mit KI', href: '/ablaeufe/expose-entwurf-mit-ki' },
+    { label: 'Ablauf: Portal-Anfragen sofort beantworten', href: '/ablaeufe/portal-anfragen-sofort-beantworten' },
+    { label: 'Rechenbeispiel: Makler-Anfragen', href: '/wissen/rechenbeispiel-makler-anfragen' },
+    { label: 'Portal-Anfragen schnell beantworten', href: '/wissen/portal-anfragen-schnell-beantworten' },
+  ],
+};
