@@ -10,6 +10,7 @@ import JsonLd from '@/components/seo/json-ld';
 import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
+import Breadcrumbs from '@/components/layout/breadcrumbs';
 
 export const metadata: Metadata = {
   title: seoTitle('Marco Gundlach: KI-Berater und KI-Realist'),
@@ -34,7 +35,7 @@ export default function AboutPage() {
       <JsonLd data={SCHEMA} />
       <section className="page-hero">
         <div className="container page-hero__inner">
-          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Über mich</span></nav>
+          <Breadcrumbs items={[{ name: 'Über mich' }]} />
           <span className="label">Über mich</span>
           <h1>{ABOUT_PAGE.title}</h1>
           <p className="lead">{ABOUT_PAGE.lead}</p>

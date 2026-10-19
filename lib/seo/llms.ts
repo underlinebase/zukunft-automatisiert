@@ -5,6 +5,9 @@ import { SITE } from '@/lib/content/site';
 import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 import { ARTICLES } from '@/lib/content/articles';
 import { publishedArticles } from '@/lib/content/publishing';
+import { listedPages } from '@/lib/content/pages';
+import { BRANCHEN } from '@/lib/content/ablaeufe/types';
+import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { EXPERIENCE, FACTS, FAQS, GUARANTEE, WEEKS } from '@/lib/content/home';
 import { KI_BERATUNG_PATH, KI_BERATUNG_SEO } from '@/lib/content/ki-beratung';
 
@@ -48,6 +51,7 @@ export function buildLlmsTxt(): string {
     link('Über mich', '/ueber-mich', 'Werdegang, Stationen und Zertifikate von Marco Gundlach'),
     link('Kontakt', '/kontakt', 'Ablauf schildern oder 30 Minuten Gespräch buchen'),
     link('Wissen', '/wissen', 'Praxisartikel zu Automatisierung und KI ohne Hype'),
+    ...listedPages().map((page) => link(page.name, page.path, page.description)),
   ]);
 
   const industries = section(
@@ -65,5 +69,10 @@ export function buildLlmsTxt(): string {
     FAQS.map((faq) => `- ${faq.q} ${faq.a}`),
   );
 
-  return [intro, person, offer, process, pages, industries, articles, faqs].join('\n\n') + '\n';
+  const ablaeufe = section(
+    'Ablauf-Bibliothek',
+    publishedAblaeufe().map((ablauf) => link(`${ablauf.title} (${BRANCHEN[ablauf.branche]})`, ablaufHref(ablauf.slug), ablauf.lead)),
+  );
+
+  return [intro, person, offer, process, pages, industries, articles, ablaeufe, faqs].join('\n\n') + '\n';
 }

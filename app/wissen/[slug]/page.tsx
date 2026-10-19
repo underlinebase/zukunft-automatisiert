@@ -7,6 +7,7 @@ import JsonLd from '@/components/seo/json-ld';
 import { metaDescription, seoTitle } from '@/lib/seo/meta';
 import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
+import Breadcrumbs from '@/components/layout/breadcrumbs';
 
 // Stündlich neu erzeugen. Geplante Artikel sind beim Build nicht dabei und werden ab ihrem Erscheinungstag
 // beim ersten Aufruf erzeugt (dynamicParams ist standardmäßig an).
@@ -66,11 +67,7 @@ export default async function ArticlePage({ params }: PageProps) {
       <JsonLd data={schema} />
       <article className="article">
         <div className="article__body">
-          <nav className="crumbs" aria-label="Brotkrumen" style={{ marginBottom: 24 }}>
-            <Link href="/">Start</Link><span aria-hidden="true">/</span>
-            <Link href="/wissen">Wissen</Link><span aria-hidden="true">/</span>
-            <span>{article.category}</span>
-          </nav>
+          <Breadcrumbs className="crumbs--spaced" items={[{ name: 'Wissen', path: '/wissen' }, { name: article.title }]} />
           <span className="label" style={{ marginBottom: 16 }}>{article.category} · {article.read_minutes} Min. Lesezeit</span>
           <h1>{article.title}</h1>
           <p className="article__byline">

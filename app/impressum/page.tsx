@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Breadcrumbs from '@/components/layout/breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Impressum',
@@ -12,7 +12,7 @@ export default function ImpressumPage() {
     <>
       <section className="page-hero">
         <div className="container page-hero__inner">
-          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Impressum</span></nav>
+          <Breadcrumbs items={[{ name: 'Impressum' }]} />
           <h1>Impressum</h1>
         </div>
       </section>

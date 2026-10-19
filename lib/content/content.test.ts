@@ -3,12 +3,13 @@ import { INDUSTRIES, INDUSTRY_LINKS, industryHref } from './branchen';
 import { FAQS, LANDING_GENERAL_FAQS } from './home';
 import { ARTICLES } from './articles';
 import { isPublished, todayIso } from './publishing';
+import { aiPatternHits } from './style';
 import * as KI_BERATUNG from './ki-beratung';
 import { SITE } from './site';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/seo/schema';
 import { seoTitle, TITLE_SEPARATOR } from '@/lib/seo/meta';
 
-const RESERVED_PATHS = ['ueber-mich', 'kontakt', 'wissen', 'impressum', 'datenschutz', 'api', 'ki-beratung'];
+const RESERVED_PATHS = ['ueber-mich', 'kontakt', 'wissen', 'impressum', 'datenschutz', 'api', 'ki-beratung', 'ablaeufe', 'garantie', 'automatisierungs-check', 'ki-im-kleinbetrieb', 'vorlagen'];
 const SEO_TITLE_MAX = 60;
 const SEO_DESCRIPTION_MAX = 160;
 
@@ -80,20 +81,6 @@ describe('structured data', () => {
     expect(schema.url).toBe(`https://www.zukunft-automatisiert.de/${industry.slug}`);
   });
 });
-
-// Quelle: Wikipedia „Anzeichen für KI-generierte Inhalte“ und die Stilregeln aus dem Briefing.
-const FORBIDDEN: RegExp[] = [
-  /—/,
-  /\bnahtlos/i, /ganzheitlich/i, /holistisch/i, /maßgeschneidert/i, /essenziell/i, /\bzentral/i,
-  /tiefgreifend/i, /transformativ/i, /optimier/i, /\bnutz(e|en|t|te|ten)?\b/i, /ermöglich/i, /landschaft/i,
-  /in der heutigen/i, /es ist wichtig/i, /zusammenfassend/i, /abschließend/i, /tauchen wir/i,
-  /kein geheimnis/i, /nicht nur\b/i, /darüber hinaus/i, /\bzudem\b/i, /des weiteren/i, /\brobust/i,
-  /umfassend/i, /maximier/i, /\bförder(n|t|te|ten)\b/i, /entscheidend/i, /bahnbrechend/i, /nächste level/i, /unterm strich/i,
-];
-
-function aiPatternHits(text: string): string[] {
-  return FORBIDDEN.filter((pattern) => pattern.test(text)).map(String);
-}
 
 describe('Wissen-Artikel: keine typischen KI-Muster', () => {
   test.each(ARTICLES.map((article) => [article.slug, article] as const))('%s', (_slug, article) => {

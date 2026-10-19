@@ -143,6 +143,24 @@ export function articleSchema(article: Article): JsonLd {
   };
 }
 
+/** Seite eines Ablaufs in der Ablauf-Bibliothek (Anleitung mit Rechenbeispiel). */
+export function ablaufSchema(ablauf: { slug: string; title: string; lead: string; datePublished: string }, path: string): JsonLd {
+  const url = `${SITE.url}${path}`;
+  return {
+    '@type': 'TechArticle',
+    '@id': `${url}#ablauf`,
+    headline: ablauf.title,
+    description: ablauf.lead,
+    datePublished: ablauf.datePublished,
+    dateModified: ablauf.datePublished,
+    inLanguage: LANGUAGE,
+    url,
+    mainEntityOfPage: url,
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+  };
+}
+
 /** Übersichtsseite „Wissen“ mit allen Artikeln. */
 export function collectionSchema(articles: readonly Article[]): JsonLd {
   return {

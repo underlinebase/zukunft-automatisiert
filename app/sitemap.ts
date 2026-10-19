@@ -3,6 +3,8 @@ import { getArticles } from '@/lib/db';
 import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 import { SITE } from '@/lib/content/site';
 import { KI_BERATUNG_PATH } from '@/lib/content/ki-beratung';
+import { listedPages } from '@/lib/content/pages';
+import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 
 // Stündlich neu erzeugen, damit geplante Artikel am Erscheinungstag auftauchen.
 export const revalidate = 3600;
@@ -34,5 +36,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...industryPages, ...articlePages];
+  const extraPages: MetadataRoute.Sitemap = listedPages().map((page) => ({
+    url: `${base}${page.path}`,
+    changeFrequency: 'monthly',
+    priority: page.priority,
+  }));
+
+  const ablaufPages: MetadataRoute.Sitemap = publishedAblaeufe().map((ablauf) => ({
+    url: `${base}${ablaufHref(ablauf.slug)}`,
+    lastModified: ablauf.datePublished,
+    changeFrequency: 'yearly',
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...extraPages, ...industryPages, ...articlePages, ...ablaufPages];
 }

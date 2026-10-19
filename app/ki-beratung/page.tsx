@@ -32,6 +32,7 @@ import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 import FlowHero from '@/components/flow/flow-hero';
+import Breadcrumbs from '@/components/layout/breadcrumbs';
 
 const PROCESS_ANCHOR = 'ablauf';
 
@@ -73,7 +74,7 @@ export default function KiBeratungPage() {
       <section className="page-hero">
         <div className="container page-hero__split">
         <div className="page-hero__inner">
-          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>{KI_BERATUNG_SEO.breadcrumb}</span></nav>
+          <Breadcrumbs items={[{ name: KI_BERATUNG_SEO.breadcrumb }]} />
           <span className="label">{KI_BERATUNG_HERO.eyebrow}</span>
           <h1>{KI_BERATUNG_HERO.title}</h1>
           <p className="lead">{KI_BERATUNG_HERO.lead}</p>

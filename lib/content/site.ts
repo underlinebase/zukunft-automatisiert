@@ -1,5 +1,7 @@
 // Zentrale Angaben, die an mehreren Stellen der Website vorkommen.
 
+import { ABLAEUFE_PAGE, CHECK_PAGE, DATEN_PAGE, GARANTIE_PAGE, VORLAGEN_PAGE } from './pages';
+
 export const SITE = {
   name: 'Zukunft. Automatisiert.',
   // Kanonische Adresse: Die Domain ohne www leitet bei Vercel auf www weiter.
@@ -27,12 +29,29 @@ export interface NavItem extends NavLink {
  * sie werden gezielt über Anzeigen, Mailings oder Suchmaschinen angesteuert.
  */
 export const NAV_ITEMS: NavItem[] = [
-  { href: '/#angebot', label: 'Angebot', hint: 'Ein Ablauf in 4 Wochen · Festpreis' },
+  {
+    href: '/#angebot',
+    label: 'Angebot',
+    hint: 'Ein Ablauf in 4 Wochen · Festpreis',
+    children: [
+      { href: GARANTIE_PAGE.path, label: GARANTIE_PAGE.name },
+      { href: CHECK_PAGE.path, label: CHECK_PAGE.name },
+    ],
+  },
   { href: '/ki-beratung', label: 'KI-Beratung' },
   { href: '/#branchen', label: 'Branchen' },
   { href: '/#so-laeuft-es', label: 'So läuft es' },
   { href: '/ueber-mich', label: 'Über mich' },
-  { href: '/wissen', label: 'Wissen' },
+  {
+    href: '/wissen',
+    label: 'Wissen',
+    children: [
+      { href: '/wissen', label: 'Artikel' },
+      { href: ABLAEUFE_PAGE.path, label: ABLAEUFE_PAGE.name },
+      { href: DATEN_PAGE.path, label: DATEN_PAGE.name },
+      ...(VORLAGEN_PAGE.listed ? [{ href: VORLAGEN_PAGE.path, label: VORLAGEN_PAGE.name }] : []),
+    ],
+  },
 ];
 
 /** Sprungmarke zum Abschluss-Formular auf derselben Seite (Startseite, Landingpages, Über mich). */

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { SITE } from '@/lib/content/site';
 import InquiryForm from '@/components/sections/inquiry-form';
 import JsonLd from '@/components/seo/json-ld';
 import { seoTitle } from '@/lib/seo/meta';
 import { breadcrumbSchema, contactPageSchema, graph, organizationSchema } from '@/lib/seo/schema';
+import Breadcrumbs from '@/components/layout/breadcrumbs';
 
 export const metadata: Metadata = {
   title: seoTitle('Kontakt: Ablauf schildern oder 30 Minuten sprechen'),
@@ -29,7 +29,7 @@ export default function KontaktPage() {
       <JsonLd data={SCHEMA} />
       <section className="page-hero">
         <div className="container page-hero__inner">
-          <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>Kontakt</span></nav>
+          <Breadcrumbs items={[{ name: 'Kontakt' }]} />
           <span className="label">Kontakt</span>
           <h1>Schildern Sie mir Ihren Ablauf.</h1>
           <p className="lead">

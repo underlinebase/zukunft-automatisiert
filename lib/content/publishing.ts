@@ -18,5 +18,10 @@ export function isPublished(article: Pick<Article, 'datePublished'>, now: Date =
 }
 
 export function publishedArticles(articles: readonly Article[], now: Date = new Date()): Article[] {
-  return articles.filter((article) => isPublished(article, now));
+  return publishedItems(articles, now);
+}
+
+/** Für alle Inhalte mit datePublished (Artikel, Abläufe). */
+export function publishedItems<T extends Pick<Article, 'datePublished'>>(items: readonly T[], now: Date = new Date()): T[] {
+  return items.filter((item) => isPublished(item, now));
 }
