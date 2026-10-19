@@ -42,7 +42,7 @@ export const DATEN_PAGE: SitePage = {
   path: '/ki-im-kleinbetrieb',
   name: 'KI im Kleinbetrieb: Zahlen',
   description:
-    'Wie viele kleine Betriebe KI 2026 wirklich nutzen: Studien von Bitkom, Handwerk und Kammern eingeordnet, mit Quellen und Widersprüchen.',
+    'Wie viele kleine Betriebe KI 2026 wirklich einsetzen: Studien von Bitkom, Handwerk und Kammern eingeordnet, mit Quellen und Widersprüchen.',
   priority: 0.6,
   listed: true,
 };

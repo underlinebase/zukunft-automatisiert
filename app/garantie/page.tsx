@@ -28,7 +28,8 @@ import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
 const PATH_ANCHOR = 'pruefung';
 
 export const metadata: Metadata = {
-  title: seoTitle(GARANTIE_PAGE.name),
+  // Suchbegriff vorn, das Versprechen gleich im Titel.
+  title: seoTitle('Garantie: Läuft der Ablauf nicht, arbeite ich weiter'),
   description: GARANTIE_PAGE.description,
   alternates: { canonical: GARANTIE_PAGE.path },
   robots: GARANTIE_PAGE.listed ? undefined : { index: false, follow: true },
