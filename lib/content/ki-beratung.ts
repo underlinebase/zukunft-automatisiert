@@ -3,6 +3,7 @@
 // Ich-Form, Ansprache mit „Sie“, keine erfundenen Zahlen oder Kundenfälle. Stilregeln prüft lib/content/content.test.ts.
 
 import type { NavLink } from './site';
+import type { FlowStep } from '@/lib/flow/scene';
 import type { Faq, Principle } from './types';
 
 export const KI_BERATUNG_PATH = '/ki-beratung';
@@ -197,3 +198,12 @@ export const KI_BERATUNG_READING = {
     { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
   ] satisfies NavLink[],
 };
+
+/** Schritte der 3D-Grafik im Seitenkopf. Hervorgehoben ist die Freigabe durch den Menschen. */
+export const KI_BERATUNG_FLOW: readonly FlowStep[] = [
+  { label: 'Anfrage kommt' },
+  { label: 'KI liest mit' },
+  { label: 'Entwurf entsteht' },
+  { label: 'Sie prüfen', highlight: true },
+  { label: 'Erledigt' },
+];

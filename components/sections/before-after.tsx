@@ -88,7 +88,7 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
   });
 
   return (
-    <section className="section tone-gray" ref={sectionRef} aria-labelledby="ba-title">
+    <section className="section tone-gray" ref={sectionRef} aria-labelledby="ba-title" data-own-motion>
       <div className="container before-after">
         <div className="before-after__intro">
           <span className="label">Vorher und nachher</span>

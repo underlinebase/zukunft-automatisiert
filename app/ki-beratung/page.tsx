@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CLOSING, EXPERIENCE, GUARANTEE, HOME_CALCULATOR, WEEKS, WEEKS_INTRO } from '@/lib/content/home';
 import {
+  KI_BERATUNG_FLOW,
   KI_BERATUNG_ABOUT,
   KI_BERATUNG_COSTS,
   KI_BERATUNG_FAQS,
@@ -30,6 +31,7 @@ import AboutTeaser from '@/components/sections/about-teaser';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
+import FlowHero from '@/components/flow/flow-hero';
 
 const PROCESS_ANCHOR = 'ablauf';
 
@@ -69,7 +71,8 @@ export default function KiBeratungPage() {
     <>
       <JsonLd data={SCHEMA} />
       <section className="page-hero">
-        <div className="container page-hero__inner">
+        <div className="container page-hero__split">
+        <div className="page-hero__inner">
           <nav className="crumbs" aria-label="Brotkrumen"><Link href="/">Start</Link><span aria-hidden="true">/</span><span>{KI_BERATUNG_SEO.breadcrumb}</span></nav>
           <span className="label">{KI_BERATUNG_HERO.eyebrow}</span>
           <h1>{KI_BERATUNG_HERO.title}</h1>
@@ -82,6 +85,8 @@ export default function KiBeratungPage() {
               {KI_BERATUNG_HERO.secondaryCta}
             </a>
           </div>
+        </div>
+        <FlowHero steps={KI_BERATUNG_FLOW} />
         </div>
       </section>
 

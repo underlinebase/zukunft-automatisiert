@@ -158,6 +158,14 @@
 .page-hero__inner > * { max-width: 860px; }
 .page-hero h1 { font-size: clamp(36px, 4.6vw, 60px); }
 .page-hero .lead { margin: 0; }
+/* Seitenkopf mit 3D-Grafik daneben (z. B. /ki-beratung). Unter 1024 px nur Text. */
+.flow-hero { display: none; }
+@media (min-width: 1024px) {
+  .page-hero__split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .flow-hero { display: block; position: relative; height: 480px; opacity: 0; transition: opacity 0.8s ease; }
+  .flow-hero.is-ready { opacity: 1; }
+  .flow-hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+}
 .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 15px; color: var(--c-text-muted); }
 .crumbs a { color: var(--c-text-muted); text-decoration: none; }
 .crumbs a:hover { color: var(--c-brand); text-decoration: underline; }

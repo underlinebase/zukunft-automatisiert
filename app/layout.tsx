@@ -5,6 +5,7 @@ import './styles/sections.css';
 import './styles/week.css';
 import './styles/pages.css';
 import './styles/landing.css';
+import ScrollReveal from '@/components/motion/scroll-reveal';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
 import { NAV_ITEMS, SITE } from '@/lib/content/site';
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip-link" href="#inhalt">Zum Inhalt springen</a>
         <SiteHeader nav={NAV_ITEMS} minimalPaths={LANDING_PATHS} />
         <main id="inhalt">{children}</main>
+        <ScrollReveal />
         <SiteFooter />
       </body>
     </html>
