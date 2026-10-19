@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-12-15';
+
+export const automatisierungFuerCoaches: Article = {
+  id: 504,
+  slug: 'automatisierung-fuer-coaches',
+  title: 'Automatisierung für Coaches: Von der Anfrage bis zur ersten Sitzung',
+  seoTitle: 'Automatisierung für Coaches: Anfrage bis erste Sitzung',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Methodik',
+  lead: 'Automatisierung für Coaches beginnt nicht beim Chatbot, sondern beim Weg von der Anfrage bis zur ersten Sitzung. Welche Schritte sich lohnen und welche nicht.',
+  body: [
+    { kind: 'p', text: 'Sonntagabend, halb zehn. Drei neue Anfragen im Postfach, eine über das Kontaktformular, zwei als Nachricht auf LinkedIn. Eine Klientin hat den Fragebogen immer noch nicht ausgefüllt, ein anderer wartet auf seine Rechnung. Und für Dienstag fehlt noch der Videolink. So oder ähnlich beschreiben mir Coaches ihre Woche.' },
+    { kind: 'p', text: 'Das Coaching selbst lässt sich nicht automatisieren, und das sollte es auch nicht. Der Weg dorthin schon. Zwischen der ersten Anfrage und der ersten Sitzung liegen bei den meisten Coaches acht bis zehn kleine Handgriffe, die sich mit jedem neuen Klienten wiederholen. Um diese Handgriffe geht es in diesem Artikel.' },
+    { kind: 'h2', text: 'Wo verliert ein Coach zwischen Anfrage und erster Sitzung Zeit?' },
+    { kind: 'p', text: 'Wenn ich mit Coaches den Weg eines neuen Klienten aufzeichne, sieht er fast immer ähnlich aus. Die Anfrage kommt über einen von mehreren Kanälen. Sie antworten mit ein paar Infos und schlagen Termine für ein Kennenlerngespräch vor. Es geht ein paarmal hin und her. Nach dem Gespräch schicken Sie ein Angebot oder eine Vereinbarung. Dann folgen Rechnung, Zahlungseingang, Fragebogen, Terminbestätigung und Videolink.' },
+    { kind: 'p', text: 'Keiner dieser Schritte ist schwer. Aber jeder unterbricht Sie, und jeder kann liegen bleiben. Das Teure daran ist selten die Minute, die er kostet. Teuer wird es, wenn eine Anfrage drei Tage unbeantwortet bleibt und die Interessentin inzwischen bei jemand anderem gebucht hat.' },
+    { kind: 'h2', text: 'Schritt 1: Anfragen sammeln und am selben Tag antworten' },
+    { kind: 'p', text: 'Der erste Ablauf sammelt alle Anfragen an einer Stelle. Das Kontaktformular schreibt direkt in eine Liste, Mails an Ihre Anfrageadresse ebenfalls. Innerhalb weniger Minuten bekommt die Person eine Antwort. Nicht als vorgetäuschte persönliche Mail, sondern ehrlich: Danke für die Nachricht, hier sind die wichtigsten Infos zu meinem Angebot, und hier können Sie sich direkt einen Termin für ein kostenloses Kennenlernen aussuchen.' },
+    { kind: 'p', text: 'Nachrichten aus sozialen Netzwerken sind schwieriger. Die Plattformen geben ihre Postfächer nur eingeschränkt für Automatisierung frei, und ich halte mich an deren Regeln. Hier reicht oft ein fester Antworttext, den Sie per Kopieren einfügen, mit dem Link zur Buchungsseite. Das dauert zehn Sekunden.' },
+    { kind: 'h2', text: 'Schritt 2: Das Kennenlerngespräch selbst buchen lassen' },
+    { kind: 'p', text: 'Statt drei Mails mit Terminvorschlägen gibt es eine Buchungsseite, die Ihre freien Zeiten aus dem Kalender zeigt. Die Interessentin wählt einen Termin, bekommt sofort eine Bestätigung mit Videolink und einen Tag vorher eine Erinnerung. Verschieben oder absagen kann sie über einen Link in derselben Mail.' },
+    { kind: 'p', text: 'Wichtig ist, dass Sie die Regeln festlegen. Wie viele Kennenlerngespräche pro Woche? Wie viel Puffer zwischen zwei Terminen? Wie kurzfristig darf jemand buchen? Ein Buchungssystem ohne diese Grenzen füllt Ihnen sonst die Woche mit Erstgesprächen, und für die zahlenden Klienten bleibt zu wenig Platz.' },
+    { kind: 'h2', text: 'Schritt 3: Nach dem Gespräch kommen Angebot, Vereinbarung und Rechnung' },
+    { kind: 'p', text: 'Nach dem Kennenlernen entscheiden Sie. Passt es, klicken Sie in der Liste auf „Angebot schicken“ und wählen das Paket. Der Ablauf erstellt das Angebot aus Ihrer Vorlage, mit Namen, Paket, Preis und Zeitraum, und schickt es raus. Nimmt die Person an, geht die Rechnung automatisch hinterher. Kommt nach einer Woche keine Antwort, erinnert eine freundliche Mail daran, die Sie vorher selbst formuliert haben.' },
+    { kind: 'p', text: 'Wer möchte, kann eine KI aus seinen Gesprächsnotizen einen persönlichen Absatz für das Angebot entwerfen lassen. Etwa: „Sie haben erzählt, dass Sie nach dem Wechsel in die Führungsrolle …“. Diesen Absatz lesen Sie vor dem Versand und ändern ihn, wo nötig. Ohne Ihre Freigabe geht nichts raus.' },
+    { kind: 'h2', text: 'Schritt 4: Der Vorab-Fragebogen, den auch wirklich jemand ausfüllt' },
+    { kind: 'p', text: 'Viele Coaches arbeiten mit einem Fragebogen vor der ersten Sitzung, und viele laufen ihm hinterher. Der Ablauf verschickt ihn, sobald die Zahlung da ist, und erinnert nach drei Tagen. Ist er ausgefüllt, bekommen Sie eine Nachricht. Auf Wunsch fasst eine KI die Antworten auf einer Seite zusammen, damit Sie vor der Sitzung in fünf Minuten im Bild sind.' },
+    { kind: 'p', text: 'Hier rate ich zur Vorsicht. In Coaching-Fragebögen stehen oft sehr persönliche Dinge, manchmal auch Angaben zur Gesundheit. Solche Daten zählen nach der Datenschutz-Grundverordnung zu den besonders geschützten Kategorien. Wenn die KI-Zusammenfassung dafür überhaupt infrage kommt, dann nur mit Anbietern, mit denen ein Vertrag zur Auftragsverarbeitung besteht, und mit Servern in der EU. Bei sensiblen Themen lasse ich die KI lieber weg. Die Erinnerung und die Ablage allein sparen schon genug.' },
+    { kind: 'h2', text: 'Und nach der ersten Sitzung?' },
+    { kind: 'p', text: 'Derselbe Gedanke trägt durch den ganzen Coaching-Prozess. Nach jeder Sitzung kann der Ablauf den nächsten Termin bestätigen, die vereinbarten Unterlagen schicken und bei Paketen mitzählen, wie viele Sitzungen noch offen sind. Kurz vor der letzten Sitzung bekommen Sie einen Hinweis, damit Sie das Gespräch über eine Verlängerung nicht erst in der letzten Minute führen.' },
+    { kind: 'p', text: 'Auch die Bitte um eine Rückmeldung oder eine Empfehlung lässt sich zeitlich steuern, etwa zwei Wochen nach Abschluss. Den Text dafür schreiben Sie selbst, und Sie entscheiden bei jeder Klientin, ob die Mail rausgeht. Bei manchen Prozessen passt eine solche Bitte einfach nicht.' },
+    { kind: 'h2', text: 'Was sollte ein Coach nicht automatisieren?' },
+    { kind: 'p', text: 'Alles, was nach Ihnen klingen soll und es nicht ist. Eine automatische Antwort auf eine Nachricht, in der jemand von einer Krise erzählt, ist ein Vertrauensbruch. Nachfass-Mails, die so tun, als hätten Sie gerade persönlich an die Person gedacht, fallen früher oder später auf. Und Beiträge in sozialen Netzwerken, die eine KI in Ihrem Namen schreibt und ungeprüft veröffentlicht, schaden einem Beruf, der von Persönlichkeit lebt.' },
+    { kind: 'p', text: 'Meine Faustregel: Automatisieren Sie Organisation, nicht Beziehung. Termine, Unterlagen, Rechnungen, Erinnerungen dürfen von allein laufen. Alles, was Einfühlung braucht, bleibt bei Ihnen. Wenn Sie bei einem Schritt zögern, ob er dazugehört, lassen Sie ihn erst einmal draußen. Nachrüsten ist leichter als zurückbauen.' },
+    { kind: 'h2', text: 'Welche Werkzeuge braucht ein Coach für diese Automatisierung?' },
+    { kind: 'p', text: 'Meistens die, die Sie schon haben. Einen Kalender, ein Mailpostfach, ein Formular auf der Website, ein Rechnungsprogramm und ein Videowerkzeug. Was fehlt, ist die Verbindung dazwischen. Die baue ich mit n8n auf Servern in der EU. Eine Komplettplattform für Coaches brauchen Sie dafür nicht. Wenn Sie aber schon eine verwenden und zufrieden sind, binde ich sie ein, sofern sie eine Schnittstelle hat.' },
+    { kind: 'h2', text: 'Wie viel Zeit spart das? Ein Rechenbeispiel' },
+    { kind: 'p', text: 'Die folgenden Zahlen sind Annahmen, keine Messwerte. Rechnen Sie mit Ihren eigenen nach. Nehmen wir acht Anfragen pro Woche an, und jede kostet heute mit Antwort, Terminabstimmung und Nachfragen rund 15 Minuten. Das sind 120 Minuten pro Woche. Mit Sammelliste, Sofortantwort und Buchungsseite bleiben vielleicht drei Minuten pro Anfrage, also 24 Minuten. Ersparnis: rund 96 Minuten pro Woche, auf den Monat gerechnet etwa sieben Stunden.' },
+    { kind: 'p', text: 'Dazu kommt das Onboarding. Bei vier neuen Klienten im Monat und heute 45 Minuten für Angebot, Rechnung, Fragebogen und Erinnerungen, die auf zehn Minuten sinken, sparen Sie weitere 140 Minuten. Zusammen sind das in diesem Beispiel gut neun Stunden im Monat. Wichtiger als die Zahl ist für viele Coaches aber etwas anderes: Keine Anfrage geht mehr verloren.' },
+    { kind: 'p', text: 'Fangen Sie mit dem Schritt an, der bei Ihnen am häufigsten liegen bleibt. Ich automatisiere diesen einen Ablauf in vier Wochen zum Festpreis. Läuft er danach nicht, arbeite ich kostenlos weiter, bis er läuft.' },
+  ],
+  notes: [
+    'Das Rechenbeispiel beruht auf Annahmen. Ihre eigenen Werte können deutlich abweichen.',
+    'Angaben zur Gesundheit gehören zu den besonderen Kategorien personenbezogener Daten nach Art. 9 DSGVO. Keine Rechtsberatung.',
+    'Ob sich Nachrichten aus sozialen Netzwerken automatisch abrufen lassen, hängt von den Schnittstellen und Nutzungsbedingungen der jeweiligen Plattform ab.',
+  ],
+  related: [
+    { label: 'Ablauf: Erstgespräch selbst buchen', href: '/ablaeufe/erstgespraech-selbst-buchen' },
+    { label: 'Ablauf: Vorab-Fragebogen auswerten', href: '/ablaeufe/vorab-fragebogen-auswerten' },
+    { label: 'Wo Ihre Woche hingeht', href: '/wissen/wo-ihre-woche-hingeht' },
+    { label: 'Automatisierungs-Check', href: '/automatisierungs-check' },
+  ],
+};

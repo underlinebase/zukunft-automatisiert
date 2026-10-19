@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-12-18';
+
+export const kiTelefonassistentHandwerk: Article = {
+  id: 505,
+  slug: 'ki-telefonassistent-handwerk',
+  title: 'KI-Telefonassistent im Handwerk: Wann er sich lohnt und wann nicht',
+  seoTitle: 'KI-Telefonassistent im Handwerk: Wann er sich lohnt',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Handwerk',
+  lead: 'Ein KI-Telefonassistent nimmt Anrufe an, wenn im Handwerksbetrieb keiner kann. Wann sich das lohnt, wann nicht und was beim Datenschutz gilt.',
+  body: [
+    { kind: 'p', text: 'Der Meister steht auf der Leiter, der Geselle hat die Hände voll Silikon, und im Büro ist heute niemand. Das Telefon klingelt sechsmal und springt auf die Mailbox. Der Anrufer legt auf, ohne etwas zu sagen. Wahrscheinlich ruft er gleich beim nächsten Betrieb an.' },
+    { kind: 'p', text: 'Genau für diese Szene werden gerade KI-Telefonassistenten angeboten. Eine künstliche Stimme nimmt ab, fragt nach dem Anliegen und schreibt alles auf. Ich bekomme dazu regelmäßig Fragen von Handwerkern. Meine Antwort ist weniger begeistert als die Werbung, aber auch nicht ablehnend. Es kommt sehr auf Ihren Betrieb an.' },
+    { kind: 'h2', text: 'Was macht ein KI-Telefonassistent eigentlich?' },
+    { kind: 'p', text: 'Er nimmt Anrufe entgegen, entweder alle oder nur die, bei denen sonst niemand rangeht. Er stellt die Fragen, die Sie ihm vorgeben: Name, Telefonnummer, Adresse, worum es geht, wie dringend es ist. Am Ende fasst er das Gespräch zusammen und schickt die Zusammenfassung per Mail oder in eine Liste. Manche Systeme können auch Rückruftermine vorschlagen.' },
+    { kind: 'p', text: 'Was er nicht kann und nicht soll: Preise nennen, Schäden aus der Ferne beurteilen oder verbindliche Zusagen machen. Ein Assistent, der einem Kunden am Telefon „Das kriegen wir für einen niedrigen vierstelligen Betrag hin“ sagt, schafft Ihnen mehr Ärger als jede verpasste Anfrage. Ich würde solche Antworten in der Einrichtung ausdrücklich ausschließen.' },
+    { kind: 'h2', text: 'Welche Fragen sollte der Assistent stellen?' },
+    { kind: 'p', text: 'Weniger, als man denkt. Jede zusätzliche Frage erhöht die Wahrscheinlichkeit, dass der Anrufer genervt auflegt. Für die meisten Betriebe reichen vier Dinge: Wer ruft an, unter welcher Nummer ist er erreichbar, worum geht es, und ist es dringend. Die Adresse fragt der Assistent nur ab, wenn es um einen Einsatz vor Ort geht.' },
+    { kind: 'p', text: 'Die Begrüßung sollte kurz und ehrlich sein. Etwa: „Guten Tag, hier ist der digitale Assistent der Firma Müller. Gerade ist niemand frei. Ich nehme Ihr Anliegen auf und gebe es weiter.“ Am Ende sagt der Assistent, wann ungefähr mit einem Rückruf zu rechnen ist. Diese Zusage muss zu Ihrem Alltag passen. „Heute noch“ ist schnell versprochen und schwer zu halten, wenn der Tag auf der Baustelle länger wird.' },
+    { kind: 'h2', text: 'Wann lohnt sich ein KI-Telefonassistent im Handwerksbetrieb?' },
+    { kind: 'p', text: 'Er lohnt sich, wenn tagsüber viele Anrufe ins Leere gehen, weil alle auf der Baustelle sind. Er lohnt sich, wenn die meisten Anrufe ähnlich sind: Terminanfragen, Rückrufwünsche, Fragen nach dem Stand eines Auftrags. Und er lohnt sich, wenn Sie heute merken, dass Ihnen Aufträge entgehen, weil niemand rangeht.' },
+    { kind: 'p', text: 'Ein weiterer guter Fall ist der Notdienst. Wer nachts oder am Wochenende Bereitschaft hat, wird oft für Dinge geweckt, die bis Montag Zeit hätten. Ein Assistent kann nach festen Fragen sortieren: Läuft Wasser aus? Ist die Heizung komplett ausgefallen? Nur dann klingelt das Bereitschaftshandy. Alles andere landet als Rückrufbitte für den nächsten Morgen in der Liste. Die Regeln dafür legen Sie fest, nicht die KI.' },
+    { kind: 'h2', text: 'Wann sich ein KI-Telefonassistent nicht lohnt' },
+    { kind: 'p', text: 'Wenn Ihre Bürokraft die meisten Anrufe annimmt, ist der Gewinn klein. Dann reicht es oft, die wenigen Anrufe außerhalb der Bürozeiten besser aufzufangen. Dasselbe gilt, wenn bei Ihnen am Tag nur eine Handvoll Anrufe ankommt.' },
+    { kind: 'p', text: 'Schwierig wird es auch, wenn Ihre Kunden vor allem Stammkunden sind, die den Chef sprechen wollen. Oder wenn viele Anrufe Beratung sind, etwa bei einer Heizungsmodernisierung, wo es um Förderung, Technik und Zeitpläne geht. Ein Teil der älteren Kundschaft legt bei einer künstlichen Stimme sofort auf. Das sollten Sie ehrlich einschätzen.' },
+    { kind: 'p', text: 'Und der wichtigste Punkt: Ein Telefonassistent verschiebt die Arbeit nur, wenn danach niemand die gesammelten Anfragen abarbeitet. Zwanzig ordentlich protokollierte Rückrufbitten, die bis Freitag liegen bleiben, sind nicht besser als zwanzig verpasste Anrufe.' },
+    { kind: 'h2', text: 'Gibt es eine einfachere Alternative?' },
+    { kind: 'p', text: 'Oft ja. Die einfachste: Die Mailbox nimmt die Nachricht auf, eine KI wandelt sie in Text um und schickt Ihnen eine kurze Zusammenfassung mit Name, Nummer und Anliegen aufs Handy. Das klingt banal, verändert aber den Alltag. Sie müssen sich keine Sprachnachrichten mehr anhören, um zu entscheiden, wer zuerst zurückgerufen wird.' },
+    { kind: 'p', text: 'Dazu gehört eine Mailboxansage, die zum Sprechen einlädt. Etwa: „Wir sind gerade auf der Baustelle. Sagen Sie uns Ihren Namen, Ihre Nummer und worum es geht. Wir rufen heute bis 17 Uhr zurück.“ Und dieses Versprechen müssen Sie dann halten. Mit einer festen Rückrufzeit am Nachmittag ist das für viele Betriebe machbar.' },
+    { kind: 'h2', text: 'Was ist beim Datenschutz und bei der KI-Verordnung zu beachten?' },
+    { kind: 'p', text: 'Seit dem 2. August 2026 gilt die Transparenzpflicht der KI-Verordnung. KI-Systeme, die direkt mit Menschen sprechen, müssen so gebaut sein, dass die Leute wissen, dass sie mit einer KI reden. Am Telefon heißt das: Der Assistent sagt gleich zu Beginn, dass er ein KI-Assistent ist. Die Pflicht liegt zwar beim Anbieter des Systems, aber prüfen Sie trotzdem, dass die Ansage drin ist.' },
+    { kind: 'p', text: 'Beim Mitschneiden wird es ernst. Wer das nicht öffentlich gesprochene Wort ohne Einwilligung aufnimmt, macht sich nach § 201 Strafgesetzbuch strafbar. Klären Sie mit dem Anbieter, ob Gespräche als Ton gespeichert werden oder nur als Text, und wie der Anrufer darüber informiert wird. Mir ist eine Lösung lieber, die nur die Zusammenfassung speichert.' },
+    { kind: 'p', text: 'Dazu kommt die Datenschutz-Grundverordnung. Sie brauchen einen Vertrag zur Auftragsverarbeitung mit dem Anbieter, eine Information für Anrufer, eine Regel, wann die Daten gelöscht werden, und Klarheit darüber, wo die Server stehen. Ich empfehle Anbieter mit Verarbeitung in der EU. Das alles ist keine Rechtsberatung. Lassen Sie sich im Zweifel von Ihrem Datenschutzbeauftragten oder Ihrer Kammer beraten.' },
+    { kind: 'h2', text: 'Was kostet ein KI-Telefonassistent?' },
+    { kind: 'p', text: 'Konkrete Preise nenne ich hier bewusst nicht, weil sie sich schnell ändern und schwer vergleichbar sind. Üblich sind eine Grundgebühr und ein Preis pro Gesprächsminute oder pro Anruf. Dazu kommt die Einrichtung: Fragen formulieren, Rufumleitung einstellen, die Zusammenfassung an Ihre Abläufe anbinden. Und es gibt laufende Arbeit, weil Sie die Fragen in den ersten Wochen sicher nachschärfen.' },
+    { kind: 'p', text: 'Die Gegenrechnung ist einfach. Was ist ein durchschnittlicher Auftrag bei Ihnen wert, und wie viele davon gehen Ihnen im Monat verloren, weil niemand rangeht? Wenn Sie das nicht wissen, finden Sie es heraus, bevor Sie etwas kaufen. Die Anrufliste Ihrer Telefonanlage zeigt die verpassten Anrufe meist schon. Schauen Sie dort zwei Wochen lang jeden Abend drauf und zählen Sie die Nummern, die nicht wieder angerufen haben.' },
+    { kind: 'h2', text: 'Wie ich einen Test aufsetzen würde' },
+    { kind: 'p', text: 'Ich würde mit einem begrenzten Versuch über vier Wochen anfangen. Der Assistent springt nur ein, wenn nach einigen Klingelzeichen niemand abnimmt, und außerhalb der Bürozeiten. In dieser Zeit zählen Sie: Wie viele Anrufe kamen beim Assistenten an? Wie viele Anrufer haben aufgelegt? Wie viele Zusammenfassungen waren brauchbar? Fragen Sie außerdem ein paar Kunden, wie sie es fanden.' },
+    { kind: 'p', text: 'Danach entscheiden Sie mit echten Zahlen. In vielen Betrieben zeigt sich dabei, dass das eigentliche Problem gar nicht das Telefon ist, sondern die Bearbeitung der Anfragen danach. Diesen Teil baue ich mit n8n: Die Zusammenfassung landet zusammen mit Mail- und Formularanfragen in einer Liste, jede Anfrage bekommt einen Verantwortlichen und eine Rückruffrist, und wer zu lange liegt, erzeugt eine Erinnerung. Die Telefonie selbst übernimmt ein spezialisierter Anbieter, den Sie selbst auswählen.' },
+  ],
+  notes: [
+    'Keine Rechtsberatung. Stand der Angaben: Oktober 2026.',
+    'Art. 50 Abs. 1 Verordnung (EU) 2024/1689 (KI-Verordnung), gilt seit 2. August 2026; durch die Verordnung (EU) 2026/1744 nicht verschoben.',
+    '§ 201 StGB (Verletzung der Vertraulichkeit des Wortes), gesetze-im-internet.de.',
+    'Informationspflichten nach Art. 13 DSGVO, Auftragsverarbeitung nach Art. 28 DSGVO.',
+  ],
+  related: [
+    { label: 'KI im Handwerk', href: '/wissen/ki-im-handwerk' },
+    { label: 'Ablauf: Anfragen im Handwerk an einer Stelle erfassen', href: '/ablaeufe/anfragen-zentral-erfassen-handwerk' },
+    { label: 'KI-Verordnung für kleine Betriebe', href: '/wissen/ki-verordnung-kleine-betriebe' },
+    { label: 'Chatbot auf der Website', href: '/wissen/chatbot-auf-der-website' },
+  ],
+};

@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2027-01-05';
+
+export const copilotImKleinenBetrieb: Article = {
+  id: 507,
+  slug: 'copilot-im-kleinen-betrieb',
+  title: 'Lohnt sich Microsoft 365 Copilot für kleine Betriebe?',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'KI ohne Hype',
+  lead: 'Microsoft 365 Copilot kostet extra pro Nutzer. Für welche kleinen Betriebe sich das lohnt, was die kostenlose Variante kann und wo Copilot an Grenzen stößt.',
+  body: [
+    { kind: 'p', text: 'Viele kleine Betriebe arbeiten mit Microsoft 365. Outlook, Word, Excel, vielleicht Teams. Seit einiger Zeit taucht dort überall das bunte Copilot-Symbol auf, und Microsoft schickt Angebote für die Lizenz. Die Frage, die mir Inhaber dazu stellen, ist immer dieselbe: Brauchen wir das?' },
+    { kind: 'p', text: 'Meine kurze Antwort: Für einzelne Leute im Büro oft ja, für den ganzen Betrieb selten. Die lange Antwort steht in diesem Artikel. Ich arbeite unabhängig, verkaufe keine Microsoft-Lizenzen und bekomme keine Provision. Preise gebe ich nur mit Quelle an, Stand Oktober 2026.' },
+    { kind: 'h2', text: 'Was ist Microsoft 365 Copilot und was ist Copilot Chat?' },
+    { kind: 'p', text: 'Hier gibt es zwei Stufen, und die Namen machen es nicht leichter. Copilot Chat ist laut Microsoft ein KI-Assistent im Browser, der mit berechtigten Microsoft-365-Plänen ohne zusätzliche Kosten verfügbar ist. Dazu gehören auch Copilot in Outlook und die Copilot-App. Sie können damit Texte schreiben lassen, Fragen stellen und Dateien hochladen, die Sie ihm geben.' },
+    { kind: 'p', text: 'Die kostenpflichtige Stufe heißt für kleine Unternehmen Microsoft 365 Copilot Business. Sie ist ein Zusatz zu den Plänen Business Basic, Business Standard oder Business Premium und gilt für Organisationen mit bis zu 300 Nutzern. Mit dieser Lizenz arbeitet Copilot direkt in Word, Excel, PowerPoint und Teams und greift auf Ihre Mails, Dateien und Besprechungen zu, soweit der jeweilige Nutzer sie sehen darf. Dazu kommen vorgefertigte Agenten, etwa für Recherche und Datenanalyse.' },
+    { kind: 'h2', text: 'Was kostet Microsoft 365 Copilot für kleine Betriebe?' },
+    { kind: 'p', text: 'Laut der deutschen Preisseite von Microsoft kostet Copilot Business im Oktober 2026 regulär 18,20 Euro pro Nutzer und Monat bei jährlicher Abrechnung, zuzüglich Mehrwertsteuer. Im Monatsabo nennt Microsoft 21,84 Euro. Bis Ende 2026 lief eine Aktion mit einem niedrigeren Preis im ersten Jahr. Prüfen Sie den aktuellen Stand vor dem Kauf selbst, Microsoft ändert Preise und Aktionen regelmäßig.' },
+    { kind: 'p', text: 'Wichtig ist die Laufzeit. Microsoft beschreibt Copilot Business als Plan mit jährlicher Verpflichtung. Wer zehn Lizenzen für ein Jahr bucht und nach drei Monaten merkt, dass nur zwei Leute Copilot verwenden, zahlt trotzdem für zehn. Deshalb rate ich dazu, klein anzufangen.' },
+    { kind: 'h2', text: 'Wofür ist Copilot im kleinen Betrieb wirklich gut?' },
+    { kind: 'p', text: 'Am meisten bringt Copilot nach meiner Einschätzung in Outlook. Lange Mailverläufe zusammenfassen, eine Antwort vorformulieren, aus einer unstrukturierten Kundenmail die drei offenen Fragen herausziehen. Wer viel Zeit im Postfach verbringt, merkt das schnell.' },
+    { kind: 'p', text: 'Gut ist er auch bei Besprechungen in Teams, wenn die Transkription eingeschaltet ist. Danach gibt es eine Zusammenfassung mit Aufgaben. Sagen Sie den Teilnehmern vorher, dass mitgeschrieben wird. In Word hilft er, aus Stichpunkten einen ersten Entwurf zu machen. In Excel erklärt er Formeln und baut Auswertungen, für die man sonst jemanden fragen müsste.' },
+    { kind: 'p', text: 'Das sind alles Aufgaben, bei denen ein Mensch am Rechner sitzt und Unterstützung bekommt. Genau das ist Copilot: ein Assistent für die Person am Schreibtisch.' },
+    { kind: 'p', text: 'Ein Beispiel aus dem Alltag einer Bürokraft: Ein Kunde schreibt eine lange Mail mit Beschwerde, zwei Rückfragen zur Rechnung und einem Terminwunsch. Copilot fasst die Punkte zusammen und schlägt eine Antwort vor, die auf alle drei eingeht. Die Bürokraft ergänzt den Termin aus dem Kalender, prüft die Rechnungsangaben und schickt ab. Statt zehn Minuten sind es vielleicht vier. Das klingt wenig. Bei zwanzig solchen Mails pro Woche ist es eine Stunde.' },
+    { kind: 'h2', text: 'Wo stößt Copilot an Grenzen?' },
+    { kind: 'p', text: 'Copilot kann nur so gut sein wie die Ordnung in Ihren Dateien. Liegen Angebote in fünf verschiedenen Ordnern mit Namen wie „Angebot_final_neu2“, findet auch die KI wenig Brauchbares. Und Ihre Fachsoftware, etwa das Handwerkerprogramm, die Maklersoftware oder die Buchhaltung, kennt Copilot ohne zusätzliche Anbindung nicht.' },
+    { kind: 'p', text: 'Ein Punkt, den viele unterschätzen: Copilot sieht alles, was der jeweilige Nutzer sehen darf. Wenn in Ihrem Betrieb jeder auf alle Ordner Zugriff hat, weil das einfacher war, findet Copilot auch die Gehaltsliste, sobald jemand geschickt fragt. Vor der Einführung gehören deshalb die Freigaben auf den Prüfstand.' },
+    { kind: 'p', text: 'Und wie jede KI erfindet Copilot gelegentlich Dinge. Ein Termin, der so nie vereinbart wurde, eine Zahl, die nicht in der Tabelle steht. Wer Copilot einsetzt, muss das wissen. Das gehört auch in die Einweisung, die die KI-Verordnung von Ihnen erwartet.' },
+    { kind: 'h2', text: 'Ist Copilot beim Datenschutz besser als ChatGPT im Privatkonto?' },
+    { kind: 'p', text: 'In einem Punkt ja. Microsoft schreibt, dass Copilot Business denselben Datenrichtlinien folgt, die Ihre Organisation für ihren Microsoft-365-Mandanten festgelegt hat. Copilot arbeitet also innerhalb der Umgebung, für die Sie ohnehin schon einen Vertrag mit Microsoft haben. Das ist ein deutlicher Unterschied zu dem Fall, den ich in Betrieben oft antreffe: Mitarbeiter kopieren Kundenmails in ein kostenloses Privatkonto bei irgendeinem KI-Dienst, weil es schnell gehen muss.' },
+    { kind: 'p', text: 'Das heißt nicht, dass damit alle Fragen erledigt sind. Prüfen Sie mit Ihrem Datenschutzbeauftragten oder Ihrem IT-Dienstleister, welche Einstellungen in Ihrem Mandanten gelten und wie mit Besprechungsmitschnitten umgegangen wird. Aber wer sein Team ohnehin dazu bringen will, KI nur noch über Firmenkonten zu verwenden, hat mit Copilot Chat einen einfachen ersten Schritt, der im Plan schon drin ist.' },
+    { kind: 'h2', text: 'Rechenbeispiel: Ab wann rechnet sich die Lizenz?' },
+    { kind: 'p', text: 'Rechnen wir mit dem regulären Jahrespreis: 18,20 Euro mal 12 sind 218,40 Euro netto pro Nutzer und Jahr. Nehmen wir an, eine Arbeitsstunde Ihrer Bürokraft kostet den Betrieb 40 Euro, alles eingerechnet. Das ist eine Annahme, setzen Sie Ihren Wert ein. Dann muss Copilot gut fünfeinhalb Stunden im Jahr sparen, also rund eine halbe Stunde im Monat.' },
+    { kind: 'p', text: 'Das ist eine niedrige Hürde. Die eigentliche Frage ist deshalb nicht, ob sich die Lizenz rechnen kann, sondern ob die Person sie tatsächlich verwendet. Wer viel schreibt und viel in Outlook arbeitet, schafft die halbe Stunde leicht. Der Monteur, der zweimal die Woche eine Mail öffnet, nie.' },
+    { kind: 'h2', text: 'Copilot oder Automatisierung: Was ist der Unterschied?' },
+    { kind: 'p', text: 'Copilot hilft einem Menschen, eine Aufgabe schneller zu erledigen. Eine Automatisierung erledigt eine wiederkehrende Aufgabe ohne den Menschen und holt ihn nur zur Freigabe dazu. Beispiel Rechnungseingang: Mit Copilot fasst die Bürokraft jede Rechnung schneller zusammen. Mit einem automatisierten Ablauf werden die Rechnungen erkannt, abgelegt und zur Freigabe vorgelegt, ohne dass jemand sie öffnet.' },
+    { kind: 'p', text: 'Beides schließt sich nicht aus. In vielen Betrieben ist es sinnvoll, den einen Ablauf zu automatisieren, der jede Woche am meisten Zeit kostet, und für die Leute mit viel Schreibarbeit eine Copilot-Lizenz zu buchen. Was ich nicht empfehle: Copilot für alle zu kaufen in der Hoffnung, dass sich damit die Abläufe von selbst verbessern.' },
+    { kind: 'h2', text: 'Wie ich die Einführung angehen würde' },
+    { kind: 'p', text: 'Fangen Sie mit Copilot Chat an, das in vielen Plänen ohnehin enthalten ist. Vier Wochen lang probiert das Team aus, was damit geht, und notiert, wo es geholfen hat. Danach buchen Sie die Lizenz für zwei oder drei Leute, die am meisten davon hatten. Vorher prüfen Sie die Freigaben in OneDrive und SharePoint und geben dem Team eine kurze Einweisung.' },
+    { kind: 'p', text: 'Nach drei Monaten schauen Sie gemeinsam drauf: Wer verwendet Copilot täglich, wer gar nicht? Erst dann entscheiden Sie über weitere Lizenzen. Wenn Sie dabei Unterstützung wollen, etwa bei der Frage, welche Aufgaben besser automatisiert als mit Copilot erledigt werden, sprechen wir im Erstgespräch darüber.' },
+  ],
+  notes: [
+    'Preise laut Preisseite von Microsoft für Deutschland, microsoft.com/de-de/microsoft-365-copilot/pricing, abgerufen am 19. Oktober 2026: Microsoft 365 Copilot Business regulär 18,20 Euro pro Nutzer und Monat bei jährlicher Abrechnung, 21,84 Euro im Monatsabo, jeweils zzgl. MwSt. Rabattaktion laut Microsoft vom 1. Juli bis 31. Dezember 2026. Preise können sich ändern.',
+    'Microsoft Learn, „Häufig gestellte Fragen zu Microsoft Copilot Business“: Zusatz zu Business Basic, Standard oder Premium, bis zu 300 Arbeitsplätze pro Mandant, jährliche Verpflichtung.',
+    'Copilot Chat ohne zusätzliche Kosten mit berechtigten Microsoft-365-Plänen laut FAQ auf der Microsoft-Preisseite.',
+    'Ich verkaufe keine Microsoft-Lizenzen und erhalte keine Provision.',
+  ],
+  related: [
+    { label: 'ChatGPT im Betrieb', href: '/wissen/chatgpt-im-betrieb' },
+    { label: 'KI-Schulungspflicht nachweisen', href: '/wissen/ki-schulungspflicht-nachweis' },
+    { label: 'Ablauf: Team-Wissen mit KI abfragen', href: '/ablaeufe/team-wissen-fragen-ki' },
+    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+  ],
+};
