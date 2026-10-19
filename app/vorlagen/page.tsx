@@ -15,7 +15,7 @@ import { ANLEITUNG, VORLAGEN, VORLAGEN_FAQS, VORLAGEN_MUSTER, vorlageHref, vorla
 import { seoTitle } from '@/lib/seo/meta';
 import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 
-// Bleibt noindex und ohne Link in Navigation und Sitemap, solange VORLAGEN_PAGE.listed false ist.
+// Bleibt noindex und ohne Link in Navigation und Sitemap, bis die erste Vorlage getestet ist (VORLAGEN_PAGE.listed).
 export const metadata: Metadata = {
   title: seoTitle('Kostenlose n8n-Vorlagen auf Deutsch'),
   description: VORLAGEN_PAGE.description,

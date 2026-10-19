@@ -1,7 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, test } from 'vitest';
-import { ANLEITUNG, VORLAGEN, VORLAGEN_FAQS, VORLAGEN_MUSTER, findVorlage, vorlageHref, vorlageStatus } from './vorlagen';
+import { ANLEITUNG, VORLAGEN, VORLAGEN_FAQS, VORLAGEN_MUSTER, findVorlage, freigegebeneVorlagen, vorlageHref, vorlageStatus } from './vorlagen';
+import { VORLAGEN_PAGE } from './pages';
 import { aiPatternHits } from './style';
 
 const PUBLIC_DIR = path.resolve(__dirname, '../../public');
@@ -82,9 +83,19 @@ describe('Vorlagen data', () => {
     });
   });
 
-  test('are all still marked as untested', () => {
-    // Freigabe erst nach Marcos eigenem Test in n8n. Wer hier true setzt, passt diesen Test bewusst an.
-    VORLAGEN.forEach((vorlage) => expect(vorlage.getestet, vorlage.slug).toBe(false));
+  test('only tested templates have a public file, untested ones stay in the draft folder', () => {
+    // Freigabe: Datei nach public/vorlagen/ verschieben und `getestet: true` setzen. Beides gehört zusammen.
+    VORLAGEN.forEach((vorlage) => {
+      const isPublic = existsSync(path.join(PUBLIC_DIR, vorlage.datei));
+      const isDraft = existsSync(path.join(DRAFT_DIR, path.basename(vorlage.datei)));
+      expect(isPublic, `${vorlage.slug}: Datei öffentlich`).toBe(vorlage.getestet);
+      expect(isDraft, `${vorlage.slug}: Entwurf vorhanden`).toBe(!vorlage.getestet);
+    });
+  });
+
+  test('the overview goes public with the first tested template', () => {
+    expect(freigegebeneVorlagen().every((vorlage) => vorlage.getestet)).toBe(true);
+    expect(VORLAGEN_PAGE.listed).toBe(freigegebeneVorlagen().length > 0);
   });
 
   test('helpers find templates, build links and name the status', () => {

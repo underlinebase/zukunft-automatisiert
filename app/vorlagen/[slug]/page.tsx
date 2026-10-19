@@ -33,7 +33,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: seoTitle(vorlage.seoTitle ?? `n8n-Vorlage: ${vorlage.title}`),
     description: metaDescription(vorlage.lead),
     alternates: { canonical: vorlageHref(slug) },
-    robots: VORLAGEN_PAGE.listed ? undefined : { index: false, follow: true },
+    // Ungetestete Vorlagen haben noch keinen Download und bleiben aus dem Index.
+    robots: vorlage.getestet ? undefined : { index: false, follow: true },
   };
 }
 

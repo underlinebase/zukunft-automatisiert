@@ -1,6 +1,8 @@
 // Weitere Hauptseiten neben Startseite, KI-Beratung, Über mich, Wissen und Kontakt.
 // Sitemap, llms.txt und Navigation lesen von hier. `listed: false` = noch nicht öffentlich verlinkt (noindex).
 
+import { freigegebeneVorlagen } from './vorlagen';
+
 export interface SitePage {
   path: string;
   /** Name in Navigation, Brotkrumen und llms.txt. */
@@ -53,8 +55,8 @@ export const VORLAGEN_PAGE: SitePage = {
   description:
     'Kostenlose n8n-Vorlagen auf Deutsch für kleine Betriebe: Rechnungseingang, Anfragen erfassen, Angebote nachfassen. Mit Anleitung.',
   priority: 0.6,
-  // Erst öffentlich, wenn Marco mindestens drei Vorlagen getestet hat.
-  listed: false,
+  // Öffentlich, sobald Marco die erste Vorlage in n8n getestet und freigegeben hat.
+  listed: freigegebeneVorlagen().length > 0,
 };
 
 export const EXTRA_PAGES: readonly SitePage[] = [ABLAEUFE_PAGE, GARANTIE_PAGE, CHECK_PAGE, DATEN_PAGE, VORLAGEN_PAGE];

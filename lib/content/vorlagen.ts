@@ -1,6 +1,7 @@
 // n8n-Vorlagen-Bibliothek: kostenlose Workflows zum Herunterladen, je Vorlage eine Seite mit Anleitung.
 // Ungetestete JSON-Entwürfe liegen in vorlagen-entwuerfe/ (nicht öffentlich). Nach dem Test in n8n nach
-// public/vorlagen/ verschieben und `getestet` auf true setzen; erst dann erscheint der Download.
+// public/vorlagen/ verschieben und `getestet` auf true setzen; erst dann erscheint der Download und die Seite
+// geht in Sitemap und Google-Index. Die Übersicht wird mit der ersten freigegebenen Vorlage öffentlich.
 
 import type { Branche } from '@/lib/content/ablaeufe/types';
 import type { Faq } from '@/lib/content/types';
@@ -212,6 +213,11 @@ export function vorlageHref(slug: string): string {
 
 export function findVorlage(slug: string): Vorlage | null {
   return VORLAGEN.find((vorlage) => vorlage.slug === slug) ?? null;
+}
+
+/** Getestete Vorlagen: mit Download, indexierbar und in der Sitemap. */
+export function freigegebeneVorlagen(): Vorlage[] {
+  return VORLAGEN.filter((vorlage) => vorlage.getestet);
 }
 
 export function vorlageStatus(vorlage: Pick<Vorlage, 'getestet'>): string {

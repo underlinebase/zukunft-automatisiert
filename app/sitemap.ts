@@ -5,6 +5,7 @@ import { SITE } from '@/lib/content/site';
 import { KI_BERATUNG_PATH } from '@/lib/content/ki-beratung';
 import { listedPages } from '@/lib/content/pages';
 import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
+import { freigegebeneVorlagen, vorlageHref } from '@/lib/content/vorlagen';
 
 // Stündlich neu erzeugen, damit geplante Artikel am Erscheinungstag auftauchen.
 export const revalidate = 3600;
@@ -49,5 +50,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...extraPages, ...industryPages, ...articlePages, ...ablaufPages];
+  const vorlagePages: MetadataRoute.Sitemap = freigegebeneVorlagen().map((vorlage) => ({
+    url: `${base}${vorlageHref(vorlage.slug)}`,
+    changeFrequency: 'yearly',
+    priority: 0.5,
+  }));
+
+  return [...staticPages, ...extraPages, ...industryPages, ...articlePages, ...ablaufPages, ...vorlagePages];
 }
