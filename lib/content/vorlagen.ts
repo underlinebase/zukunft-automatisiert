@@ -1,5 +1,6 @@
 // n8n-Vorlagen-Bibliothek: kostenlose Workflows zum Herunterladen, je Vorlage eine Seite mit Anleitung.
-// Die JSON-Dateien liegen unter public/vorlagen/. Download erst, wenn `getestet` auf true steht.
+// Ungetestete JSON-Entwürfe liegen in vorlagen-entwuerfe/ (nicht öffentlich). Nach dem Test in n8n nach
+// public/vorlagen/ verschieben und `getestet` auf true setzen; erst dann erscheint der Download.
 
 import type { Branche } from '@/lib/content/ablaeufe/types';
 import type { Faq } from '@/lib/content/types';

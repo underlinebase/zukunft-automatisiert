@@ -1,10 +1,12 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { ANLEITUNG, VORLAGEN, VORLAGEN_FAQS, VORLAGEN_MUSTER, findVorlage, vorlageHref, vorlageStatus } from './vorlagen';
 import { aiPatternHits } from './style';
 
 const PUBLIC_DIR = path.resolve(__dirname, '../../public');
+// Ungetestete Entwürfe liegen außerhalb von public/, damit sie nicht abrufbar sind.
+const DRAFT_DIR = path.resolve(__dirname, '../../vorlagen-entwuerfe');
 const META_DESCRIPTION_MAX = 160;
 const PLACEHOLDER_PATTERN = /PLATZHALTER[-_][A-Za-z_-]+/g;
 const STICKY_NOTE = 'n8n-nodes-base.stickyNote';
@@ -33,7 +35,9 @@ interface N8nWorkflow {
 }
 
 function readWorkflowFile(datei: string): string {
-  return readFileSync(path.join(PUBLIC_DIR, datei), 'utf8');
+  const published = path.join(PUBLIC_DIR, datei);
+  const draft = path.join(DRAFT_DIR, path.basename(datei));
+  return readFileSync(existsSync(published) ? published : draft, 'utf8');
 }
 
 function readWorkflow(datei: string): N8nWorkflow {
