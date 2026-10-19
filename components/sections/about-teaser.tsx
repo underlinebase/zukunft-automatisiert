@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { NavLink } from '@/lib/content/site';
 import { ArrowIcon } from '@/components/ui/icons';
 
 interface AboutTeaserProps {
-  content: { eyebrow: string; title: string; text: readonly string[]; photoAlt: string };
+  content: { eyebrow: string; title: string; text: readonly string[]; photoAlt: string; extraLink?: NavLink };
 }
 
 export default function AboutTeaser({ content }: AboutTeaserProps) {
@@ -28,6 +29,11 @@ export default function AboutTeaser({ content }: AboutTeaserProps) {
           <Link className="text-link" href="/ueber-mich">
             Mehr über mich <ArrowIcon />
           </Link>
+          {content.extraLink ? (
+            <Link className="text-link" href={content.extraLink.href}>
+              {content.extraLink.label} <ArrowIcon />
+            </Link>
+          ) : null}
         </div>
       </div>
     </section>

@@ -18,14 +18,15 @@ const fraunces = Fraunces({
 });
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' });
 
-// Mit Markenzusatz genau 60 Zeichen, damit der Titel in den Suchergebnissen nicht abgeschnitten wird.
-const TITLE = 'Prozessautomatisierung in 4 Wochen';
+// Titel der Startseite: Hauptsuchbegriff vorn, Name statt Marke, unter 60 Zeichen.
+const HOME_TITLE = 'KI-Berater für Prozessautomatisierung · Marco Gundlach';
+const TITLE = 'KI-Berater für Prozessautomatisierung';
 const DESCRIPTION =
-  'Marco Gundlach, der KI-Realist, automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis, mit Garantie.';
+  'KI-Berater Marco Gundlach automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis, remote in ganz Deutschland.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: `${TITLE} · ${SITE.name}`, template: `%s · ${SITE.name}` },
+  title: { default: HOME_TITLE, template: `%s · ${SITE.name}` },
   description: DESCRIPTION,
   authors: [{ name: SITE.owner }],
   creator: SITE.owner,

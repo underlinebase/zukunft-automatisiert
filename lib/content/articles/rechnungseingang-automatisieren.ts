@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-11-17';
+
+export const rechnungseingangAutomatisieren: Article = {
+  id: 202,
+  slug: 'rechnungseingang-automatisieren',
+  title: 'Rechnungseingang automatisieren: vom Postfach bis zum Steuerbüro.',
+  seoTitle: 'Rechnungseingang automatisieren: Schritt für Schritt',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 7,
+  category: 'Methodik',
+  lead: 'So lässt sich der Rechnungseingang automatisieren: Rechnungen aus dem Postfach einsammeln, auslesen, prüfen, weitergeben. Und was die E-Rechnung ändert.',
+  body: [
+    { kind: 'p', text: 'Eine Eingangsrechnung legt in einem kleinen Betrieb oft einen erstaunlich langen Weg zurück. Sie kommt per Mail, manchmal an die falsche Adresse. Jemand lädt das PDF herunter, benennt es um, legt es in einen Ordner. Später wird geprüft, ob der Betrag stimmt. Dann geht sie an die Buchhaltung oder ans Steuerbüro, entweder sofort oder gesammelt am Monatsende. Und irgendwann ruft das Steuerbüro an, weil drei Rechnungen fehlen.' },
+    { kind: 'p', text: 'Jeder einzelne Schritt ist schnell erledigt. Zusammen ergeben sie einen Ablauf, der jeden Monat Stunden kostet und trotzdem Lücken hat. Dieser Artikel zeigt, wie Sie Eingangsrechnungen automatisch verarbeiten, an welchen Stellen ein Mensch draufschauen sollte und was sich durch die E-Rechnung gerade ändert.' },
+    { kind: 'h2', text: 'Was kostet der Rechnungseingang heute? Eine Beispielrechnung' },
+    { kind: 'p', text: 'Ein Beispiel mit Annahmen, kein Kundenfall. Ein Betrieb bekommt 60 Eingangsrechnungen im Monat. Pro Rechnung braucht jemand etwa zwei Minuten fürs Öffnen, Herunterladen, Umbenennen und Ablegen. Zwei weitere Minuten für die Prüfung, ob Betrag und Leistung stimmen. Eine Minute fürs Weiterleiten. Das sind fünf Minuten pro Rechnung.' },
+    { kind: 'p', text: '60 Rechnungen mal 5 Minuten ergeben 300 Minuten, also 5 Stunden. Dazu kommt am Monatsende eine Stunde für die Suche nach Rechnungen, die irgendwo hängengeblieben sind. Macht 6 Stunden im Monat oder 72 Stunden im Jahr. Bei einem angenommenen Stundensatz von 80 € sind das 5.760 € im Jahr für einen Ablauf, der niemandem Freude macht.' },
+    { kind: 'p', text: 'Nach der Automatisierung bleibt in diesem Beispiel die Prüfung der Fälle, die der Ablauf nicht sicher erkennt. Angenommen, das sind 10 von 60 Rechnungen mit je 3 Minuten. Dazu eine Viertelstunde für einen kurzen Blick auf die Monatsliste. Zusammen rund 45 Minuten statt 6 Stunden. Rechnen Sie das gern mit Ihren eigenen Zahlen nach. Darauf kommt es an, nicht auf meine.' },
+    { kind: 'h2', text: 'Schritt 1: Rechnungen aus dem Postfach einsammeln' },
+    { kind: 'p', text: 'Fast alle Rechnungen kommen heute per Mail. Das Problem ist, dass sie selten an einer einzigen Stelle ankommen. Die eine geht an info@, die andere an den Inhaber, die dritte an den Kollegen, der bestellt hat. Manche Lieferanten schicken keine Rechnung, sondern einen Link zu ihrem Kundenportal.' },
+    { kind: 'p', text: 'Am Anfang steht deshalb eine einfache Entscheidung: Alle Rechnungen gehen an eine Adresse, etwa rechnungen@ihr-betrieb.de. Das teilen Sie Ihren Lieferanten einmal mit. Was trotzdem an anderen Adressen landet, leitet eine Regel im Postfach weiter. Danach holt ein Ablauf, bei mir meist in n8n, regelmäßig alle neuen Mails aus diesem Postfach ab und nimmt die Anhänge mit. Rechnungen aus Portalen sind schwieriger. Manche Portale verschicken auf Wunsch eine Mail mit Anhang, bei anderen bleibt der Download von Hand. Das kläre ich vorher.' },
+    { kind: 'h2', text: 'Schritt 2: Eingangsrechnungen automatisch auslesen' },
+    { kind: 'p', text: 'Aus der Datei braucht der Ablauf ein paar Angaben: Lieferant, Rechnungsnummer, Rechnungsdatum, Nettobetrag, Steuer, Bruttobetrag und, wenn vorhanden, Ihre Bestell- oder Auftragsnummer. Bei einer echten E-Rechnung stehen diese Daten maschinenlesbar in der Datei. Dann ist das Auslesen einfach und zuverlässig.' },
+    { kind: 'p', text: 'Bei normalen PDFs oder Fotos von Papierrechnungen kommt KI ins Spiel. Ein Sprachmodell liest den Text und gibt die Angaben in einer festen Form zurück. Das klappt bei sauberen PDFs sehr gut, bei schief fotografierten Kassenbelegen weniger. Deshalb gibt der Ablauf zu jeder Rechnung auch an, wie sicher er sich ist. Fehlt eine Angabe oder passen Netto, Steuer und Brutto nicht zusammen, geht die Rechnung in einen Prüfordner.' },
+    { kind: 'h2', text: 'Schritt 3: Prüfen, bevor etwas weitergeht' },
+    { kind: 'p', text: 'Auslesen heißt noch nicht prüfen. Ein paar Prüfungen kann der Ablauf selbst machen. Gibt es diese Rechnungsnummer vom selben Lieferanten schon? Dann ist es vermutlich eine doppelte Zusendung. Weicht der Betrag deutlich vom letzten Mal ab? Passt die Bestellnummer zu einer offenen Bestellung, wenn Sie Bestellungen irgendwo festhalten?' },
+    { kind: 'p', text: 'Was der Ablauf nicht beurteilen kann: ob die Leistung wirklich erbracht wurde. Ob der Monteur des Subunternehmers tatsächlich drei Tage vor Ort war, weiß nur jemand aus Ihrem Betrieb. Bei solchen Rechnungen schickt der Ablauf dem Zuständigen eine kurze Nachricht mit der Bitte um Freigabe. Ein Klick, und es geht weiter. Kleine, regelmäßige Rechnungen wie Telefon oder Software-Abos können dagegen ohne Freigabe durchlaufen, wenn Sie das so möchten.' },
+    { kind: 'q', text: 'Der Ablauf erledigt das Sortieren und Abtippen. Die Frage, ob eine Rechnung berechtigt ist, bleibt bei Ihnen.' },
+    { kind: 'h2', text: 'Schritt 4: Ablegen und an Buchhaltung oder Steuerbüro weitergeben' },
+    { kind: 'p', text: 'Geprüfte Rechnungen bekommen einen einheitlichen Dateinamen und landen im richtigen Ordner, etwa nach Jahr und Monat sortiert. Parallel trägt der Ablauf die Eckdaten in eine Liste ein. Diese Liste ist für viele Inhaber der eigentliche Gewinn. Sie sehen auf einen Blick, was im Monat reingekommen ist, was noch auf Freigabe wartet und was schon weitergegeben wurde.' },
+    { kind: 'p', text: 'Zum Schluss geht die Rechnung dorthin, wo Ihre Buchhaltung gemacht wird. Arbeitet Ihr Steuerbüro mit DATEV, gibt es dort eigene Wege für den Belegaustausch. Welcher Weg bei Ihnen offen steht, entscheidet Ihre Kanzlei, und das kläre ich mit ihr ab. Eine direkte Schnittstelle verspreche ich nicht, bevor ich sie gesehen habe. Oft reicht ein einfacher Weg: Der Ablauf schickt die geprüfte Rechnung an eine Upload-Adresse oder legt sie in einen Ordner, den die Kanzlei abholt.' },
+    { kind: 'h2', text: 'Was ändert die E-Rechnung für den Rechnungseingang?' },
+    { kind: 'p', text: 'Seit dem 1. Januar 2025 müssen Unternehmen in Deutschland E-Rechnungen von anderen inländischen Unternehmen empfangen können. Das gilt auch für kleine Betriebe. Ein E-Mail-Postfach reicht für den Empfang aus.' },
+    { kind: 'p', text: 'Eine E-Rechnung im Sinne des Gesetzes ist eine Rechnung in einem strukturierten Datenformat, etwa XRechnung oder ZUGFeRD. Ein normales PDF zählt nicht dazu, auch wenn es elektronisch verschickt wird. Bei einer XRechnung bekommen Sie im Grunde eine Datei voller Daten, die man ohne passendes Programm kaum lesen kann. Bei ZUGFeRD steckt in einem lesbaren PDF zusätzlich der Datensatz.' },
+    { kind: 'p', text: 'Für den Versand gelten Übergangsfristen. Bis Ende 2026 dürfen Unternehmen in vielen Fällen noch Papier- oder PDF-Rechnungen ausstellen. Ab 2027 müssen Unternehmen mit mehr als 800.000 € Vorjahresumsatz E-Rechnungen schicken, ab 2028 alle. Für Sie heißt das: Der Anteil echter E-Rechnungen in Ihrem Postfach wird in den nächsten Monaten steigen. Ausnahmen gibt es, etwa für Kleinbetragsrechnungen bis 250 €. Was genau für Ihren Betrieb gilt, klären Sie bitte mit Ihrem Steuerberater.' },
+    { kind: 'p', text: 'Für die Automatisierung ist die E-Rechnung eine gute Nachricht. Je mehr Rechnungen strukturiert ankommen, desto weniger muss eine KI raten. Der Ablauf liest die Daten direkt aus der Datei und erzeugt für Sie eine lesbare Ansicht. Wichtig für die Ablage: Die E-Rechnung ist das Original. Sie sollte deshalb in ihrer elektronischen Form aufbewahrt werden. Ein Ausdruck oder ein Bild davon reicht nicht.' },
+    { kind: 'h2', text: 'Geht das auch ohne neue Software?' },
+    { kind: 'p', text: 'Meistens ja. Ein Postfach haben Sie schon, eine Ablage auch, und Ihr Steuerbüro hat einen Weg für Belege. Was fehlt, ist das Verbindungsstück dazwischen. Genau das baue ich. Es gibt fertige Programme für den Rechnungseingang, und für manche Betriebe sind sie die bessere Wahl, vor allem bei sehr vielen Rechnungen und mehreren Freigabestufen. Für einen Betrieb mit ein paar Dutzend Rechnungen im Monat ist ein schlanker eigener Ablauf oft günstiger und passt besser zu dem, was schon da ist.' },
+    { kind: 'h2', text: 'Was bleibt bei Ihnen?' },
+    { kind: 'p', text: 'Ein kurzer Blick in den Prüfordner, vielleicht zweimal pro Woche. Die Freigabe von Rechnungen, bei denen nur Sie wissen, ob die Leistung stimmt. Und am Monatsende ein Blick auf die Liste, bevor sie ans Steuerbüro geht. Das Herunterladen, Umbenennen, Abtippen und Weiterleiten macht der Ablauf.' },
+    { kind: 'p', text: 'Wenn der Rechnungseingang bei Ihnen der Ablauf ist, der jede Woche am meisten nervt, schildern Sie ihn mir in drei Sätzen. Ich sage Ihnen, ob sich eine Automatisierung lohnt, auch wenn die Antwort Nein lautet.' },
+  ],
+  notes: [
+    'Quelle zur E-Rechnung: § 14 UStG in der Fassung des Wachstumschancengesetzes und BMF-Schreiben vom 15. Oktober 2024 zur Einführung der obligatorischen E-Rechnung. Stand: Oktober 2026. Keine Steuerberatung.',
+    'Als E-Rechnung gelten Formate nach der europäischen Norm EN 16931, etwa XRechnung und ZUGFeRD ab Version 2.0.1. Die ZUGFeRD-Profile MINIMUM und BASIC-WL zählen laut BMF nicht dazu.',
+    'Die Zahlen in der Beispielrechnung sind Annahmen. Ihr eigener Stundensatz und Ihre Rechnungsmenge können deutlich davon abweichen.',
+  ],
+  related: [
+    { label: 'E-Mails automatisieren', href: '/wissen/e-mail-postfach-automatisieren' },
+    { label: 'Belege einsammeln, ohne nachzulaufen', href: '/wissen/belege-einsammeln-ohne-nachlaufen' },
+    { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
+    { label: 'Ablauf schildern', href: '/kontakt' },
+  ],
+};

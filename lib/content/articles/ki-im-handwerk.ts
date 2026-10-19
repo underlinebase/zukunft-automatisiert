@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-11-20';
+
+export const kiImHandwerk: Article = {
+  id: 203,
+  slug: 'ki-im-handwerk',
+  title: 'KI im Handwerk: Was im Büro hilft und was Sie sich sparen können.',
+  seoTitle: 'KI im Handwerk: Was im Büro wirklich hilft',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Handwerk',
+  lead: 'KI im Handwerk passiert nicht auf der Baustelle, sondern im Büro: Anfragen, Angebote, Nachfassen, Termine, Rechnungen. Wo sie Zeit spart und wo nicht.',
+  body: [
+    { kind: 'p', text: 'Wenn Sie bei „KI im Handwerk“ die Augen verdrehen, verstehe ich das. Die meisten Beiträge dazu zeigen Roboter, Datenbrillen oder Drohnen über dem Dach. Mit dem Alltag eines Betriebs mit acht Leuten hat das wenig zu tun. Ihre Fliesen legt keine KI, und Ihren Heizungskunden berät auch keine.' },
+    { kind: 'p', text: 'Trotzdem schreibe ich diesen Artikel, weil die Skepsis an der falschen Stelle ansetzt. Der Ort, an dem KI und Automatisierung im Handwerksbetrieb wirklich Zeit sparen, ist nicht die Baustelle. Es ist der Schreibtisch, an dem Sie abends noch Angebote tippen.' },
+    { kind: 'h2', text: 'Warum viele Handwerker skeptisch sind und oft recht haben' },
+    { kind: 'p', text: 'Ich höre drei Einwände immer wieder. Der erste: „Das ist was für große Firmen.“ Der zweite: „Meine Kunden wollen mit einem Menschen reden.“ Der dritte: „Ich habe schon Software gekauft, die am Ende keiner verwendet hat.“' },
+    { kind: 'p', text: 'Den zweiten und dritten Einwand nehme ich sehr ernst. Kunden im Handwerk wollen tatsächlich einen Ansprechpartner, und eine Software, die neben dem Alltag her läuft, ist rausgeworfenes Geld. Beim ersten widerspreche ich. Gerade kleine Betriebe haben niemanden, der den Papierkram nebenbei wegarbeitet. Da landet er beim Chef oder bei der Bürokraft, die ohnehin schon zu viel auf dem Tisch hat.' },
+    { kind: 'h2', text: 'Ein Auftrag, sechs Stationen im Büro' },
+    { kind: 'p', text: 'Nehmen wir einen ganz normalen Auftrag, etwa eine Badsanierung oder eine neue Heizung. Bevor jemand einen Handgriff auf der Baustelle macht, läuft im Büro schon einiges: Die Anfrage kommt rein. Ein Termin zur Besichtigung wird vereinbart. Fotos und Aufmaß müssen ins System. Das Angebot wird geschrieben. Nach einer Woche fragt jemand nach. Und nach der Arbeit kommt die Rechnung.' },
+    { kind: 'p', text: 'An jeder dieser Stationen steckt Handarbeit, die sich jede Woche wiederholt. Nicht jede lohnt sich für eine Automatisierung. Ich gehe sie der Reihe nach durch und sage Ihnen jeweils, was ich davon halte.' },
+    { kind: 'h2', text: 'Anfragen und Termine: der Anfang jedes Auftrags' },
+    { kind: 'p', text: 'Anfragen kommen per Mail, übers Kontaktformular, per WhatsApp, über Portale und am Telefon. Oft fehlt die Hälfte: keine Adresse, keine Telefonnummer, kein Foto. Hier hilft eine Mischung aus festen Regeln und KI. Ein Ablauf sammelt alle Anfragen an einer Stelle, liest die Angaben aus dem Text und legt den Kunden in Ihrer Handwerkersoftware an, wenn diese eine Schnittstelle hat. Fehlt etwas, geht eine freundliche Rückfrage raus, die Sie vorher einmal formuliert haben.' },
+    { kind: 'p', text: 'Bei Terminen ist es ähnlich. Statt drei Mails hin und her bekommt der Kunde zwei oder drei freie Zeitfenster aus Ihrem Kalender vorgeschlagen und wählt eins. Einen Tag vorher kommt eine Erinnerung. Das klingt banal. Wer aber jede Woche ein Dutzend Besichtigungen abstimmt, merkt den Unterschied schnell.' },
+    { kind: 'h2', text: 'Fotos und Aufmaß: raus aus dem Handy' },
+    { kind: 'p', text: 'In vielen Betrieben liegt das Aufmaß auf dem Handy des Meisters. Fotos vom Bestand, ein Zettel mit Maßen, eine Sprachnachricht. Bis das im Kundenordner ist, vergehen Tage, und manchmal geht etwas verloren.' },
+    { kind: 'p', text: 'Ein einfacher Weg: Fotos und Notizen gehen vom Handy an eine bestimmte Mailadresse oder in einen geteilten Ordner. Der Ablauf erkennt den Kunden, benennt die Dateien und legt sie ab. Sprachnachrichten kann eine KI in Text umwandeln, sodass im Büro jemand die Maße lesen kann, ohne sich die Aufnahme dreimal anzuhören. Das Messen selbst bleibt natürlich Ihre Arbeit.' },
+    { kind: 'h2', text: 'Kann KI im Handwerksbetrieb Angebote schreiben?' },
+    { kind: 'p', text: 'Ein vollständiges Angebot ohne Sie? Nein, und davon rate ich ab. Kalkulation, Materialwahl, die Einschätzung vor Ort, das ist Ihr Fachwissen. Was eine KI gut kann: aus Ihren Notizen, dem Aufmaß und Ihren bisherigen Angeboten einen Entwurf zusammenstellen. Die passenden Positionen aus Ihren Textbausteinen, die Mengen aus dem Aufmaß, der Einleitungstext mit dem Namen des Kunden.' },
+    { kind: 'p', text: 'Sie prüfen den Entwurf, korrigieren Preise und Positionen und geben frei. Danach geht das Angebot als PDF raus. Statt einer Viertelstunde Zusammenklicken bleiben ein paar Minuten Prüfen. Wie das genau aussieht und wo die Grenzen liegen, beschreibe ich im Artikel über schnellere Angebote. Ein Rechenbeispiel mit Minutenwerten für einen Handwerksbetrieb finden Sie ebenfalls unter den Wissen-Artikeln.' },
+    { kind: 'h2', text: 'Nachfassen und Rechnungen: die Stationen, die gern liegen bleiben' },
+    { kind: 'p', text: 'Nachfassen ist die Arbeit, die alle für sinnvoll halten und kaum einer erledigt. Das Angebot ist raus, die Baustelle ruft, und nach drei Wochen hat der Kunde einen anderen beauftragt. Hier ist Automatisierung fast immer sinnvoll. Nach einer Woche ohne Antwort geht eine kurze, freundliche Mail raus. Antwortet der Kunde, stoppt der Ablauf. Sagt er ab, bekommen Sie einen Hinweis. Mehr braucht es nicht.' },
+    { kind: 'p', text: 'Bei Rechnungen hängt viel an Ihrer Software. Meist lässt sich die Rechnung aus dem Angebot und den erfassten Stunden erstellen. Automatisieren lässt sich vor allem das Drumherum: Rechnung verschicken, Zahlungseingang im Blick behalten, eine Erinnerung schicken, wenn nach 14 Tagen nichts kam. Und die Eingangsrechnungen von Großhändlern und Subunternehmern gehören ebenfalls auf die Liste.' },
+    { kind: 'q', text: 'Die besten Kandidaten sind selten die spannenden Aufgaben. Es sind die, die abends um neun noch auf dem Schreibtisch liegen.' },
+    { kind: 'h2', text: 'Nimmt die KI meiner Bürokraft die Arbeit weg?' },
+    { kind: 'p', text: 'Diese Frage stellen mir Inhaber oft erst am Ende des Gesprächs, fast beiläufig. Meine ehrliche Antwort: In den Betrieben, die ich kenne, ist das Büro nicht überbesetzt. Es ist überlastet. Die Bürokraft tippt Anfragen ab, sucht Fotos zusammen und telefoniert Kunden hinterher, die nicht zurückrufen. Für die Dinge, für die man sie eigentlich eingestellt hat, bleibt wenig Zeit.' },
+    { kind: 'p', text: 'Wenn ein Ablauf ihr das Abtippen abnimmt, hat sie Zeit für Kundengespräche, für die Planung der Baustellen und für die Fälle, die Fingerspitzengefühl brauchen. Ich beziehe die Leute, die täglich mit dem Ablauf arbeiten, deshalb von Anfang an ein. Sie wissen am besten, wo es hakt, und sie müssen am Ende damit leben.' },
+    { kind: 'h2', text: 'Was im Handwerk nicht sinnvoll ist' },
+    { kind: 'p', text: 'Ein Chatbot auf der Website, der Ihre Kunden berät. Ihre Kunden wollen keinen Chat, sie wollen einen Termin oder ein Angebot. Ein Bot, der falsch berät, schadet mehr als er hilft.' },
+    { kind: 'p', text: 'Automatische Antworten, die Preise oder Termine zusagen. Das kann im besten Fall peinlich werden und im schlechtesten teuer.' },
+    { kind: 'p', text: 'Eine neue Software für alles, wenn die alte im Kern funktioniert. Oft reicht es, die Programme zu verbinden, die Sie schon haben. Und alles, was nur ein paarmal im Jahr vorkommt. Da lohnt sich der Aufwand selten.' },
+    { kind: 'h2', text: 'Wie viel Automatisierung braucht ein kleiner Handwerksbetrieb?' },
+    { kind: 'p', text: 'Weniger, als die meisten Anbieter Ihnen erzählen. Ein einziger Ablauf, der gut läuft, bringt mehr als fünf halbe. Ich empfehle, mit der Station anzufangen, die Sie jede Woche am meisten Zeit kostet. Schreiben Sie dafür eine Woche lang mit, wo Ihre Bürozeit hingeht. Bei vielen Handwerkern sind es die Angebote und das Nachfassen. Bei anderen ist es die Terminabstimmung oder das Sortieren der Fotos.' },
+    { kind: 'p', text: 'Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis, den Sie nach dem Erstgespräch schriftlich bekommen. Ich arbeite remote mit Betrieben in ganz Deutschland, meist per Video. Läuft der Ablauf nach vier Wochen nicht, arbeite ich kostenlos weiter. Was ich speziell für Handwerksbetriebe mache, steht auf meiner Seite fürs Handwerk.' },
+  ],
+  notes: [
+    'Ob sich Anfragen oder Angebote direkt in Ihre Handwerkersoftware übernehmen lassen, hängt von deren Schnittstellen ab. Das prüfe ich vor dem Start.',
+    'Bei Sprachnachrichten und Fotos geht es oft um Kundendaten. Die Abläufe laufen auf Servern in der EU.',
+  ],
+  related: [
+    { label: 'Angebote schneller schreiben', href: '/wissen/angebote-schneller-schreiben' },
+    { label: 'Rechenbeispiel: Angebote im Handwerk', href: '/wissen/rechenbeispiel-handwerk-angebote' },
+    { label: 'Rechnungseingang automatisieren', href: '/wissen/rechnungseingang-automatisieren' },
+  ],
+};

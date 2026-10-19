@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-11-27';
+
+export const automatisierungOhneItAbteilung: Article = {
+  id: 205,
+  slug: 'automatisierung-ohne-it-abteilung',
+  title: 'Automatisierung ohne IT-Abteilung: Wer kümmert sich, wenn es hakt?',
+  seoTitle: 'Automatisierung für kleine Unternehmen ohne IT-Abteilung',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Methodik',
+  lead: 'Automatisierung für kleine Unternehmen ohne IT-Abteilung: wer sie später betreut, was bei Störungen passiert und wie Sie verhindern, dass Sie abhängig werden.',
+  body: [
+    { kind: 'p', text: 'Freitag, kurz nach vier. Ein Kunde ruft an und fragt, warum er auf seine Anfrage vom Mittwoch noch keine Eingangsbestätigung bekommen hat. Sie schauen nach. Die automatische Mail ist seit zwei Tagen nicht mehr rausgegangen. Niemand hat es bemerkt. Und jetzt? Eine IT-Abteilung, die Sie anrufen könnten, gibt es nicht. Der Dienstleister, der das eingerichtet hat, ist vielleicht schon im Wochenende.' },
+    { kind: 'p', text: 'Diese Szene ist der Grund, warum viele Inhaber kleiner Betriebe vor Automatisierung zurückschrecken. Nicht weil sie die Technik nicht verstehen, sondern weil sie wissen, dass sie niemanden haben, der sich später darum kümmert. Die Sorge ist berechtigt. Sie lässt sich aber vor dem Start klären, mit ein paar einfachen Fragen.' },
+    { kind: 'h2', text: 'Brauche ich eine IT-Abteilung, um Abläufe zu automatisieren?' },
+    { kind: 'p', text: 'Nein. Die meisten Betriebe, mit denen ich arbeite, haben keine. Oft gibt es jemanden, der sich ein bisschen auskennt, den Drucker einrichtet und das WLAN-Passwort weiß. Das reicht. Eine gute Automatisierung für kleine Unternehmen ist so gebaut, dass sie im Alltag niemanden braucht, der programmieren kann.' },
+    { kind: 'p', text: 'Was Sie brauchen, ist etwas anderes: eine Person im Betrieb, die weiß, was der Ablauf tut, und die merkt, wenn er es nicht tut. Das ist keine IT-Aufgabe. Das ist dieselbe Aufmerksamkeit, mit der jemand merkt, dass der Drucker kein Papier mehr hat.' },
+    { kind: 'h2', text: 'Woran merke ich, dass etwas nicht läuft?' },
+    { kind: 'p', text: 'In der Szene oben hat es zwei Tage gedauert, bis jemand es bemerkt hat. Das sollte nicht passieren. Ich baue in jeden Ablauf eine Fehlermeldung ein. Bricht ein Schritt ab, bekommt eine festgelegte Person eine Mail mit dem Hinweis, was nicht geklappt hat. In verständlicher Sprache, nicht als Fehlercode.' },
+    { kind: 'p', text: 'Dazu kommt bei manchen Abläufen eine kurze Zusammenfassung, etwa einmal pro Woche: so viele Anfragen verarbeitet, so viele Rechnungen abgelegt, so viele Fälle im Prüfordner. Fällt die Zahl plötzlich auf null, sieht man es sofort. Diese Wochenmail ist unscheinbar, aber sie ist oft das Erste, worauf Inhaber nach ein paar Monaten nicht mehr verzichten möchten.' },
+    { kind: 'h2', text: 'Was passiert bei einer Störung?' },
+    { kind: 'p', text: 'Die meisten Störungen sind harmlos. Ein Passwort wurde geändert und der Ablauf kommt nicht mehr ins Postfach. Eine Software hat ein Update bekommen und liefert Daten jetzt etwas anders. Ein Lieferant schickt seine Rechnungen plötzlich von einer neuen Adresse. Vieles davon kann eine eingewiesene Person im Betrieb selbst beheben, mit der Anleitung daneben.' },
+    { kind: 'p', text: 'Mindestens so wichtig wie die Reparatur ist der Plan B. Jeder Ablauf, den ich baue, hat einen Weg zurück: Wenn die Automatisierung steht, wird für ein paar Tage wieder von Hand gearbeitet, so wie vorher. Das ist lästig, aber kein Drama. Deshalb gehört zur Übergabe auch die Frage: Wie haben wir das früher gemacht, und wer könnte das im Notfall wieder tun?' },
+    { kind: 'q', text: 'Eine Automatisierung, bei deren Ausfall der Betrieb stillsteht, ist schlecht gebaut. Sie darf Arbeit abnehmen, aber sie darf nicht unersetzlich werden.' },
+    { kind: 'h2', text: 'Was gehört in eine gute Übergabe?' },
+    { kind: 'p', text: 'Bei mir sind das vier Dinge. Alle Zugänge, also Server, Automatisierungswerkzeug und alle angebundenen Dienste, mit Zugangsdaten, die Sie danach ändern können. Eine Anleitung zum Nachlesen in normaler Sprache: was der Ablauf tut, in welcher Reihenfolge, und was zu tun ist, wenn eine Fehlermeldung kommt. Ein kurzes Erklärvideo, weil sich manches leichter zeigen als beschreiben lässt. Und eine Einweisung für die Leute, die täglich damit arbeiten.' },
+    { kind: 'p', text: 'Prüfen Sie eine Übergabe mit einer einfachen Frage: Könnte jemand anderes als der Erbauer diesen Ablauf mit diesen Unterlagen verstehen? Wenn die Antwort Nein ist, fehlt etwas. Eine Anleitung, die nur der Dienstleister versteht, ist keine Anleitung.' },
+    { kind: 'h2', text: 'Wie vermeide ich, vom Dienstleister abhängig zu werden?' },
+    { kind: 'p', text: 'Das ist die eigentliche Frage hinter der Sorge vor fehlender IT. Abhängigkeit entsteht auf drei Wegen. Der Dienstleister behält die Zugänge. Er baut mit Werkzeugen, die außer ihm kaum jemand kennt. Oder er dokumentiert nichts, sodass jeder Nachfolger von vorn anfangen müsste.' },
+    { kind: 'p', text: 'Fragen Sie deshalb vor der Beauftragung: Auf wessen Namen laufen die Konten? Bekomme ich alle Zugangsdaten? Mit welchem Werkzeug wird gebaut, und gibt es andere Fachleute, die es beherrschen? Ich arbeite meistens mit n8n. Das Werkzeug ist weit verbreitet, es gibt eine große Gemeinschaft und viele Dienstleister, die sich damit auskennen. Wenn ich morgen nicht mehr da wäre, könnte jemand anderes Ihre Abläufe übernehmen. Genau das sollte bei jedem Anbieter so sein.' },
+    { kind: 'p', text: 'Ich halte Abhängigkeit für kein gutes Geschäftsmodell, und ich habe dazu einen eigenen Artikel geschrieben: warum ich nach vier Wochen gehe. Die Kurzfassung: Der Ablauf gehört Ihnen, und er muss ohne mich laufen.' },
+    { kind: 'h2', text: 'Und wenn sich im Betrieb etwas ändert?' },
+    { kind: 'p', text: 'Ein Betrieb steht nicht still. Eine neue Kollegin kommt dazu, ein Lieferant wechselt, Sie erhöhen Ihre Preise oder stellen auf eine neue Branchensoftware um. Manche dieser Änderungen betreffen den Ablauf, die meisten nicht.' },
+    { kind: 'p', text: 'Kleine Dinge sollten Sie selbst ändern können, ohne jemanden anzurufen. Textbausteine, Empfängeradressen, Erinnerungsfristen: So etwas lege ich gern in eine einfache Tabelle oder ein Dokument, das der Ablauf liest. Wer die Tabelle bearbeiten kann, kann den Ablauf anpassen. Größere Umstellungen, etwa eine neue Software, sind ein eigenes kleines Projekt. Das sollten Sie einplanen, egal ob mit mir oder jemand anderem.' },
+    { kind: 'h2', text: 'Welche laufenden Kosten kommen auf mich zu?' },
+    { kind: 'p', text: 'Auch ohne IT-Abteilung sollten Sie wissen, was eine Automatisierung im laufenden Betrieb kostet. Dazu gehören in der Regel der Server, auf dem sie läuft, mögliche Lizenzen für angebundene Programme und, wenn KI im Spiel ist, die Gebühren des KI-Anbieters. Die werden meist nach Verbrauch abgerechnet und sind bei kleinen Mengen überschaubar.' },
+    { kind: 'p', text: 'Lassen Sie sich diese Kosten vor dem Start aufschreiben, Posten für Posten, und klären Sie, auf wessen Rechnung sie laufen. Am besten auf Ihre. Dann sehen Sie jeden Monat, was Sie zahlen, und können jederzeit selbst entscheiden, ob Sie etwas kündigen oder wechseln.' },
+    { kind: 'h2', text: 'Brauche ich danach einen Wartungsvertrag?' },
+    { kind: 'p', text: 'Nicht zwingend. Viele Abläufe laufen monatelang ohne jeden Eingriff. Bei mir ist die Betreuung nach dem Projekt freiwillig und monatlich kündbar. Ich prüfe dann, ob alles läuft, passe Kleinigkeiten an und bin erreichbar, wenn sich an Ihrer Software etwas ändert. Den Monatsbetrag vereinbaren wir vor dem Start, er hängt davon ab, wie viele Abläufe laufen.' },
+    { kind: 'p', text: 'Ob sich das lohnt, hängt von Ihnen ab. Haben Sie jemanden im Betrieb, der gern mal reinschaut und die Anleitung gelesen hat, kommen Sie oft ohne aus. Wollen Sie sich um gar nichts kümmern, ist die Betreuung bequemer. Beides ist in Ordnung. Misstrauisch würde ich nur werden, wenn ein Anbieter die Betreuung zur Pflicht macht oder eine lange Mindestlaufzeit verlangt.' },
+    { kind: 'h2', text: 'Was im Betrieb bleibt' },
+    { kind: 'p', text: 'Eine Person, die Fehlermeldungen bekommt und liest. Ein kurzer Blick auf die Wochenmail. Die Anleitung an einem Ort, an dem man sie findet, auch wenn der Kollege im Urlaub ist. Und die Gewohnheit, Passwortänderungen kurz zu melden, weil viele Störungen genau daher kommen.' },
+    { kind: 'p', text: 'Wenn Sie mehr wollen, etwa einen zweiten Ablauf selbst anpassen, kann ich Ihre Leute dabei anleiten. Als geprüfter Ausbilder mache ich das gern. Nötig ist es nicht. Eine Automatisierung für kleine Unternehmen muss ohne eigene IT funktionieren, sonst ist sie die falsche.' },
+  ],
+  notes: [
+    'Eine häufige Ursache für Störungen: geänderte Passwörter und abgelaufene Anmeldungen bei angebundenen Diensten. Ein kurzer Hinweis an die zuständige Person spart viel Suche.',
+    'Legen Sie die Anleitung zusätzlich als Ausdruck ins Büro. Wenn der Zugang zur Ablage gerade hakt, ist sie trotzdem da.',
+  ],
+  related: [
+    { label: 'Warum ich nach vier Wochen gehe', href: '/wissen/warum-ich-nach-vier-wochen-gehe' },
+    { label: 'Wenn der Mitarbeiter geht', href: '/wissen/wenn-der-mitarbeiter-geht' },
+    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+  ],
+};

@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { SITE } from '@/lib/content/site';
 import { ARTICLES } from '@/lib/content/articles';
+import { isPublished, publishedArticles } from '@/lib/content/publishing';
 import { INDUSTRIES } from '@/lib/content/branchen';
 import { metaDescription, seoTitle, TITLE_MAX } from './meta';
 import { articleSchema, collectionSchema } from './schema';
@@ -82,13 +83,23 @@ describe('llms.txt', () => {
     expect(text.startsWith(`# ${SITE.name}`)).toBe(true);
   });
 
-  test('links every landing page and every article with absolute URLs', () => {
+  test('links every landing page and every published article with absolute URLs', () => {
     INDUSTRIES.forEach((industry) => expect(text).toContain(`${SITE.url}/${industry.slug}`));
-    ARTICLES.forEach((article) => expect(text).toContain(`${SITE.url}/wissen/${article.slug}`));
+    publishedArticles(ARTICLES).forEach((article) => expect(text).toContain(`${SITE.url}/wissen/${article.slug}`));
+  });
+
+  test('leaves out scheduled articles', () => {
+    ARTICLES.filter((article) => !isPublished(article)).forEach((article) =>
+      expect(text).not.toContain(`/wissen/${article.slug}`),
+    );
   });
 
   test('names the person behind the offer', () => {
     expect(text).toContain(SITE.owner);
+  });
+
+  test('links the main page for KI-Beratung', () => {
+    expect(text).toContain(`${SITE.url}/ki-beratung`);
   });
 });
 

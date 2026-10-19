@@ -4,7 +4,9 @@
 import { SITE } from '@/lib/content/site';
 import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 import { ARTICLES } from '@/lib/content/articles';
+import { publishedArticles } from '@/lib/content/publishing';
 import { EXPERIENCE, FACTS, FAQS, GUARANTEE, WEEKS } from '@/lib/content/home';
+import { KI_BERATUNG_PATH, KI_BERATUNG_SEO } from '@/lib/content/ki-beratung';
 
 function link(title: string, path: string, note?: string): string {
   return `- [${title}](${SITE.url}${path})${note ? `: ${note}` : ''}`;
@@ -25,7 +27,7 @@ export function buildLlmsTxt(): string {
     `- Seit über 14 Jahren Leitung von Digitalisierungsprojekten, heute Automatisierung für Inhaber. Sagt offen, wo KI hilft und wo nicht.`,
     `- Frühere Projekte als IT-Projektleiter: ${EXPERIENCE.companies.join(', ')}. Das sind keine Kunden dieses Angebots.`,
     `- Zertifikate: ${EXPERIENCE.certificates.join('; ')}.`,
-    `- Arbeitet von ${SITE.location} aus für Betriebe in ganz Deutschland, meist per Video.`,
+    `- Arbeitet als KI-Berater remote für Betriebe in ganz Deutschland, meist per Video, bei Bedarf vor Ort.`,
     `- Kontakt: ${SITE.email}, LinkedIn: ${SITE.linkedin}`,
   ]);
 
@@ -42,6 +44,7 @@ export function buildLlmsTxt(): string {
 
   const pages = section('Seiten', [
     link('Startseite', '/', 'Angebot, Ablauf, Garantie, Zeitrechner, häufige Fragen'),
+    link('KI-Beratung', KI_BERATUNG_PATH, KI_BERATUNG_SEO.description),
     link('Über mich', '/ueber-mich', 'Werdegang, Stationen und Zertifikate von Marco Gundlach'),
     link('Kontakt', '/kontakt', 'Ablauf schildern oder 30 Minuten Gespräch buchen'),
     link('Wissen', '/wissen', 'Praxisartikel zu Automatisierung und KI ohne Hype'),
@@ -54,7 +57,7 @@ export function buildLlmsTxt(): string {
 
   const articles = section(
     'Wissen-Artikel',
-    ARTICLES.map((article) => link(article.title.replace(/\.$/, ''), `/wissen/${article.slug}`, article.lead)),
+    publishedArticles(ARTICLES).map((article) => link(article.title.replace(/\.$/, ''), `/wissen/${article.slug}`, article.lead)),
   );
 
   const faqs = section(

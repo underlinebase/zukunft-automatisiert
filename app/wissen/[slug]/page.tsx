@@ -8,6 +8,10 @@ import { metaDescription, seoTitle } from '@/lib/seo/meta';
 import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
 
+// Stündlich neu erzeugen. Geplante Artikel sind beim Build nicht dabei und werden ab ihrem Erscheinungstag
+// beim ersten Aufruf erzeugt (dynamicParams ist standardmäßig an).
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -33,6 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: article.title,
       description,
       publishedTime: article.datePublished,
+      modifiedTime: article.dateModified,
       authors: [SITE.owner],
       section: article.category,
     },
@@ -79,6 +84,16 @@ export default async function ArticlePage({ params }: PageProps) {
             if (block.kind === 'q') return <blockquote key={i}>{block.text}</blockquote>;
             return <p key={i}>{block.text}</p>;
           })}
+          {article.related && article.related.length > 0 ? (
+            <nav className="article__related" aria-label="Passend dazu">
+              <h2>Passend dazu</h2>
+              <ul>
+                {article.related.map((link) => (
+                  <li key={link.href}><Link href={link.href} className="text-link">{link.label} <ArrowIcon /></Link></li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
           <div className="article__footer">
             {next && next.slug !== article.slug ? (
               <Link href={`/wissen/${next.slug}`} className="text-link">Nächste Notiz <ArrowIcon /></Link>

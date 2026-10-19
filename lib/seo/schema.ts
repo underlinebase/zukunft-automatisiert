@@ -58,7 +58,6 @@ export function personSchema(): JsonLd {
     url: `${SITE.url}/ueber-mich`,
     image: `${SITE.url}/marco-gundlach-portrait.jpg`,
     sameAs: [SITE.linkedin],
-    homeLocation: { '@type': 'Place', name: SITE.location },
     worksFor: { '@id': ORG_ID },
     knowsAbout: KNOWS_ABOUT,
     hasCredential: CREDENTIALS.map((credential) => ({
@@ -69,18 +68,37 @@ export function personSchema(): JsonLd {
   };
 }
 
-export function serviceSchema(industry: Industry, path: string): JsonLd {
+export interface ServiceInfo {
+  name: string;
+  serviceType: string;
+  description: string;
+  audience: string;
+  path: string;
+}
+
+/** Leistung einer Seite (Hauptseite /ki-beratung oder Landingpage), angeboten von der Organisation. */
+export function offerSchema(service: ServiceInfo): JsonLd {
   return {
     '@type': 'Service',
-    '@id': `${SITE.url}${path}#leistung`,
+    '@id': `${SITE.url}${service.path}#leistung`,
+    name: service.name,
+    serviceType: service.serviceType,
+    description: service.description,
+    url: `${SITE.url}${service.path}`,
+    provider: { '@id': ORG_ID },
+    areaServed: AREA_SERVED,
+    audience: { '@type': 'BusinessAudience', name: service.audience },
+  };
+}
+
+export function serviceSchema(industry: Industry, path: string): JsonLd {
+  return offerSchema({
     name: industry.seo.serviceType,
     serviceType: industry.seo.serviceType,
     description: industry.seo.description,
-    url: `${SITE.url}${path}`,
-    provider: { '@id': ORG_ID },
-    areaServed: AREA_SERVED,
-    audience: { '@type': 'BusinessAudience', name: industry.audience },
-  };
+    audience: industry.audience,
+    path,
+  });
 }
 
 export function breadcrumbSchema(items: { name: string; path: string }[]): JsonLd {
@@ -114,7 +132,7 @@ export function articleSchema(article: Article): JsonLd {
     headline: article.title,
     description: article.lead,
     datePublished: article.datePublished,
-    dateModified: article.datePublished,
+    dateModified: article.dateModified ?? article.datePublished,
     inLanguage: LANGUAGE,
     articleSection: article.category,
     url,

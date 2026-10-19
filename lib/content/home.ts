@@ -11,7 +11,7 @@ import type {
 } from './types';
 
 export const HERO = {
-  eyebrow: 'Der KI-Realist · Automatisierung für Inhaber',
+  eyebrow: 'KI-Berater · Prozessautomatisierung für Inhaber',
   title: 'Den Ablauf, der Sie jede Woche Stunden kostet, automatisiere ich in 4 Wochen.',
   lead: 'Klappt das nicht, arbeite ich kostenlos weiter. Ohne KI-Zauber, ohne Software-Zoo. Sie arbeiten direkt mit mir.',
 };
@@ -171,6 +171,7 @@ export const ABOUT = {
     'Ich nenne mich den KI-Realisten. Ich setze KI jeden Tag ein und habe mich zu ihren Fähigkeiten und Grenzen zertifizieren lassen. Gerade deshalb sage ich Ihnen, wann sie hilft und wann eine einfache Regel besser ist.',
   ],
   photoAlt: 'Marco Gundlach',
+  extraLink: { href: '/ki-beratung', label: 'So arbeite ich als KI-Berater' },
 };
 
 export const EXPERIENCE = {

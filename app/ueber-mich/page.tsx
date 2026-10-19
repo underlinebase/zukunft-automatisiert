@@ -12,9 +12,9 @@ import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 
 export const metadata: Metadata = {
-  title: seoTitle('Über mich: Marco Gundlach, der KI-Realist'),
+  title: seoTitle('Marco Gundlach: KI-Berater und KI-Realist'),
   description:
-    'Marco Gundlach: über 14 Jahre Digitalisierungsprojekte, etwa für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Realist Abläufe für Inhaber.',
+    'Marco Gundlach: über 14 Jahre Digitalisierungsprojekte, etwa für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Berater Abläufe für Inhaber.',
   alternates: { canonical: '/ueber-mich' },
 };
 

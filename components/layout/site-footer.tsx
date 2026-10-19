@@ -11,12 +11,13 @@ export default function SiteFooter() {
           <div className="site-footer__brand">
             <Logo inverse />
             <p>
-              {SITE.owner}, der KI-Realist. Prozessautomatisierung für Inhaber in Deutschland, von {SITE.location} aus. Ein Ablauf, 4 Wochen, Festpreis.
+              {SITE.owner}, der KI-Realist. KI-Berater für Prozessautomatisierung, remote für Inhaber in ganz Deutschland. Ein Ablauf, 4 Wochen, Festpreis.
             </p>
           </div>
           <nav aria-label="Weitere Seiten">
             <h2 className="site-footer__title">Mehr</h2>
             <ul>
+              <li><Link href="/ki-beratung">KI-Beratung</Link></li>
               <li><Link href="/ueber-mich">Über mich</Link></li>
               <li><Link href="/wissen">Wissen</Link></li>
               <li><Link href="/kontakt">Kontakt</Link></li>

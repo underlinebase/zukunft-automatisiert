@@ -13,6 +13,17 @@ export const TITLE_SEPARATOR = ' · ';
 type SeoTitle = string | { absolute: string };
 
 /**
+ * Vorschaubild der Startseite (app/opengraph-image.tsx, 1200 × 630 wie OG_SIZE).
+ * Ein eigenes `openGraph`-Objekt einer Seite ersetzt das des Root-Layouts samt Bild. Solche Seiten geben es hiermit ausdrücklich an.
+ */
+export const DEFAULT_OG_IMAGE = {
+  url: '/opengraph-image',
+  width: 1200,
+  height: 630,
+  alt: `${SITE.name}: Prozessautomatisierung vom KI-Realisten`,
+} as const;
+
+/**
  * Titel für `metadata.title`. Hängt den Markennamen nur an, wenn das Ganze in die Suchergebnisse passt;
  * sonst bleibt der aussagekräftige Teil vollständig stehen. Ein Schlusspunkt (Überschriften-Stil) entfällt.
  */

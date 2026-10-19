@@ -3,17 +3,25 @@ import type { WeekStep } from '@/lib/content/types';
 interface StepsCompactProps {
   steps: readonly WeekStep[];
   total: string;
+  /** Eigene Überschrift, etwa auf /ki-beratung. Ohne Angabe gilt der Text der Landingpages. */
+  intro?: { label: string; title: string; lead: string };
+  id?: string;
 }
 
-/** Die 4 Wochen in kompakter Form (ohne Pin), für Landingpages. */
-export default function StepsCompact({ steps, total }: StepsCompactProps) {
+/** Die 4 Wochen in kompakter Form (ohne Pin), für Landingpages und /ki-beratung. */
+export default function StepsCompact({ steps, total, intro, id }: StepsCompactProps) {
+  const head = intro ?? {
+    label: 'So läuft es',
+    title: 'In 4 Wochen von der Aufnahme bis zur Übergabe.',
+    lead: `${total}. Den Rest erledige ich.`,
+  };
   return (
-    <section className="section tone-white" aria-labelledby="steps-title">
+    <section className="section tone-white" id={id} aria-labelledby="steps-title">
       <div className="container">
         <div className="section-head section-head--split">
-          <span className="label">So läuft es</span>
-          <h2 id="steps-title">In 4 Wochen von der Aufnahme bis zur Übergabe.</h2>
-          <p className="lead">{total}. Den Rest erledige ich.</p>
+          <span className="label">{head.label}</span>
+          <h2 id="steps-title">{head.title}</h2>
+          <p className="lead">{head.lead}</p>
         </div>
         <ol className="steps">
           {steps.map((step) => (

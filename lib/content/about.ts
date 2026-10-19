@@ -58,12 +58,12 @@ export const CREDENTIALS: Credential[] = [
 
 export const ABOUT_PAGE = {
   title: 'Ich bin Marco Gundlach. Der KI-Realist.',
-  lead: 'Seit über 14 Jahren leite ich Digitalisierungsprojekte. Heute automatisiere ich Abläufe für Inhaber und sage dabei offen, wo KI hilft und wo nicht.',
+  lead: 'Seit über 14 Jahren leite ich Digitalisierungsprojekte. Heute arbeite ich als KI-Berater, automatisiere Abläufe für Inhaber und sage dabei offen, wo KI hilft und wo nicht.',
   essay: [
     'Viele Jahre habe ich Digitalprojekte geleitet, in einer Agentur, bei Aktion Mensch und als Product Owner für Marken wie Hugo Boss und Fressnapf. Dort ging es um viele Beteiligte, lange Abstimmungen und große Budgets. Ich habe gelernt, wie man Abläufe sauber aufnimmt und so umsetzt, dass sie im Alltag funktionieren.',
     'Ich habe auch gesehen, wie viel Zeit in Projekte fließt, die am Ende niemand nutzt. Folien, Workshops, Konzepte. Für einen Betrieb mit zehn oder zwanzig Leuten passt das nicht. Dort zählt, ob am Freitag weniger Papierkram auf dem Tisch liegt.',
     'Deshalb arbeite ich heute anders. Ein Ablauf, 4 Wochen, ein Festpreis. Sie sprechen die ganze Zeit mit mir, nicht mit einem Team, das Sie nie sehen.',
     'Warum „der KI-Realist“? Ich arbeite jeden Tag mit KI und habe mich bei Anthropic zu ihren Fähigkeiten und Grenzen zertifizieren lassen. Sie kann Texte lesen, sortieren und Entwürfe schreiben. Sie kann aber längst nicht alles, was gerade versprochen wird. Wenn ein Ablauf ohne KI zuverlässiger läuft, bauen wir ihn ohne.',
-    'Ich arbeite von Köln aus, für Betriebe in ganz Deutschland, meistens per Video, wenn es hilft auch vor Ort. Als geprüfter Ausbilder und KI-Trainer erkläre ich Technik so, dass Ihr Team sie danach selbst versteht und bedienen kann.',
+    'Ich arbeite remote für Betriebe in ganz Deutschland, meistens per Video. Wenn ein Termin vor Ort hilft, komme ich vorbei. Als geprüfter Ausbilder und KI-Trainer erkläre ich Technik so, dass Ihr Team sie danach selbst versteht und bedienen kann.',
   ],
 };

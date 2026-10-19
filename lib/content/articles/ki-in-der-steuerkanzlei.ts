@@ -1,0 +1,58 @@
+import type { Article } from '@/lib/types';
+import { monthLabel } from './dates';
+
+const PUBLISH_ISO = '2026-11-24';
+
+export const kiInDerSteuerkanzlei: Article = {
+  id: 204,
+  slug: 'ki-in-der-steuerkanzlei',
+  title: 'KI in der Steuerkanzlei: erst die Verschwiegenheit, dann die Technik.',
+  seoTitle: 'KI in der Steuerkanzlei: Automatisierung mit Augenmaß',
+  date: monthLabel(PUBLISH_ISO),
+  datePublished: PUBLISH_ISO,
+  read_minutes: 6,
+  category: 'Kanzlei',
+  lead: 'KI in der Steuerkanzlei: Was sich bei Belegen, Mandantenpost, Fristen und Onboarding automatisieren lässt, und was Sie vorher zur Verschwiegenheit klären.',
+  body: [
+    { kind: 'p', text: 'Wenn ich mit Inhabern von Steuerkanzleien spreche, lautet die erste Frage selten „Was kann das?“. Sie lautet: „Darf ich das überhaupt?“ Das ist die richtige Reihenfolge. Deshalb beginnt dieser Artikel nicht mit Belegen oder Fristen, sondern mit der Verschwiegenheit.' },
+    { kind: 'h2', text: 'Darf eine Steuerkanzlei KI und Automatisierung einsetzen?' },
+    { kind: 'p', text: 'Grundsätzlich ja, aber unter Bedingungen, die strenger sind als in einem Handwerksbetrieb. Steuerberater sind zur Verschwiegenheit verpflichtet, berufsrechtlich und strafrechtlich. § 203 StGB nennt Steuerberater ausdrücklich unter den Berufsgeheimnisträgern, deren unbefugte Offenbarung von Mandantengeheimnissen strafbar ist.' },
+    { kind: 'p', text: 'Der Gesetzgeber hat 2017 klargestellt, dass Berufsgeheimnisträger externe Dienstleister einbinden dürfen, etwa für IT. Für Steuerberater regelt das § 62a StBerG. Vereinfacht gesagt: Der Dienstleister muss sorgfältig ausgewählt, schriftlich zur Verschwiegenheit verpflichtet und nur so weit eingebunden werden, wie es für seine Aufgabe nötig ist. Was das für Ihre Kanzlei im Einzelnen heißt, klären Sie bitte mit Ihrer Steuerberaterkammer oder Ihrem Berufshaftpflichtversicherer. Ich bin kein Jurist und gebe hier keine Rechtsberatung.' },
+    { kind: 'p', text: 'Für mich folgt daraus eine Arbeitsweise: Verschwiegenheitsverpflichtung und Vertrag zur Auftragsverarbeitung kommen vor dem ersten Zugang. Ich sehe nur die Daten, die ich für den Ablauf brauche. Und jeder Dienst, der in der Automatisierung steckt, wird vorher mit Ihnen besprochen.' },
+    { kind: 'h2', text: 'Wo liegen die Mandantendaten?' },
+    { kind: 'p', text: 'Das ist die zweite Frage, und sie ist berechtigt. Meine Abläufe laufen auf Servern von Hostinger in einem Rechenzentrum in der EU, meist mit n8n. Wo KI Texte liest, etwa auf einem Beleg oder in einer Mandantenmail, setze ich Geschäftsangebote von Anthropic (Claude) oder OpenAI ein, bei denen die Daten laut Anbieter nicht zum Training verwendet werden. Ob und für welche Schritte Sie überhaupt KI möchten, entscheiden Sie. Viele Abläufe in einer Kanzlei kommen mit festen Regeln aus.' },
+    { kind: 'p', text: 'Ein Grundsatz, der sich bewährt: Die Kanzleisoftware bleibt das führende System. Die Automatisierung liest dort, wo es eine erlaubte Schnittstelle gibt, und sie arbeitet davor und daneben. Sie ersetzt weder DATEV noch Ihr Dokumentenmanagement. Was dort steht, bleibt dort, und niemand muss nebenher eine zweite Mandantenliste pflegen.' },
+    { kind: 'h2', text: 'Was lässt sich in der Steuerkanzlei automatisieren?' },
+    { kind: 'p', text: 'Wenn Verschwiegenheit und Datenstandort geklärt sind, bleiben vier Bereiche, in denen ich in Kanzleien am häufigsten Zeit verloren gehen sehe. Keiner davon betrifft die eigentliche Steuerberatung. Alle betreffen die Arbeit rundherum, die Ihre Fachkräfte von der Beratung abhält.' },
+    { kind: 'h2', text: 'Belege: die monatliche Jagd' },
+    { kind: 'p', text: 'Mandanten schicken Belege zu spät, unvollständig oder auf drei Wegen gleichzeitig. Ihre Mitarbeiter schreiben Erinnerungen, telefonieren hinterher, gleichen ab. Hier lässt sich viel automatisieren. Ein Ablauf vergleicht, welche Belege zu den Kontobewegungen fehlen, und erstellt pro Mandant eine konkrete Liste mit Datum und Betrag. Ihr Team schaut kurz drauf, dann geht sie raus. Die Erinnerung nach einer Woche kommt automatisch.' },
+    { kind: 'p', text: 'Wie das im Detail aussieht und warum eine konkrete Liste besser wirkt als eine allgemeine Bitte, habe ich im Artikel über das Einsammeln von Belegen beschrieben. Wie gut der Abgleich klappt, hängt davon ab, wie Ihre Mandanten heute Belege liefern und welche Wege Ihre Kanzleisoftware dafür vorsieht.' },
+    { kind: 'h2', text: 'Mandantenkommunikation: weniger Postfach, mehr Beratung' },
+    { kind: 'p', text: 'In vielen Kanzleien geht jede Mandantenmail an ein gemeinsames Postfach, und jemand verteilt sie von Hand. Eine Frage zur Lohnabrechnung, ein neuer Bescheid als Foto, eine Terminanfrage, eine Kündigung. KI kann diese Mails lesen, einordnen und dem zuständigen Sachbearbeiter zuweisen. Anhänge werden erkannt und mit einem sinnvollen Namen abgelegt.' },
+    { kind: 'p', text: 'Wo ich die Grenze ziehe: Antworten auf fachliche Fragen schreibt keine KI eigenständig an Mandanten. Ein Entwurf für eine Standardauskunft, etwa welche Unterlagen für die Einkommensteuererklärung gebraucht werden, ist in Ordnung. Er wird aber von einem Mitarbeiter geprüft und verschickt. Alles, was nach Beratung aussieht, bleibt bei Ihnen.' },
+    { kind: 'q', text: 'Eine KI darf in der Kanzlei sortieren und vorbereiten. Beraten und unterschreiben tun Menschen.' },
+    { kind: 'h2', text: 'Fristen: erinnern ja, verantworten nein' },
+    { kind: 'p', text: 'Die Fristenkontrolle gehört in die Kanzleisoftware und in die Verantwortung des Berufsträgers. Daran ändert keine Automatisierung etwas, und das sollte sie auch nicht. Was sich automatisieren lässt, ist das Drumherum.' },
+    { kind: 'p', text: 'Ein Beispiel: Für die Jahreserklärungen fehlen bei einem Teil der Mandanten noch Unterlagen. Ein Ablauf erinnert diese Mandanten in festen Abständen, mit einer Liste dessen, was fehlt. Intern bekommt das Team am Montag eine Übersicht, bei welchen Mandanten es eng wird. So fällt niemand durchs Raster, weil eine Erinnerung im Tagesgeschäft untergegangen ist.' },
+    { kind: 'h2', text: 'Onboarding neuer Mandanten: alles beim ersten Mal' },
+    { kind: 'p', text: 'Ein neuer Mandant bedeutet in vielen Kanzleien eine Reihe von Mails: Vollmacht, Stammdaten, Unterlagenliste, die Unterlagen für die Identifizierung nach dem Geldwäschegesetz, Zugang zum Belegaustausch. Oft fehlt danach noch etwas, und das Hin und Her zieht sich über Wochen.' },
+    { kind: 'p', text: 'Ein Onboarding-Ablauf schickt nach Ihrer Freigabe ein Paket mit allem, was gebraucht wird. Ein Formular sammelt die Stammdaten ein, statt sie aus Mails abzutippen. Der Ablauf hakt ab, was angekommen ist, und erinnert an den Rest. Ihr Team sieht jederzeit, wo ein neuer Mandant steht. Das wirkt auf den Mandanten professionell und spart Ihnen das Nachtelefonieren.' },
+    { kind: 'h2', text: 'Lohnt sich Automatisierung für Steuerberater mit kleiner Kanzlei?' },
+    { kind: 'p', text: 'Das hängt an der Menge, nicht an der Größe der Kanzlei. Ein Rechenbeispiel mit Annahmen, kein Kundenfall: Eine Kanzlei betreut 120 Mandanten in der laufenden Buchhaltung. Bei 40 davon fehlen jeden Monat Belege. Für jeden dieser Mandanten braucht eine Fachkraft etwa 6 Minuten, um die fehlenden Posten herauszusuchen, die Mail zu schreiben und später nachzuhaken. Das sind 240 Minuten, also 4 Stunden im Monat. Telefonate mit Mandanten, die auf zwei Erinnerungen nicht reagiert haben, sind dabei noch nicht mitgezählt.' },
+    { kind: 'p', text: 'Auf das Jahr gerechnet sind das gut 45 Stunden, allein für Belegerinnerungen. Rechnen Sie diese Stunden mit dem Wert, den eine Stunde Ihrer Fachkraft für die Kanzlei hat. Dann sehen Sie, ob sich eine Automatisierung rechnet. Mein Maßstab: Sie muss sich innerhalb eines Jahres bezahlt machen. Liegt der Festpreis darüber, rate ich Ihnen ab. Bei Kanzleien mit sehr wenigen Mandanten in der laufenden Buchhaltung kann das passieren. Dann sage ich Ihnen das im Erstgespräch, bevor Sie Geld ausgeben.' },
+    { kind: 'h2', text: 'Was KI in der Kanzlei nicht tun sollte' },
+    { kind: 'p', text: 'Steuerliche Fragen beantworten, Bescheide eigenständig prüfen, Buchungen ohne Kontrolle verbuchen, Mandanten beraten. Sprachmodelle klingen überzeugend, auch wenn sie falsch liegen. In einem Beruf, in dem eine falsche Auskunft haftungsrelevant ist, ist das ein guter Grund für Zurückhaltung.' },
+    { kind: 'p', text: 'Ich halte es deshalb so: KI liest, sortiert und schlägt vor. Ein Mensch aus Ihrer Kanzlei entscheidet. Wenn ein Anbieter Ihnen etwas anderes verspricht, fragen Sie nach, wer haftet, wenn die KI danebenliegt.' },
+    { kind: 'h2', text: 'Wie fängt eine Kanzlei an?' },
+    { kind: 'p', text: 'Mit einem Ablauf, nicht mit einer Strategie. Fragen Sie Ihr Team, was jede Woche am meisten Zeit kostet und am wenigsten mit Steuern zu tun hat. Fast immer landet man bei den Belegen oder beim Postfach. Diesen einen Ablauf automatisiere ich in vier Wochen, zum Festpreis und mit Garantie: Läuft er danach nicht, arbeite ich kostenlos weiter. Ich arbeite remote, meist per Video, für Kanzleien in ganz Deutschland. Mehr zu meiner Arbeit mit Kanzleien finden Sie auf der Seite für Steuerberater.' },
+  ],
+  notes: [
+    'Rechtsgrundlagen ohne Gewähr: § 203 Abs. 1 Nr. 3 StGB (Steuerberater als Berufsgeheimnisträger), § 203 Abs. 3 und 4 StGB zur Einbindung mitwirkender Personen, § 62a StBerG zur Inanspruchnahme von Dienstleistungen, § 57 StBerG zur Verschwiegenheit. Dieser Text ersetzt keine Rechtsberatung.',
+    'Steuerberater sind Verpflichtete nach dem Geldwäschegesetz. Welche Unterlagen Sie zur Identifizierung brauchen, legt Ihre Kanzlei fest, nicht der Ablauf.',
+  ],
+  related: [
+    { label: 'Belege einsammeln, ohne nachzulaufen', href: '/wissen/belege-einsammeln-ohne-nachlaufen' },
+    { label: 'Rechnungseingang automatisieren', href: '/wissen/rechnungseingang-automatisieren' },
+    { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
+  ],
+};

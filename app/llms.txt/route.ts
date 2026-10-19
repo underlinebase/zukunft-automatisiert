@@ -1,7 +1,8 @@
 import { buildLlmsTxt } from '@/lib/seo/llms';
 
-// Wird beim Build einmal erzeugt und dann als statische Datei ausgeliefert.
+// Statisch ausgeliefert und stündlich neu erzeugt, damit geplante Artikel am Erscheinungstag auftauchen.
 export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 export function GET(): Response {
   return new Response(buildLlmsTxt(), {

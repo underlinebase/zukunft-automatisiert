@@ -10,7 +10,6 @@ export const SITE = {
   linkedin: 'https://linkedin.com/in/marcogundlach',
   calUrl: 'https://cal.eu/marco-g-ppa25o/30min',
   responseTime: '24 Stunden',
-  location: 'Köln',
 } as const;
 
 export interface NavLink {
@@ -29,6 +28,7 @@ export interface NavItem extends NavLink {
  */
 export const NAV_ITEMS: NavItem[] = [
   { href: '/#angebot', label: 'Angebot', hint: 'Ein Ablauf in 4 Wochen · Festpreis' },
+  { href: '/ki-beratung', label: 'KI-Beratung' },
   { href: '/#branchen', label: 'Branchen' },
   { href: '/#so-laeuft-es', label: 'So läuft es' },
   { href: '/ueber-mich', label: 'Über mich' },

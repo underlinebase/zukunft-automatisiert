@@ -7,6 +7,9 @@ import JsonLd from '@/components/seo/json-ld';
 import { seoTitle } from '@/lib/seo/meta';
 import { breadcrumbSchema, collectionSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 
+// Stündlich neu erzeugen, damit geplante Artikel am Erscheinungstag auftauchen.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: seoTitle('Wissen: Automatisierung und KI ohne Hype'),
   description:
