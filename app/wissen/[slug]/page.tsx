@@ -5,6 +5,7 @@ import { getArticle, getArticles } from '@/lib/db';
 import { CONTACT_PAGE, SITE } from '@/lib/content/site';
 import JsonLd from '@/components/seo/json-ld';
 import { metaDescription, seoTitle } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: seoTitle(article.seoTitle ?? article.title),
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: path, types: { 'text/markdown': markdownHref(path) } },
     openGraph: {
       type: 'article',
       url: path,

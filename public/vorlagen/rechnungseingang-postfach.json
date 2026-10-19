@@ -1,0 +1,99 @@
+{
+  "name": "Rechnungseingang aus dem Postfach (Vorlage zukunft-automatisiert.de)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Rechnungseingang aus dem Postfach\n\nHolt neue E-Mails aus einem Postfach, speichert jeden PDF-Anhang umbenannt in einem Google-Drive-Ordner und schickt Ihnen eine kurze Nachricht.\n\n**Vor dem Start ersetzen:**\n- Zugang IMAP (Postfach) im ersten Knoten auswählen\n- Zugang Google Drive auswählen, PLATZHALTER_ORDNER_ID_RECHNUNGEN durch die ID Ihres Ordners ersetzen\n- Zugang SMTP auswählen, PLATZHALTER_ABSENDER und PLATZHALTER_EMPFAENGER eintragen\n\nAm besten ein eigenes Postfach nur für Rechnungen verwenden. Verarbeitete Mails werden als gelesen markiert.",
+        "height": 380,
+        "width": 420,
+        "color": 7
+      },
+      "id": "5b0e8f0a-3c1d-4a51-9a3e-0d6c2f1b7a01",
+      "name": "Hinweis",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-520, -140]
+    },
+    {
+      "parameters": {
+        "mailbox": "INBOX",
+        "postProcessAction": "read",
+        "downloadAttachments": true,
+        "options": {
+          "customEmailConfig": "[\"UNSEEN\"]"
+        }
+      },
+      "id": "5b0e8f0a-3c1d-4a51-9a3e-0d6c2f1b7a02",
+      "name": "Neue E-Mail im Postfach",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Gibt für jeden PDF-Anhang einen eigenen Eintrag weiter.\n// Neuer Dateiname: JJJJ-MM-TT_Absender_Originalname.pdf\nconst ergebnis = [];\n\nfor (const item of $input.all()) {\n  const anhaenge = item.binary || {};\n  const datum = new Date(item.json.date || Date.now()).toISOString().slice(0, 10);\n  const absender = String(item.json.from || 'unbekannt')\n    .replace(/<.*>/, '')\n    .replace(/\"/g, '')\n    .trim()\n    .replace(/[^A-Za-z0-9ÄÖÜäöüß]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .slice(0, 40) || 'unbekannt';\n\n  for (const datei of Object.values(anhaenge)) {\n    const istPdf = datei.mimeType === 'application/pdf' || /\\.pdf$/i.test(datei.fileName || '');\n    if (!istPdf) continue;\n    const original = (datei.fileName || 'rechnung.pdf').replace(/[^A-Za-z0-9ÄÖÜäöüß._-]+/g, '-');\n    ergebnis.push({\n      json: {\n        absender: item.json.from,\n        betreff: item.json.subject,\n        neuerName: `${datum}_${absender}_${original}`,\n      },\n      binary: { data: datei },\n    });\n  }\n}\n\n// Keine PDF-Anhänge: Der Workflow endet hier ohne Fehler.\nreturn ergebnis;"
+      },
+      "id": "5b0e8f0a-3c1d-4a51-9a3e-0d6c2f1b7a03",
+      "name": "PDF-Anhänge filtern",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "name": "={{ $json.neuerName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PLATZHALTER_ORDNER_ID_RECHNUNGEN"
+        },
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "id": "5b0e8f0a-3c1d-4a51-9a3e-0d6c2f1b7a04",
+      "name": "Im Rechnungsordner ablegen",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "fromEmail": "PLATZHALTER_ABSENDER",
+        "toEmail": "PLATZHALTER_EMPFAENGER",
+        "subject": "=Neue Rechnungen abgelegt: {{ $('PDF-Anhänge filtern').all().length }}",
+        "emailFormat": "text",
+        "text": "=Diese Rechnungen liegen jetzt im Rechnungsordner:\n\n{{ $('PDF-Anhänge filtern').all().map(item => '- ' + item.json.neuerName).join('\\n') }}\n\nBitte prüfen und an die Buchhaltung weitergeben.",
+        "options": {}
+      },
+      "id": "5b0e8f0a-3c1d-4a51-9a3e-0d6c2f1b7a05",
+      "name": "Benachrichtigung senden",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [720, 0],
+      "executeOnce": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Neue E-Mail im Postfach": {
+      "main": [[{ "node": "PDF-Anhänge filtern", "type": "main", "index": 0 }]]
+    },
+    "PDF-Anhänge filtern": {
+      "main": [[{ "node": "Im Rechnungsordner ablegen", "type": "main", "index": 0 }]]
+    },
+    "Im Rechnungsordner ablegen": {
+      "main": [[{ "node": "Benachrichtigung senden", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {},
+  "tags": []
+}

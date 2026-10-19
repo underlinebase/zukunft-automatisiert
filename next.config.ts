@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
       { source: '/wissen/n8n-statt-zapier', destination: '/wissen/warum-ich-meistens-n8n-einsetze', permanent: true },
     ];
   },
+  // Markdown-Fassungen für KI-Crawler unter derselben Adresse wie die HTML-Seite plus „.md“ (llmstxt.org).
+  // Als afterFiles-Rewrite greifen sie vor den dynamischen Seiten /wissen/[slug] und /ablaeufe/[slug].
+  async rewrites() {
+    return [
+      { source: '/wissen/:slug.md', destination: '/md/wissen/:slug' },
+      { source: '/ablaeufe/:slug.md', destination: '/md/ablaeufe/:slug' },
+    ];
+  },
 };
 
 export default nextConfig;

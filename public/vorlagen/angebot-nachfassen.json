@@ -1,0 +1,137 @@
+{
+  "name": "Angebote nachfassen (Vorlage zukunft-automatisiert.de)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Angebote nachfassen\n\nLiest werktags um 9 Uhr Ihre Angebotsliste. Für jedes offene Angebot, das älter als 7 Tage ist und noch nicht nachgefasst wurde, legt der Workflow einen Mail-Entwurf in Gmail an und trägt das Datum in die Spalte Nachgefasst ein. Abgeschickt wird nichts: Sie lesen den Entwurf und senden ihn selbst.\n\n**Vor dem Start ersetzen:**\n- Zugang Google Sheets auswählen, PLATZHALTER_TABELLEN_ID eintragen (Blatt \"Angebote\" mit den Spalten Angebotsnummer, Kunde, Ansprechpartner, E-Mail, Angebotsdatum, Status, Nachgefasst)\n- Zugang Gmail auswählen, PLATZHALTER_IHR_NAME eintragen\n- Die Zahl der Tage steht oben im Code-Knoten",
+        "height": 440,
+        "width": 460,
+        "color": 7
+      },
+      "id": "c47a9e13-2f5d-4b8e-a1c6-7d2e9f0b3a01",
+      "name": "Hinweis",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-580, -180]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "c47a9e13-2f5d-4b8e-a1c6-7d2e9f0b3a02",
+      "name": "Werktags um 9 Uhr",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PLATZHALTER_TABELLEN_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Angebote"
+        },
+        "options": {}
+      },
+      "id": "c47a9e13-2f5d-4b8e-a1c6-7d2e9f0b3a03",
+      "name": "Angebotsliste lesen",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Einstellung: nach wie vielen Tagen nachgefasst wird.\nconst TAGE_BIS_ZUM_NACHFASSEN = 7;\nconst MS_PRO_TAG = 24 * 60 * 60 * 1000;\nconst heute = new Date();\n\n// Versteht 14.10.2026 und 2026-10-14.\nconst leseDatum = (wert) => {\n  if (!wert) return null;\n  const text = String(wert).trim();\n  const deutsch = text.match(/^(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})$/);\n  if (deutsch) return new Date(Number(deutsch[3]), Number(deutsch[2]) - 1, Number(deutsch[1]));\n  const datum = new Date(text);\n  return Number.isNaN(datum.getTime()) ? null : datum;\n};\n\nreturn $input.all().filter((item) => {\n  const zeile = item.json;\n  const status = String(zeile.Status || '').trim().toLowerCase();\n  const nachgefasst = String(zeile.Nachgefasst || '').trim();\n  const datum = leseDatum(zeile.Angebotsdatum);\n  if (status !== 'offen' || nachgefasst !== '' || !datum || !zeile['E-Mail']) return false;\n  return (heute - datum) / MS_PRO_TAG >= TAGE_BIS_ZUM_NACHFASSEN;\n});"
+      },
+      "id": "c47a9e13-2f5d-4b8e-a1c6-7d2e9f0b3a04",
+      "name": "Fällig zum Nachfassen?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "=Kurze Nachfrage zu unserem Angebot {{ $json.Angebotsnummer }}",
+        "emailType": "text",
+        "message": "=Guten Tag {{ $json.Ansprechpartner || '' }},\n\nvor ein paar Tagen habe ich Ihnen unser Angebot {{ $json.Angebotsnummer }} geschickt. Passt es so für Sie, oder soll ich noch etwas anpassen?\n\nEin kurzes Ja oder Nein reicht mir völlig.\n\nViele Grüße\nPLATZHALTER_IHR_NAME",
+        "options": {
+          "sendTo": "={{ $json['E-Mail'] }}"
+        }
+      },
+      "id": "c47a9e13-2f5d-4b8e-a1c6-7d2e9f0b3a05",
+      "name": "Erinnerung als Entwurf",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [720, 0]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PLATZHALTER_TABELLEN_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Angebote"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Fällig zum Nachfassen?').item.json.row_number }}",
+            "Nachgefasst": "={{ $now.toFormat('dd.MM.yyyy') }}"
+          },
+          "matchingColumns": ["row_number"],
+          "schema": [
+            { "id": "Nachgefasst", "displayName": "Nachgefasst", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true },
+            { "id": "row_number", "displayName": "row_number", "required": false, "defaultMatch": false, "display": true, "type": "string", "canBeUsedToMatch": true, "readOnly": true, "removed": false }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c47a9e13-2f5d-4b8e-a1c6-7d2e9f0b3a06",
+      "name": "Status setzen",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [960, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Werktags um 9 Uhr": {
+      "main": [[{ "node": "Angebotsliste lesen", "type": "main", "index": 0 }]]
+    },
+    "Angebotsliste lesen": {
+      "main": [[{ "node": "Fällig zum Nachfassen?", "type": "main", "index": 0 }]]
+    },
+    "Fällig zum Nachfassen?": {
+      "main": [[{ "node": "Erinnerung als Entwurf", "type": "main", "index": 0 }]]
+    },
+    "Erinnerung als Entwurf": {
+      "main": [[{ "node": "Status setzen", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin"
+  },
+  "meta": {},
+  "tags": []
+}
