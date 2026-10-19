@@ -26,9 +26,11 @@
 .step-compare h3 { margin: 0 0 12px; font-size: 18px; }
 .step-compare__col--danach h3 { color: var(--c-brand); }
 .step-compare ol { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
-.step-compare__col--heute li {
-  /* --strike wird beim Scrollen von 0 auf 1 animiert und streicht den Handgriff durch. */
-  background: linear-gradient(currentColor, currentColor) no-repeat 0 60% / calc(var(--strike, 0) * 100%) 1px;
+.step-compare__strike {
+  /* --strike wird beim Scrollen von 0 auf 1 animiert und streicht den Handgriff Zeile für Zeile durch. */
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 58% / calc(var(--strike, 0) * 100%) 1.5px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .ablauf-calc { display: grid; gap: 12px; margin: 16px 0; grid-template-columns: repeat(2, minmax(0, 1fr)); }
