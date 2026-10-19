@@ -32,6 +32,8 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', locale: 'de_DE', siteName: SITE.name, url: '/', title: TITLE, description: DESCRIPTION },
   twitter: { card: 'summary_large_image', title: SITE.name, description: DESCRIPTION },
   robots: { index: true, follow: true },
+  // Bestätigt die Inhaberschaft in der Google Search Console.
+  verification: { google: 'vPhsYaig5pPE5IPqUtGZHMCBGpuiQSXWTg88V26CkXU' },
 };
 
 // Markiert, dass JavaScript läuft. Erst dann wird der Hero-Titel für die Einblendung versteckt.
