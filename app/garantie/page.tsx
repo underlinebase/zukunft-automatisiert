@@ -1,3 +1,4 @@
+import '../styles/garantie.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
@@ -24,6 +25,7 @@ import { CLOSING } from '@/lib/content/home';
 import { GARANTIE_PAGE } from '@/lib/content/pages';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
 const PATH_ANCHOR = 'pruefung';
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
   // Suchbegriff vorn, das Versprechen gleich im Titel.
   title: seoTitle('Garantie: Läuft der Ablauf nicht, bessere ich nach'),
   description: GARANTIE_PAGE.description,
-  alternates: { canonical: GARANTIE_PAGE.path },
+  alternates: { canonical: GARANTIE_PAGE.path, types: { 'text/markdown': markdownHref(GARANTIE_PAGE.path) } },
   robots: GARANTIE_PAGE.listed ? undefined : { index: false, follow: true },
   openGraph: {
     type: 'website',

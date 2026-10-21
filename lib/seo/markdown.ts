@@ -12,7 +12,7 @@ import { SITE } from '@/lib/content/site';
 export const MARKDOWN_CONTENT_TYPE = 'text/markdown; charset=utf-8';
 export const MARKDOWN_EXTENSION = '.md';
 
-const AUTHOR_LINE = `${SITE.owner}, KI-Berater („der KI-Realist“)`;
+export const AUTHOR_LINE = `${SITE.owner}, KI-Berater („der KI-Realist“)`;
 const DOCUMENT_SEPARATOR = '\n\n---\n\n';
 /** Gleicher Satz wie auf der Ablaufseite, wenn ein Ablauf ohne KI auskommt. */
 const NO_AI_TEXT = 'Nein. Dieser Ablauf folgt festen Regeln. Das ist günstiger, schneller und leichter zu warten als eine KI-Lösung.';
@@ -22,7 +22,7 @@ export function markdownHref(path: string): string {
   return `${path}${MARKDOWN_EXTENSION}`;
 }
 
-function absoluteUrl(href: string): string {
+export function absoluteUrl(href: string): string {
   return href.startsWith('http') ? href : `${SITE.url}${href}`;
 }
 
@@ -37,16 +37,17 @@ function blockToMarkdown(block: ArticleBlock): string {
   return escapeLineStart(block.text);
 }
 
-function metaLines(lines: readonly (string | null)[]): string {
+export function metaLines(lines: readonly (string | null)[]): string {
   return lines.filter((line): line is string => line !== null).map((line) => `- ${line}`).join('\n');
 }
 
-function relatedSection(related: readonly ArticleLink[] | undefined): string[] {
+export function relatedSection(related: readonly ArticleLink[] | undefined): string[] {
   if (!related || related.length === 0) return [];
   return ['## Passend dazu', related.map((link) => `- [${link.label}](${absoluteUrl(link.href)})`).join('\n')];
 }
 
-function join(parts: readonly string[]): string {
+/** Fügt Abschnitte mit Leerzeile zusammen und lässt leere weg. */
+export function joinBlocks(parts: readonly string[]): string {
   return `${parts.filter((part) => part.length > 0).join('\n\n')}\n`;
 }
 
@@ -67,7 +68,7 @@ export function articleMarkdown(article: Article): string {
     article.notes.length > 0
       ? ['## Anmerkungen', article.notes.map((note, index) => `${index + 1}. ${note}`).join('\n')]
       : [];
-  return join([
+  return joinBlocks([
     `# ${article.title}`,
     meta,
     `**${article.lead}**`,
@@ -81,7 +82,7 @@ export function ablaufUrl(ablauf: Pick<Ablauf, 'slug'>): string {
   return `${SITE.url}/ablaeufe/${ablauf.slug}`;
 }
 
-function numbered(items: readonly string[]): string {
+export function numbered(items: readonly string[]): string {
   return items.map((item, index) => `${index + 1}. ${item}`).join('\n');
 }
 
@@ -108,7 +109,7 @@ export function ablaufMarkdown(ablauf: Ablauf): string {
     `Quelle: ${ablaufUrl(ablauf)}`,
   ]);
   const faqs = ablauf.faqs.length > 0 ? ['## Häufige Fragen', ...ablauf.faqs.map((faq) => `### ${faq.q}\n\n${escapeLineStart(faq.a)}`)] : [];
-  return join([
+  return joinBlocks([
     `# ${ablauf.title}`,
     meta,
     `**${ablauf.lead}**`,
@@ -129,14 +130,21 @@ export function ablaufMarkdown(ablauf: Ablauf): string {
   ]);
 }
 
-/** Inhalt der /llms-full.txt: alle veröffentlichten Artikel und Abläufe im Volltext. */
-export function buildLlmsFullTxt(articles: readonly Article[], ablaeufe: readonly Ablauf[]): string {
+/**
+ * Inhalt der /llms-full.txt: Hauptseiten, alle veröffentlichten Artikel und Abläufe im Volltext.
+ * Die Hauptseiten kommen fertig als Markdown herein (lib/seo/page-markdown.ts), damit hier kein Ringimport entsteht.
+ */
+export function buildLlmsFullTxt(
+  articles: readonly Article[],
+  ablaeufe: readonly Ablauf[],
+  pages: readonly string[] = [],
+): string {
   const intro = [
     `# ${SITE.name}: alle Inhalte im Volltext`,
     '',
-    `> Wissen-Artikel und Abläufe von ${SITE.owner}, KI-Berater für kleine Betriebe in Deutschland. Jeder Abschnitt nennt seine Quelle. Die kompakte Übersicht steht unter ${SITE.url}/llms.txt.`,
+    `> Hauptseiten, Wissen-Artikel und Abläufe von ${SITE.owner}, KI-Berater für kleine Betriebe in Deutschland. Jeder Abschnitt nennt seine Quelle. Die kompakte Übersicht steht unter ${SITE.url}/llms.txt.`,
   ].join('\n');
-  const documents = [...articles.map(articleMarkdown), ...ablaeufe.map(ablaufMarkdown)].map((doc) => doc.trimEnd());
+  const documents = [...pages, ...articles.map(articleMarkdown), ...ablaeufe.map(ablaufMarkdown)].map((doc) => doc.trimEnd());
   return `${[intro, ...documents].join(DOCUMENT_SEPARATOR)}\n`;
 }
 

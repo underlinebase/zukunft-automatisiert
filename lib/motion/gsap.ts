@@ -3,18 +3,15 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
 
 let registered = false;
 
 export function ensureGsap() {
   if (!registered && typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    gsap.registerPlugin(ScrollTrigger);
     registered = true;
   }
-  return { gsap, ScrollTrigger, SplitText };
+  return { gsap, ScrollTrigger };
 }
 
-/** Bewegung nur, wenn das System keine reduzierte Bewegung verlangt. */
-export const MOTION_OK = '(prefers-reduced-motion: no-preference)';
-export const DESKTOP = '(min-width: 1024px)';
+export { MOTION_OK, DESKTOP } from './media';

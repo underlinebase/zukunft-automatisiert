@@ -10,6 +10,7 @@ import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchem
 import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import KeepCompounds from '@/components/ui/keep-compounds';
+import ArticleDates from '@/components/wissen/article-dates';
 
 // Stündlich neu erzeugen. Geplante Artikel sind beim Build nicht dabei und werden ab ihrem Erscheinungstag
 // beim ersten Aufruf erzeugt (dynamicParams ist standardmäßig an).
@@ -76,9 +77,8 @@ export default async function ArticlePage({ params }: PageProps) {
           <h1><KeepCompounds text={article.title} /></h1>
           <p className="article__byline">
             Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten
-            <span aria-hidden="true"> · </span>
-            <time dateTime={article.datePublished}>{article.date}</time>
           </p>
+          <ArticleDates datePublished={article.datePublished} dateModified={article.dateModified} />
           <p className="lead">{article.lead}</p>
           {article.body.map((block, i) => {
             if (block.kind === 'h2') return <h2 key={i}>{block.text}</h2>;
@@ -97,7 +97,9 @@ export default async function ArticlePage({ params }: PageProps) {
           ) : null}
           <div className="article__footer">
             {next && next.slug !== article.slug ? (
-              <Link href={`/wissen/${next.slug}`} className="text-link">Nächste Notiz <ArrowIcon /></Link>
+              <Link href={`/wissen/${next.slug}`} className="text-link">
+                {`Nächste Notiz: ${next.title.replace(/\.$/, '')}`} <ArrowIcon />
+              </Link>
             ) : <span />}
             <Link href={CONTACT_PAGE} className="text-link">Ablauf schildern <ArrowIcon /></Link>
           </div>

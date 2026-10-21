@@ -4,12 +4,7 @@ import './globals.css';
 import './styles/sections.css';
 import './styles/week.css';
 import './styles/pages.css';
-import './styles/landing.css';
-import './styles/ablaeufe.css';
-import './styles/garantie.css';
-import './styles/check.css';
-import './styles/daten.css';
-import './styles/vorlagen.css';
+// Seitenspezifische Stile laden die jeweiligen Routen selbst (z. B. app/garantie/page.tsx).
 import ScrollReveal from '@/components/motion/scroll-reveal';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';

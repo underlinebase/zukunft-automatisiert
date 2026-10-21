@@ -1,3 +1,5 @@
+// Wird auch auf /ki-beratung genutzt: Stile hier laden, nicht nur auf den Landingpages.
+import '@/app/styles/landing.css';
 import type { WeekStep } from '@/lib/content/types';
 
 interface StepsCompactProps {

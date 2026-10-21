@@ -25,10 +25,11 @@
 .hero__hint { font-size: 15px; color: var(--c-text-muted); padding-left: 2px; }
 .hero__visual { position: relative; }
 
+/* Hero-Titel ist ab dem ersten Bild lesbar (zählt früh als LCP) und gleitet nur leicht nach oben. */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .hero-title__main { visibility: hidden; animation: reveal-late 0s linear 1.2s forwards; }
+  .hero-title__main { animation: hero-title-in 0.7s var(--ease-out) both; }
 }
-@keyframes reveal-late { to { visibility: visible; } }
+@keyframes hero-title-in { from { opacity: 0.3; transform: translateY(0.3em); } }
 
 /* ---------- Kurz gesagt ---------- */
 .facts { padding: 40px 0; border-bottom: 1px solid var(--c-line); }

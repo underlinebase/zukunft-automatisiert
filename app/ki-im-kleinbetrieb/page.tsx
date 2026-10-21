@@ -1,3 +1,4 @@
+import '../styles/daten.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
@@ -26,20 +27,21 @@ import {
   REASONS,
   SOURCES,
   WHY_INTRO,
-  findSource,
   formatPercent,
+  shortSourceName,
   sourceAnchor,
 } from '@/lib/content/daten';
 import type { Bar, KeyStat } from '@/lib/content/daten';
 import { CLOSING } from '@/lib/content/home';
 import { DATEN_PAGE } from '@/lib/content/pages';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
 export const metadata: Metadata = {
   title: seoTitle(DATEN_PAGE.name),
   description: DATEN_PAGE.description,
-  alternates: { canonical: DATEN_PAGE.path },
+  alternates: { canonical: DATEN_PAGE.path, types: { 'text/markdown': markdownHref(DATEN_PAGE.path) } },
   robots: DATEN_PAGE.listed ? undefined : { index: false, follow: true },
   openGraph: {
     type: 'article',
@@ -51,13 +53,6 @@ export const metadata: Metadata = {
 };
 
 const SCHEMA = datenSchema();
-
-/** Kurzname der Quelle für Kacheln: Herausgeber ohne Zusatz, dazu das Datum. */
-function shortSourceName(sourceId: string): string {
-  const source = findSource(sourceId);
-  if (!source) throw new Error(`Unbekannte Quelle: ${sourceId}`);
-  return `${source.publisher.split(',')[0]}, ${source.publishedLabel}`;
-}
 
 function toStatView(stat: KeyStat): KeyStatView {
   return {
