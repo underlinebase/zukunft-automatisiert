@@ -102,7 +102,7 @@ export default async function AblaufPage({ params }: PageProps) {
           </p>
 
           <h2>Grenzen und Voraussetzungen.</h2>
-          <ul className="check-list">{ablauf.grenzen.map((item) => <li key={item}>{item}</li>)}</ul>
+          <ul className="ablauf-limits">{ablauf.grenzen.map((item) => <li key={item}>{item}</li>)}</ul>
 
           {ablauf.related && ablauf.related.length > 0 ? (
             <nav className="article__related" aria-label="Passend dazu">
