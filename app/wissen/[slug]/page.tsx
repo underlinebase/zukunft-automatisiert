@@ -6,7 +6,7 @@ import { CONTACT_PAGE, SITE } from '@/lib/content/site';
 import JsonLd from '@/components/seo/json-ld';
 import { metaDescription, seoTitle } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
-import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import KeepCompounds from '@/components/ui/keep-compounds';
@@ -53,7 +53,9 @@ export default async function ArticlePage({ params }: PageProps) {
   if (!article) notFound();
   const index = all.findIndex((item) => item.slug === slug);
   const next = all[(index + 1) % all.length];
+  const articlePath = `/wissen/${article.slug}`;
   const schema = graph(
+    webPageSchema({ path: articlePath, name: article.title, description: article.lead, mainEntity: `${SITE.url}${articlePath}#artikel` }),
     articleSchema(article),
     personSchema(),
     organizationSchema(),

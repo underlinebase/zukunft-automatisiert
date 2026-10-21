@@ -9,6 +9,13 @@ type JsonLd = Record<string, unknown>;
 
 const ORG_ID = `${SITE.url}/#organisation`;
 const PERSON_ID = `${SITE.url}/#marco-gundlach`;
+const WEBSITE_ID = `${SITE.url}/#website`;
+/** Betreiber laut Impressum. Bewusst ohne Anschrift: kein Standort in Deutschland, Arbeit remote. */
+const LEGAL_NAME = 'SEOLOAD LLC';
+const LOGO = { path: '/logo.png', size: 512 };
+const PILOT_PRICE = '1999';
+/** Platzhalter-Bild für Seiten ohne eigenes OG-Bild. */
+const DEFAULT_IMAGE = `${SITE.url}/opengraph-image`;
 const AREA_SERVED = ['Deutschland'].map((name) => ({ '@type': 'Country', name }));
 const LANGUAGE = 'de-DE';
 /** Themen, für die Person und Angebot stehen. Hilft Suchmaschinen und KI-Assistenten bei der Einordnung. */
@@ -22,16 +29,25 @@ const KNOWS_ABOUT = [
 
 export function organizationSchema(): JsonLd {
   return {
-    '@type': 'ProfessionalService',
+    // OnlineBusiness statt ProfessionalService: Letzteres ist ein LocalBusiness und verlangt eine Anschrift.
+    '@type': 'OnlineBusiness',
     '@id': ORG_ID,
     name: SITE.name,
+    legalName: LEGAL_NAME,
     url: SITE.url,
     email: SITE.email,
+    logo: { '@type': 'ImageObject', url: `${SITE.url}${LOGO.path}`, width: LOGO.size, height: LOGO.size },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: SITE.email,
+      availableLanguage: 'de',
+      areaServed: 'DE',
+    },
     description:
       'Prozessautomatisierung für Inhaber: Der Ablauf, der am meisten Zeit kostet, wird in 4 Wochen automatisiert, zum Festpreis und mit Garantie.',
     areaServed: AREA_SERVED,
-    image: `${SITE.url}/opengraph-image`,
-    sameAs: [SITE.linkedin],
+    image: DEFAULT_IMAGE,
     knowsAbout: KNOWS_ABOUT,
     founder: { '@id': PERSON_ID },
   };
@@ -40,8 +56,9 @@ export function organizationSchema(): JsonLd {
 export function websiteSchema(): JsonLd {
   return {
     '@type': 'WebSite',
-    '@id': `${SITE.url}/#website`,
+    '@id': WEBSITE_ID,
     name: SITE.name,
+    alternateName: ['Zukunft Automatisiert', 'zukunft-automatisiert.de'],
     url: SITE.url,
     inLanguage: LANGUAGE,
     publisher: { '@id': ORG_ID },
@@ -57,7 +74,7 @@ export function personSchema(): JsonLd {
     description: 'Der KI-Realist: automatisiert Abläufe für Inhaber und sagt offen, wo KI hilft und wo nicht.',
     url: `${SITE.url}/ueber-mich`,
     image: `${SITE.url}/marco-gundlach-portrait.jpg`,
-    sameAs: [SITE.linkedin],
+    sameAs: [SITE.linkedin, SITE.personalSite],
     worksFor: { '@id': ORG_ID },
     knowsAbout: KNOWS_ABOUT,
     hasCredential: CREDENTIALS.map((credential) => ({
@@ -74,6 +91,21 @@ export interface ServiceInfo {
   description: string;
   audience: string;
   path: string;
+  /** Nur wo der Pilotpreis sichtbar auf der Seite steht. */
+  pilotOffer?: boolean;
+}
+
+function pilotOfferSchema(url: string): JsonLd {
+  return {
+    '@type': 'Offer',
+    name: 'Pilotpreis (drei Pilotplätze)',
+    price: PILOT_PRICE,
+    priceCurrency: 'EUR',
+    priceSpecification: { '@type': 'UnitPriceSpecification', price: PILOT_PRICE, priceCurrency: 'EUR', valueAddedTaxIncluded: false },
+    availability: 'https://schema.org/LimitedAvailability',
+    url,
+    seller: { '@id': ORG_ID },
+  };
 }
 
 /** Leistung einer Seite (Hauptseite /ki-beratung oder Landingpage), angeboten von der Organisation. */
@@ -88,6 +120,7 @@ export function offerSchema(service: ServiceInfo): JsonLd {
     provider: { '@id': ORG_ID },
     areaServed: AREA_SERVED,
     audience: { '@type': 'BusinessAudience', name: service.audience },
+    ...(service.pilotOffer ? { offers: pilotOfferSchema(`${SITE.url}${service.path}`) } : {}),
   };
 }
 
@@ -102,8 +135,10 @@ export function serviceSchema(industry: Industry, path: string): JsonLd {
 }
 
 export function breadcrumbSchema(items: { name: string; path: string }[]): JsonLd {
+  const current = items.at(-1)?.path ?? '/';
   return {
     '@type': 'BreadcrumbList',
+    '@id': `${SITE.url}${current}#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -136,7 +171,8 @@ export function articleSchema(article: Article): JsonLd {
     inLanguage: LANGUAGE,
     articleSection: article.category,
     url,
-    mainEntityOfPage: url,
+    mainEntityOfPage: { '@id': `${url}#seite` },
+    isPartOf: { '@id': WEBSITE_ID },
     image: `${url}/opengraph-image`,
     author: { '@id': PERSON_ID },
     publisher: { '@id': ORG_ID },
@@ -155,7 +191,9 @@ export function ablaufSchema(ablauf: { slug: string; title: string; lead: string
     dateModified: ablauf.datePublished,
     inLanguage: LANGUAGE,
     url,
-    mainEntityOfPage: url,
+    mainEntityOfPage: { '@id': `${url}#seite` },
+    isPartOf: { '@id': WEBSITE_ID },
+    image: DEFAULT_IMAGE,
     author: { '@id': PERSON_ID },
     publisher: { '@id': ORG_ID },
   };
@@ -167,9 +205,13 @@ export function collectionSchema(articles: readonly Article[]): JsonLd {
     '@type': 'CollectionPage',
     '@id': `${SITE.url}/wissen#seite`,
     name: 'Wissen: Notizen aus der Praxis',
+    description: 'Praxisartikel zu Automatisierung und KI im Kleinbetrieb, ohne Hype.',
     url: `${SITE.url}/wissen`,
     inLanguage: LANGUAGE,
+    isPartOf: { '@id': WEBSITE_ID },
+    breadcrumb: { '@id': `${SITE.url}/wissen#breadcrumb` },
     author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: articles.map((article, index) => ({
@@ -189,6 +231,8 @@ export function contactPageSchema(): JsonLd {
     name: 'Kontakt',
     url: `${SITE.url}/kontakt`,
     inLanguage: LANGUAGE,
+    isPartOf: { '@id': WEBSITE_ID },
+    breadcrumb: { '@id': `${SITE.url}/kontakt#breadcrumb` },
     about: { '@id': ORG_ID },
   };
 }
@@ -199,11 +243,51 @@ export function profilePageSchema(): JsonLd {
     '@type': 'ProfilePage',
     '@id': `${SITE.url}/ueber-mich#seite`,
     url: `${SITE.url}/ueber-mich`,
+    name: `Über ${SITE.owner}`,
     inLanguage: LANGUAGE,
+    isPartOf: { '@id': WEBSITE_ID },
+    breadcrumb: { '@id': `${SITE.url}/ueber-mich#breadcrumb` },
     mainEntity: { '@id': PERSON_ID },
   };
 }
 
+export interface WebPageInfo {
+  path: string;
+  name: string;
+  description: string;
+  type?: 'WebPage' | 'AboutPage' | 'FAQPage';
+  /** @id des Hauptinhalts, z. B. die Leistung oder der Artikel. */
+  mainEntity?: string;
+  /** @id dessen, worum es auf der Seite geht. */
+  about?: string;
+  /** false auf der Startseite, die keine Brotkrumen hat. */
+  breadcrumb?: boolean;
+}
+
+/** Die Seite selbst: verbindet Website, Brotkrumen und Hauptinhalt im Graphen. */
+export function webPageSchema(page: WebPageInfo): JsonLd {
+  const url = page.path === '/' ? `${SITE.url}/` : `${SITE.url}${page.path}`;
+  return {
+    '@type': page.type ?? 'WebPage',
+    '@id': `${url}#seite`,
+    url,
+    name: page.name,
+    description: page.description,
+    inLanguage: LANGUAGE,
+    isPartOf: { '@id': WEBSITE_ID },
+    ...(page.breadcrumb === false ? {} : { breadcrumb: { '@id': `${SITE.url}${page.path}#breadcrumb` } }),
+    ...(page.mainEntity ? { mainEntity: { '@id': page.mainEntity } } : {}),
+    ...(page.about ? { about: { '@id': page.about } } : {}),
+  };
+}
+
+/**
+ * Ein JSON-LD-Graph je Seite. Website, Organisation und Person stehen immer drin, damit jede Seite
+ * für sich vollständig ist: Suchmaschinen lösen @id-Verweise nicht über Seiten hinweg auf.
+ */
 export function graph(...nodes: JsonLd[]): JsonLd {
-  return { '@context': 'https://schema.org', '@graph': nodes };
+  const core = [websiteSchema(), organizationSchema(), personSchema()];
+  const ids = new Set(nodes.map((node) => node['@id']));
+  const missing = core.filter((node) => !ids.has(node['@id']));
+  return { '@context': 'https://schema.org', '@graph': [...nodes, ...missing] };
 }

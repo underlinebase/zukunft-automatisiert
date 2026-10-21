@@ -10,7 +10,7 @@ import { CONTACT_PAGE, SITE } from '@/lib/content/site';
 import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { toCheckAblauf } from '@/lib/check/library';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
-import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
 // Stündlich neu erzeugen, damit neu erschienene Abläufe im Ergebnis auftauchen.
@@ -38,6 +38,7 @@ export const metadata: Metadata = {
 function checkSchema() {
   const organization = organizationSchema();
   return graph(
+    webPageSchema({ path: CHECK_PAGE.path, name: CHECK_PAGE.name, description: CHECK_PAGE.description, mainEntity: `${PAGE_URL}#check` }),
     {
       '@type': 'WebApplication',
       '@id': `${PAGE_URL}#check`,

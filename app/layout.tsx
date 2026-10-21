@@ -13,7 +13,7 @@ import './styles/vorlagen.css';
 import ScrollReveal from '@/components/motion/scroll-reveal';
 import SiteHeader from '@/components/layout/site-header';
 import SiteFooter from '@/components/layout/site-footer';
-import { NAV_ITEMS, SITE } from '@/lib/content/site';
+import { NAV_ITEMS, SITE, HOME_SEO } from '@/lib/content/site';
 import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 
 const fraunces = Fraunces({
@@ -24,11 +24,9 @@ const fraunces = Fraunces({
 });
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree', display: 'swap' });
 
-// Titel der Startseite: Hauptsuchbegriff vorn, Name statt Marke, unter 60 Zeichen.
-const HOME_TITLE = 'KI-Berater für Prozessautomatisierung · Marco Gundlach';
-const TITLE = 'KI-Berater für Prozessautomatisierung';
-const DESCRIPTION =
-  'KI-Berater Marco Gundlach automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis, remote in ganz Deutschland.';
+const HOME_TITLE = HOME_SEO.title;
+const TITLE = HOME_SEO.ogTitle;
+const DESCRIPTION = HOME_SEO.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),

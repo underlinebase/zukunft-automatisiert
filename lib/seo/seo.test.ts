@@ -63,7 +63,7 @@ describe('articleSchema', () => {
     expect(schema.headline).toBe(article.title);
     expect(schema.datePublished).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(schema.author).toEqual({ '@id': `${SITE.url}/#marco-gundlach` });
-    expect(schema.mainEntityOfPage).toBe(`${SITE.url}/wissen/${article.slug}`);
+    expect(schema.mainEntityOfPage).toEqual({ '@id': `${SITE.url}/wissen/${article.slug}#seite` });
   });
 });
 

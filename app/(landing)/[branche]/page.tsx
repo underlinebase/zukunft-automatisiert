@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { INDUSTRIES, getIndustry, industryHref } from '@/lib/content/branchen';
 import { CLOSING, FAQ_INTRO, GUARANTEE, LANDING_GENERAL_FAQS, WEEKS, WEEKS_INTRO } from '@/lib/content/home';
-import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, serviceSchema } from '@/lib/seo/schema';
+import { breadcrumbSchema, faqSchema, graph, serviceSchema, webPageSchema } from '@/lib/seo/schema';
+import { SITE } from '@/lib/content/site';
 import JsonLd from '@/components/seo/json-ld';
 import { seoTitle } from '@/lib/seo/meta';
 import LandingHero from '@/components/landing/landing-hero';
@@ -51,8 +52,7 @@ export default async function LandingPage({ params }: PageProps) {
   const path = industryHref(industry.slug);
   const faqs = [...industry.faqs, ...LANDING_GENERAL_FAQS];
   const schema = graph(
-    organizationSchema(),
-    personSchema(),
+    webPageSchema({ path, name: industry.seo.title, description: industry.seo.description, mainEntity: `${SITE.url}${path}#leistung` }),
     serviceSchema(industry, path),
     breadcrumbSchema([
       { name: 'Start', path: '/' },

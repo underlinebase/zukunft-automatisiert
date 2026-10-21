@@ -10,8 +10,18 @@ export const SITE = {
   role: 'Der KI-Realist',
   email: 'marco@zukunft-automatisiert.de',
   linkedin: 'https://linkedin.com/in/marcogundlach',
+  /** Marcos persönliche Website. */
+  personalSite: 'https://marcogundlach.de',
   calUrl: 'https://cal.eu/marco-g-ppa25o/30min',
   responseTime: '24 Stunden',
+} as const;
+
+/** Titel und Beschreibung der Startseite: Hauptsuchbegriff vorn, Name statt Marke, unter 60 Zeichen. */
+export const HOME_SEO = {
+  title: 'KI-Berater für Prozessautomatisierung · Marco Gundlach',
+  ogTitle: 'KI-Berater für Prozessautomatisierung',
+  description:
+    'KI-Berater Marco Gundlach automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis, remote in ganz Deutschland.',
 } as const;
 
 export interface NavLink {

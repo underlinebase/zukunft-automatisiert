@@ -34,13 +34,17 @@ import Experience from '@/components/sections/experience';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import JsonLd from '@/components/seo/json-ld';
-import { faqSchema, graph, organizationSchema, personSchema, websiteSchema } from '@/lib/seo/schema';
+import { faqSchema, graph, webPageSchema } from '@/lib/seo/schema';
+import { HOME_SEO, SITE } from '@/lib/content/site';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-const SCHEMA = graph(websiteSchema(), organizationSchema(), personSchema(), faqSchema(FAQS));
+const SCHEMA = graph(
+  webPageSchema({ path: '/', name: HOME_SEO.title, description: HOME_SEO.description, about: `${SITE.url}/#organisation`, breadcrumb: false }),
+  faqSchema(FAQS),
+);
 
 export default function HomePage() {
   return (

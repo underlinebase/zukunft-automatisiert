@@ -22,6 +22,7 @@ function garantiePageSchema(): JsonLd {
     description: GARANTIE_PAGE.description,
     inLanguage: 'de-DE',
     isPartOf: { '@id': `${SITE.url}/#website` },
+    breadcrumb: { '@id': `${PAGE_URL}#breadcrumb` },
     about: { '@id': `${PAGE_URL}#angebot` },
   };
 }

@@ -4,7 +4,7 @@
 import { DATEN_FAQS, DATEN_HERO, DATEN_STAND, SOURCES } from '@/lib/content/daten';
 import { DATEN_PAGE } from '@/lib/content/pages';
 import { SITE } from '@/lib/content/site';
-import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
 
 type JsonLd = Record<string, unknown>;
 
@@ -20,7 +20,8 @@ function datenArticleSchema(): JsonLd {
     dateModified: DATEN_STAND.iso,
     inLanguage: 'de-DE',
     url: PAGE_URL,
-    mainEntityOfPage: PAGE_URL,
+    mainEntityOfPage: { '@id': `${PAGE_URL}#seite` },
+    isPartOf: { '@id': `${SITE.url}/#website` },
     image: `${SITE.url}/opengraph-image`,
     author: { '@id': `${SITE.url}/#marco-gundlach` },
     publisher: { '@id': `${SITE.url}/#organisation` },
@@ -36,6 +37,7 @@ function datenArticleSchema(): JsonLd {
 
 export function datenSchema(): JsonLd {
   return graph(
+    webPageSchema({ path: DATEN_PAGE.path, name: DATEN_PAGE.name, description: DATEN_PAGE.description, mainEntity: `${PAGE_URL}#artikel` }),
     datenArticleSchema(),
     personSchema(),
     organizationSchema(),

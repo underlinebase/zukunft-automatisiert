@@ -19,8 +19,8 @@ import {
   KI_BERATUNG_SEO,
   KI_BERATUNG_SERVICES,
 } from '@/lib/content/ki-beratung';
-import { CONTACT_ANCHOR, CONTACT_PAGE } from '@/lib/content/site';
-import { breadcrumbSchema, faqSchema, graph, offerSchema, organizationSchema, personSchema } from '@/lib/seo/schema';
+import { CONTACT_ANCHOR, CONTACT_PAGE, SITE } from '@/lib/content/site';
+import { breadcrumbSchema, faqSchema, graph, offerSchema, webPageSchema } from '@/lib/seo/schema';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
 import JsonLd from '@/components/seo/json-ld';
 import ConnectGraphic from '@/components/ki-beratung/connect-graphic';
@@ -53,15 +53,20 @@ export const metadata: Metadata = {
 };
 
 const SCHEMA = graph(
+  webPageSchema({
+    path: KI_BERATUNG_PATH,
+    name: KI_BERATUNG_SEO.title,
+    description: KI_BERATUNG_SEO.description,
+    mainEntity: `${SITE.url}${KI_BERATUNG_PATH}#leistung`,
+  }),
   offerSchema({
     name: KI_BERATUNG_SEO.serviceName,
     serviceType: KI_BERATUNG_SEO.serviceType,
     description: KI_BERATUNG_SEO.description,
     audience: KI_BERATUNG_SEO.audience,
     path: KI_BERATUNG_PATH,
+    pilotOffer: true,
   }),
-  organizationSchema(),
-  personSchema(),
   breadcrumbSchema([
     { name: 'Start', path: '/' },
     { name: KI_BERATUNG_SEO.breadcrumb, path: KI_BERATUNG_PATH },

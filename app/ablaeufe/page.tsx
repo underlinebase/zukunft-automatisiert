@@ -29,6 +29,10 @@ export default function AblaeufePage() {
       name: ABLAEUFE_PAGE.name,
       url: `${SITE.url}${ABLAEUFE_PAGE.path}`,
       description: ABLAEUFE_PAGE.description,
+      inLanguage: 'de-DE',
+      isPartOf: { '@id': `${SITE.url}/#website` },
+      breadcrumb: { '@id': `${SITE.url}${ABLAEUFE_PAGE.path}#breadcrumb` },
+      publisher: { '@id': `${SITE.url}/#organisation` },
       mainEntity: {
         '@type': 'ItemList',
         itemListElement: items.map((ablauf, index) => ({
