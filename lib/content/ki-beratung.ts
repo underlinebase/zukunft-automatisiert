@@ -72,6 +72,21 @@ export const KI_BERATUNG_SERVICES = {
   footnote: 'Ihre Branche fehlt? Das macht nichts. Die Frage ist immer dieselbe: Welcher Ablauf kommt jede Woche wieder?',
 };
 
+/** Grafik neben „Was ich als KI-Berater für Sie mache“: vorhandene Programme, verbunden durch einen Ablauf. */
+export const KI_BERATUNG_CONNECT = {
+  label: 'Beispiel: Ein Ablauf verbindet E-Mail, Formular und Belege mit Branchensoftware, Kalender und Ordner.',
+  sourcesTitle: 'Was hereinkommt',
+  targetsTitle: 'Wo es landet',
+  /** Je Spalte ein Weg von oben nach unten: E-Mail → Branchensoftware, Formular → Kalender, Belege → Ordner. */
+  sources: ['E-Mail', 'Formular', 'Belege'],
+  targets: ['Branchensoftware', 'Kalender', 'Ordner'],
+  hub: 'Ihr Ablauf',
+  hubNote: 'läuft im Hintergrund',
+  tool: 'n8n, EU-Server',
+  ki: 'KI, wo sie hilft',
+  caption: 'Ihre Programme bleiben. Der Ablauf verbindet sie.',
+} as const;
+
 export const KI_BERATUNG_NOT_INTRO = {
   eyebrow: 'Ehrlich gesagt',
   title: 'Was ich als KI-Berater nicht mache.',

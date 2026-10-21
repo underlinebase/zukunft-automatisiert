@@ -4,6 +4,7 @@ import { CLOSING, EXPERIENCE, GUARANTEE, HOME_CALCULATOR, WEEKS, WEEKS_INTRO } f
 import {
   KI_BERATUNG_FLOW,
   KI_BERATUNG_ABOUT,
+  KI_BERATUNG_CONNECT,
   KI_BERATUNG_COSTS,
   KI_BERATUNG_FAQS,
   KI_BERATUNG_FAQ_INTRO,
@@ -22,6 +23,7 @@ import { CONTACT_ANCHOR, CONTACT_PAGE } from '@/lib/content/site';
 import { breadcrumbSchema, faqSchema, graph, offerSchema, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
 import JsonLd from '@/components/seo/json-ld';
+import ConnectGraphic from '@/components/ki-beratung/connect-graphic';
 import SectionHead from '@/components/ui/section-head';
 import Principles from '@/components/sections/principles';
 import StepsCompact from '@/components/landing/steps-compact';
@@ -94,12 +96,15 @@ export default function KiBeratungPage() {
       <section className="section tone-white" aria-labelledby="leistung-title">
         <div className="container">
           <SectionHead label={KI_BERATUNG_SERVICES.eyebrow} title={KI_BERATUNG_SERVICES.title} id="leistung-title" />
-          <div className="ki-copy">
-            {KI_BERATUNG_SERVICES.text.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            <p><strong>{KI_BERATUNG_SERVICES.examplesTitle}</strong></p>
+          <div className="ki-services__split">
+            <div className="ki-copy">
+              {KI_BERATUNG_SERVICES.text.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            <ConnectGraphic content={KI_BERATUNG_CONNECT} />
           </div>
+          <p className="ki-services__examples"><strong>{KI_BERATUNG_SERVICES.examplesTitle}</strong></p>
           <ul className="grid-3 ki-cards">
             {KI_BERATUNG_SERVICES.examples.map((example) => (
               <li className="card scene-card" key={example.label}>
