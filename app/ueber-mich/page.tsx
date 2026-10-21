@@ -6,6 +6,7 @@ import { ABOUT_PAGE, CREDENTIALS, STATIONS } from '@/lib/content/about';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
 import { breadcrumbSchema, graph, organizationSchema, personSchema, profilePageSchema } from '@/lib/seo/schema';
 import { pageMetadata } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import JsonLd from '@/components/seo/json-ld';
 import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
@@ -18,6 +19,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Marco Gundlach: über 14 Jahre Digitalprojekte, etwa für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Berater Abläufe für Inhaber.',
   path: '/ueber-mich',
+  markdown: markdownHref('/ueber-mich'),
 });
 
 const SCHEMA = graph(

@@ -80,6 +80,8 @@ export interface PageMetaInput {
   images?: readonly OgImage[] | 'route';
   /** Gesetzt bei Artikeln; macht die Seite zu og:type „article“. */
   article?: ArticleMeta;
+  /** Pfad der Markdown-Fassung (z. B. „/garantie.md“), wird als <link rel="alternate"> angeboten. */
+  markdown?: string;
 }
 
 function articleFields(article?: ArticleMeta) {
@@ -96,13 +98,13 @@ function articleFields(article?: ArticleMeta) {
  * Metadaten einer Seite samt eigenen Open-Graph- und Twitter-Angaben.
  * Next.js führt `openGraph` und `twitter` nur flach zusammen: Wer sie nicht setzt, erbt die Werte der Startseite.
  */
-export function pageMetadata({ title, description, path, ogTitle, type = 'website', images, article }: PageMetaInput): Metadata {
+export function pageMetadata({ title, description, path, ogTitle, type = 'website', images, article, markdown }: PageMetaInput): Metadata {
   const shareTitle = ogTitle ?? title.trim().replace(/\.$/, '');
   const imageField = images === 'route' ? {} : { images: [...(images ?? [DEFAULT_OG_IMAGE])] };
   return {
     title: seoTitle(title),
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: path, ...(markdown ? { types: { 'text/markdown': markdown } } : {}) },
     openGraph: {
       type: article ? 'article' : type,
       url: path,

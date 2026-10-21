@@ -1,6 +1,6 @@
 // Inhalt der /llms.txt: eine kompakte, maschinenlesbare Zusammenfassung für KI-Assistenten
 // (Format nach llmstxt.org). Wird aus denselben Inhalten erzeugt wie die Seiten, damit nichts auseinanderläuft.
-// Artikel und Abläufe verlinken nach llmstxt.org-Konvention auf ihre Markdown-Fassung (Seitenadresse plus „.md“).
+// Hauptseiten mit Markdown-Fassung, Artikel und Abläufe verlinken nach llmstxt.org-Konvention auf ihre Markdown-Fassung (Seitenadresse plus „.md“).
 
 import { SITE } from '@/lib/content/site';
 import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
@@ -12,9 +12,15 @@ import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { EXPERIENCE, FACTS, FAQS, GUARANTEE, WEEKS } from '@/lib/content/home';
 import { KI_BERATUNG_PATH, KI_BERATUNG_SEO } from '@/lib/content/ki-beratung';
 import { markdownHref } from './markdown';
+import { ABOUT_PATH, hasMarkdownPage } from './page-markdown';
 
 function link(title: string, path: string, note?: string): string {
   return `- [${title}](${SITE.url}${path})${note ? `: ${note}` : ''}`;
+}
+
+/** Hauptseiten mit Markdown-Fassung verlinken auf die .md-Datei (llmstxt.org), alle anderen auf die HTML-Seite. */
+function pageLink(title: string, path: string, note?: string): string {
+  return link(title, hasMarkdownPage(path) ? markdownHref(path) : path, note);
 }
 
 function section(title: string, lines: string[]): string {
@@ -49,11 +55,11 @@ export function buildLlmsTxt(): string {
 
   const pages = section('Seiten', [
     link('Startseite', '/', 'Angebot, Ablauf, Garantie, Zeitrechner, häufige Fragen'),
-    link('KI-Beratung', KI_BERATUNG_PATH, KI_BERATUNG_SEO.description),
-    link('Über mich', '/ueber-mich', 'Werdegang, Stationen und Zertifikate von Marco Gundlach'),
+    pageLink('KI-Beratung', KI_BERATUNG_PATH, KI_BERATUNG_SEO.description),
+    pageLink('Über mich', ABOUT_PATH, 'Werdegang, Stationen und Zertifikate von Marco Gundlach'),
     link('Kontakt', '/kontakt', 'Ablauf schildern oder 30 Minuten Gespräch buchen'),
     link('Wissen', '/wissen', 'Praxisartikel zu Automatisierung und KI ohne Hype'),
-    ...listedPages().map((page) => link(page.name, page.path, page.description)),
+    ...listedPages().map((page) => pageLink(page.name, page.path, page.description)),
   ]);
 
   const industries = section(
@@ -77,7 +83,7 @@ export function buildLlmsTxt(): string {
   );
 
   const optional = section('Optional', [
-    link('Alle Artikel und Abläufe im Volltext', '/llms-full.txt', 'eine Datei mit allen veröffentlichten Inhalten als Markdown'),
+    link('Alle Hauptseiten, Artikel und Abläufe im Volltext', '/llms-full.txt', 'eine Datei mit allen veröffentlichten Inhalten als Markdown'),
   ]);
 
   return [intro, person, offer, process, pages, industries, articles, ablaeufe, faqs, optional].join('\n\n') + '\n';

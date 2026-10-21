@@ -22,6 +22,7 @@ import {
 import { CONTACT_ANCHOR, CONTACT_PAGE, SITE } from '@/lib/content/site';
 import { breadcrumbSchema, faqSchema, graph, offerSchema, webPageSchema } from '@/lib/seo/schema';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import JsonLd from '@/components/seo/json-ld';
 import ConnectGraphic from '@/components/ki-beratung/connect-graphic';
 import SectionHead from '@/components/ui/section-head';
@@ -43,7 +44,7 @@ const PROCESS_ANCHOR = 'ablauf';
 export const metadata: Metadata = {
   title: seoTitle(KI_BERATUNG_SEO.title),
   description: KI_BERATUNG_SEO.description,
-  alternates: { canonical: KI_BERATUNG_PATH },
+  alternates: { canonical: KI_BERATUNG_PATH, types: { 'text/markdown': markdownHref(KI_BERATUNG_PATH) } },
   openGraph: {
     type: 'website',
     url: KI_BERATUNG_PATH,

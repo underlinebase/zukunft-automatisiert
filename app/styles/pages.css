@@ -250,7 +250,10 @@
 .article__body { display: grid; gap: 0; }
 .article__body h1 { font-size: clamp(34px, 4vw, 54px); margin-bottom: 24px; }
 .article__body .lead { font-size: 21px; color: var(--c-text); margin-bottom: 1.4em; }
-.article__body .article__byline { margin: -8px 0 28px; font-size: 16px; line-height: 1.5; color: var(--c-text-muted); }
+.article__body .article__byline { margin: -8px 0 4px; font-size: 16px; line-height: 1.5; color: var(--c-text-muted); }
+/* Daten wie auf /ki-im-kleinbetrieb: klein und gedämpft, das Datum selbst etwas kräftiger. */
+.article__body .article__dates { margin: 0 0 28px; font-size: 15px; line-height: 1.5; color: var(--c-text-muted); }
+.article__dates time { font-weight: 600; color: var(--c-text); }
 .article__body h2 { font-size: clamp(24px, 2.4vw, 30px); margin: 40px 0 12px; }
 .article__body p { font-size: 18px; line-height: 1.7; }
 .article__body blockquote {

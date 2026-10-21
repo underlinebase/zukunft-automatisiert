@@ -449,6 +449,13 @@ export function findSource(id: string): DataSource | undefined {
   return SOURCES.find((source) => source.id === id);
 }
 
+/** Kurzname der Quelle für Kacheln: Herausgeber ohne Zusatz, dazu das Datum. */
+export function shortSourceName(sourceId: string): string {
+  const source = findSource(sourceId);
+  if (!source) throw new Error(`Unbekannte Quelle: ${sourceId}`);
+  return `${source.publisher.split(',')[0]}, ${source.publishedLabel}`;
+}
+
 /** Sprungmarke zur Quelle in der Quellenliste. */
 export function sourceAnchor(id: string): string {
   return `quelle-${id}`;

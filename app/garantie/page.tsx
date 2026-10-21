@@ -1,3 +1,4 @@
+import '../styles/garantie.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
@@ -24,6 +25,7 @@ import { CLOSING } from '@/lib/content/home';
 import { GARANTIE_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
 import { pageMetadata } from '@/lib/seo/meta';
+import { markdownHref } from '@/lib/seo/markdown';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
 const PATH_ANCHOR = 'pruefung';
@@ -31,6 +33,7 @@ const PATH_ANCHOR = 'pruefung';
 export const metadata: Metadata = {
   ...pageMetadata({
     title: pageSeoTitle(GARANTIE_PAGE),
+    markdown: markdownHref(GARANTIE_PAGE.path),
     description: GARANTIE_PAGE.description,
     path: GARANTIE_PAGE.path,
     ogTitle: GARANTIE_HERO.title,

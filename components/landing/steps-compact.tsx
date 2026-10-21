@@ -1,3 +1,5 @@
+// Wird auch auf /ki-beratung genutzt: Stile hier laden, nicht nur auf den Landingpages.
+import '@/app/styles/landing.css';
 import type { NavLink } from '@/lib/content/site';
 import type { WeekStep } from '@/lib/content/types';
 import SectionHead from '@/components/ui/section-head';
