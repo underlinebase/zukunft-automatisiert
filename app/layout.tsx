@@ -13,7 +13,8 @@ import { INDUSTRIES, industryHref } from '@/lib/content/branchen';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
-  axes: ['SOFT', 'WONK', 'opsz'],
+  // Nur die optische Größe: hält die Überschriften kompakt. SOFT und WONK kosten ~55 KB und fallen kaum auf.
+  axes: ['opsz'],
   variable: '--font-fraunces',
   display: 'swap',
 });

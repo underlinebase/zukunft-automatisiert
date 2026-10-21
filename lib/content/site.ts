@@ -20,12 +20,12 @@ export const SITE = {
  */
 export const SITE_UPDATED = '2026-10-21';
 
-/** Titel und Beschreibung der Startseite: Hauptsuchbegriff vorn, Name statt Marke, unter 60 Zeichen. */
+/** Startseite zielt auf „Prozessautomatisierung“, /ki-beratung auf „KI-Berater“. Titel unter 60 Zeichen. */
 export const HOME_SEO = {
-  title: 'KI-Berater für Prozessautomatisierung · Marco Gundlach',
-  ogTitle: 'KI-Berater für Prozessautomatisierung',
+  title: 'Prozessautomatisierung für kleine Unternehmen · KI-Berater',
+  ogTitle: 'Prozessautomatisierung für kleine Unternehmen',
   description:
-    'KI-Berater Marco Gundlach automatisiert den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet. In 4 Wochen, zum Festpreis, remote in ganz Deutschland.',
+    'Prozessautomatisierung für kleine Unternehmen: KI-Berater Marco Gundlach automatisiert den Ablauf, der Sie am meisten Zeit kostet. 4 Wochen, Festpreis, remote.',
 } as const;
 
 export interface NavLink {

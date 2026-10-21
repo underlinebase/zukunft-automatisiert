@@ -52,7 +52,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={SCHEMA} />
-      <Hero eyebrow={HERO.eyebrow} title={HERO.title} lead={HERO.lead} weekBlocks={HOME_WEEK_BLOCKS} />
+      <Hero eyebrow={HERO.eyebrow} kicker={HERO.kicker} title={HERO.title} lead={HERO.lead} weekBlocks={HOME_WEEK_BLOCKS} />
       <FactsBar facts={FACTS} />
       <Scenes intro={SCENES_INTRO} scenes={SCENES} />
       <Principles intro={PRINCIPLES_INTRO} principles={PRINCIPLES} />

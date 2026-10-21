@@ -13,7 +13,9 @@ import type {
 } from './types';
 
 export const HERO = {
-  eyebrow: 'KI-Berater · Prozessautomatisierung für Inhaber',
+  eyebrow: 'KI-Berater Marco Gundlach · remote in ganz Deutschland',
+  /** Erste Zeile der H1 mit dem Suchbegriff der Startseite. */
+  kicker: 'Prozessautomatisierung für kleine Unternehmen',
   title: 'Den Ablauf, der Sie jede Woche Stunden kostet, automatisiere ich in 4 Wochen.',
   lead: 'Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach. Ohne KI-Zauber, ohne Software-Zoo. Sie arbeiten direkt mit mir.',
 };
