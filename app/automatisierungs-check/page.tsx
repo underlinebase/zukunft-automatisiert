@@ -5,11 +5,11 @@ import Breadcrumbs from '@/components/layout/breadcrumbs';
 import FaqSection from '@/components/sections/faq-section';
 import CheckQuiz from '@/components/check/check-quiz';
 import { CHECK_FAQ_INTRO, CHECK_FAQS, CHECK_HERO, CHECK_INTRO, CHECK_NOSCRIPT } from '@/lib/content/check';
-import { ABLAEUFE_PAGE, CHECK_PAGE } from '@/lib/content/pages';
+import { ABLAEUFE_PAGE, CHECK_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { CONTACT_PAGE, SITE } from '@/lib/content/site';
 import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { toCheckAblauf } from '@/lib/check/library';
-import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
@@ -22,17 +22,8 @@ const INTRO_TITLE_ID = 'check-intro-title';
 const NOSCRIPT_STYLE = '.check-quiz{display:none}';
 
 export const metadata: Metadata = {
-  title: seoTitle(CHECK_PAGE.name),
-  description: CHECK_PAGE.description,
-  alternates: { canonical: CHECK_PAGE.path },
+  ...pageMetadata({ title: pageSeoTitle(CHECK_PAGE), description: CHECK_PAGE.description, path: CHECK_PAGE.path }),
   robots: CHECK_PAGE.listed ? undefined : { index: false, follow: true },
-  openGraph: {
-    type: 'website',
-    url: CHECK_PAGE.path,
-    title: CHECK_PAGE.name,
-    description: CHECK_PAGE.description,
-    images: [DEFAULT_OG_IMAGE],
-  },
 };
 
 function checkSchema() {

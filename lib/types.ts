@@ -9,6 +9,8 @@ export interface Article {
   title: string;
   /** Kürzerer Titel für Suchergebnisse, wenn die Überschrift über 60 Zeichen hat. */
   seoTitle?: string;
+  /** Eigene Meta-Description (110 bis 160 Zeichen), wenn der Vorspann zu lang oder zu kurz dafür ist. */
+  seoDescription?: string;
   /** Anzeige, z. B. „Oktober 2026“. */
   date: string;
   /** Veröffentlichung im ISO-Format (JJJJ-MM-TT). Liegt es in der Zukunft, bleibt der Artikel bis dahin verborgen. */

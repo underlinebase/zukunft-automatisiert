@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import { pageMetadata } from '@/lib/seo/meta';
 
 export const metadata: Metadata = {
-  title: 'Datenschutz',
-  description: 'Datenschutzerklärung von Zukunft. Automatisiert.: welche Daten auf dieser Website verarbeitet werden und warum.',
+  ...pageMetadata({
+    title: 'Datenschutz',
+    description: 'Datenschutzerklärung von Zukunft. Automatisiert.: welche Daten auf dieser Website verarbeitet werden und warum.',
+    path: '/datenschutz',
+  }),
   robots: { index: false },
 };
 

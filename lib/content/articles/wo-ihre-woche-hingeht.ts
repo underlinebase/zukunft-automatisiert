@@ -9,6 +9,8 @@ export const woIhreWocheHingeht: Article = {
   datePublished: PUBLISHED_ISO,
   read_minutes: 4,
   category: 'Methodik',
+  seoDescription:
+    'Die meisten Inhaber spüren, dass Zeit verloren geht, aber nicht wo. Mit einer Woche Mitschreiben finden Sie den Ablauf, der Sie am meisten Zeit kostet.',
   lead: 'Die meisten Inhaber spüren, dass Zeit verloren geht. Wo genau, wissen die wenigsten. So finden Sie es in einer Woche heraus.',
   body: [
     { kind: 'h2', text: 'Eine Woche mitschreiben' },

@@ -13,7 +13,7 @@ import { ablaufHref, findAblauf, publishedAblaeufe } from '@/lib/content/ablaeuf
 import { ablaufSavings } from '@/lib/content/ablaeufe/savings';
 import { BRANCHEN, STUFEN } from '@/lib/content/ablaeufe/types';
 import { formatEuro, formatHours } from '@/lib/calculator';
-import { metaDescription, seoTitle } from '@/lib/seo/meta';
+import { metaDescription, pageMetadata } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import { ablaufSchema, breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
 import { SITE } from '@/lib/content/site';
@@ -34,11 +34,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const ablauf = findAblauf(slug);
   if (!ablauf) return {};
-  return {
-    title: seoTitle(ablauf.seoTitle ?? ablauf.title),
-    description: metaDescription(ablauf.lead),
-    alternates: { canonical: ablaufHref(slug), types: { 'text/markdown': markdownHref(ablaufHref(slug)) } },
-  };
+  const path = ablaufHref(slug);
+  const base = pageMetadata({ title: ablauf.seoTitle ?? ablauf.title, description: metaDescription(ablauf.lead), path });
+  return { ...base, alternates: { ...base.alternates, types: { 'text/markdown': markdownHref(path) } } };
 }
 
 export default async function AblaufPage({ params }: PageProps) {

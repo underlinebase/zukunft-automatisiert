@@ -7,7 +7,7 @@ export const eMailPostfachAutomatisieren: Article = {
   id: 201,
   slug: 'e-mail-postfach-automatisieren',
   title: 'E-Mails automatisieren: Was im Postfach wirklich hilft.',
-  seoTitle: 'E-Mails automatisieren: Postfach mit KI sortieren',
+  seoTitle: 'E-Mails automatisieren: Was KI kann, was Sie prüfen',
   date: monthLabel(PUBLISH_ISO),
   datePublished: PUBLISH_ISO,
   read_minutes: 7,

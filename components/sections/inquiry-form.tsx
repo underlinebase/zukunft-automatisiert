@@ -29,7 +29,13 @@ async function submitInquiry(payload: Record<string, string>): Promise<ApiReply>
   return body;
 }
 
-export default function InquiryForm() {
+interface InquiryFormProps {
+  /** Ebene der Formular-Überschrift. Im Abschluss-Block steht sie unter einer H2, auf /kontakt direkt unter der H1. */
+  headingLevel?: 2 | 3;
+}
+
+export default function InquiryForm({ headingLevel = 3 }: InquiryFormProps) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3';
   const [status, setStatus] = useState<Status>('idle');
   const [errors, setErrors] = useState<FieldErrors>({});
   const [message, setMessage] = useState('');
@@ -82,7 +88,7 @@ export default function InquiryForm() {
   if (status === 'sent') {
     return (
       <div className="inquiry inquiry--sent" role="status">
-        <h3 ref={thanksRef} tabIndex={-1}>Danke, Ihre Schilderung ist da.</h3>
+        <Heading ref={thanksRef} tabIndex={-1}>Danke, Ihre Schilderung ist da.</Heading>
         <p>Ich melde mich innerhalb von {SITE.responseTime} persönlich bei Ihnen.</p>
       </div>
     );
@@ -94,7 +100,7 @@ export default function InquiryForm() {
 
   return (
     <form className="inquiry" onSubmit={handleSubmit} noValidate ref={formRef}>
-      <h3 className="inquiry__title">Ablauf in 3 Sätzen schildern</h3>
+      <Heading className="inquiry__title">Ablauf in 3 Sätzen schildern</Heading>
       <div className="field">
         <label htmlFor={`${id}-name`}>Ihr Name</label>
         <input

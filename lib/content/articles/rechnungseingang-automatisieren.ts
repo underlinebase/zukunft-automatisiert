@@ -7,7 +7,7 @@ export const rechnungseingangAutomatisieren: Article = {
   id: 202,
   slug: 'rechnungseingang-automatisieren',
   title: 'Rechnungseingang automatisieren: vom Postfach bis zum Steuerbüro.',
-  seoTitle: 'Rechnungseingang automatisieren: Schritt für Schritt',
+  seoTitle: 'Eingangsrechnungen automatisch verarbeiten: 4 Schritte',
   date: monthLabel(PUBLISH_ISO),
   datePublished: PUBLISH_ISO,
   read_minutes: 7,

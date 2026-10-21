@@ -7,7 +7,7 @@ export const automatisierungOhneItAbteilung: Article = {
   id: 205,
   slug: 'automatisierung-ohne-it-abteilung',
   title: 'Automatisierung ohne IT-Abteilung: Wer kümmert sich, wenn es hakt?',
-  seoTitle: 'Automatisierung für kleine Unternehmen ohne IT-Abteilung',
+  seoTitle: 'Automatisierung ohne IT-Abteilung: Wer kümmert sich?',
   date: monthLabel(PUBLISH_ISO),
   datePublished: PUBLISH_ISO,
   read_minutes: 6,

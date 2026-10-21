@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.owner }],
   creator: SITE.owner,
   openGraph: { type: 'website', locale: 'de_DE', siteName: SITE.name, url: '/', title: TITLE, description: DESCRIPTION },
-  twitter: { card: 'summary_large_image', title: SITE.name, description: DESCRIPTION },
-  robots: { index: true, follow: true },
+  // Nur die Kartenart: Titel und Beschreibung übernimmt Next.js aus openGraph der jeweiligen Seite.
+  twitter: { card: 'summary_large_image' },
   // Bestätigt die Inhaberschaft in der Google Search Console.
   verification: { google: 'vPhsYaig5pPE5IPqUtGZHMCBGpuiQSXWTg88V26CkXU' },
 };

@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import { pageMetadata } from '@/lib/seo/meta';
 
 export const metadata: Metadata = {
-  title: 'Impressum',
-  description: 'Impressum von Zukunft. Automatisiert., Betreiber Marco Gundlach.',
+  ...pageMetadata({
+    title: 'Impressum',
+    description: 'Impressum von Zukunft. Automatisiert., Betreiber Marco Gundlach.',
+    path: '/impressum',
+  }),
   robots: { index: false },
 };
 

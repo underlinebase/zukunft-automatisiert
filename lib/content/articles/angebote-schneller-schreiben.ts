@@ -10,6 +10,8 @@ export const angeboteSchnellerSchreiben: Article = {
   datePublished: PUBLISHED_ISO,
   read_minutes: 5,
   category: 'Handwerk',
+  seoDescription:
+    'Viele Handwerker schreiben Angebote abends, weil jedes wieder von vorn beginnt. Mit gepflegten Standardpositionen entsteht der Entwurf schon aus dem Aufmaß.',
   lead: 'Viele Handwerker schreiben Angebote abends oder am Wochenende. Das liegt selten an fehlendem Fleiß. Meistens liegt es daran, dass jedes Angebot wieder von vorn beginnt.',
   body: [
     { kind: 'h2', text: 'Woher die halbe Stunde kommt' },

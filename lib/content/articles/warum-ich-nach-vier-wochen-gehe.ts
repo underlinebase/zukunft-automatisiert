@@ -9,6 +9,8 @@ export const warumIchNachVierWochenGehe: Article = {
   datePublished: PUBLISHED_ISO,
   read_minutes: 4,
   category: 'Methodik',
+  seoDescription:
+    'Viele Dienstleister leben davon, dass man sie nicht mehr loswird. Ich übergebe nach vier Wochen Zugänge, Anleitung und Video. Die Betreuung ist freiwillig.',
   lead: 'Viele Dienstleister verdienen ihr Geld damit, dass man sie nicht mehr loswird. Ich halte das für den falschen Weg.',
   body: [
     { kind: 'h2', text: 'Abhängigkeit ist kein Geschäftsmodell' },
