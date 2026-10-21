@@ -35,6 +35,7 @@ import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 import FlowHero from '@/components/flow/flow-hero';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 const PROCESS_ANCHOR = 'ablauf';
 
@@ -78,7 +79,7 @@ export default function KiBeratungPage() {
         <div className="page-hero__inner">
           <Breadcrumbs items={[{ name: KI_BERATUNG_SEO.breadcrumb }]} />
           <span className="label">{KI_BERATUNG_HERO.eyebrow}</span>
-          <h1>{KI_BERATUNG_HERO.title}</h1>
+          <h1><KeepCompounds text={KI_BERATUNG_HERO.title} /></h1>
           <p className="lead">{KI_BERATUNG_HERO.lead}</p>
           <div className="hero__actions">
             <Link className="btn btn--primary" href={CONTACT_PAGE}>

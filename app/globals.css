@@ -113,6 +113,10 @@ h1, h2, h3, h4 {
   color: var(--c-brand);
   text-wrap: balance;
 }
+/* Lange Wörter („Besichtigungstermine“) auf schmalen Handys trennen statt über den Rand zu schieben. */
+@media (max-width: 479px) {
+  h1, h2 { hyphens: auto; overflow-wrap: break-word; }
+}
 h1 {
   font-size: clamp(38px, 5.4vw, 70px);
   line-height: 1.08;
@@ -239,6 +243,9 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ---------- Häkchen und Listen ---------- */
+/* Kurze Bindestrich-Wörter in Überschriften zusammenhalten (siehe components/ui/keep-compounds.tsx). */
+.nowrap { white-space: nowrap; }
+
 .check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .check-list li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; }
 .check-icon { width: 22px; height: 22px; margin-top: 3px; color: var(--c-brand); flex: none; }

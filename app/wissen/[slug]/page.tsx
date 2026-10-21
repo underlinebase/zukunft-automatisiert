@@ -9,6 +9,7 @@ import { markdownHref } from '@/lib/seo/markdown';
 import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 // Stündlich neu erzeugen. Geplante Artikel sind beim Build nicht dabei und werden ab ihrem Erscheinungstag
 // beim ersten Aufruf erzeugt (dynamicParams ist standardmäßig an).
@@ -70,7 +71,7 @@ export default async function ArticlePage({ params }: PageProps) {
         <div className="article__body">
           <Breadcrumbs className="crumbs--spaced" items={[{ name: 'Wissen', path: '/wissen' }, { name: article.title }]} />
           <span className="label" style={{ marginBottom: 16 }}>{article.category} · {article.read_minutes} Min. Lesezeit</span>
-          <h1>{article.title}</h1>
+          <h1><KeepCompounds text={article.title} /></h1>
           <p className="article__byline">
             Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten
             <span aria-hidden="true"> · </span>

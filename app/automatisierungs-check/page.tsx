@@ -11,6 +11,7 @@ import { ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { toCheckAblauf } from '@/lib/check/library';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
 import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 // Stündlich neu erzeugen, damit neu erschienene Abläufe im Ergebnis auftauchen.
 export const revalidate = 3600;
@@ -70,7 +71,7 @@ export default function CheckPage() {
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: CHECK_PAGE.name }]} />
           <span className="label">{CHECK_HERO.eyebrow}</span>
-          <h1>{CHECK_HERO.title}</h1>
+          <h1><KeepCompounds text={CHECK_HERO.title} /></h1>
           <p className="lead">{CHECK_HERO.lead}</p>
           <ul className="check-facts">
             {CHECK_HERO.facts.map((fact) => (

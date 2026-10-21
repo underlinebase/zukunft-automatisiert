@@ -24,6 +24,7 @@ import { CLOSING } from '@/lib/content/home';
 import { GARANTIE_PAGE } from '@/lib/content/pages';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 const PATH_ANCHOR = 'pruefung';
 
@@ -53,7 +54,7 @@ export default function GarantiePage() {
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: GARANTIE_PAGE.name }]} />
           <span className="label">{GARANTIE_HERO.eyebrow}</span>
-          <h1>{GARANTIE_HERO.title}</h1>
+          <h1><KeepCompounds text={GARANTIE_HERO.title} /></h1>
           <p className="lead">{GARANTIE_HERO.lead}</p>
           <div className="hero__actions">
             <a className="btn btn--primary" href={CONTACT_ANCHOR}>

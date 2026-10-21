@@ -34,6 +34,7 @@ import type { Bar, KeyStat } from '@/lib/content/daten';
 import { CLOSING } from '@/lib/content/home';
 import { DATEN_PAGE } from '@/lib/content/pages';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 export const metadata: Metadata = {
   title: seoTitle(DATEN_PAGE.name),
@@ -89,7 +90,7 @@ export default function DatenPage() {
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Wissen', path: '/wissen' }, { name: DATEN_PAGE.name }]} />
           <span className="label">{DATEN_HERO.eyebrow}</span>
-          <h1>{DATEN_HERO.title}</h1>
+          <h1><KeepCompounds text={DATEN_HERO.title} /></h1>
           <p className="lead">{DATEN_HERO.lead}</p>
           <p className="daten-stand">
             {DATEN_HERO.standLabel}: <time dateTime={DATEN_STAND.iso}>{DATEN_STAND.label}</time>

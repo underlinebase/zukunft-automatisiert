@@ -11,6 +11,7 @@ import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 export const metadata: Metadata = {
   title: seoTitle('Marco Gundlach: KI-Berater und KI-Realist'),
@@ -37,7 +38,7 @@ export default function AboutPage() {
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Über mich' }]} />
           <span className="label">Über mich</span>
-          <h1>{ABOUT_PAGE.title}</h1>
+          <h1><KeepCompounds text={ABOUT_PAGE.title} /></h1>
           <p className="lead">{ABOUT_PAGE.lead}</p>
         </div>
       </section>

@@ -13,6 +13,7 @@ import type { Vorlage } from '@/lib/content/vorlagen';
 import { ANLEITUNG, VORLAGEN, findVorlage, vorlageHref, vorlageStatus } from '@/lib/content/vorlagen';
 import { metaDescription, seoTitle } from '@/lib/seo/meta';
 import { breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 // Alle Vorlagen stehen im Code, andere Pfade gibt es nicht.
 export const dynamicParams = false;
@@ -84,7 +85,7 @@ export default async function VorlagePage({ params }: PageProps) {
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: VORLAGEN_PAGE.name, path: VORLAGEN_PAGE.path }, { name: vorlage.title }]} />
           <span className="label">n8n-Vorlage · {BRANCHEN[vorlage.branche]}</span>
-          <h1>{vorlage.title}</h1>
+          <h1><KeepCompounds text={vorlage.title} /></h1>
           <p className="lead">{vorlage.lead}</p>
           <DownloadBox vorlage={vorlage} />
         </div>

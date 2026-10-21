@@ -54,6 +54,11 @@
   .site-header--minimal .logo { font-size: 17px; }
   .site-header--minimal .site-header__cta { min-height: 42px; padding: 9px 14px; font-size: 15px; }
 }
+/* Sehr schmale Handys (360 px): Logo und Button passen sonst nicht nebeneinander. */
+@media (max-width: 379px) {
+  .site-header--minimal .logo { font-size: 15px; }
+  .site-header--minimal .site-header__cta { padding: 8px 10px; font-size: 14px; }
+}
 
 .menu-toggle {
   display: inline-flex; align-items: center; justify-content: center;

@@ -16,6 +16,7 @@ import { formatEuro, formatHours } from '@/lib/calculator';
 import { metaDescription, seoTitle } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import { ablaufSchema, breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
+import KeepCompounds from '@/components/ui/keep-compounds';
 
 // Stündlich neu erzeugen. Geplante Abläufe werden ab ihrem Erscheinungstag beim ersten Aufruf erzeugt.
 export const revalidate = 3600;
@@ -66,7 +67,7 @@ export default async function AblaufPage({ params }: PageProps) {
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: ABLAEUFE_PAGE.name, path: ABLAEUFE_PAGE.path }, { name: ablauf.title }]} />
           <span className="label">{BRANCHEN[ablauf.branche]}</span>
-          <h1>{ablauf.title}</h1>
+          <h1><KeepCompounds text={ablauf.title} /></h1>
           <p className="lead">{ablauf.lead}</p>
           <dl className="ablauf-facts">
             <div><dt>Im Beispiel gespart</dt><dd>{formatHours(savings.minutesPerWeek)} pro Woche</dd></div>
