@@ -57,5 +57,6 @@ export const kiBeraterFinden: Article = {
     { label: 'Wo Ihre Woche hingeht', href: '/wissen/wo-ihre-woche-hingeht' },
     { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
     { label: 'Automatisierung ohne IT-Abteilung', href: '/wissen/automatisierung-ohne-it-abteilung' },
+    { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
   ],
 };

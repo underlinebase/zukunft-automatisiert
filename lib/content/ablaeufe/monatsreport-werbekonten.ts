@@ -64,6 +64,6 @@ export const monatsreportWerbekonten: Ablauf = {
   related: [
     { label: 'Ablauf: Statusbericht als fertiger Entwurf', href: '/ablaeufe/statusbericht-entwurf' },
     { label: 'ChatGPT im Betrieb', href: '/wissen/chatgpt-im-betrieb' },
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
   ],
 };

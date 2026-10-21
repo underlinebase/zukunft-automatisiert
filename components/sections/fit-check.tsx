@@ -1,8 +1,18 @@
+import Link from 'next/link';
+import type { NavLink } from '@/lib/content/site';
 import { CheckIcon, CrossIcon } from '@/components/ui/icons';
 import SectionHead from '@/components/ui/section-head';
 
 interface FitCheckProps {
-  content: { eyebrow: string; title: string; lead: string; yes: readonly string[]; no: readonly string[] };
+  content: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    yes: readonly string[];
+    no: readonly string[];
+    /** Satz unter den Spalten mit einem Link, z. B. zum Automatisierungs-Check. */
+    note?: { text: string; link: NavLink };
+  };
 }
 
 export default function FitCheck({ content }: FitCheckProps) {
@@ -28,6 +38,11 @@ export default function FitCheck({ content }: FitCheckProps) {
             </ul>
           </div>
         </div>
+        {content.note ? (
+          <p className="footnote">
+            {content.note.text} <Link href={content.note.link.href}>{content.note.link.label}</Link>
+          </p>
+        ) : null}
       </div>
     </section>
   );

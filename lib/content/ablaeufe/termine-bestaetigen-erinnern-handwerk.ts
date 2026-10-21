@@ -63,6 +63,7 @@ export const termineBestaetigenErinnernHandwerk: Ablauf = {
   related: [
     { label: 'Anfragen an einer Stelle sammeln', href: '/ablaeufe/anfragen-zentral-erfassen-handwerk' },
     { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
+    { label: 'Google-Bewertung nach dem Auftrag anfragen', href: '/ablaeufe/google-bewertung-nach-auftrag' },
     { label: 'Ablauf besprechen', href: '/kontakt' },
   ],
 };

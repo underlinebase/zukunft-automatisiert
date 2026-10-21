@@ -31,6 +31,7 @@ import Guarantee from '@/components/sections/guarantee';
 import FitCheck from '@/components/sections/fit-check';
 import AboutTeaser from '@/components/sections/about-teaser';
 import FaqSection from '@/components/sections/faq-section';
+import ReadingLinks from '@/components/sections/reading-links';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 import FlowHero from '@/components/flow/flow-hero';
@@ -120,6 +121,11 @@ export default function KiBeratungPage() {
               </li>
             ))}
           </ul>
+          <p className="footnote">
+            <Link className="text-link" href={KI_BERATUNG_SERVICES.libraryLink.href}>
+              {KI_BERATUNG_SERVICES.libraryLink.label} <ArrowIcon />
+            </Link>
+          </p>
           <p className="footnote">{KI_BERATUNG_SERVICES.footnote}</p>
         </div>
       </section>
@@ -167,20 +173,7 @@ export default function KiBeratungPage() {
 
       <FaqSection intro={KI_BERATUNG_FAQ_INTRO} items={KI_BERATUNG_FAQS} />
 
-      <section className="section tone-gray" aria-labelledby="weiterlesen-title">
-        <div className="container">
-          <SectionHead label={KI_BERATUNG_READING.eyebrow} title={KI_BERATUNG_READING.title} id="weiterlesen-title" />
-          <ul className="ki-links">
-            {KI_BERATUNG_READING.links.map((link) => (
-              <li key={link.href}>
-                <Link className="text-link" href={link.href}>
-                  {link.label} <ArrowIcon />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <ReadingLinks content={KI_BERATUNG_READING} />
 
       <Closing content={CLOSING} />
     </>

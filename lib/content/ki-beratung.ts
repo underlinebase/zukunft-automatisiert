@@ -70,6 +70,7 @@ export const KI_BERATUNG_SERVICES = {
     },
   ] satisfies ServiceExample[],
   footnote: 'Ihre Branche fehlt? Das macht nichts. Die Frage ist immer dieselbe: Welcher Ablauf kommt jede Woche wieder?',
+  libraryLink: { label: 'Alle Beispiele in der Ablauf-Bibliothek', href: '/ablaeufe' } satisfies NavLink,
 };
 
 /** Grafik neben „Was ich als KI-Berater für Sie mache“: vorhandene Programme, verbunden durch einen Ablauf. */
@@ -112,6 +113,7 @@ export const KI_BERATUNG_PROCESS_INTRO = {
   label: 'So läuft es',
   title: 'So läuft eine KI-Beratung bei mir ab.',
   lead: 'Am Anfang steht ein Gespräch von 30 Minuten, das Sie nichts kostet. Rechnet sich eine Automatisierung, bekommen Sie danach einen Festpreis schriftlich. Dann folgen 4 Wochen mit wenigen, festen Terminen. Ihr Aufwand insgesamt: rund 5 Stunden.',
+  link: { label: 'Wie die Garantie funktioniert', href: '/garantie' } satisfies NavLink,
 };
 
 export const KI_BERATUNG_FIT = {
@@ -130,6 +132,10 @@ export const KI_BERATUNG_FIT = {
     'Jeder Fall in Ihrem Ablauf ist anders, ein Muster gibt es nicht.',
     'Sie planen ein großes Software-Projekt mit Ausschreibung und Lastenheft. Dafür bin ich nicht der Richtige.',
   ],
+  note: {
+    text: 'Sie wissen noch nicht, welcher Ablauf bei Ihnen der richtige ist?',
+    link: { label: 'Der Automatisierungs-Check zeigt es in 3 Minuten.', href: '/automatisierungs-check' } satisfies NavLink,
+  },
 };
 
 export const KI_BERATUNG_COSTS = {
@@ -211,6 +217,8 @@ export const KI_BERATUNG_READING = {
     { label: 'Was kostet KI-Automatisierung?', href: '/wissen/was-kostet-ki-automatisierung' },
     { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
     { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
+    { label: 'Automatisierungs-Check: Welcher Ablauf kostet Sie die meiste Zeit?', href: '/automatisierungs-check' },
   ] satisfies NavLink[],
 };
 

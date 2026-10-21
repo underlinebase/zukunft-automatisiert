@@ -53,6 +53,7 @@ export const rechnungseingangAutomatisieren: Article = {
     { label: 'E-Mails automatisieren', href: '/wissen/e-mail-postfach-automatisieren' },
     { label: 'Belege einsammeln, ohne nachzulaufen', href: '/wissen/belege-einsammeln-ohne-nachlaufen' },
     { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
+    { label: 'Ablauf: Rechnungseingang automatisieren', href: '/ablaeufe/rechnungseingang-automatisch' },
     { label: 'Ablauf schildern', href: '/kontakt' },
   ],
 };

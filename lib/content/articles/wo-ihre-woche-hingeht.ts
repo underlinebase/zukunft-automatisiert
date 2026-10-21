@@ -24,4 +24,10 @@ export const woIhreWocheHingeht: Article = {
   notes: [
     'Notieren Sie auch, wer im Team den Ablauf erledigt. Oft verteilt sich die Zeit auf mehrere Personen und fällt deshalb niemandem auf.',
   ],
+  related: [
+    { label: 'Ablauf: Angebote automatisch nachfassen', href: '/ablaeufe/angebote-automatisch-nachfassen' },
+    { label: 'Ablauf: Fehlende Belege automatisch anfordern', href: '/ablaeufe/fehlende-belege-anfordern' },
+    { label: 'Automatisierungs-Check: Ihre Zeitfresser in drei Minuten', href: '/automatisierungs-check' },
+    { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
+  ],
 };

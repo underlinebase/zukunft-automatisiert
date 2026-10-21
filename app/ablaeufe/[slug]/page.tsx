@@ -8,7 +8,9 @@ import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import { ArrowIcon } from '@/components/ui/icons';
 import { CLOSING } from '@/lib/content/home';
-import { ABLAEUFE_PAGE } from '@/lib/content/pages';
+import { ABLAEUFE_PAGE, CHECK_PAGE, GARANTIE_PAGE } from '@/lib/content/pages';
+import { KI_BERATUNG_PATH } from '@/lib/content/ki-beratung';
+import { monthLabel } from '@/lib/content/articles/dates';
 import { ablaufHref, findAblauf, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { ablaufSavings } from '@/lib/content/ablaeufe/savings';
 import { BRANCHEN, STUFEN } from '@/lib/content/ablaeufe/types';
@@ -70,6 +72,11 @@ export default async function AblaufPage({ params }: PageProps) {
           <Breadcrumbs items={[{ name: ABLAEUFE_PAGE.name, path: ABLAEUFE_PAGE.path }, { name: ablauf.title }]} />
           <span className="label">{BRANCHEN[ablauf.branche]}</span>
           <h1><KeepCompounds text={ablauf.title} /></h1>
+          <p className="ablauf-byline">
+            Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten
+            <span aria-hidden="true"> · </span>
+            <time dateTime={ablauf.datePublished}>{monthLabel(ablauf.datePublished)}</time>
+          </p>
           <p className="lead">{ablauf.lead}</p>
           <dl className="ablauf-facts">
             <div><dt>Im Beispiel gespart</dt><dd>{formatHours(savings.minutesPerWeek)} pro Woche</dd></div>
@@ -103,9 +110,18 @@ export default async function AblaufPage({ params }: PageProps) {
           <p className="muted">
             Gerechnet mit rund 46 Arbeitswochen im Jahr. Ihre eigenen Zahlen rechnen Sie mit dem <Link href="/#garantie">Zeitrechner auf der Startseite</Link> nach.
           </p>
+          <p>
+            Welcher Ablauf bei Ihnen am meisten Zeit kostet, zeigt der <Link href={CHECK_PAGE.path}>Automatisierungs-Check</Link>.
+          </p>
 
           <h2>Grenzen und Voraussetzungen.</h2>
           <ul className="ablauf-limits">{ablauf.grenzen.map((item) => <li key={item}>{item}</li>)}</ul>
+
+          <p className="ablauf-offer">
+            Diesen Ablauf automatisiere ich in 4 Wochen zum Festpreis, mit{' '}
+            <Link href={GARANTIE_PAGE.path}>Garantie für den vereinbarten Umfang</Link>. So läuft{' '}
+            <Link href={KI_BERATUNG_PATH}>Prozessautomatisierung mit einem KI-Berater</Link> bei mir.
+          </p>
 
           {ablauf.related && ablauf.related.length > 0 ? (
             <nav className="article__related" aria-label="Passend dazu">
@@ -117,7 +133,7 @@ export default async function AblaufPage({ params }: PageProps) {
               </ul>
             </nav>
           ) : null}
-          <p><Link href={ABLAEUFE_PAGE.path} className="text-link">Alle Abläufe ansehen <ArrowIcon /></Link></p>
+          <p><Link href={ABLAEUFE_PAGE.path} className="text-link">Weitere Abläufe zum Automatisieren <ArrowIcon /></Link></p>
         </div>
       </section>
 

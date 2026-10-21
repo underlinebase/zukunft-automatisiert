@@ -18,4 +18,9 @@ export const excelIstNichtDasProblem: Article = {
     { kind: 'p', text: 'Irgendwann kommt jede Tabelle an ihre Grenzen. Arbeiten mehrere Leute gleichzeitig darin, oder wird sie so groß, dass sie langsam reagiert, lohnt sich ein anderes Werkzeug. Das ist aber eine eigene Entscheidung, und sie muss nicht am Anfang stehen.' },
   ],
   notes: ['Tabellen in Google oder Microsoft 365 lassen sich gut anbinden. Lokale Dateien auf einem einzelnen Rechner sind schwieriger.'],
+  related: [
+    { label: 'Ablauf: Kontaktformular direkt ins CRM', href: '/ablaeufe/kontaktformular-ins-crm' },
+    { label: 'Ablauf: Wochenbericht mit Kennzahlen', href: '/ablaeufe/wochenbericht-kennzahlen' },
+    { label: 'Ablauf: Rechnungsentwurf aus erfassten Stunden', href: '/ablaeufe/rechnungsentwurf-aus-zeiten' },
+  ],
 };

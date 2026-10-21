@@ -20,4 +20,9 @@ export const warumIchNachVierWochenGehe: Article = {
     { kind: 'p', text: 'Dann bin ich da. Die Betreuung ist freiwillig und monatlich kündbar. Viele Betriebe nehmen sich nach dem ersten Ablauf den zweiten vor, und das ist mir lieber als ein Wartungsvertrag, den niemand braucht.' },
   ],
   notes: [],
+  related: [
+    { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
+    { label: 'So arbeite ich als KI-Berater', href: '/ki-beratung' },
+    { label: 'Wenn der Mitarbeiter geht, der alles weiß', href: '/wissen/wenn-der-mitarbeiter-geht' },
+  ],
 };

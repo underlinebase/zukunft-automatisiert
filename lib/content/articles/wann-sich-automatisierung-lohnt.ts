@@ -58,7 +58,9 @@ export const wannSichAutomatisierungLohnt: Article = {
   related: [
     { label: 'Was ein Ablauf wirklich kostet', href: '/wissen/was-ein-ablauf-wirklich-kostet' },
     { label: 'Wo Ihre Woche hingeht', href: '/wissen/wo-ihre-woche-hingeht' },
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
+    { label: 'Ablauf-Bibliothek: Was sich im Betrieb automatisieren lässt', href: '/ablaeufe' },
+    { label: 'Automatisierungs-Check: Welcher Ablauf Sie am meisten Zeit kostet', href: '/automatisierungs-check' },
     { label: 'Ablauf schildern', href: '/kontakt' },
   ],
 };

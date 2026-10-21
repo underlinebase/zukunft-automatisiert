@@ -70,6 +70,10 @@ export const rechenbeispielHandwerkAngebote: Article = {
   ],
   related: [
     { label: 'Angebote schneller schreiben', href: '/wissen/angebote-schneller-schreiben' },
+    { label: 'Ablauf: Angebot aus dem Aufmaß als Entwurf', href: '/ablaeufe/angebot-aus-aufmass-entwurf' },
+    { label: 'Ablauf: Anfragen im Handwerk an einer Stelle sammeln', href: '/ablaeufe/anfragen-zentral-erfassen-handwerk' },
+    { label: 'Ablauf: Baustellenfotos automatisch ablegen', href: '/ablaeufe/baustellenfotos-automatisch-ablegen' },
+    { label: 'Ablauf: Angebote automatisch nachfassen', href: '/ablaeufe/angebote-automatisch-nachfassen' },
     { label: 'Ihren Ablauf schildern', href: '/kontakt' },
   ],
 };

@@ -24,4 +24,9 @@ export const portalAnfragenSchnellBeantworten: Article = {
     'Portal-Anfragen kommen meist per E-Mail an und lassen sich zuverlässig auslesen.',
     'Antwortvorlagen geben Sie selbst frei, bevor sie aktiv werden.',
   ],
+  related: [
+    { label: 'Ablauf: Portal-Anfragen sofort beantworten', href: '/ablaeufe/portal-anfragen-sofort-beantworten' },
+    { label: 'Ablauf: Besichtigungstermine online buchen lassen', href: '/ablaeufe/besichtigungstermine-selbst-buchen' },
+    { label: 'Ablauf: Interessenten vorqualifizieren', href: '/ablaeufe/interessenten-vorqualifizieren' },
+  ],
 };

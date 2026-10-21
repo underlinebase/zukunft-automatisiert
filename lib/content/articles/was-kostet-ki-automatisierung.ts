@@ -64,6 +64,8 @@ export const wasKostetKiAutomatisierung: Article = {
     { label: 'KI-Beratung zum Festpreis', href: '/ki-beratung' },
     { label: 'Was ein Ablauf kostet, den niemand misst', href: '/wissen/was-ein-ablauf-wirklich-kostet' },
     { label: 'Wann sich eine Automatisierung lohnt', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
+    { label: 'Rechenbeispiel: Angebote im Handwerk', href: '/wissen/rechenbeispiel-handwerk-angebote' },
     { label: 'Erstgespräch vereinbaren', href: '/kontakt' },
   ],
 };

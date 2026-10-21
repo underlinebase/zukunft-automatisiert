@@ -1,5 +1,7 @@
 // Angaben zu Marco Gundlach. Quelle: LinkedIn-Profil (Stand Oktober 2026).
 
+import type { NavLink } from './site';
+
 export interface Station {
   period: string;
   role: string;
@@ -66,4 +68,8 @@ export const ABOUT_PAGE = {
     'Warum „der KI-Realist“? Ich arbeite jeden Tag mit KI und habe mich bei Anthropic zu ihren Fähigkeiten und Grenzen zertifizieren lassen. Sie kann Texte lesen, sortieren und Entwürfe schreiben. Sie kann aber längst nicht alles, was gerade versprochen wird. Wenn ein Ablauf ohne KI zuverlässiger läuft, bauen wir ihn ohne.',
     'Ich arbeite remote für Betriebe in ganz Deutschland, meistens per Video. Wenn ein Termin vor Ort hilft, komme ich vorbei. Als geprüfter Ausbilder und KI-Trainer erkläre ich Technik so, dass Ihr Team sie danach selbst versteht und bedienen kann.',
   ],
+  links: [
+    { label: 'So arbeite ich als KI-Berater', href: '/ki-beratung' },
+    { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
+  ] satisfies NavLink[],
 };

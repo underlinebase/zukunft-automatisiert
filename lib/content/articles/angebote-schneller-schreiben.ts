@@ -22,4 +22,9 @@ export const angeboteSchnellerSchreiben: Article = {
     { kind: 'p', text: 'Der Satz, der nur zu diesem einen Kunden passt, kommt weiter von Ihnen. Den kann Ihnen keine Software abnehmen, und das ist auch gut so.' },
   ],
   notes: ['Ob Ihre Handwerkersoftware Entwürfe von außen annimmt, hängt vom Programm ab. Das prüfe ich vor jedem Projekt.'],
+  related: [
+    { label: 'Ablauf: Angebot aus dem Aufmaß als Entwurf', href: '/ablaeufe/angebot-aus-aufmass-entwurf' },
+    { label: 'Ablauf: Angebote automatisch nachfassen', href: '/ablaeufe/angebote-automatisch-nachfassen' },
+    { label: 'Was ein Ablauf wirklich kostet', href: '/wissen/was-ein-ablauf-wirklich-kostet' },
+  ],
 };

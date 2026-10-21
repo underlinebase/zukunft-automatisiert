@@ -22,4 +22,9 @@ export const wasEinAblaufWirklichKostet: Article = {
     { kind: 'p', text: 'Mit dieser Zahl können Sie jedes Angebot für eine Automatisierung prüfen. Meins auch.' },
   ],
   notes: ['Den Zeitrechner für diese Rechnung finden Sie auf der Startseite.'],
+  related: [
+    { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'Automatisierungs-Check: Was Sie Ihre Abläufe kosten', href: '/automatisierungs-check' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
+  ],
 };
