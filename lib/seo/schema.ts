@@ -74,7 +74,7 @@ export function personSchema(): JsonLd {
     description: 'Der KI-Realist: automatisiert Abläufe für Inhaber und sagt offen, wo KI hilft und wo nicht.',
     url: `${SITE.url}/ueber-mich`,
     image: `${SITE.url}/marco-gundlach-portrait.jpg`,
-    sameAs: [SITE.linkedin, SITE.personalSite],
+    sameAs: [SITE.linkedin],
     worksFor: { '@id': ORG_ID },
     knowsAbout: KNOWS_ABOUT,
     hasCredential: CREDENTIALS.map((credential) => ({

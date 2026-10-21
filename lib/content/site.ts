@@ -10,8 +10,6 @@ export const SITE = {
   role: 'Der KI-Realist',
   email: 'marco@zukunft-automatisiert.de',
   linkedin: 'https://linkedin.com/in/marcogundlach',
-  /** Marcos persönliche Website. */
-  personalSite: 'https://marcogundlach.de',
   calUrl: 'https://cal.eu/marco-g-ppa25o/30min',
   responseTime: '24 Stunden',
 } as const;
