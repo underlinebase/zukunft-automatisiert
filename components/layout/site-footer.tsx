@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SITE } from '@/lib/content/site';
+import { listedPages } from '@/lib/content/pages';
 import Logo from './logo';
 
 export default function SiteFooter() {
@@ -21,6 +22,14 @@ export default function SiteFooter() {
               <li><Link href="/ueber-mich">Über mich</Link></li>
               <li><Link href="/wissen">Wissen</Link></li>
               <li><Link href="/kontakt">Kontakt</Link></li>
+            </ul>
+          </nav>
+          <nav aria-label="Angebot und Wissen">
+            <h2 className="site-footer__title">Angebot &amp; Wissen</h2>
+            <ul>
+              {listedPages().map((page) => (
+                <li key={page.path}><Link href={page.path}>{page.name}</Link></li>
+              ))}
             </ul>
           </nav>
           <div>

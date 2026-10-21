@@ -54,5 +54,7 @@ export const kiImHandwerk: Article = {
     { label: 'Angebote schneller schreiben', href: '/wissen/angebote-schneller-schreiben' },
     { label: 'Rechenbeispiel: Angebote im Handwerk', href: '/wissen/rechenbeispiel-handwerk-angebote' },
     { label: 'Rechnungseingang automatisieren', href: '/wissen/rechnungseingang-automatisieren' },
+    { label: 'Ablauf: Angebot aus dem Aufmaß als Entwurf', href: '/ablaeufe/angebot-aus-aufmass-entwurf' },
+    { label: 'Ablauf: Baustellenfotos automatisch ablegen', href: '/ablaeufe/baustellenfotos-automatisch-ablegen' },
   ],
 };

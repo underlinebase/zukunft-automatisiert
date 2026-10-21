@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import JsonLd from '@/components/seo/json-ld';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import AblaufFilter from '@/components/ablaeufe/ablauf-filter';
 import Closing from '@/components/sections/closing';
 import { CLOSING } from '@/lib/content/home';
-import { ABLAEUFE_PAGE, pageSeoTitle } from '@/lib/content/pages';
+import { ABLAEUFE_PAGE, CHECK_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { ablaeufeByBranche, ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
 import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
@@ -62,6 +63,10 @@ export default function AblaeufePage() {
           <p className="lead">
             Jeder Ablauf auf einer Seite: wie er heute läuft, wie danach, was Sie weiter selbst machen und was er im
             Beispiel an Zeit bringt. Nach Branche sortiert.
+          </p>
+          <p className="page-hero__more">
+            Unsicher, wo Sie anfangen? <Link href={CHECK_PAGE.path}>Zum Automatisierungs-Check</Link>. Ob sich ein Ablauf
+            rechnet, lesen Sie in <Link href="/wissen/wann-sich-automatisierung-lohnt">Wann sich eine Automatisierung lohnt</Link>.
           </p>
         </div>
       </section>

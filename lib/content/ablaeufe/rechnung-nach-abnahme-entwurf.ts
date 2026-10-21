@@ -67,5 +67,6 @@ export const rechnungNachAbnahmeEntwurf: Ablauf = {
     { label: 'Angebot aus dem Aufmaß als Entwurf', href: '/ablaeufe/angebot-aus-aufmass-entwurf' },
     { label: 'Baustellenfotos automatisch ablegen', href: '/ablaeufe/baustellenfotos-automatisch-ablegen' },
     { label: 'Wann sich Automatisierung lohnt', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'Google-Bewertung nach dem Auftrag anfragen', href: '/ablaeufe/google-bewertung-nach-auftrag' },
   ],
 };

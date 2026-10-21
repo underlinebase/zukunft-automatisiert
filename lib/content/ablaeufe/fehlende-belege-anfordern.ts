@@ -68,5 +68,6 @@ export const fehlendeBelegeAnfordern: Ablauf = {
     { label: 'Belege einsammeln, ohne zum Bittsteller zu werden', href: '/wissen/belege-einsammeln-ohne-nachlaufen' },
     { label: 'Ablauf: Belege benennen und zuordnen', href: '/ablaeufe/belege-benennen-zuordnen' },
     { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
+    { label: 'Ablauf: Mandantenanfragen vorsortieren', href: '/ablaeufe/mandantenanfragen-vorsortieren' },
   ],
 };

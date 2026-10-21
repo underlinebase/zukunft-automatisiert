@@ -53,6 +53,7 @@ export const automatisierungOhneItAbteilung: Article = {
   related: [
     { label: 'Warum ich nach vier Wochen gehe', href: '/wissen/warum-ich-nach-vier-wochen-gehe' },
     { label: 'Wenn der Mitarbeiter geht', href: '/wissen/wenn-der-mitarbeiter-geht' },
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
+    { label: 'Ablauf-Bibliothek: Abläufe Schritt für Schritt', href: '/ablaeufe' },
   ],
 };

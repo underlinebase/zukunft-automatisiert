@@ -56,5 +56,7 @@ export const kiImBetriebOhneHype: Article = {
     { label: 'ChatGPT im Betrieb: Regeln für Ihr Team', href: '/wissen/chatgpt-im-betrieb' },
     { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
     { label: 'Chatbot auf der Website? Meistens nicht.', href: '/wissen/chatbot-auf-der-website' },
+    { label: 'Ablauf: E-Mail-Postfach sortieren mit KI', href: '/ablaeufe/e-mail-postfach-sortieren' },
+    { label: 'Ablauf: Rechnungseingang automatisieren', href: '/ablaeufe/rechnungseingang-automatisch' },
   ],
 };

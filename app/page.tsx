@@ -11,6 +11,7 @@ import {
   HERO,
   HOME_CALCULATOR,
   HOME_EXAMPLE,
+  HOME_READING,
   HOME_WEEK_BLOCKS,
   INDUSTRIES_INTRO,
   PRINCIPLES,
@@ -32,6 +33,7 @@ import Industries from '@/components/sections/industries';
 import AboutTeaser from '@/components/sections/about-teaser';
 import Experience from '@/components/sections/experience';
 import FaqSection from '@/components/sections/faq-section';
+import ReadingLinks from '@/components/sections/reading-links';
 import Closing from '@/components/sections/closing';
 import JsonLd from '@/components/seo/json-ld';
 import { faqSchema, graph, webPageSchema } from '@/lib/seo/schema';
@@ -61,6 +63,7 @@ export default function HomePage() {
       <Industries intro={INDUSTRIES_INTRO} />
       <AboutTeaser content={ABOUT} />
       <Experience content={EXPERIENCE} />
+      <ReadingLinks content={HOME_READING} tone="white" />
       <FaqSection intro={FAQ_INTRO} items={FAQS} />
       <Closing content={CLOSING} />
     </>

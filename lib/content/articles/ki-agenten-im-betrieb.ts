@@ -61,6 +61,6 @@ export const kiAgentenImBetrieb: Article = {
     { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
     { label: 'ChatGPT im Betrieb', href: '/wissen/chatgpt-im-betrieb' },
     { label: 'n8n, Make oder Zapier?', href: '/wissen/n8n-make-oder-zapier' },
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
   ],
 };

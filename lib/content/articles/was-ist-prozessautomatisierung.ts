@@ -65,6 +65,7 @@ export const wasIstProzessautomatisierung: Article = {
     { label: 'KI-Beratung für kleine Unternehmen', href: '/ki-beratung' },
     { label: 'Wann sich eine Automatisierung lohnt', href: '/wissen/wann-sich-automatisierung-lohnt' },
     { label: 'KI-Agenten im Betrieb', href: '/wissen/ki-agenten-im-betrieb' },
+    { label: 'Ablauf-Bibliothek: Beispiele für Prozessautomatisierung', href: '/ablaeufe' },
     { label: 'Ihren Ablauf schildern', href: '/kontakt' },
   ],
 };

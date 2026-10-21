@@ -1,4 +1,7 @@
+import Link from 'next/link';
+import type { NavLink } from '@/lib/content/site';
 import type { CalculatorDefaults } from '@/lib/content/types';
+import { ArrowIcon } from '@/components/ui/icons';
 import TimeCalculator from './time-calculator';
 
 interface GuaranteeProps {
@@ -7,6 +10,8 @@ interface GuaranteeProps {
     title: string;
     lead: string;
     points: readonly { label: string; text: string }[];
+    /** Link zur ausführlichen Garantie-Seite. */
+    link?: NavLink;
   };
   calculator: CalculatorDefaults;
 }
@@ -27,6 +32,11 @@ export default function Guarantee({ content, calculator }: GuaranteeProps) {
               </div>
             ))}
           </dl>
+          {content.link ? (
+            <Link className="text-link guarantee__link" href={content.link.href}>
+              {content.link.label} <ArrowIcon />
+            </Link>
+          ) : null}
         </div>
         <TimeCalculator defaults={calculator} />
       </div>

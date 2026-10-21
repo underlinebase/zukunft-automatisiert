@@ -53,6 +53,15 @@ export default function AboutPage() {
           {ABOUT_PAGE.essay.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          <ul className="ki-links about-page__links">
+            {ABOUT_PAGE.links.map((link) => (
+              <li key={link.href}>
+                <Link className="text-link" href={link.href}>
+                  {link.label} <ArrowIcon />
+                </Link>
+              </li>
+            ))}
+          </ul>
           <Link className="btn btn--primary" href={CONTACT_ANCHOR}>
             Ablauf schildern <ArrowIcon />
           </Link>

@@ -63,6 +63,7 @@ export const eRechnungenEingangKanzlei: Ablauf = {
   related: [
     { label: 'Ablauf: Belege benennen und zuordnen', href: '/ablaeufe/belege-benennen-zuordnen' },
     { label: 'Wann sich Automatisierung lohnt', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'Ablauf: Mandantenanfragen vorsortieren', href: '/ablaeufe/mandantenanfragen-vorsortieren' },
     { label: 'Erstgespräch vereinbaren', href: '/kontakt' },
   ],
 };

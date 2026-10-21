@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { getArticles } from '@/lib/db';
 import WissenTabs from '@/components/wissen-tabs';
 import NewsletterForm from '@/components/newsletter-form';
@@ -6,6 +7,7 @@ import JsonLd from '@/components/seo/json-ld';
 import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, collectionSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import { ABLAEUFE_PAGE, DATEN_PAGE } from '@/lib/content/pages';
 
 // Stündlich neu erzeugen, damit geplante Artikel am Erscheinungstag auftauchen.
 export const revalidate = 3600;
@@ -37,6 +39,10 @@ export default async function WissenPage() {
           <span className="label">Wissen</span>
           <h1>Notizen aus der Praxis.</h1>
           <p className="lead">Was im Alltag wirklich Zeit spart, und wo KI nur nach Fortschritt klingt.</p>
+          <p className="page-hero__more">
+            Lieber konkret? In der Ablauf-Bibliothek finden Sie <Link href={ABLAEUFE_PAGE.path}>Abläufe Schritt für Schritt</Link>,
+            vorher und nachher. Studien und Zahlen stehen unter <Link href={DATEN_PAGE.path}>KI im Kleinbetrieb in Zahlen</Link>.
+          </p>
         </div>
       </section>
       <section className="section">

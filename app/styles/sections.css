@@ -6,6 +6,8 @@
 @media (min-width: 768px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 .footnote { margin-top: 24px; font-size: 16px; color: var(--c-text-muted); }
+/* Vorspann mit weiterführendem Link (SectionHead mit link). */
+.section-head__aside { display: grid; gap: 16px; justify-items: start; }
 
 /* ---------- Hero ---------- */
 .hero__pin { padding: 48px 0 64px; background: var(--c-bg); }
@@ -157,6 +159,8 @@
 .guarantee__point { padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.28); }
 .guarantee__point dt { font-weight: 700; color: #FFFFFF; }
 .guarantee__point dd { margin: 4px 0 0; color: rgba(255, 255, 255, 0.9); }
+.guarantee__link { justify-self: start; color: #FFFFFF; }
+.guarantee__link:hover { color: var(--c-on-brand-muted); }
 
 .calculator {
   display: grid; gap: 22px; padding: 32px;

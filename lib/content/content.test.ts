@@ -1,7 +1,10 @@
 import { describe, expect, test } from 'vitest';
 import { INDUSTRIES, INDUSTRY_LINKS, industryHref } from './branchen';
-import { FAQS, LANDING_GENERAL_FAQS } from './home';
+import { FAQS, FIT, GUARANTEE, HOME_READING, INDUSTRIES_INTRO, LANDING_GENERAL_FAQS } from './home';
 import { ARTICLES } from './articles';
+import { ABLAEUFE } from './ablaeufe';
+import { ABOUT_PAGE } from './about';
+import { listedPages } from './pages';
 import { isPublished, todayIso } from './publishing';
 import { aiPatternHits } from './style';
 import * as KI_BERATUNG from './ki-beratung';
@@ -185,5 +188,59 @@ describe('zeitgesteuerte Veröffentlichung', () => {
     const article = { datePublished: '2026-10-22' };
     expect(isPublished(article, new Date('2026-10-21T12:00:00Z'))).toBe(false);
     expect(isPublished(article, new Date('2026-10-22T05:00:00Z'))).toBe(true);
+  });
+});
+
+describe('interne Verlinkung', () => {
+  const landingPaths = INDUSTRIES.map((industry) => industryHref(industry.slug));
+  const staticPaths = ['/', '/ki-beratung', '/ueber-mich', '/kontakt', '/wissen', ...listedPages().map((page) => page.path)];
+  const articleDates = new Map(ARTICLES.map((article) => [`/wissen/${article.slug}`, article.datePublished]));
+  const ablaufDates = new Map(ABLAEUFE.map((ablauf) => [`/ablaeufe/${ablauf.slug}`, ablauf.datePublished]));
+  const today = todayIso();
+
+  /** Ein Ziel muss öffentlich sein, sobald die Quelle erscheint. Vergangene Tage zählen nicht mehr. */
+  function expectReachable(href: string, sourceDate: string, context: string) {
+    expect(landingPaths, context).not.toContain(href);
+    const targetDate = articleDates.get(href) ?? ablaufDates.get(href);
+    if (targetDate === undefined) {
+      expect(staticPaths, context).toContain(href);
+      return;
+    }
+    const visibleFrom = sourceDate > today ? sourceDate : today;
+    expect(targetDate <= visibleFrom, context).toBe(true);
+  }
+
+  test('Passend-dazu-Links von Artikeln und Abläufen führen auf erschienene Seiten', () => {
+    [...ARTICLES, ...ABLAEUFE].forEach((source) => {
+      source.related?.forEach((link) => {
+        expectReachable(link.href, source.datePublished, `${source.slug} → ${link.href}`);
+        expect(link.label, `${source.slug} → ${link.href}`).not.toMatch(/^(hier|mehr|weiter)$/i);
+      });
+    });
+  });
+
+  test('Artikel und Abläufe verlinken höchstens sechs passende Seiten, ohne doppelte Ziele', () => {
+    [...ARTICLES, ...ABLAEUFE].forEach((source) => {
+      const hrefs = (source.related ?? []).map((link) => link.href);
+      expect(hrefs.length, source.slug).toBeLessThanOrEqual(6);
+      expect(new Set(hrefs).size, source.slug).toBe(hrefs.length);
+    });
+  });
+
+  test('Links auf Startseite und Über mich führen auf erschienene Seiten', () => {
+    const links = [
+      GUARANTEE.link,
+      FIT.note.link,
+      INDUSTRIES_INTRO.link,
+      ...HOME_READING.links,
+      ...ABOUT_PAGE.links,
+      KI_BERATUNG.KI_BERATUNG_PROCESS_INTRO.link,
+      KI_BERATUNG.KI_BERATUNG_FIT.note.link,
+      KI_BERATUNG.KI_BERATUNG_SERVICES.libraryLink,
+      ...KI_BERATUNG.KI_BERATUNG_READING.links,
+    ];
+    links.forEach((link) => expectReachable(link.href, today, link.label));
+    expect(aiPatternHits(links.map((link) => link.label).join('\n'))).toEqual([]);
+    expect(aiPatternHits([FIT.note.text, KI_BERATUNG.KI_BERATUNG_FIT.note.text].join('\n'))).toEqual([]);
   });
 });

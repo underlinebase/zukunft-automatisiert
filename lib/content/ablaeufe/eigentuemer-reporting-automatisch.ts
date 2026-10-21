@@ -63,6 +63,6 @@ export const eigentuemerReportingAutomatisch: Ablauf = {
   related: [
     { label: 'Nachfassen nach der Besichtigung', href: '/ablaeufe/nachfassen-nach-besichtigung' },
     { label: 'Exposé-Entwurf mit KI', href: '/ablaeufe/expose-entwurf-mit-ki' },
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
   ],
 };

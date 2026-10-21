@@ -67,9 +67,11 @@ export const wasMachtEinKiBerater: Article = {
     'Meine Zertifikate: Claude Academy von Anthropic zu Fähigkeiten und Grenzen von KI, Professional Scrum Master und Product Owner, ITIL 4, geprüfter Ausbilder (IHK).',
   ],
   related: [
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
     { label: 'Warum ich nach vier Wochen gehe', href: '/wissen/warum-ich-nach-vier-wochen-gehe' },
     { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
+    { label: 'Garantie: Was ich zusage und was nicht', href: '/garantie' },
+    { label: 'Automatisierungs-Check: Welcher Ablauf zuerst?', href: '/automatisierungs-check' },
     { label: 'Erstgespräch vereinbaren', href: '/kontakt' },
   ],
 };

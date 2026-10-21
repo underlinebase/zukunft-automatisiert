@@ -1,10 +1,12 @@
+import type { NavLink } from '@/lib/content/site';
 import type { WeekStep } from '@/lib/content/types';
+import SectionHead from '@/components/ui/section-head';
 
 interface StepsCompactProps {
   steps: readonly WeekStep[];
   total: string;
   /** Eigene Überschrift, etwa auf /ki-beratung. Ohne Angabe gilt der Text der Landingpages. */
-  intro?: { label: string; title: string; lead: string };
+  intro?: { label: string; title: string; lead: string; link?: NavLink };
   id?: string;
 }
 
@@ -18,11 +20,7 @@ export default function StepsCompact({ steps, total, intro, id }: StepsCompactPr
   return (
     <section className="section tone-white" id={id} aria-labelledby="steps-title">
       <div className="container">
-        <div className="section-head section-head--split">
-          <span className="label">{head.label}</span>
-          <h2 id="steps-title">{head.title}</h2>
-          <p className="lead">{head.lead}</p>
-        </div>
+        <SectionHead label={head.label} title={head.title} lead={head.lead} link={intro?.link} split id="steps-title" />
         <ol className="steps">
           {steps.map((step) => (
             <li className="steps__item" key={step.week}>

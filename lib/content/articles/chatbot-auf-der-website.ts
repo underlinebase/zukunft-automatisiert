@@ -22,4 +22,8 @@ export const chatbotAufDerWebsite: Article = {
     { kind: 'p', text: 'Wenn sehr viele gleiche Fragen kommen, etwa zu Öffnungszeiten oder benötigten Unterlagen, kann ein Bot entlasten. Dann aber mit klaren Grenzen: Er beantwortet nur, was er sicher weiß, und gibt alles andere an einen Menschen weiter.' },
   ],
   notes: ['Bevor Sie einen Chatbot kaufen: Zählen Sie eine Woche lang, welche Fragen wirklich gestellt werden.'],
+  related: [
+    { label: 'Ablauf: Kontaktformular direkt ins CRM', href: '/ablaeufe/kontaktformular-ins-crm' },
+    { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
+  ],
 };

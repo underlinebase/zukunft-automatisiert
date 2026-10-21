@@ -67,6 +67,8 @@ export const rechenbeispielMaklerAnfragen: Article = {
   related: [
     { label: 'Portal-Anfragen: Warum die erste Stunde zählt', href: '/wissen/portal-anfragen-schnell-beantworten' },
     { label: 'Rechenbeispiel Handwerk', href: '/wissen/rechenbeispiel-handwerk-angebote' },
+    { label: 'Ablauf: Portal-Anfragen sofort beantworten', href: '/ablaeufe/portal-anfragen-sofort-beantworten' },
+    { label: 'Ablauf: Besichtigungstermine online buchen lassen', href: '/ablaeufe/besichtigungstermine-selbst-buchen' },
     { label: 'Ihren Ablauf schildern', href: '/kontakt' },
   ],
 };

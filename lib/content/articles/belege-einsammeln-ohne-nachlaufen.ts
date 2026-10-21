@@ -20,4 +20,9 @@ export const belegeEinsammelnOhneNachlaufen: Article = {
     { kind: 'p', text: 'Die Fälle, in denen nach mehreren Erinnerungen immer noch nichts kommt. Das sind meist wenige. Für die lohnt sich dann auch ein Anruf.' },
   ],
   notes: ['Welche Schritte sich vor Ihrer Kanzleisoftware automatisieren lassen, hängt von Ihrer Arbeitsweise ab. Das kläre ich vor dem Start.'],
+  related: [
+    { label: 'Ablauf: Fehlende Belege anfordern', href: '/ablaeufe/fehlende-belege-anfordern' },
+    { label: 'Ablauf: Belege benennen und zuordnen', href: '/ablaeufe/belege-benennen-zuordnen' },
+    { label: 'Ablauf: Unterlagen für den Jahresabschluss einsammeln', href: '/ablaeufe/jahresabschluss-unterlagen-checkliste' },
+  ],
 };

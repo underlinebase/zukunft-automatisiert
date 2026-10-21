@@ -56,6 +56,7 @@ export const eMailPostfachAutomatisieren: Article = {
   related: [
     { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
     { label: 'Wo Ihre Woche hingeht', href: '/wissen/wo-ihre-woche-hingeht' },
-    { label: 'KI-Beratung für kleine Betriebe', href: '/ki-beratung' },
+    { label: 'KI-Berater für Prozessautomatisierung', href: '/ki-beratung' },
+    { label: 'Ablauf: E-Mail-Postfach sortieren mit KI', href: '/ablaeufe/e-mail-postfach-sortieren' },
   ],
 };

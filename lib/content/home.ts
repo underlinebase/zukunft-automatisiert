@@ -1,4 +1,6 @@
 import { SITE } from './site';
+import type { NavLink } from './site';
+import { ABLAEUFE_PAGE, CHECK_PAGE, DATEN_PAGE, GARANTIE_PAGE } from './pages';
 import type {
   BeforeAfterExample,
   CalculatorDefaults,
@@ -135,6 +137,7 @@ export const GUARANTEE = {
     { label: 'Was ich nicht zusage', text: 'Mehr Umsatz. Ich verspreche Ihnen Zeit, keine Umsatzzahlen.' },
     { label: 'Was nicht dazugehört', text: 'Wünsche, die über den vereinbarten Umfang hinausgehen. Die biete ich Ihnen gern an, nach Aufwand und mit Preis vorab.' },
   ],
+  link: { href: GARANTIE_PAGE.path, label: 'Was die Garantie genau umfasst' } satisfies NavLink,
 };
 
 export const HOME_CALCULATOR: CalculatorDefaults = { hoursPerWeek: 6, hourlyRate: 80 };
@@ -155,12 +158,17 @@ export const FIT = {
     'Sie möchten erst ein Strategiepapier und dann irgendwann starten.',
     'Bei Ihnen läuft fast alles auf Papier. Dann fangen wir besser dort an, und das sage ich Ihnen auch.',
   ],
+  note: {
+    text: 'Nicht sicher, welcher Ablauf?',
+    link: { href: CHECK_PAGE.path, label: 'Der Automatisierungs-Check zeigt es in 3 Minuten.' },
+  },
 };
 
 export const INDUSTRIES_INTRO = {
   eyebrow: 'Branchen',
   title: 'Für diese Betriebe arbeite ich.',
   lead: 'Jede Branche hat ihren eigenen Papierkram. Hier ein paar Abläufe, die ich oft sehe.',
+  link: { href: ABLAEUFE_PAGE.path, label: 'Weitere Abläufe zum Automatisieren in der Ablauf-Bibliothek' } satisfies NavLink,
 };
 
 export const ABOUT = {
@@ -193,6 +201,18 @@ export const EXPERIENCE = {
     text: 'Dieses Angebot ist neu. Die ersten drei Betriebe bekommen ihren Ablauf zum Pilotpreis von 1.999 € zzgl. USt., mit derselben Garantie. Im Gegenzug darf ich das Ergebnis als Fallbeispiel mit Vorher-Nachher-Zahlen zeigen und Sie kurz zu Wort kommen lassen. Beides nur mit Ihrem Einverständnis.',
     cta: 'Als Pilotkunde melden',
   },
+};
+
+/** Linkliste vor den Fragen. Nur Artikel, die schon erschienen sind. */
+export const HOME_READING = {
+  eyebrow: 'Weiterlesen',
+  title: 'Erst lesen, dann entscheiden.',
+  links: [
+    { label: 'Alle Notizen aus der Praxis', href: '/wissen' },
+    { label: 'KI im Kleinbetrieb in Zahlen', href: DATEN_PAGE.path },
+    { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
+  ] satisfies NavLink[],
 };
 
 export const FAQ_INTRO = {

@@ -22,4 +22,9 @@ export const wennDerMitarbeiterGeht: Article = {
     { kind: 'p', text: 'Wissen Sie schon, dass in den nächsten Jahren jemand ausscheidet? Dann fangen Sie jetzt an. Solange die Person noch da ist, kann sie zeigen, wie es läuft. Danach wird es deutlich schwerer.' },
   ],
   notes: ['Bitten Sie die betreffende Person, bei der Aufnahme in Woche 1 dabei zu sein.'],
+  related: [
+    { label: 'Ablauf: Interne Wissenssuche mit KI', href: '/ablaeufe/team-wissen-fragen-ki' },
+    { label: 'Ablauf: Dokumente automatisch ablegen und benennen', href: '/ablaeufe/dokumente-ablegen-umbenennen' },
+    { label: 'Warum ich nach vier Wochen gehe', href: '/wissen/warum-ich-nach-vier-wochen-gehe' },
+  ],
 };

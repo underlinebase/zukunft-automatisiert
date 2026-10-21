@@ -54,5 +54,7 @@ export const kiInDerSteuerkanzlei: Article = {
     { label: 'Belege einsammeln, ohne nachzulaufen', href: '/wissen/belege-einsammeln-ohne-nachlaufen' },
     { label: 'Rechnungseingang automatisieren', href: '/wissen/rechnungseingang-automatisieren' },
     { label: 'Datenschutz bei Automatisierung', href: '/wissen/datenschutz-bei-automatisierung' },
+    { label: 'Ablauf: Fehlende Belege anfordern', href: '/ablaeufe/fehlende-belege-anfordern' },
+    { label: 'Ablauf: Mandantenanfragen vorsortieren', href: '/ablaeufe/mandantenanfragen-vorsortieren' },
   ],
 };
