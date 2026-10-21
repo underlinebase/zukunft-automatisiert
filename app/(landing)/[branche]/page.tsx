@@ -5,7 +5,7 @@ import { CLOSING, FAQ_INTRO, GUARANTEE, LANDING_GENERAL_FAQS, WEEKS, WEEKS_INTRO
 import { breadcrumbSchema, faqSchema, graph, serviceSchema, webPageSchema } from '@/lib/seo/schema';
 import { SITE } from '@/lib/content/site';
 import JsonLd from '@/components/seo/json-ld';
-import { seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import LandingHero from '@/components/landing/landing-hero';
 import PainPoints from '@/components/landing/pain-points';
 import RoutineCompare from '@/components/landing/routine-compare';
@@ -32,12 +32,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const industry = getIndustry(branche);
   if (!industry) return {};
   const path = industryHref(industry.slug);
-  return {
-    title: seoTitle(industry.seo.title),
-    description: industry.seo.description,
-    alternates: { canonical: path },
-    openGraph: { type: 'website', url: path, title: industry.seo.title, description: industry.seo.description },
-  };
+  // Vorschaubild kommt aus opengraph-image.tsx dieser Route.
+  return pageMetadata({ title: industry.seo.title, description: industry.seo.description, path, images: 'route' });
 }
 
 /**

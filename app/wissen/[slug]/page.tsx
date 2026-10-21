@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getArticle, getArticles } from '@/lib/db';
 import { CONTACT_PAGE, SITE } from '@/lib/content/site';
 import JsonLd from '@/components/seo/json-ld';
-import { metaDescription, seoTitle } from '@/lib/seo/meta';
+import { metaDescription, pageMetadata } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
 import { ArrowIcon } from '@/components/ui/icons';
@@ -29,22 +29,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = await getArticle(slug);
   if (!article) return {};
   const path = `/wissen/${slug}`;
-  const description = metaDescription(article.lead);
-  return {
-    title: seoTitle(article.seoTitle ?? article.title),
-    description,
-    alternates: { canonical: path, types: { 'text/markdown': markdownHref(path) } },
-    openGraph: {
-      type: 'article',
-      url: path,
-      title: article.title,
-      description,
+  const base = pageMetadata({
+    title: article.seoTitle ?? article.title,
+    description: article.seoDescription ?? metaDescription(article.lead),
+    path,
+    ogTitle: article.title,
+    // Vorschaubild kommt aus opengraph-image.tsx dieser Route.
+    images: 'route',
+    article: {
       publishedTime: article.datePublished,
       modifiedTime: article.dateModified,
       authors: [SITE.owner],
       section: article.category,
     },
-  };
+  });
+  return { ...base, alternates: { ...base.alternates, types: { 'text/markdown': markdownHref(path) } } };
 }
 
 export default async function ArticlePage({ params }: PageProps) {

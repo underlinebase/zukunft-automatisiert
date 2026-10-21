@@ -4,20 +4,20 @@ import Breadcrumbs from '@/components/layout/breadcrumbs';
 import AblaufFilter from '@/components/ablaeufe/ablauf-filter';
 import Closing from '@/components/sections/closing';
 import { CLOSING } from '@/lib/content/home';
-import { ABLAEUFE_PAGE } from '@/lib/content/pages';
+import { ABLAEUFE_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { ablaeufeByBranche, ablaufHref, publishedAblaeufe } from '@/lib/content/ablaeufe';
-import { seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import { SITE } from '@/lib/content/site';
 
 // Stündlich neu erzeugen, damit geplante Abläufe am Erscheinungstag auftauchen.
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: seoTitle('Ablauf-Bibliothek: Was sich im Betrieb automatisieren lässt'),
+export const metadata: Metadata = pageMetadata({
+  title: pageSeoTitle(ABLAEUFE_PAGE),
   description: ABLAEUFE_PAGE.description,
-  alternates: { canonical: ABLAEUFE_PAGE.path },
-};
+  path: ABLAEUFE_PAGE.path,
+});
 
 export default function AblaeufePage() {
   const items = publishedAblaeufe();

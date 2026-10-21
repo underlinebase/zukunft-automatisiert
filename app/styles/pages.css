@@ -215,7 +215,9 @@
 .contact-page { display: grid; gap: 48px; padding-block: var(--section-y); }
 @media (min-width: 1024px) { .contact-page { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; } }
 .contact-page .inquiry { border: 1px solid var(--c-line); }
-.contact-page .inquiry h3 { color: var(--c-brand); }
+.contact-page .inquiry :is(h2, h3) { color: var(--c-brand); }
+/* Auf /kontakt ist die Formular-Überschrift eine H2, soll aber so aussehen wie im Abschluss-Block (H3). */
+.contact-page .inquiry h2 { font-size: clamp(22px, 2vw, 28px); line-height: 1.25; letter-spacing: -0.008em; font-weight: 500; }
 .contact-channels { display: grid; gap: 0; margin: 0; }
 .contact-channels div { display: grid; gap: 2px; padding: 16px 0; border-top: 1px solid var(--c-line); }
 .contact-channels dt { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-text-muted); }

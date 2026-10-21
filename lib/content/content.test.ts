@@ -84,7 +84,14 @@ describe('structured data', () => {
 
 describe('Wissen-Artikel: keine typischen KI-Muster', () => {
   test.each(ARTICLES.map((article) => [article.slug, article] as const))('%s', (_slug, article) => {
-    const text = [article.title, article.lead, ...article.body.map((block) => block.text), ...article.notes].join('\n');
+    const text = [
+      article.title,
+      article.seoTitle ?? '',
+      article.seoDescription ?? '',
+      article.lead,
+      ...article.body.map((block) => block.text),
+      ...article.notes,
+    ].join('\n');
     expect(aiPatternHits(text)).toEqual([]);
   });
 

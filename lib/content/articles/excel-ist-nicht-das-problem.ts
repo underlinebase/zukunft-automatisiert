@@ -9,6 +9,8 @@ export const excelIstNichtDasProblem: Article = {
   datePublished: PUBLISHED_ISO,
   read_minutes: 4,
   category: 'Werkzeuge',
+  seoDescription:
+    'Excel bekommt oft die Schuld, dabei hakt es meist am Abtippen. Die Tabelle darf bleiben: Sie wird automatisch gefüllt, und die Daten wandern von dort weiter.',
   lead: 'Wenn von Digitalisierung die Rede ist, bekommt Excel oft die Schuld. Dabei arbeiten viele Betriebe seit Jahren gut damit.',
   body: [
     { kind: 'h2', text: 'Wo es wirklich hakt' },

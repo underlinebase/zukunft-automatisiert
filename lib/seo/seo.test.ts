@@ -3,7 +3,9 @@ import { SITE } from '@/lib/content/site';
 import { ARTICLES } from '@/lib/content/articles';
 import { isPublished, publishedArticles } from '@/lib/content/publishing';
 import { INDUSTRIES } from '@/lib/content/branchen';
-import { metaDescription, seoTitle, TITLE_MAX } from './meta';
+import { EXTRA_PAGES, pageSeoTitle } from '@/lib/content/pages';
+import robots from '@/app/robots';
+import { DEFAULT_OG_IMAGE, DESCRIPTION_MAX, metaDescription, pageMetadata, renderedTitle, seoTitle, TITLE_MAX } from './meta';
 import { articleSchema, collectionSchema } from './schema';
 import { buildLlmsTxt } from './llms';
 
@@ -37,6 +39,127 @@ describe('article titles', () => {
       const rendered = typeof result === 'string' ? result + BRAND_SUFFIX : result.absolute;
       expect(rendered.length, article.slug).toBeLessThanOrEqual(TITLE_MAX);
     });
+  });
+});
+
+describe('article descriptions', () => {
+  const SEO_DESCRIPTION_MIN = 110;
+
+  test('own seoDescription fits between 110 and 160 characters', () => {
+    ARTICLES.filter((article) => article.seoDescription).forEach((article) => {
+      const length = article.seoDescription!.length;
+      expect(length, article.slug).toBeGreaterThanOrEqual(SEO_DESCRIPTION_MIN);
+      expect(length, article.slug).toBeLessThanOrEqual(DESCRIPTION_MAX);
+    });
+  });
+
+  test('without seoDescription the lead is not cut off', () => {
+    ARTICLES.filter((article) => !article.seoDescription).forEach((article) => {
+      expect(metaDescription(article.lead).endsWith('…'), article.slug).toBe(false);
+    });
+  });
+});
+
+describe('extra pages', () => {
+  test('titles fit into search results', () => {
+    EXTRA_PAGES.forEach((page) => {
+      expect(renderedTitle(pageSeoTitle(page)).length, page.path).toBeLessThanOrEqual(TITLE_MAX);
+    });
+  });
+
+  test('descriptions stay below the cut-off', () => {
+    EXTRA_PAGES.forEach((page) => expect(page.description.length, page.path).toBeLessThanOrEqual(DESCRIPTION_MAX));
+  });
+
+  test('use a search title instead of the bare navigation name where it is too short', () => {
+    const titles = new Map(EXTRA_PAGES.map((page) => [page.path, pageSeoTitle(page)]));
+    expect(titles.get('/automatisierungs-check')).toBe('Automatisierungs-Check: 10 Fragen, 3 Minuten');
+    expect(titles.get('/ki-im-kleinbetrieb')).toBe('KI in kleinen Unternehmen 2026: Zahlen und Studien');
+  });
+});
+
+describe('pageMetadata', () => {
+  const input = {
+    title: 'Kontakt: Ablauf schildern oder 30 Minuten sprechen',
+    description: 'Schildern Sie mir Ihren Ablauf in drei Sätzen.',
+    path: '/kontakt',
+  };
+
+  test('sets title, description and canonical of the page', () => {
+    const meta = pageMetadata(input);
+    expect(meta.title).toEqual(seoTitle(input.title));
+    expect(meta.description).toBe(input.description);
+    expect(meta.alternates?.canonical).toBe('/kontakt');
+  });
+
+  test('gives every page its own Open Graph data instead of the homepage values', () => {
+    const og = pageMetadata(input).openGraph as Record<string, unknown>;
+    expect(og.url).toBe('/kontakt');
+    expect(og.title).toBe(input.title);
+    expect(og.description).toBe(input.description);
+    expect(og.type).toBe('website');
+    expect(og.locale).toBe('de_DE');
+    expect(og.siteName).toBe(SITE.name);
+    expect(og.images).toEqual([DEFAULT_OG_IMAGE]);
+  });
+
+  test('mirrors title and description for Twitter', () => {
+    const twitter = pageMetadata(input).twitter as Record<string, unknown>;
+    expect(twitter).toEqual({ card: 'summary_large_image', title: input.title, description: input.description });
+  });
+
+  test('uses the headline for shared links when given and drops a trailing period otherwise', () => {
+    expect((pageMetadata({ ...input, ogTitle: 'Schildern Sie mir Ihren Ablauf.' }).openGraph as { title: string }).title).toBe(
+      'Schildern Sie mir Ihren Ablauf.',
+    );
+    expect((pageMetadata({ ...input, title: 'Wo Ihre Woche hingeht.' }).openGraph as { title: string }).title).toBe(
+      'Wo Ihre Woche hingeht',
+    );
+  });
+
+  test('leaves images out when the route has its own opengraph-image file', () => {
+    const og = pageMetadata({ ...input, images: 'route' }).openGraph as Record<string, unknown>;
+    expect(Object.hasOwn(og, 'images')).toBe(false);
+  });
+
+  test('adds article fields and type for articles', () => {
+    const og = pageMetadata({
+      ...input,
+      article: { publishedTime: '2026-10-15', authors: [SITE.owner], section: 'Methodik' },
+    }).openGraph as Record<string, unknown>;
+    expect(og.type).toBe('article');
+    expect(og.publishedTime).toBe('2026-10-15');
+    expect(og.authors).toEqual([SITE.owner]);
+    expect(og.section).toBe('Methodik');
+  });
+});
+
+describe('robots.txt', () => {
+  const result = robots();
+  const rules = Array.isArray(result.rules) ? result.rules : [result.rules];
+  const ruleFor = (agent: string) => rules.find((rule) => rule.userAgent === agent);
+
+  test('keeps the general rule and the sitemap', () => {
+    expect(ruleFor('*')).toEqual({ userAgent: '*', allow: '/', disallow: ['/api/'] });
+    expect(result.sitemap).toBe(`${SITE.url}/sitemap.xml`);
+  });
+
+  test.each([
+    'GPTBot',
+    'OAI-SearchBot',
+    'ChatGPT-User',
+    'PerplexityBot',
+    'Perplexity-User',
+    'ClaudeBot',
+    'Claude-SearchBot',
+    'Claude-User',
+    'Google-Extended',
+    'Applebot-Extended',
+    'CCBot',
+    'Bingbot',
+    'Googlebot',
+  ])('allows %s explicitly, except the API', (agent) => {
+    expect(ruleFor(agent)).toEqual({ userAgent: agent, allow: '/', disallow: ['/api/'] });
   });
 });
 

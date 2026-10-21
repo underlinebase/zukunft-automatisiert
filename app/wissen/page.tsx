@@ -3,19 +3,19 @@ import { getArticles } from '@/lib/db';
 import WissenTabs from '@/components/wissen-tabs';
 import NewsletterForm from '@/components/newsletter-form';
 import JsonLd from '@/components/seo/json-ld';
-import { seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, collectionSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 
 // Stündlich neu erzeugen, damit geplante Artikel am Erscheinungstag auftauchen.
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: seoTitle('Wissen: Automatisierung und KI ohne Hype'),
+export const metadata: Metadata = pageMetadata({
+  title: 'Wissen: Automatisierung und KI ohne Hype',
   description:
     'Praxisartikel für Inhaber kleiner Betriebe: wann sich Automatisierung lohnt, wo KI hilft und wo nicht, und was im Alltag wirklich Zeit spart.',
-  alternates: { canonical: '/wissen' },
-};
+  path: '/wissen',
+});
 
 export default async function WissenPage() {
   const articles = await getArticles();

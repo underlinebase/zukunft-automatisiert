@@ -16,6 +16,12 @@ export const SITE = {
   responseTime: '24 Stunden',
 } as const;
 
+/**
+ * Letzte inhaltliche Überarbeitung der festen Seiten (JJJJ-MM-TT) für lastmod in der Sitemap.
+ * Von Hand nachziehen, wenn sich Texte auf Startseite, Landingpages, Hauptseiten oder Ablauf-Seiten ändern.
+ */
+export const SITE_UPDATED = '2026-10-21';
+
 /** Titel und Beschreibung der Startseite: Hauptsuchbegriff vorn, Name statt Marke, unter 60 Zeichen. */
 export const HOME_SEO = {
   title: 'KI-Berater für Prozessautomatisierung · Marco Gundlach',

@@ -32,22 +32,19 @@ import {
 } from '@/lib/content/daten';
 import type { Bar, KeyStat } from '@/lib/content/daten';
 import { CLOSING } from '@/lib/content/home';
-import { DATEN_PAGE } from '@/lib/content/pages';
-import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import { DATEN_PAGE, pageSeoTitle } from '@/lib/content/pages';
+import { pageMetadata } from '@/lib/seo/meta';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
 export const metadata: Metadata = {
-  title: seoTitle(DATEN_PAGE.name),
-  description: DATEN_PAGE.description,
-  alternates: { canonical: DATEN_PAGE.path },
-  robots: DATEN_PAGE.listed ? undefined : { index: false, follow: true },
-  openGraph: {
-    type: 'article',
-    url: DATEN_PAGE.path,
-    title: DATEN_HERO.title,
+  ...pageMetadata({
+    title: pageSeoTitle(DATEN_PAGE),
     description: DATEN_PAGE.description,
-    images: [DEFAULT_OG_IMAGE],
-  },
+    path: DATEN_PAGE.path,
+    ogTitle: DATEN_HERO.title,
+    type: 'article',
+  }),
+  robots: DATEN_PAGE.listed ? undefined : { index: false, follow: true },
 };
 
 const SCHEMA = datenSchema();

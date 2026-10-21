@@ -9,6 +9,8 @@ export const wennDerMitarbeiterGeht: Article = {
   datePublished: PUBLISHED_ISO,
   read_minutes: 5,
   category: 'Methodik',
+  seoDescription:
+    'In fast jedem kleinen Betrieb weiß eine Person, wie alles läuft. Geht sie, geht das Wissen mit. Wer den Ablauf aufnimmt und automatisiert, verliert es nicht.',
   lead: 'In fast jedem kleinen Betrieb gibt es diese eine Person. Sie weiß, wie die Rechnungen raus müssen, welcher Kunde was braucht und wo welche Datei liegt. Solange sie da ist, fällt das niemandem auf.',
   body: [
     { kind: 'h2', text: 'Das Wissen steckt im Ablauf' },

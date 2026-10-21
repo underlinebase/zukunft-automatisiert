@@ -7,6 +7,8 @@ export interface SitePage {
   path: string;
   /** Name in Navigation, Brotkrumen und llms.txt. */
   name: string;
+  /** Titel für Suchergebnisse, wenn der Name allein zu knapp ist. Mit Markenanhang höchstens 60 Zeichen, sonst ohne. */
+  seoTitle?: string;
   /** Meta-Description, max. 160 Zeichen. */
   description: string;
   priority: number;
@@ -16,6 +18,7 @@ export interface SitePage {
 export const ABLAEUFE_PAGE: SitePage = {
   path: '/ablaeufe',
   name: 'Ablauf-Bibliothek',
+  seoTitle: 'Ablauf-Bibliothek: Was sich im Betrieb automatisieren lässt',
   description:
     'Abläufe, die sich in kleinen Betrieben automatisieren lassen, nach Branche sortiert: wie es heute läuft, wie danach, was es an Zeit bringt.',
   priority: 0.8,
@@ -25,6 +28,8 @@ export const ABLAEUFE_PAGE: SitePage = {
 export const GARANTIE_PAGE: SitePage = {
   path: '/garantie',
   name: 'Garantie',
+  // Suchbegriff vorn, das Versprechen gleich im Titel.
+  seoTitle: 'Garantie: Läuft der Ablauf nicht, bessere ich nach',
   description:
     'Läuft der automatisierte Ablauf nach 4 Wochen nicht, bessere ich im vereinbarten Umfang ohne Aufpreis nach. Was die Garantie genau umfasst und was nicht.',
   priority: 0.7,
@@ -34,6 +39,7 @@ export const GARANTIE_PAGE: SitePage = {
 export const CHECK_PAGE: SitePage = {
   path: '/automatisierungs-check',
   name: 'Automatisierungs-Check',
+  seoTitle: 'Automatisierungs-Check: 10 Fragen, 3 Minuten',
   description:
     'Zehn Fragen zu Ihrem Betrieb, drei Minuten. Am Ende sehen Sie, welche Abläufe Sie am meisten Zeit kosten und was sich automatisieren lässt.',
   priority: 0.8,
@@ -43,6 +49,7 @@ export const CHECK_PAGE: SitePage = {
 export const DATEN_PAGE: SitePage = {
   path: '/ki-im-kleinbetrieb',
   name: 'KI im Kleinbetrieb: Zahlen',
+  seoTitle: 'KI in kleinen Unternehmen 2026: Zahlen und Studien',
   description:
     'Wie viele kleine Betriebe KI 2026 wirklich einsetzen: Studien von Bitkom, Handwerk und Kammern eingeordnet, mit Quellen und Widersprüchen.',
   priority: 0.6,
@@ -52,6 +59,7 @@ export const DATEN_PAGE: SitePage = {
 export const VORLAGEN_PAGE: SitePage = {
   path: '/vorlagen',
   name: 'n8n-Vorlagen',
+  seoTitle: 'Kostenlose n8n-Vorlagen auf Deutsch',
   description:
     'Kostenlose n8n-Vorlagen auf Deutsch für kleine Betriebe: Rechnungseingang, Anfragen erfassen, Angebote nachfassen. Mit Anleitung.',
   priority: 0.6,
@@ -60,6 +68,11 @@ export const VORLAGEN_PAGE: SitePage = {
 };
 
 export const EXTRA_PAGES: readonly SitePage[] = [ABLAEUFE_PAGE, GARANTIE_PAGE, CHECK_PAGE, DATEN_PAGE, VORLAGEN_PAGE];
+
+/** Suchtitel einer Seite: eigener seoTitle oder der Name aus der Navigation. */
+export function pageSeoTitle(page: SitePage): string {
+  return page.seoTitle ?? page.name;
+}
 
 export function listedPages(): SitePage[] {
   return EXTRA_PAGES.filter((page) => page.listed);

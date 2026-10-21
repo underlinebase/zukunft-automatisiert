@@ -11,7 +11,7 @@ import { VORLAGEN_PAGE } from '@/lib/content/pages';
 import { BRANCHEN } from '@/lib/content/ablaeufe/types';
 import type { Vorlage } from '@/lib/content/vorlagen';
 import { ANLEITUNG, VORLAGEN, findVorlage, vorlageHref, vorlageStatus } from '@/lib/content/vorlagen';
-import { metaDescription, seoTitle } from '@/lib/seo/meta';
+import { metaDescription, pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
@@ -31,9 +31,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const vorlage = findVorlage(slug);
   if (!vorlage) return {};
   return {
-    title: seoTitle(vorlage.seoTitle ?? `n8n-Vorlage: ${vorlage.title}`),
-    description: metaDescription(vorlage.lead),
-    alternates: { canonical: vorlageHref(slug) },
+    ...pageMetadata({
+      title: vorlage.seoTitle ?? `n8n-Vorlage: ${vorlage.title}`,
+      description: metaDescription(vorlage.lead),
+      path: vorlageHref(slug),
+    }),
     // Ungetestete Vorlagen haben noch keinen Download und bleiben aus dem Index.
     robots: vorlage.getestet ? undefined : { index: false, follow: true },
   };

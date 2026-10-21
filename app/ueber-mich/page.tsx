@@ -5,7 +5,7 @@ import { CLOSING, EXPERIENCE } from '@/lib/content/home';
 import { ABOUT_PAGE, CREDENTIALS, STATIONS } from '@/lib/content/about';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
 import { breadcrumbSchema, graph, organizationSchema, personSchema, profilePageSchema } from '@/lib/seo/schema';
-import { seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import JsonLd from '@/components/seo/json-ld';
 import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
@@ -13,12 +13,12 @@ import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
-export const metadata: Metadata = {
-  title: seoTitle('Marco Gundlach: KI-Berater und KI-Realist'),
+export const metadata: Metadata = pageMetadata({
+  title: 'Marco Gundlach: KI-Berater und KI-Realist',
   description:
-    'Marco Gundlach: über 14 Jahre Digitalisierungsprojekte, etwa für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Berater Abläufe für Inhaber.',
-  alternates: { canonical: '/ueber-mich' },
-};
+    'Marco Gundlach: über 14 Jahre Digitalprojekte, etwa für Hugo Boss, Fressnapf und Aktion Mensch. Heute automatisiert er als KI-Berater Abläufe für Inhaber.',
+  path: '/ueber-mich',
+});
 
 const SCHEMA = graph(
   profilePageSchema(),

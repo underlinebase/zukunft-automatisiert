@@ -21,26 +21,21 @@ import {
   GARANTIE_WHY,
 } from '@/lib/content/garantie';
 import { CLOSING } from '@/lib/content/home';
-import { GARANTIE_PAGE } from '@/lib/content/pages';
+import { GARANTIE_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { CONTACT_ANCHOR } from '@/lib/content/site';
-import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
 const PATH_ANCHOR = 'pruefung';
 
 export const metadata: Metadata = {
-  // Suchbegriff vorn, das Versprechen gleich im Titel.
-  title: seoTitle('Garantie: Läuft der Ablauf nicht, bessere ich nach'),
-  description: GARANTIE_PAGE.description,
-  alternates: { canonical: GARANTIE_PAGE.path },
-  robots: GARANTIE_PAGE.listed ? undefined : { index: false, follow: true },
-  openGraph: {
-    type: 'website',
-    url: GARANTIE_PAGE.path,
-    title: GARANTIE_HERO.title,
+  ...pageMetadata({
+    title: pageSeoTitle(GARANTIE_PAGE),
     description: GARANTIE_PAGE.description,
-    images: [DEFAULT_OG_IMAGE],
-  },
+    path: GARANTIE_PAGE.path,
+    ogTitle: GARANTIE_HERO.title,
+  }),
+  robots: GARANTIE_PAGE.listed ? undefined : { index: false, follow: true },
 };
 
 const SCHEMA = garantieSchema();

@@ -2,15 +2,16 @@ import type { Metadata } from 'next';
 import { SITE } from '@/lib/content/site';
 import InquiryForm from '@/components/sections/inquiry-form';
 import JsonLd from '@/components/seo/json-ld';
-import { seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, contactPageSchema, graph, organizationSchema } from '@/lib/seo/schema';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 
-export const metadata: Metadata = {
-  title: seoTitle('Kontakt: Ablauf schildern oder 30 Minuten sprechen'),
-  description: 'Schildern Sie Ihren Ablauf in drei Sätzen oder buchen Sie 30 Minuten. Antwort in 24 Stunden.',
-  alternates: { canonical: '/kontakt' },
-};
+export const metadata: Metadata = pageMetadata({
+  title: 'Kontakt: Ablauf schildern oder 30 Minuten sprechen',
+  description:
+    'Schildern Sie mir Ihren Ablauf in drei Sätzen oder buchen Sie ein Gespräch über 30 Minuten. Antwort innerhalb von 24 Stunden. Remote in ganz Deutschland.',
+  path: '/kontakt',
+});
 
 const SCHEMA = graph(
   contactPageSchema(),
@@ -40,7 +41,7 @@ export default function KontaktPage() {
       </section>
 
       <section className="container contact-page">
-        <InquiryForm />
+        <InquiryForm headingLevel={2} />
         <div className="contact-page__call">
           <h2>30 Minuten sprechen</h2>
           <p className="muted">Am Telefon oder per Video. Sie erzählen, ich frage nach. Danach wissen Sie, ob sich eine Automatisierung lohnt.</p>

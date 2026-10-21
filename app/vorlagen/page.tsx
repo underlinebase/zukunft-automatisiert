@@ -8,18 +8,16 @@ import Closing from '@/components/sections/closing';
 import WorkflowNodes from '@/components/vorlagen/workflow-nodes';
 import { ArrowIcon } from '@/components/ui/icons';
 import { CLOSING } from '@/lib/content/home';
-import { VORLAGEN_PAGE } from '@/lib/content/pages';
+import { VORLAGEN_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { SITE } from '@/lib/content/site';
 import { BRANCHEN } from '@/lib/content/ablaeufe/types';
 import { ANLEITUNG, VORLAGEN, VORLAGEN_FAQS, VORLAGEN_MUSTER, vorlageHref, vorlageStatus } from '@/lib/content/vorlagen';
-import { seoTitle } from '@/lib/seo/meta';
+import { pageMetadata } from '@/lib/seo/meta';
 import { breadcrumbSchema, faqSchema, graph, organizationSchema, personSchema } from '@/lib/seo/schema';
 
 // Bleibt noindex und ohne Link in Navigation und Sitemap, bis die erste Vorlage getestet ist (VORLAGEN_PAGE.listed).
 export const metadata: Metadata = {
-  title: seoTitle('Kostenlose n8n-Vorlagen auf Deutsch'),
-  description: VORLAGEN_PAGE.description,
-  alternates: { canonical: VORLAGEN_PAGE.path },
+  ...pageMetadata({ title: pageSeoTitle(VORLAGEN_PAGE), description: VORLAGEN_PAGE.description, path: VORLAGEN_PAGE.path }),
   robots: VORLAGEN_PAGE.listed ? undefined : { index: false, follow: true },
 };
 

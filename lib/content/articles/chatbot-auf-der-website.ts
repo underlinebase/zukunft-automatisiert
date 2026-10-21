@@ -9,6 +9,8 @@ export const chatbotAufDerWebsite: Article = {
   datePublished: PUBLISHED_ISO,
   read_minutes: 4,
   category: 'KI ohne Hype',
+  seoDescription:
+    'KI-Chatbots werden kleinen Betrieben oft angeboten. Ich rate meist ab: Besucher wollen einen Termin, und falsche Auskünfte schaden. Wann es doch passt.',
   lead: 'Kaum etwas wird kleinen Betrieben gerade so oft angeboten wie der KI-Chatbot. Ich rate in den meisten Fällen davon ab.',
   body: [
     { kind: 'h2', text: 'Was ein Chatbot verspricht' },
