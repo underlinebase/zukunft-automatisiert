@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
+import './legal.css';
 import { pageMetadata } from '@/lib/seo/meta';
 
 export const metadata: Metadata = {
@@ -14,14 +15,14 @@ export const metadata: Metadata = {
 export default function DatenschutzPage() {
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero--legal">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Datenschutz' }]} />
           <h1>Datenschutzerklärung</h1>
         </div>
       </section>
       <section className="container">
-        <div className="prose">
+        <div className="prose prose--legal">
 
           <h2>1. Datenschutz auf einen Blick</h2>
 

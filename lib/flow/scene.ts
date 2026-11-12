@@ -85,7 +85,7 @@ function cardTexture(step: FlowStep, index: number, p: ScenePalette, anisotropy:
   if (!ctx) throw new Error('Canvas 2D context nicht verfügbar');
 
   const fill = step.highlight ? p.brand : p.bg;
-  const text = step.highlight ? '#FFFFFF' : p.text;
+  const text = step.highlight ? p.onBrand : p.text;
   const muted = step.highlight ? 'rgba(255,255,255,0.75)' : p.textMuted;
   const pad = canvas.height * 0.22;
 

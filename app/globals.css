@@ -1,12 +1,28 @@
+/* Hallmark · v2 check · theme: brand, by request (Bordeaux und Graphit, Fraunces und Figtree) · genre: editorial · job: enquire, das Formular am Seitenende und der Button im Hero · posture: restrained · hero: Stage, Text links und die Wochentafel rechts · nav: Wortmarke links, Links, eine Aktion rechts, gewollt ruhig · footer: Wortmarke mit Satz über drei Linkspalten · copy: verbatim, die Abschnittstexte bleiben wie vom Inhaber geschrieben; geändert nur mit seiner Zustimmung: Hero-Satz, Einleitung der Branchen, gekürzte Linktexte */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, der Aufbau folgt noch dem Muster Hero, Szenen, Schritte, Beweis; die Startseite ist deshalb auf neun Abschnitte zusammengelegt */
+/* Hallmark · dismissed 54 · die Abschnitte mit SectionHead haben eine h2, die Komponente rendert sie selbst (components/ui/section-head.tsx); der statische Check sieht nur den Komponentennamen */
+/* Hallmark · dropped angebot, scenes-title · „Kurz gesagt“ und die Szenen sind in andere Abschnitte gezogen; der Menüpunkt Angebot zeigt jetzt auf /#garantie mit Preis, Garantie und Pilotangebot */
+/* Hallmark · waive 44c · Banner auf den Unterseiten: Breadcrumb, H1 und ein Satz, der erste Abschnitt beginnt über dem Falz · Wissen, Kontakt, Garantie und Ablauf-Bibliothek sind Nachschlageseiten, ihr Inhalt soll ohne Scrollen anfangen */
+/* Hallmark · waive 77 · die schmale Spalte ist Lesetext im Ablauf-Detail und bei den Quellen der Zahlen-Seite · lange Absätze brauchen ein Zeilenmaß unter 75 Zeichen, breiter wären sie schwerer zu lesen */
+/* Hallmark · waive 78 · Überschriften im Fließtext der Ablauf-Seiten und Titel in der Artikelliste von Wissen · das sind Lesekapitel und Listeneinträge, keine Abschnittsköpfe der Seite */
+/* Hallmark · waive 39b · FAQ-Fragen und Antwortknöpfe im Check brechen in der schmalen Spalte auf zwei Zeilen um · der Knopf wächst mit seiner Frage, eine Zeile ist 52px hoch */
+/* Hallmark · waive 85 · der Newsletter am Ende von Wissen ist der Operations-Bericht, den der Inhaber selbst eingerichtet hat · auf einer Seite mit Praxis-Notizen ist das Abo die naheliegende nächste Handlung */
+/* Hallmark · dismissed 77 · Kontakt, Wissen, Ablauf-Bibliothek und Check sind Werkzeug- und Listenseiten mit drei oder vier Abschnitten, kein Landing-Streifen */
+/* Hallmark · answered F20 · die Zahl der Abläufe je Branche wächst mit jedem neuen Ablauf, die letzte Reihe ist deshalb mal voll und mal nicht */
 /* =============================================================
    Zukunft. Automatisiert. · Design-Tokens und Grundlagen
    Palette: Bordeaux und Graphit. Alle Farben nur über Variablen.
    ============================================================= */
 :root {
-  /* Flächen */
-  --c-bg: #FFFFFF;
-  --c-surface: #F3F3F5;
-  --c-line: #E4E4E8;
+  /* Flächen: Papier und Grautöne leicht zum Bordeaux getönt, nie reines Weiß */
+  --c-paper: #FFF9FA;
+  --c-bg: var(--c-paper);
+  --c-surface: #F5F1F2;
+  --c-line: #E6E0E2;
+  /* Rand von Eingabefeldern, mindestens 3:1 gegen Papier und Fläche */
+  --c-field-edge: #8A8389;
+  /* neutrale Balken in Diagrammen */
+  --c-bar: #C9C9CF;
 
   /* Text */
   --c-text: #252529;
@@ -23,10 +39,18 @@
   --c-dark-line: #3A3A40;
   --c-on-dark: #F3F3F5;
   --c-on-dark-muted: #B4B4BC;
+  --c-on-dark-wash: rgba(255, 249, 250, 0.04);
   /* Rosenholz, für kleine Labels auf Graphit aufgehellt (Kontrast AA) */
   --c-accent-on-dark: #D3949F;
-  /* Labels auf Bordeaux */
+  /* Text und Labels auf Bordeaux */
+  --c-on-brand: var(--c-paper);
   --c-on-brand-muted: #EAD3D8;
+  --c-on-brand-soft: rgba(255, 249, 250, 0.9);
+  --c-on-brand-line: rgba(255, 249, 250, 0.28);
+  /* Fehlermeldungen */
+  --c-error: #B3261E;
+  /* Kopfleiste über dem Inhalt */
+  --c-header-bg: rgba(255, 249, 250, 0.96);
 
   /* Schrift */
   --f-serif: var(--font-fraunces), Georgia, 'Times New Roman', serif;
@@ -37,9 +61,11 @@
   --gutter: 20px;
   --radius: 4px;
   --radius-card: 8px;
-
   --section-y: 64px;
   --shadow-soft: 0 4px 16px -2px rgba(37, 37, 41, 0.06), 0 2px 6px -1px rgba(37, 37, 41, 0.03);
+  --shadow-card: 0 24px 48px -32px rgba(37, 37, 41, 0.35);
+  --shadow-deep: 0 24px 48px -24px rgba(0, 0, 0, 0.35);
+  --shadow-day: 0 6px 16px -10px rgba(37, 37, 41, 0.25);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -53,6 +79,8 @@
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 88px; }
+/* clip statt hidden: verhindert seitliches Scrollen, ohne position: sticky zu brechen */
+html, body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
@@ -74,7 +102,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 a { color: var(--c-brand); text-underline-offset: 3px; }
 a:hover { color: var(--c-brand-strong); }
 button { font: inherit; color: inherit; }
-::selection { background: var(--c-brand); color: #FFFFFF; }
+::selection { background: var(--c-brand); color: var(--c-on-brand); }
 
 :focus-visible {
   outline: 2px solid var(--c-brand);
@@ -83,7 +111,7 @@ button { font: inherit; color: inherit; }
 }
 .tone-brand :focus-visible,
 .tone-dark :focus-visible,
-.site-footer :focus-visible { outline-color: #FFFFFF; }
+.site-footer :focus-visible { outline-color: var(--c-on-brand); }
 
 .skip-link {
   position: absolute;
@@ -92,10 +120,10 @@ button { font: inherit; color: inherit; }
   z-index: 100;
   padding: 12px 16px;
   background: var(--c-brand);
-  color: #FFFFFF;
+  color: var(--c-on-brand);
   border-radius: var(--radius);
 }
-.skip-link:focus { top: 16px; color: #FFFFFF; }
+.skip-link:focus { top: 16px; color: var(--c-on-brand); }
 
 .visually-hidden {
   position: absolute !important;
@@ -109,13 +137,14 @@ button { font: inherit; color: inherit; }
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--f-serif);
-  font-variation-settings: 'SOFT' 50, 'WONK' 0;
   color: var(--c-brand);
   text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 /* Lange Wörter („Besichtigungstermine“) auf schmalen Handys trennen statt über den Rand zu schieben. */
 @media (max-width: 479px) {
-  h1, h2 { hyphens: auto; overflow-wrap: break-word; }
+  h1, h2 { hyphens: auto; }
 }
 h1 {
   font-size: clamp(38px, 5.4vw, 70px);
@@ -137,17 +166,9 @@ h3 {
   color: var(--c-text);
 }
 p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
+strong, b { font-weight: 600; }
 p:last-child { margin-bottom: 0; }
 
-.label {
-  font-family: var(--f-sans);
-  font-size: 13px;
-  line-height: 1.3;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-text-muted);
-}
 .lead { font-size: clamp(18px, 1.5vw, 20px); color: var(--c-text-muted); }
 .muted { color: var(--c-text-muted); }
 .num { font-variant-numeric: tabular-nums; }
@@ -162,12 +183,10 @@ p:last-child { margin-bottom: 0; }
 .section { padding: var(--section-y) 0; }
 .tone-white { background: var(--c-bg); }
 .tone-gray { background: var(--c-surface); }
-.tone-brand { background: var(--c-brand); color: #FFFFFF; }
-.tone-brand h2, .tone-brand h3 { color: #FFFFFF; }
-.tone-brand .label { color: var(--c-on-brand-muted); }
+.tone-brand { background: var(--c-brand); color: var(--c-on-brand); }
+.tone-brand h2, .tone-brand h3 { color: var(--c-on-brand); }
 .tone-dark { background: var(--c-dark); color: var(--c-on-dark); }
-.tone-dark h2, .tone-dark h3 { color: #FFFFFF; }
-.tone-dark .label { color: var(--c-accent-on-dark); }
+.tone-dark h2, .tone-dark h3 { color: var(--c-on-brand); }
 .tone-dark .lead, .tone-dark .muted { color: var(--c-on-dark-muted); }
 
 .section-head { display: grid; gap: 16px; margin-bottom: 48px; max-width: 760px; }
@@ -178,7 +197,6 @@ p:last-child { margin-bottom: 0; }
 }
 @media (min-width: 1000px) {
   .section-head--split { grid-template-columns: 1.4fr 1fr; gap: 24px 64px; }
-  .section-head--split .label { grid-column: 1 / -1; }
 }
 .section-head .lead { margin: 0; }
 
@@ -187,9 +205,9 @@ p:last-child { margin-bottom: 0; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   min-height: 50px;
-  padding: 13px 24px;
+  padding: 12px 24px;
   border: 1px solid transparent;
   border-radius: var(--radius);
   font-family: var(--f-sans);
@@ -200,17 +218,17 @@ p:last-child { margin-bottom: 0; }
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-out);
 }
-.btn .arrow { transition: transform 0.25s var(--ease-out); }
-.btn:hover .arrow { transform: translateX(3px); }
-.btn--primary { background: var(--c-brand); color: #FFFFFF; }
-.btn--primary:hover { background: var(--c-brand-strong); color: #FFFFFF; }
+.btn--primary { background: var(--c-brand); color: var(--c-on-brand); }
+.btn--primary:hover { background: var(--c-brand-strong); color: var(--c-on-brand); }
 .btn--primary:active { background: var(--c-brand-strong); transform: translateY(1px); }
 .btn--outline { background: transparent; color: var(--c-text); border-color: var(--c-text); }
 .btn--outline:hover { background: var(--c-surface); color: var(--c-text); }
-.btn--inverse { background: #FFFFFF; color: var(--c-brand); }
+.btn--inverse { background: var(--c-on-brand); color: var(--c-brand); }
 .btn--inverse:hover { background: var(--c-surface); color: var(--c-brand-strong); }
 .btn--block { width: 100%; }
-.btn[disabled] { opacity: 0.6; cursor: progress; }
+.btn[disabled],
+.btn:disabled { background: var(--c-surface); color: var(--c-text-muted); border-color: var(--c-line); opacity: 0.8; cursor: not-allowed; }
+.btn[aria-busy='true'] { cursor: progress; }
 
 .text-link {
   display: inline-flex;
@@ -223,6 +241,8 @@ p:last-child { margin-bottom: 0; }
   padding-bottom: 2px;
 }
 .text-link:hover { color: var(--c-brand-strong); }
+/* Erläuterung neben einem kurzen Linktext */
+.link-note { font-size: 15px; line-height: 1.4; color: var(--c-text-muted); }
 
 /* ---------- Karten ---------- */
 .card {
@@ -246,10 +266,10 @@ p:last-child { margin-bottom: 0; }
 /* Kurze Bindestrich-Wörter in Überschriften zusammenhalten (siehe components/ui/keep-compounds.tsx). */
 .nowrap { white-space: nowrap; }
 
-.check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
 .check-list li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; }
-.check-icon { width: 22px; height: 22px; margin-top: 3px; color: var(--c-brand); flex: none; }
-.cross-icon { width: 22px; height: 22px; margin-top: 3px; color: var(--c-text-muted); flex: none; }
+.check-icon { width: 22px; height: 22px; margin-top: 4px; color: var(--c-brand); flex: none; }
+.cross-icon { width: 22px; height: 22px; margin-top: 4px; color: var(--c-text-muted); flex: none; }
 
 /* ---------- Formulare ---------- */
 .field { display: grid; gap: 8px; }
@@ -260,21 +280,26 @@ p:last-child { margin-bottom: 0; }
   font: inherit;
   font-size: 17px;
   color: var(--c-text);
-  background: #FFFFFF;
-  border: 1px solid var(--c-line);
+  background: var(--c-paper);
+  border: 1px solid var(--c-field-edge);
   border-radius: var(--radius);
-  padding: 12px 14px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 12px 16px;
+  transition: border-color 0.2s ease;
 }
 .field textarea { min-height: 128px; resize: vertical; }
 .field input::placeholder,
 .field textarea::placeholder { color: var(--c-text-muted); }
-.field input:focus,
-.field textarea:focus {
-  outline: none;
+.field input:hover,
+.field textarea:hover { border-color: var(--c-text-muted); }
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 1px;
   border-color: var(--c-brand);
-  box-shadow: 0 0 0 1px var(--c-brand);
 }
+.field input:disabled,
+.field textarea:disabled { background: var(--c-surface); color: var(--c-text-muted); cursor: not-allowed; }
 .form-note { font-size: 14px; color: var(--c-text-muted); margin: 0; }
-.form-error { color: #B3261E; font-size: 16px; margin: 0; }
+.form-error { color: var(--c-error); font-size: 16px; margin: 0; }
 .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.honeypot input { height: 1px; padding: 0; border: 0; }

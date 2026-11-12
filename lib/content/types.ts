@@ -13,6 +13,9 @@ export interface Scene {
   hours: string;
 }
 
+/** Szene auf einer Branchen-Karte der Startseite. Die Branche selbst steht schon im Kartentitel. */
+export type HomeScene = Omit<Scene, 'tag'>;
+
 export interface Principle {
   title: string;
   text: string;

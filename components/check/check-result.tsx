@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import type { RefObject } from 'react';
 import Link from 'next/link';
-import { ArrowIcon } from '@/components/ui/icons';
 import { CHECK_RESULT, THEMA_IDEEN, THEMA_LABELS } from '@/lib/content/check';
 import { ABLAEUFE_PAGE } from '@/lib/content/pages';
 import { CONTACT_PAGE } from '@/lib/content/site';
@@ -146,7 +145,6 @@ export default function CheckResultView({ result, branche, ablaeufe, headingRef,
 
   return (
     <div className="check-result" ref={rootRef}>
-      <span className="label">{CHECK_RESULT.eyebrow}</span>
       <h2 ref={headingRef} tabIndex={-1} className="check-step__title">
         {result.top.length > 0 ? CHECK_RESULT.title : CHECK_RESULT.emptyTitle}
       </h2>
@@ -183,7 +181,7 @@ export default function CheckResultView({ result, branche, ablaeufe, headingRef,
         <p className="muted">{CHECK_RESULT.ctaText}</p>
         <div className="check-result__actions">
           <Link className="btn btn--primary" href={CONTACT_PAGE}>
-            {CHECK_RESULT.cta} <ArrowIcon />
+            {CHECK_RESULT.cta}
           </Link>
           <button type="button" className="btn btn--outline" onClick={onRestart}>
             {CHECK_RESULT.restart}

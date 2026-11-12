@@ -41,7 +41,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="site-footer__bottom">
-          <span>© {year} {SITE.owner} · {SITE.name}</span>
+          <span>© {year} {SITE.owner}</span>
           <span className="site-footer__legal">
             <Link href="/impressum">Impressum</Link>
             <Link href="/datenschutz">Datenschutz</Link>

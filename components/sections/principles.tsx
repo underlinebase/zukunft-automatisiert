@@ -1,26 +1,22 @@
 import type { Principle } from '@/lib/content/types';
-import SectionHead from '@/components/ui/section-head';
 
-interface PrinciplesProps {
-  intro: { eyebrow: string; title: string; lead: string };
+interface PrinciplesListProps {
   principles: readonly Principle[];
+  /** 4, wenn die Liste unter einer h3 steht. */
+  headingLevel?: 3 | 4;
 }
 
-export default function Principles({ intro, principles }: PrinciplesProps) {
+/** Die Grundsätze als Liste, ohne Abschnitt (Startseite: im Abschnitt Über mich). */
+export function PrinciplesList({ principles, headingLevel = 3 }: PrinciplesListProps) {
+  const Heading = headingLevel === 4 ? 'h4' : 'h3';
   return (
-    <section className="section tone-gray" aria-labelledby="principles-title">
-      <div className="container">
-        <SectionHead label={intro.eyebrow} title={intro.title} lead={intro.lead} id="principles-title" split />
-        <ol className="principles">
-          {principles.map((principle, index) => (
-            <li className="principle" key={principle.title}>
-              <span className="principle__num num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-              <h3>{principle.title}</h3>
-              <p className="muted">{principle.text}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
+    <ul className="principles">
+      {principles.map((principle) => (
+        <li className="principle" key={principle.title}>
+          <Heading>{principle.title}</Heading>
+          <p className="muted">{principle.text}</p>
+        </li>
+      ))}
+    </ul>
   );
 }

@@ -244,14 +244,12 @@ export const SOURCES: readonly DataSource[] = [
 ];
 
 export const DATEN_HERO = {
-  eyebrow: 'Zahlen und Quellen',
   title: 'KI im Kleinbetrieb 2026: Was die Zahlen wirklich sagen.',
   lead: 'Mal setzen 4 Prozent der Betriebe KI ein, mal mehr als die Hälfte. Beides steht in seriösen Studien. Es kommt darauf an, wen man fragt und was als KI zählt. Ich habe die wichtigsten Erhebungen gelesen und sortiert.',
   standLabel: 'Stand',
 };
 
 export const KEY_STATS_INTRO = {
-  eyebrow: 'Kernzahlen',
   title: 'Sechs Zahlen, sechs verschiedene Fragen.',
   lead: 'Jede Kachel beantwortet eine etwas andere Frage. Lesen Sie die kleine Zeile darunter mit, sonst vergleichen Sie Äpfel mit Birnen.',
 };
@@ -302,7 +300,6 @@ export const KEY_STATS: readonly KeyStat[] = [
 ];
 
 export const BRANCHEN_INTRO = {
-  eyebrow: 'Nach Branche',
   title: 'Wo KI schon angekommen ist und wo kaum.',
   lead: 'Für einzelne Branchen gibt es wenig belastbare Zahlen. Die beste Quelle ist die amtliche Statistik, allerdings erst ab 10 Beschäftigten. Für Immobilienmakler, Agenturen und Coaches habe ich keine eigene, belastbare Studie für Deutschland gefunden.',
 };
@@ -342,7 +339,6 @@ export interface Reason {
 }
 
 export const WHY_INTRO = {
-  eyebrow: 'Einordnung',
   title: 'Warum die Zahlen so weit auseinanderliegen.',
   lead: 'Keine der Studien ist falsch. Sie messen nur Verschiedenes. Fünf Gründe, warum aus derselben Frage mal 4 und mal 57 Prozent werden.',
 };
@@ -387,7 +383,6 @@ export const REASONS: readonly Reason[] = [
 ];
 
 export const MEANING = {
-  eyebrow: 'Der KI-Realist',
   title: 'Was das für kleine Betriebe heißt.',
   text: [
     'Lassen Sie sich von keiner einzelnen Zahl unter Druck setzen. Weder von „schon mehr als die Hälfte“ noch von „erst 4 Prozent“. Beides beschreibt nicht Ihren Betrieb.',
@@ -398,14 +393,13 @@ export const MEANING = {
   ],
   links: [
     { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
-    { label: 'Abläufe, die sich in kleinen Betrieben automatisieren lassen', href: '/ablaeufe' },
+    { label: 'Abläufe für kleine Betriebe', note: 'was sich automatisieren lässt', href: '/ablaeufe' },
     { label: 'KI im Betrieb ohne Hype', href: '/wissen/ki-im-betrieb-ohne-hype' },
     { label: 'So arbeite ich als KI-Berater', href: '/ki-beratung' },
   ],
 };
 
 export const METHOD = {
-  eyebrow: 'Methodik und Quellen',
   title: 'Woher die Zahlen kommen.',
   text: [
     'Ich habe nur Zahlen übernommen, die in der jeweiligen Quelle selbst stehen. Wo ich eine Zahl nur in einem Zeitungsbericht gefunden habe, steht das dabei. Werte aus der Eurostat-Datenbank habe ich auf ganze Prozent gerundet.',
@@ -417,7 +411,6 @@ export const METHOD = {
 };
 
 export const DATEN_FAQ_INTRO = {
-  eyebrow: 'Fragen',
   title: 'Häufige Fragen zu KI in kleinen Betrieben.',
 };
 

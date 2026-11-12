@@ -1,12 +1,12 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import type { NavLink } from '@/lib/content/site';
 import type { CalculatorDefaults } from '@/lib/content/types';
-import { ArrowIcon } from '@/components/ui/icons';
 import TimeCalculator from './time-calculator';
+import { PilotOffer, type PilotContent } from './experience';
 
 interface GuaranteeProps {
   content: {
-    eyebrow: string;
     title: string;
     lead: string;
     points: readonly { label: string; text: string }[];
@@ -14,14 +14,17 @@ interface GuaranteeProps {
     link?: NavLink;
   };
   calculator: CalculatorDefaults;
+  /** Pilotangebot unter dem Zeitrechner (Startseite). */
+  pilot?: PilotContent;
+  /** Weiterer Teil unter Garantie und Zeitrechner, im selben Abschnitt (z. B. Kosten auf /ki-beratung). */
+  children?: ReactNode;
 }
 
-export default function Guarantee({ content, calculator }: GuaranteeProps) {
+export default function Guarantee({ content, calculator, pilot, children }: GuaranteeProps) {
   return (
     <section className="section tone-brand guarantee" id="garantie" aria-labelledby="guarantee-title">
       <div className="container guarantee__grid">
         <div className="guarantee__copy">
-          <span className="label">{content.eyebrow}</span>
           <h2 id="guarantee-title">{content.title}</h2>
           <p className="guarantee__lead">{content.lead}</p>
           <dl className="guarantee__points">
@@ -34,12 +37,16 @@ export default function Guarantee({ content, calculator }: GuaranteeProps) {
           </dl>
           {content.link ? (
             <Link className="text-link guarantee__link" href={content.link.href}>
-              {content.link.label} <ArrowIcon />
+              {content.link.label}
             </Link>
           ) : null}
         </div>
-        <TimeCalculator defaults={calculator} />
+        <div className="guarantee__side">
+          <TimeCalculator defaults={calculator} />
+          {pilot ? <PilotOffer pilot={pilot} /> : null}
+        </div>
       </div>
+      {children ? <div className="container guarantee__extra">{children}</div> : null}
     </section>
   );
 }

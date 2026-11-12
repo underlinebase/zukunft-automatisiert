@@ -31,6 +31,8 @@ export const HOME_SEO = {
 export interface NavLink {
   href: string;
   label: string;
+  /** Kurze Erläuterung, die in Linklisten neben dem Link steht (nicht Teil des Linktexts). */
+  note?: string;
 }
 
 export interface NavItem extends NavLink {
@@ -44,9 +46,9 @@ export interface NavItem extends NavLink {
  */
 export const NAV_ITEMS: NavItem[] = [
   {
-    href: '/#angebot',
+    href: '/#garantie',
     label: 'Angebot',
-    hint: 'Ein Ablauf in 4 Wochen · Festpreis',
+    hint: 'Ein Ablauf in 4 Wochen zum Festpreis',
     children: [
       { href: GARANTIE_PAGE.path, label: GARANTIE_PAGE.name },
       { href: CHECK_PAGE.path, label: CHECK_PAGE.name },

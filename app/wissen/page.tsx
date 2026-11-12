@@ -36,7 +36,6 @@ export default async function WissenPage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Wissen' }]} />
-          <span className="label">Wissen</span>
           <h1>Notizen aus der Praxis.</h1>
           <p className="lead">Was im Alltag wirklich Zeit spart, und wo KI nur nach Fortschritt klingt.</p>
           <p className="page-hero__more">

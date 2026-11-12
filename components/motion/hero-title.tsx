@@ -11,9 +11,9 @@ interface HeroTitleProps {
  */
 export default function HeroTitle({ text, kicker }: HeroTitleProps) {
   return (
-    <h1 className={`hero-title${kicker ? ' hero-title--kicker' : ''}`}>
-      {kicker ? <span className="hero-title__kicker">{kicker} </span> : null}
-      <span className="hero-title__main">{text}</span>
+    <h1 className={`headline${kicker ? ' headline--kicker' : ''}`}>
+      {kicker ? <span className="headline__kicker">{kicker} </span> : null}
+      <span className="headline__main">{text}</span>
     </h1>
   );
 }

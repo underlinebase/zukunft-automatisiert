@@ -18,7 +18,7 @@ function SmallCheck() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true">
       <circle cx="10" cy="10" r="10" fill="currentColor" />
-      <path d="M5.8 10.4l2.7 2.6 5.6-6" stroke="#FFFFFF" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5.8 10.4l2.7 2.6 5.6-6" style={{ stroke: 'var(--c-on-brand)' }} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -44,7 +44,7 @@ export default function WeekFlat({ blocks, variant = 'hero', initial = 'full', l
                   data-order={block.order}
                   style={{ gridRow: block.slot + 1 }}
                 >
-                  <span className="week-block__label">{block.label}</span>
+                  <span className="week-block__text">{block.label}</span>
                   <span className="week-block__check">
                     <SmallCheck />
                   </span>

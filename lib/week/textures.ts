@@ -5,6 +5,7 @@ import { CanvasTexture, SRGBColorSpace } from 'three';
 
 export interface ScenePalette {
   bg: string;
+  onBrand: string;
   surface: string;
   line: string;
   text: string;
@@ -20,9 +21,10 @@ export function readPalette(): ScenePalette {
   const css = getComputedStyle(document.documentElement);
   const read = (name: string, fallback: string) => css.getPropertyValue(name).trim() || fallback;
   return {
-    bg: read('--c-bg', '#FFFFFF'),
-    surface: read('--c-surface', '#F3F3F5'),
-    line: read('--c-line', '#E4E4E8'),
+    bg: read('--c-bg', '#FFF9FA'),
+    onBrand: read('--c-on-brand', '#FFF9FA'),
+    surface: read('--c-surface', '#F5F1F2'),
+    line: read('--c-line', '#E6E0E2'),
     text: read('--c-text', '#252529'),
     textMuted: read('--c-text-muted', '#5E5E66'),
     brand: read('--c-brand', '#742D40'),
@@ -113,7 +115,7 @@ export function checkTexture(p: ScenePalette, anisotropy: number): CanvasTexture
   ctx.beginPath();
   ctx.arc(size / 2, size / 2, size / 2 - 4, 0, Math.PI * 2);
   ctx.fill();
-  ctx.strokeStyle = '#FFFFFF';
+  ctx.strokeStyle = p.onBrand;
   ctx.lineWidth = size * 0.1;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
@@ -132,7 +134,7 @@ export function freedTexture(label: string, w: number, h: number, p: ScenePalett
   ctx.fill();
   const fontSize = Math.round(canvas.width * 0.15);
   ctx.font = `600 ${fontSize}px ${p.fontSerif}`;
-  ctx.fillStyle = '#FFFFFF';
+  ctx.fillStyle = p.onBrand;
   ctx.textBaseline = 'top';
   const pad = canvas.width * 0.1;
   const lines = wrapLines(ctx, label, canvas.width - pad * 2, 2);

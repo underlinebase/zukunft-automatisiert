@@ -6,7 +6,7 @@ import { useMotion } from '@/lib/motion/use-motion';
 import SectionHead from '@/components/ui/section-head';
 
 interface FourWeeksProps {
-  intro: { eyebrow: string; title: string; lead: string; total: string };
+  intro: { title: string; lead: string; total: string };
   weeks: readonly WeekStep[];
 }
 
@@ -75,11 +75,11 @@ export default function FourWeeks({ intro, weeks }: FourWeeksProps) {
   });
 
   return (
-    <section className="tone-white four-weeks" id="so-laeuft-es" ref={sectionRef} aria-labelledby="weeks-title">
+    <section className="tone-gray four-weeks" id="so-laeuft-es" ref={sectionRef} aria-labelledby="weeks-title">
       <div className="section four-weeks__pin" data-pin>
       <div className="container">
         <div className="four-weeks__head">
-          <SectionHead label={intro.eyebrow} title={intro.title} lead={intro.lead} id="weeks-title" />
+          <SectionHead title={intro.title} lead={intro.lead} id="weeks-title" />
           <p className="four-weeks__total">{intro.total}</p>
         </div>
         <div className="weeks-track">
@@ -90,8 +90,7 @@ export default function FourWeeks({ intro, weeks }: FourWeeksProps) {
             {weeks.map((week) => (
               <li className="week-card" key={week.week}>
                 <span className="week-card__dot" aria-hidden="true" />
-                <span className="label">{week.week}</span>
-                <h3>{week.title}</h3>
+                <h3>{`${week.week}: ${week.title}`}</h3>
                 <p className="muted">{week.text}</p>
                 <dl className="week-card__meta">
                   <div>

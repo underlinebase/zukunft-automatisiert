@@ -19,22 +19,20 @@ import {
   KI_BERATUNG_SEO,
   KI_BERATUNG_SERVICES,
 } from '@/lib/content/ki-beratung';
-import { CONTACT_ANCHOR, CONTACT_PAGE, SITE } from '@/lib/content/site';
+import { CONTACT_PAGE, SITE } from '@/lib/content/site';
 import { breadcrumbSchema, faqSchema, graph, offerSchema, webPageSchema } from '@/lib/seo/schema';
 import { DEFAULT_OG_IMAGE, seoTitle } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import JsonLd from '@/components/seo/json-ld';
 import ConnectGraphic from '@/components/ki-beratung/connect-graphic';
 import SectionHead from '@/components/ui/section-head';
-import Principles from '@/components/sections/principles';
+import { PrinciplesList } from '@/components/sections/principles';
 import StepsCompact from '@/components/landing/steps-compact';
 import Guarantee from '@/components/sections/guarantee';
-import FitCheck from '@/components/sections/fit-check';
+import { FitColumns } from '@/components/sections/fit-check';
 import AboutTeaser from '@/components/sections/about-teaser';
 import FaqSection from '@/components/sections/faq-section';
-import ReadingLinks from '@/components/sections/reading-links';
 import Closing from '@/components/sections/closing';
-import { ArrowIcon } from '@/components/ui/icons';
 import FlowHero from '@/components/flow/flow-hero';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import KeepCompounds from '@/components/ui/keep-compounds';
@@ -85,12 +83,11 @@ export default function KiBeratungPage() {
         <div className="container page-hero__split">
         <div className="page-hero__inner">
           <Breadcrumbs items={[{ name: KI_BERATUNG_SEO.breadcrumb }]} />
-          <span className="label">{KI_BERATUNG_HERO.eyebrow}</span>
           <h1><KeepCompounds text={KI_BERATUNG_HERO.title} /></h1>
           <p className="lead">{KI_BERATUNG_HERO.lead}</p>
           <div className="hero__actions">
             <Link className="btn btn--primary" href={CONTACT_PAGE}>
-              {KI_BERATUNG_HERO.primaryCta} <ArrowIcon />
+              {KI_BERATUNG_HERO.primaryCta}
             </Link>
             <a className="btn btn--outline" href={`#${PROCESS_ANCHOR}`}>
               {KI_BERATUNG_HERO.secondaryCta}
@@ -103,7 +100,7 @@ export default function KiBeratungPage() {
 
       <section className="section tone-white" aria-labelledby="leistung-title">
         <div className="container">
-          <SectionHead label={KI_BERATUNG_SERVICES.eyebrow} title={KI_BERATUNG_SERVICES.title} id="leistung-title" />
+          <SectionHead title={KI_BERATUNG_SERVICES.title} id="leistung-title" />
           <div className="ki-services__split">
             <div className="ki-copy">
               {KI_BERATUNG_SERVICES.text.map((paragraph) => (
@@ -116,65 +113,67 @@ export default function KiBeratungPage() {
           <ul className="grid-3 ki-cards">
             {KI_BERATUNG_SERVICES.examples.map((example) => (
               <li className="card scene-card" key={example.label}>
-                <span className="label">{example.label}</span>
                 <h3>{example.title}</h3>
                 <p className="muted">{example.text}</p>
+                <p className="card-caption">{example.label}</p>
               </li>
             ))}
           </ul>
           <p className="footnote">
             <Link className="text-link" href={KI_BERATUNG_SERVICES.libraryLink.href}>
-              {KI_BERATUNG_SERVICES.libraryLink.label} <ArrowIcon />
+              {KI_BERATUNG_SERVICES.libraryLink.label}
             </Link>
           </p>
           <p className="footnote">{KI_BERATUNG_SERVICES.footnote}</p>
         </div>
       </section>
 
-      <Principles intro={KI_BERATUNG_NOT_INTRO} principles={KI_BERATUNG_NOT} />
-      <StepsCompact steps={WEEKS} total={WEEKS_INTRO.total} intro={KI_BERATUNG_PROCESS_INTRO} id={PROCESS_ANCHOR} />
-      <Guarantee content={GUARANTEE} calculator={HOME_CALCULATOR} />
-      <FitCheck content={KI_BERATUNG_FIT} />
-
-      <section className="section tone-gray" id="kosten" aria-labelledby="kosten-title">
-        <div className="container experience">
-          <div className="experience__main">
-            <span className="label">{KI_BERATUNG_COSTS.eyebrow}</span>
-            <h2 id="kosten-title">{KI_BERATUNG_COSTS.title}</h2>
-            {KI_BERATUNG_COSTS.text.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            <Link className="text-link" href={KI_BERATUNG_COSTS.link.href}>
-              {KI_BERATUNG_COSTS.link.label} <ArrowIcon />
-            </Link>
+      <section className="section tone-gray" aria-labelledby="principles-title">
+        <div className="container">
+          <SectionHead title={KI_BERATUNG_NOT_INTRO.title} lead={KI_BERATUNG_NOT_INTRO.lead} id="principles-title" split />
+          <PrinciplesList principles={KI_BERATUNG_NOT} />
+          <div className="section-part" aria-labelledby="fit-title">
+            <div className="section-part__head">
+              <h2 id="fit-title" className="section-part__title">{KI_BERATUNG_FIT.title}</h2>
+              <p className="lead">{KI_BERATUNG_FIT.lead}</p>
+            </div>
+            <FitColumns content={KI_BERATUNG_FIT} />
           </div>
-          <aside className="pilot">
-            <span className="label pilot__label">{EXPERIENCE.pilot.label}</span>
-            <h3>{EXPERIENCE.pilot.title}</h3>
-            <p className="muted">{EXPERIENCE.pilot.text}</p>
-            <Link className="text-link" href={CONTACT_ANCHOR}>
-              {EXPERIENCE.pilot.cta} <ArrowIcon />
-            </Link>
-          </aside>
         </div>
       </section>
 
-      <AboutTeaser content={KI_BERATUNG_ABOUT} />
+      <StepsCompact steps={WEEKS} total={WEEKS_INTRO.total} intro={KI_BERATUNG_PROCESS_INTRO} id={PROCESS_ANCHOR} />
 
-      <section className="section tone-gray" aria-labelledby="remote-title">
-        <div className="container">
-          <SectionHead label={KI_BERATUNG_REMOTE.eyebrow} title={KI_BERATUNG_REMOTE.title} id="remote-title" />
+      <Guarantee content={GUARANTEE} calculator={HOME_CALCULATOR} pilot={EXPERIENCE.pilot}>
+        <div className="section-part" id="kosten" aria-labelledby="kosten-title">
+          <div className="section-part__head">
+            <h2 id="kosten-title" className="section-part__title">{KI_BERATUNG_COSTS.title}</h2>
+          </div>
+          <div className="ki-copy">
+            {KI_BERATUNG_COSTS.text.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            <Link className="text-link guarantee__link" href={KI_BERATUNG_COSTS.link.href}>
+              {KI_BERATUNG_COSTS.link.label}
+            </Link>
+          </div>
+        </div>
+      </Guarantee>
+
+      <AboutTeaser content={KI_BERATUNG_ABOUT}>
+        <div className="section-part" aria-labelledby="remote-title">
+          <div className="section-part__head">
+            <h2 id="remote-title" className="section-part__title">{KI_BERATUNG_REMOTE.title}</h2>
+          </div>
           <div className="ki-copy">
             {KI_BERATUNG_REMOTE.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
         </div>
-      </section>
+      </AboutTeaser>
 
-      <FaqSection intro={KI_BERATUNG_FAQ_INTRO} items={KI_BERATUNG_FAQS} />
-
-      <ReadingLinks content={KI_BERATUNG_READING} />
+      <FaqSection intro={KI_BERATUNG_FAQ_INTRO} items={KI_BERATUNG_FAQS} reading={KI_BERATUNG_READING} tone="gray" />
 
       <Closing content={CLOSING} />
     </>

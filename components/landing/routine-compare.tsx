@@ -12,7 +12,6 @@ export default function RoutineCompare({ audience, routines }: RoutineComparePro
     <section className="section tone-gray" aria-labelledby="routines-title">
       <div className="container">
         <div className="section-head section-head--split">
-          <span className="label">Typische Abläufe</span>
           <h2 id="routines-title">Was ich für {audience} automatisiere.</h2>
           <p className="lead">Eine Auswahl. Welcher Ablauf bei Ihnen der richtige ist, klären wir im ersten Gespräch.</p>
         </div>

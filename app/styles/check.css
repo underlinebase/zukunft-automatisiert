@@ -3,7 +3,7 @@
 /* ---------- Hero ---------- */
 .check-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 12px; }
 .check-facts li {
-  padding: 6px 12px;
+  padding: 8px 12px;
   border: 1px solid var(--c-line);
   border-radius: 999px;
   font-size: 14px;
@@ -17,7 +17,7 @@
   .check-layout { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr); gap: 64px; }
   .check-intro { position: sticky; top: 112px; }
 }
-.check-intro { display: grid; gap: 14px; max-width: 560px; }
+.check-intro { display: grid; gap: 16px; max-width: 560px; }
 .check-intro h2 { margin: 0; font-size: clamp(26px, 2.8vw, 36px); }
 .check-intro p { margin: 0; color: var(--c-text-muted); }
 
@@ -54,17 +54,17 @@
 .check-step__title:focus-visible { outline: 2px solid var(--c-brand); outline-offset: 4px; }
 .check-step__hint { margin: 0; font-size: 15px; }
 
-.check-options { display: grid; gap: 10px; margin-top: 8px; }
+.check-options { display: grid; gap: 12px; margin-top: 8px; }
 @media (min-width: 720px) { .check-options--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 .check-option {
   display: grid;
   grid-template-columns: 20px 1fr;
-  gap: 14px;
+  gap: 16px;
   align-items: center;
   width: 100%;
   min-height: 56px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border: 1px solid var(--c-line);
   border-radius: var(--radius);
   background: var(--c-surface);
@@ -112,7 +112,6 @@
 
 /* ---------- Ergebnis ---------- */
 .check-result { display: grid; gap: 16px; }
-.check-result .label { color: var(--c-brand); }
 .check-result__note { margin: 0; font-size: 15px; }
 .check-result__list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 0; }
 
@@ -128,10 +127,10 @@
   height: 28px;
   border-radius: 50%;
   background: var(--c-brand);
-  color: #FFFFFF;
+  color: var(--c-on-brand);
   font-family: var(--f-sans);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
 }
 .check-sink__value { margin: 0; font-family: var(--f-serif); font-size: 22px; color: var(--c-brand); }
 .check-count { font-variant-numeric: tabular-nums; }
@@ -142,10 +141,10 @@
 .check-sink__idea { margin: 0; }
 .check-sink__calc { font-size: 15px; }
 .check-sink__calc summary { min-height: 32px; font-weight: 600; color: var(--c-brand); cursor: pointer; }
-.check-sink__calc ul { margin: 8px 0; padding-left: 20px; display: grid; gap: 6px; }
+.check-sink__calc ul { margin: 8px 0; padding-left: 20px; display: grid; gap: 8px; }
 .check-sink__calc p { margin: 0; }
 .check-sink__library { margin: 0; font-size: 15px; }
-.check-sink__library ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 6px; }
+.check-sink__library ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 8px; }
 .check-sink__label { margin: 0; font-weight: 600; }
 
 .check-result__total { margin: 0; padding-top: 16px; border-top: 1px solid var(--c-line); font-size: 18px; }
@@ -153,18 +152,19 @@
 .check-result__owner {
   margin: 0;
   padding: 16px 20px;
-  border-left: 3px solid var(--c-brand);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-card);
   background: var(--c-surface);
 }
-.check-result__cta { display: grid; gap: 10px; margin-top: 8px; padding: 24px; border-radius: var(--radius-card); background: var(--c-surface); }
+.check-result__cta { display: grid; gap: 12px; margin-top: 8px; padding: 24px; border-radius: var(--radius-card); background: var(--c-surface); }
 .check-result__cta h3 { margin: 0; font-size: 21px; }
 .check-result__cta p { margin: 0; }
-.check-result__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.check-result__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 @media (max-width: 479px) { .check-result__actions .btn { width: 100%; } }
 .check-result__privacy { margin: 0; font-size: 14px; }
 
 /* ---------- Ohne JavaScript ---------- */
-.check-noscript { display: grid; gap: 14px; }
+.check-noscript { display: grid; gap: 16px; }
 .check-noscript p { margin: 0; }
 .check-noscript__links { display: flex; flex-wrap: wrap; gap: 12px; }
 

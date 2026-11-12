@@ -63,7 +63,6 @@ export default function CheckPage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: CHECK_PAGE.name }]} />
-          <span className="label">{CHECK_HERO.eyebrow}</span>
           <h1><KeepCompounds text={CHECK_HERO.title} /></h1>
           <p className="lead">{CHECK_HERO.lead}</p>
           <ul className="check-facts">
@@ -77,7 +76,6 @@ export default function CheckPage() {
       <section className="section tone-gray" aria-labelledby={INTRO_TITLE_ID}>
         <div className="container check-layout">
           <div className="check-intro">
-            <span className="label">{CHECK_INTRO.eyebrow}</span>
             <h2 id={INTRO_TITLE_ID}>{CHECK_INTRO.title}</h2>
             {CHECK_INTRO.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>

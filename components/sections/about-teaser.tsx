@@ -1,13 +1,15 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { NavLink } from '@/lib/content/site';
-import { ArrowIcon } from '@/components/ui/icons';
 
 interface AboutTeaserProps {
-  content: { eyebrow: string; title: string; text: readonly string[]; photoAlt: string; extraLink?: NavLink };
+  content: { title: string; text: readonly string[]; photoAlt: string; extraLink?: NavLink };
+  /** Weiterer Teil unter dem Porträt, im selben Abschnitt. */
+  children?: ReactNode;
 }
 
-export default function AboutTeaser({ content }: AboutTeaserProps) {
+export default function AboutTeaser({ content, children }: AboutTeaserProps) {
   return (
     <section className="section tone-white" id="ueber-mich" aria-labelledby="about-title">
       <div className="container about">
@@ -21,21 +23,21 @@ export default function AboutTeaser({ content }: AboutTeaserProps) {
           />
         </figure>
         <div className="about__copy">
-          <span className="label">{content.eyebrow}</span>
           <h2 id="about-title">{content.title}</h2>
           {content.text.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
           <Link className="text-link" href="/ueber-mich">
-            Mehr über mich <ArrowIcon />
+            Mehr über mich
           </Link>
           {content.extraLink ? (
             <Link className="text-link" href={content.extraLink.href}>
-              {content.extraLink.label} <ArrowIcon />
+              {content.extraLink.label}
             </Link>
           ) : null}
         </div>
       </div>
+      {children ? <div className="container">{children}</div> : null}
     </section>
   );
 }

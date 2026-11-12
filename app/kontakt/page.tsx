@@ -31,7 +31,6 @@ export default function KontaktPage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Kontakt' }]} />
-          <span className="label">Kontakt</span>
           <h1>Schildern Sie mir Ihren Ablauf.</h1>
           <p className="lead">
             Drei Sätze reichen. Ich antworte innerhalb von {SITE.responseTime} mit einer ehrlichen Einschätzung. Lieber

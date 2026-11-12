@@ -5,7 +5,7 @@ import JsonLd from '@/components/seo/json-ld';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import Closing from '@/components/sections/closing';
 import WorkflowNodes from '@/components/vorlagen/workflow-nodes';
-import { ArrowIcon, CheckIcon } from '@/components/ui/icons';
+import { CheckIcon } from '@/components/ui/icons';
 import { CLOSING } from '@/lib/content/home';
 import { VORLAGEN_PAGE } from '@/lib/content/pages';
 import { BRANCHEN } from '@/lib/content/ablaeufe/types';
@@ -47,9 +47,9 @@ function DownloadBox({ vorlage }: { vorlage: Vorlage }) {
     return (
       <div className="vorlage-download">
         <a className="btn btn--primary" href={vorlage.datei} download>
-          Vorlage herunterladen (JSON)
+          Vorlage herunterladen
         </a>
-        <p className="muted">n8n-Workflow ohne Zugangsdaten. Platzhalter sind klar benannt.</p>
+        <p className="muted">n8n-Workflow als JSON-Datei, ohne Zugangsdaten. Platzhalter sind klar benannt.</p>
       </div>
     );
   }
@@ -86,8 +86,8 @@ export default async function VorlagePage({ params }: PageProps) {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: VORLAGEN_PAGE.name, path: VORLAGEN_PAGE.path }, { name: vorlage.title }]} />
-          <span className="label">n8n-Vorlage · {BRANCHEN[vorlage.branche]}</span>
           <h1><KeepCompounds text={vorlage.title} /></h1>
+          <p className="vorlage-byline">n8n-Vorlage für {BRANCHEN[vorlage.branche]}</p>
           <p className="lead">{vorlage.lead}</p>
           <DownloadBox vorlage={vorlage} />
         </div>
@@ -148,8 +148,8 @@ export default async function VorlagePage({ params }: PageProps) {
             abfangen, ist das ein Fall für mein Angebot: <Link href="/ki-beratung">so arbeite ich als KI-Berater</Link>.
           </p>
           <p className="vorlage-links">
-            <Link href={VORLAGEN_PAGE.path} className="text-link">Alle Vorlagen ansehen <ArrowIcon /></Link>
-            <Link href="/kontakt" className="text-link">Ablauf schildern <ArrowIcon /></Link>
+            <Link href={VORLAGEN_PAGE.path} className="text-link">Alle Vorlagen ansehen</Link>
+            <Link href="/kontakt" className="text-link">Ablauf schildern</Link>
           </p>
         </div>
       </section>

@@ -19,7 +19,6 @@ export const KI_BERATUNG_SEO = {
 };
 
 export const KI_BERATUNG_HERO = {
-  eyebrow: 'KI-Beratung für kleine Unternehmen und Mittelstand',
   title: 'KI-Berater für kleine Betriebe. Ohne Hype, mit Ergebnis.',
   lead: 'Ich bin Marco Gundlach und nenne mich den KI-Realisten. Als KI-Berater bleibe ich nicht bei Folien und Ideen stehen. Ich suche mit Ihnen den Ablauf, der Ihren Betrieb jede Woche am meisten Zeit kostet, und automatisiere ihn in 4 Wochen. Zum Festpreis, mit Garantie, remote in ganz Deutschland.',
   primaryCta: 'Ablauf schildern',
@@ -34,7 +33,6 @@ export interface ServiceExample {
 }
 
 export const KI_BERATUNG_SERVICES = {
-  eyebrow: 'Leistung',
   title: 'Was ich als KI-Berater für Sie mache.',
   text: [
     'Die meisten Inhaber, mit denen ich spreche, brauchen keine KI-Strategie. Sie brauchen ihre Abende zurück. Deshalb fange ich nicht mit der Frage an, was KI alles kann. Ich frage, welche Arbeit bei Ihnen jede Woche wiederkommt und niemandem Spaß macht.',
@@ -89,7 +87,6 @@ export const KI_BERATUNG_CONNECT = {
 } as const;
 
 export const KI_BERATUNG_NOT_INTRO = {
-  eyebrow: 'Ehrlich gesagt',
   title: 'Was ich als KI-Berater nicht mache.',
   lead: 'Ein Teil der KI-Beratung am Markt verkauft vor allem Aufregung. Da mache ich nicht mit.',
 };
@@ -110,14 +107,12 @@ export const KI_BERATUNG_NOT: Principle[] = [
 ];
 
 export const KI_BERATUNG_PROCESS_INTRO = {
-  label: 'So läuft es',
   title: 'So läuft eine KI-Beratung bei mir ab.',
   lead: 'Am Anfang steht ein Gespräch von 30 Minuten, das Sie nichts kostet. Rechnet sich eine Automatisierung, bekommen Sie danach einen Festpreis schriftlich. Dann folgen 4 Wochen mit wenigen, festen Terminen. Ihr Aufwand insgesamt: rund 5 Stunden.',
   link: { label: 'Wie die Garantie funktioniert', href: '/garantie' } satisfies NavLink,
 };
 
 export const KI_BERATUNG_FIT = {
-  eyebrow: 'Für wen',
   title: 'Für wen eine KI-Beratung bei mir passt.',
   lead: 'Ich arbeite mit kleinen Unternehmen und KMU aus dem Mittelstand, in denen die Inhaberin oder der Inhaber selbst entscheidet.',
   yes: [
@@ -139,7 +134,6 @@ export const KI_BERATUNG_FIT = {
 };
 
 export const KI_BERATUNG_COSTS = {
-  eyebrow: 'Kosten',
   title: 'Was kostet eine KI-Beratung bei mir?',
   text: [
     'Sie bekommen einen Festpreis für einen Ablauf. Keine Tagessätze, keine offene Stundenabrechnung. Den Preis nenne ich Ihnen nach dem Erstgespräch schriftlich, denn er hängt vom Ablauf ab: wie viele Programme beteiligt sind, wie viele Sonderfälle es gibt, ob ein KI-Schritt dabei ist.',
@@ -150,7 +144,6 @@ export const KI_BERATUNG_COSTS = {
 };
 
 export const KI_BERATUNG_REMOTE = {
-  eyebrow: 'Remote',
   title: 'KI-Beratung remote, für Betriebe in ganz Deutschland.',
   text: [
     'Ich arbeite für Betriebe in ganz Deutschland, meist per Video. Das klingt erst einmal unpersönlich. In der Praxis teilen Sie Ihren Bildschirm und zeigen mir, wie der Ablauf heute wirklich läuft, mit Ihren Programmen und Ihren echten Fällen. Genau das muss ich sehen.',
@@ -160,7 +153,6 @@ export const KI_BERATUNG_REMOTE = {
 };
 
 export const KI_BERATUNG_ABOUT = {
-  eyebrow: 'Ihr KI-Berater · Der KI-Realist',
   title: 'Sie arbeiten direkt mit mir, Marco Gundlach.',
   text: [
     'Seit über 14 Jahren leite ich Digitalisierungsprojekte, unter anderem für Hugo Boss, Fressnapf und Aktion Mensch. Dort habe ich gesehen, wie viel Geld in Projekte fließt, die am Ende niemand verwendet. Für kleine Betriebe mache ich es anders: ein Ablauf, der läuft, statt eines großen Plans.',
@@ -170,7 +162,6 @@ export const KI_BERATUNG_ABOUT = {
 };
 
 export const KI_BERATUNG_FAQ_INTRO = {
-  eyebrow: 'Fragen',
   title: 'Häufige Fragen zur KI-Beratung.',
 };
 
@@ -210,15 +201,14 @@ export const KI_BERATUNG_FAQS: Faq[] = [
 ];
 
 export const KI_BERATUNG_READING = {
-  eyebrow: 'Weiterlesen',
   title: 'Mehr zu KI und Automatisierung im Betrieb.',
   links: [
     { label: 'Was macht ein KI-Berater?', href: '/wissen/was-macht-ein-ki-berater' },
     { label: 'Was kostet KI-Automatisierung?', href: '/wissen/was-kostet-ki-automatisierung' },
-    { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
-    { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'KI im Betrieb ohne Hype', note: 'was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
+    { label: 'Wann sich Automatisierung lohnt', note: 'und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
     { label: 'Was meine Garantie genau umfasst', href: '/garantie' },
-    { label: 'Automatisierungs-Check: Welcher Ablauf kostet Sie die meiste Zeit?', href: '/automatisierungs-check' },
+    { label: 'Automatisierungs-Check', note: 'welcher Ablauf kostet Sie die meiste Zeit?', href: '/automatisierungs-check' },
   ] satisfies NavLink[],
 };
 

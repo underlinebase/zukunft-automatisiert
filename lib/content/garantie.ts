@@ -7,7 +7,6 @@ import type { Faq } from './types';
 const [MEANING, MEASURE, NOT_PROMISED, OUT_OF_SCOPE] = GUARANTEE.points;
 
 export const GARANTIE_HERO = {
-  eyebrow: 'Garantie',
   title: GUARANTEE.title,
   lead: 'Sie zahlen einen Festpreis für einen Ablauf, der im vereinbarten Umfang läuft. Schafft er das nach den 4 Wochen nicht, bessere ich ohne Aufpreis nach. Hier steht, was zum Umfang gehört und was nicht.',
   primaryCta: 'Ablauf schildern',
@@ -15,7 +14,6 @@ export const GARANTIE_HERO = {
 };
 
 export const GARANTIE_PROMISE = {
-  eyebrow: 'Die Zusage',
   title: 'Was ich Ihnen verspreche.',
   text: [
     'Nach dem Erstgespräch bekommen Sie einen Festpreis, schriftlich. Dafür automatisiere ich in 4 Wochen den einen Ablauf, der Sie jede Woche am meisten Zeit kostet.',
@@ -27,7 +25,6 @@ export const GARANTIE_PROMISE = {
 
 /** Entscheidungsweg nach den 4 Wochen. Die Grafik baut sich beim Scrollen auf. */
 export const GARANTIE_PATH = {
-  eyebrow: 'Nach 4 Wochen',
   title: 'Am Ende gibt es zwei Ausgänge. Für den vereinbarten Umfang kostet keiner mehr.',
   start: {
     label: '4 Wochen',
@@ -52,7 +49,6 @@ export const GARANTIE_PATH = {
 };
 
 export const GARANTIE_MEANING = {
-  eyebrow: MEANING.label,
   title: 'Was „läuft“ genau heißt.',
   lead: MEANING.text,
   criteria: [
@@ -71,7 +67,6 @@ export const GARANTIE_MEANING = {
 };
 
 export const GARANTIE_EXCLUDED = {
-  eyebrow: 'Grenzen',
   title: 'Was die Garantie nicht abdeckt.',
   lead: 'Eine Garantie ist nur etwas wert, wenn klar ist, wo sie aufhört.',
   items: [
@@ -99,7 +94,6 @@ export const GARANTIE_EXCLUDED = {
 };
 
 export const GARANTIE_PROCESS = {
-  eyebrow: 'Wenn etwas hakt',
   title: 'So läuft es, wenn der Ablauf noch nicht funktioniert.',
   steps: [
     {
@@ -122,7 +116,6 @@ export const GARANTIE_PROCESS = {
 };
 
 export const GARANTIE_WHY = {
-  eyebrow: 'Der KI-Realist',
   title: 'Warum ich das anbiete.',
   text: [
     'Eine solche Garantie kann ich nur geben, weil ich vorher genau hinschaue. Im Erstgespräch frage ich, wie der Ablauf heute läuft, mit welcher Software und wie oft im Monat. Passt es nicht, sage ich das. Auch wenn die Antwort lautet: Das lohnt sich nicht.',
@@ -134,7 +127,6 @@ export const GARANTIE_WHY = {
 };
 
 export const GARANTIE_FAQ_INTRO = {
-  eyebrow: 'Fragen',
   title: 'Was Inhaber zur Garantie fragen.',
 };
 
@@ -170,11 +162,10 @@ export const GARANTIE_FAQS: Faq[] = [
 ];
 
 export const GARANTIE_LINKS = {
-  eyebrow: 'Weiterlesen',
   title: 'Passend dazu.',
   links: [
     { label: 'So arbeite ich als KI-Berater', href: '/ki-beratung' },
-    { label: 'Abläufe, die sich automatisieren lassen', href: '/ablaeufe' },
+    { label: 'Abläufe zum Automatisieren', note: 'Schritt für Schritt erklärt', href: '/ablaeufe' },
     { label: 'Warum ich nach vier Wochen gehe', href: '/wissen/warum-ich-nach-vier-wochen-gehe' },
   ],
 };

@@ -6,7 +6,6 @@ import SectionHead from '@/components/ui/section-head';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import WorkflowNodes from '@/components/vorlagen/workflow-nodes';
-import { ArrowIcon } from '@/components/ui/icons';
 import { CLOSING } from '@/lib/content/home';
 import { VORLAGEN_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { SITE } from '@/lib/content/site';
@@ -55,7 +54,6 @@ export default function VorlagenPage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: VORLAGEN_PAGE.name }]} />
-          <span className="label">n8n-Vorlagen</span>
           <h1>Kostenlose n8n-Vorlagen für kleine Betriebe.</h1>
           <p className="lead">
             Fertige Workflows zum Herunterladen, mit Anleitung auf Deutsch: Import in n8n, Zugangsdaten anlegen, testen.
@@ -77,9 +75,9 @@ export default function VorlagenPage() {
             {VORLAGEN.map((vorlage) => (
               <li key={vorlage.slug} className="card card--hover vorlage-card">
                 <Link href={vorlageHref(vorlage.slug)} className="vorlage-card__link">
-                  <span className="label">{BRANCHEN[vorlage.branche]}</span>
                   <h3>{vorlage.title}</h3>
                   <p className="muted">{vorlage.lead}</p>
+                  <p className="card-caption">{BRANCHEN[vorlage.branche]}</p>
                   <span className={`vorlage-badge${vorlage.getestet ? ' vorlage-badge--ok' : ''}`}>{vorlageStatus(vorlage)}</span>
                 </Link>
               </li>
@@ -92,7 +90,6 @@ export default function VorlagenPage() {
         <div className="container">
           <SectionHead
             id="vorlagen-muster"
-            label="So sind die Vorlagen gebaut"
             title="Ein Auslöser, ein paar Prüfungen, ein Ergebnis."
             lead="Jede Vorlage folgt demselben Muster. Etwas löst den Ablauf aus, n8n prüft und sortiert, legt das Ergebnis ab und gibt Ihnen Bescheid. Wer das einmal verstanden hat, kann die Vorlagen selbst erweitern."
           />
@@ -116,12 +113,12 @@ export default function VorlagenPage() {
             Ihren Programmen hätten, mit Sonderfällen und Garantie, lesen Sie, <Link href="/ki-beratung">wie ich als KI-Berater arbeite</Link>.
           </p>
           <p>
-            <Link href="/kontakt" className="text-link">Ablauf schildern <ArrowIcon /></Link>
+            <Link href="/kontakt" className="text-link">Ablauf schildern</Link>
           </p>
         </div>
       </section>
 
-      <FaqSection intro={{ eyebrow: 'Fragen', title: 'Häufige Fragen zu den Vorlagen.' }} items={VORLAGEN_FAQS} />
+      <FaqSection intro={{ title: 'Häufige Fragen zu den Vorlagen.' }} items={VORLAGEN_FAQS} />
       <Closing content={CLOSING} />
     </>
   );

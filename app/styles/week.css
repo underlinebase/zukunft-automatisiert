@@ -18,20 +18,20 @@
 .week-flat {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 6px;
+  gap: 8px;
 }
 .week-day {
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 6px;
-  padding: 6px;
+  gap: 8px;
+  padding: 8px;
   background: var(--c-bg);
   border: 1px solid var(--c-line);
   border-radius: 6px;
-  box-shadow: 0 6px 16px -10px rgba(37, 37, 41, 0.25);
+  box-shadow: var(--shadow-day);
 }
 .week-day__name {
-  padding: 2px 0 6px;
+  padding: 2px 0 8px;
   border-bottom: 1px solid var(--c-line);
   font-size: 12px;
   font-weight: 600;
@@ -43,7 +43,7 @@
   position: relative;
   display: grid;
   grid-template-rows: repeat(4, minmax(48px, auto));
-  gap: 5px;
+  gap: 4px;
 }
 .week-day__slots > * { grid-column: 1; }
 
@@ -52,7 +52,7 @@
   --leave: 0;
   position: relative;
   z-index: 1;
-  padding: 6px 6px 6px 7px;
+  padding: 8px;
   background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: 4px;
@@ -66,7 +66,7 @@
   transform: perspective(500px) translateY(calc(var(--leave) * -12px)) rotateX(calc(var(--leave) * 72deg));
   transform-origin: 50% 100%;
 }
-.week-block__label { display: block; padding-right: 12px; }
+.week-block__text { display: block; padding-right: 12px; }
 .week-block__check {
   position: absolute;
   top: 4px;
@@ -81,15 +81,15 @@
 .week-freed {
   --freed: 0;
   grid-row: 3 / span 2;
-  z-index: 0;
+  /* über den Blöcken: solange --freed 0 ist, bleibt der Kasten unsichtbar und verdeckt nichts */
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   padding: 8px;
   border-radius: 4px;
   background: var(--c-brand);
-  color: #FFFFFF;
+  color: var(--c-on-brand);
   font-family: var(--f-serif);
-  font-variation-settings: 'SOFT' 50, 'WONK' 0;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.15;
@@ -102,27 +102,27 @@
 
 /* Schmale Bildschirme: ein Tag pro Zeile, Aufgaben als Chips. Gleiche Animation. */
 @media (max-width: 559px) {
-  .week-flat--hero { grid-template-columns: 1fr; gap: 6px; }
+  .week-flat--hero { grid-template-columns: 1fr; gap: 8px; }
   .week-flat--hero .week-day { grid-template-columns: 30px 1fr; grid-template-rows: none; align-items: center; gap: 8px; }
   .week-flat--hero .week-day__name { padding: 0; border: 0; text-align: left; }
   .week-flat--hero .week-day__slots { display: flex; flex-wrap: wrap; gap: 4px; min-height: 30px; }
-  .week-flat--hero .week-block { white-space: nowrap; overflow-wrap: normal; hyphens: none; padding: 5px 20px 5px 8px; }
-  .week-flat--hero .week-block__label { padding-right: 0; }
-  .week-flat--hero .week-block__check { top: 50%; margin-top: -6.5px; }
+  .week-flat--hero .week-block { white-space: nowrap; overflow-wrap: normal; hyphens: none; padding: 4px 20px 4px 8px; }
+  .week-flat--hero .week-block__text { padding-right: 0; }
+  .week-flat--hero .week-block__check { top: 50%; margin-top: -8px; }
   .week-flat--hero .week-freed {
     position: absolute; inset: 0 0 0 40%;
-    align-items: center; padding: 4px 10px; font-size: 15px;
+    align-items: center; padding: 4px 12px; font-size: 15px;
   }
 }
 
 @media (min-width: 560px) {
-  .week-flat--hero { gap: 10px; }
+  .week-flat--hero { gap: 12px; }
   .week-flat--hero .week-day { padding: 8px; gap: 8px; }
   .week-flat--hero .week-day__long { display: inline; }
   .week-flat--hero .week-day__short { display: none; }
   .week-flat--hero .week-block { font-size: 12px; padding: 8px; }
-  .week-flat--hero .week-day__slots { grid-template-rows: repeat(4, minmax(56px, auto)); gap: 6px; }
-  .week-flat--hero .week-freed { font-size: 17px; padding: 10px; }
+  .week-flat--hero .week-day__slots { grid-template-rows: repeat(4, minmax(56px, auto)); gap: 8px; }
+  .week-flat--hero .week-freed { font-size: 17px; padding: 12px; }
 }
 
 /* Desktop: leicht schräg gestellt wie die 3D-Szene, solange diese lädt */
@@ -135,13 +135,13 @@
 
 /* ---------- Kompakte Woche im Abschluss (auf Graphit) ---------- */
 .week-closing { max-width: 420px; margin: 8px 0; }
-.week-flat--compact { gap: 6px; }
+.week-flat--compact { gap: 8px; }
 .week-flat--compact .week-day {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--c-on-dark-wash);
   border-color: var(--c-dark-line);
   box-shadow: none;
-  padding: 6px;
+  padding: 8px;
 }
 .week-flat--compact .week-day__name { border-color: var(--c-dark-line); color: var(--c-on-dark-muted); }
 .week-flat--compact .week-day__slots { grid-template-rows: repeat(4, 26px); gap: 4px; }
-.week-flat--compact .week-freed { font-size: 12px; padding: 6px; }
+.week-flat--compact .week-freed { font-size: 12px; padding: 8px; }

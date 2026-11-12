@@ -11,7 +11,6 @@ import LandingHero from '@/components/landing/landing-hero';
 import PainPoints from '@/components/landing/pain-points';
 import RoutineCompare from '@/components/landing/routine-compare';
 import StepsCompact from '@/components/landing/steps-compact';
-import ContactPerson from '@/components/landing/contact-person';
 import BeforeAfter from '@/components/sections/before-after';
 import Guarantee from '@/components/sections/guarantee';
 import FaqSection from '@/components/sections/faq-section';
@@ -67,9 +66,8 @@ export default async function LandingPage({ params }: PageProps) {
       <BeforeAfter example={industry.example} />
       <StepsCompact steps={WEEKS} total={WEEKS_INTRO.total} />
       <Guarantee content={GUARANTEE} calculator={industry.calculator} />
-      <ContactPerson />
       <FaqSection intro={{ ...FAQ_INTRO, title: `Was ${industry.audience} mich vorher fragen.` }} items={faqs} />
-      <Closing content={CLOSING} />
+      <Closing content={CLOSING} withPerson />
     </>
   );
 }

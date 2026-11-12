@@ -7,6 +7,8 @@ import { useMotion } from '@/lib/motion/use-motion';
 
 interface BeforeAfterProps {
   example: BeforeAfterExample;
+  /** Fläche des Abschnitts; die Startseite wechselt hier auf Weiß. */
+  tone?: 'gray' | 'white';
 }
 
 /** Sekunden, die das einmalige Hochzählen auf dem Handy dauert. */
@@ -26,7 +28,7 @@ function StepCheck() {
  * Vorher/Nachher: Beim Scrollen bekommen die Schritte nacheinander einen Haken und rücken in Grau zurück.
  * Ohne Animation wird direkt der Endzustand gezeigt.
  */
-export default function BeforeAfter({ example }: BeforeAfterProps) {
+export default function BeforeAfter({ example, tone = 'gray' }: BeforeAfterProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const before = minutesPerCase(example, 'before');
   const after = minutesPerCase(example, 'after');
@@ -88,10 +90,9 @@ export default function BeforeAfter({ example }: BeforeAfterProps) {
   });
 
   return (
-    <section className="section tone-gray" ref={sectionRef} aria-labelledby="ba-title" data-own-motion>
+    <section className={`section tone-${tone}`} ref={sectionRef} aria-labelledby="ba-title" data-own-motion>
       <div className="container before-after">
         <div className="before-after__intro">
-          <span className="label">Vorher und nachher</span>
           <h2 id="ba-title">{example.title}</h2>
           <p className="muted">{example.context}</p>
           <div className="ba-summary">

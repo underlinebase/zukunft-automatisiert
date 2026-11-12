@@ -25,7 +25,7 @@ export default function WissenTabs({ articles }: { articles: Article[] }) {
           <li key={article.slug}>
             <Link href={`/wissen/${article.slug}`}>
               <h2>{article.title}</h2>
-              <span className="article-list__meta">{article.category} · {article.read_minutes} Min.</span>
+              <span className="article-list__meta">{article.category}, {article.read_minutes} Min.</span>
             </Link>
           </li>
         ))}

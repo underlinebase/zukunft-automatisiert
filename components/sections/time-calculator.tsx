@@ -51,7 +51,6 @@ export default function TimeCalculator({ defaults }: TimeCalculatorProps) {
 
   return (
     <div className="calculator">
-      <span className="label">Zeitrechner</span>
       <h3 className="calculator__title">Was kostet Sie der Ablauf heute?</h3>
 
       <div className="calculator__field">

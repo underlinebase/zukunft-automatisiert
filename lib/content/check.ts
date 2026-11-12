@@ -6,14 +6,12 @@ import type { Faq } from '@/lib/content/types';
 import type { CheckBrancheOption, CheckQuestion } from '@/lib/check/types';
 
 export const CHECK_HERO = {
-  eyebrow: 'Automatisierungs-Check',
   title: 'Welcher Ablauf kostet Sie jede Woche am meisten Zeit?',
   lead: 'Zehn Fragen, etwa drei Minuten, nur Klicks. Am Ende sehen Sie Ihre drei größten Zeitfresser mit einer groben Stundenschätzung und Beispielen, was sich davon automatisieren lässt.',
   facts: ['10 Fragen, etwa 3 Minuten', 'Ohne Anmeldung, ohne E-Mail'],
 } as const;
 
 export const CHECK_INTRO = {
-  eyebrow: 'So läuft der Check',
   title: 'Klicken statt schreiben.',
   text: [
     'Zuerst wählen Sie Ihre Branche. Danach folgen neun Fragen zu Anfragen, Angeboten, Terminen, Belegen, Rechnungen und dem, was sonst im Büro hängen bleibt. Sie antworten jeweils mit einem Klick.',
@@ -35,7 +33,6 @@ export const CHECK_UI = {
 } as const;
 
 export const CHECK_RESULT = {
-  eyebrow: 'Ihr Ergebnis',
   title: 'Ihre drei größten Zeitfresser',
   estimateNote: 'Grobe Schätzung aus Ihren Antworten, keine Messung. Ihr Betrieb kann deutlich darüber oder darunter liegen.',
   perWeek: 'pro Woche',
@@ -313,7 +310,7 @@ export const CHECK_QUESTIONS: readonly CheckQuestion[] = [
   },
 ];
 
-export const CHECK_FAQ_INTRO = { eyebrow: 'Fragen zum Check', title: 'Was Sie vorher wissen sollten.' } as const;
+export const CHECK_FAQ_INTRO = { title: 'Was Sie vorher wissen sollten.' } as const;
 
 export const CHECK_FAQS: Faq[] = [
   {

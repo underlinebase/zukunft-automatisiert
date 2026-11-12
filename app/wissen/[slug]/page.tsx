@@ -7,7 +7,6 @@ import JsonLd from '@/components/seo/json-ld';
 import { metaDescription, pageMetadata } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import { articleSchema, breadcrumbSchema, graph, organizationSchema, personSchema, webPageSchema } from '@/lib/seo/schema';
-import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import KeepCompounds from '@/components/ui/keep-compounds';
 import ArticleDates from '@/components/wissen/article-dates';
@@ -72,10 +71,9 @@ export default async function ArticlePage({ params }: PageProps) {
       <article className="article">
         <div className="article__body">
           <Breadcrumbs className="crumbs--spaced" items={[{ name: 'Wissen', path: '/wissen' }, { name: article.title }]} />
-          <span className="label" style={{ marginBottom: 16 }}>{article.category} · {article.read_minutes} Min. Lesezeit</span>
           <h1><KeepCompounds text={article.title} /></h1>
           <p className="article__byline">
-            Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten
+            Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten. Thema: {article.category}, {article.read_minutes} Min. Lesezeit
           </p>
           <ArticleDates datePublished={article.datePublished} dateModified={article.dateModified} />
           <p className="lead">{article.lead}</p>
@@ -89,7 +87,7 @@ export default async function ArticlePage({ params }: PageProps) {
               <h2>Passend dazu</h2>
               <ul>
                 {article.related.map((link) => (
-                  <li key={link.href}><Link href={link.href} className="text-link">{link.label} <ArrowIcon /></Link></li>
+                  <li key={link.href}><Link href={link.href} className="text-link">{link.label}</Link></li>
                 ))}
               </ul>
             </nav>
@@ -97,10 +95,10 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="article__footer">
             {next && next.slug !== article.slug ? (
               <Link href={`/wissen/${next.slug}`} className="text-link">
-                {`Nächste Notiz: ${next.title.replace(/\.$/, '')}`} <ArrowIcon />
+                {`Nächste Notiz: ${next.title.replace(/\.$/, '')}`}
               </Link>
             ) : <span />}
-            <Link href={CONTACT_PAGE} className="text-link">Ablauf schildern <ArrowIcon /></Link>
+            <Link href={CONTACT_PAGE} className="text-link">Ablauf schildern</Link>
           </div>
         </div>
         {article.notes.length > 0 ? (

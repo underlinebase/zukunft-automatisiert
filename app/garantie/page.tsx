@@ -1,6 +1,5 @@
 import '../styles/garantie.css';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import JsonLd from '@/components/seo/json-ld';
 import SectionHead from '@/components/ui/section-head';
@@ -8,7 +7,7 @@ import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
 import DecisionPath from '@/components/garantie/decision-path';
 import { garantieSchema } from '@/components/garantie/schema';
-import { ArrowIcon, CheckIcon, CrossIcon } from '@/components/ui/icons';
+import { CheckIcon, CrossIcon } from '@/components/ui/icons';
 import {
   GARANTIE_EXCLUDED,
   GARANTIE_FAQS,
@@ -27,6 +26,7 @@ import { CONTACT_ANCHOR } from '@/lib/content/site';
 import { pageMetadata } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import KeepCompounds from '@/components/ui/keep-compounds';
+import LinkList from '@/components/ui/link-list';
 
 const PATH_ANCHOR = 'pruefung';
 
@@ -51,12 +51,11 @@ export default function GarantiePage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: GARANTIE_PAGE.name }]} />
-          <span className="label">{GARANTIE_HERO.eyebrow}</span>
           <h1><KeepCompounds text={GARANTIE_HERO.title} /></h1>
           <p className="lead">{GARANTIE_HERO.lead}</p>
           <div className="hero__actions">
             <a className="btn btn--primary" href={CONTACT_ANCHOR}>
-              {GARANTIE_HERO.primaryCta} <ArrowIcon />
+              {GARANTIE_HERO.primaryCta}
             </a>
             <a className="btn btn--outline" href={`#${PATH_ANCHOR}`}>
               {GARANTIE_HERO.secondaryCta}
@@ -67,28 +66,24 @@ export default function GarantiePage() {
 
       <section className="section tone-white" aria-labelledby="zusage-title">
         <div className="container">
-          <SectionHead label={GARANTIE_PROMISE.eyebrow} title={GARANTIE_PROMISE.title} id="zusage-title" />
+          <SectionHead title={GARANTIE_PROMISE.title} id="zusage-title" />
           <div className="ki-copy">
             {GARANTIE_PROMISE.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
             <p className="muted">{GARANTIE_PROMISE.pilotNote}</p>
           </div>
+          <div className="g-path" id={PATH_ANCHOR}>
+            <h3 className="g-subtitle" id="weg-title">{GARANTIE_PATH.title}</h3>
+            <DecisionPath content={GARANTIE_PATH} />
+          </div>
         </div>
       </section>
 
-      <section className="section tone-gray" id={PATH_ANCHOR} aria-labelledby="weg-title">
-        <div className="container">
-          <SectionHead label={GARANTIE_PATH.eyebrow} title={GARANTIE_PATH.title} id="weg-title" />
-          <DecisionPath content={GARANTIE_PATH} />
-        </div>
-      </section>
-
-      <section className="section tone-white" aria-labelledby="laeuft-title">
+      <section className="section tone-gray" aria-labelledby="laeuft-title">
         <div className="container g-meaning">
           <div className="g-meaning__main">
             <SectionHead
-              label={GARANTIE_MEANING.eyebrow}
               title={GARANTIE_MEANING.title}
               lead={GARANTIE_MEANING.lead}
               id="laeuft-title"
@@ -119,10 +114,9 @@ export default function GarantiePage() {
         </div>
       </section>
 
-      <section className="section tone-gray" aria-labelledby="grenzen-title">
+      <section className="section tone-white" aria-labelledby="grenzen-title">
         <div className="container">
           <SectionHead
-            label={GARANTIE_EXCLUDED.eyebrow}
             title={GARANTIE_EXCLUDED.title}
             lead={GARANTIE_EXCLUDED.lead}
             id="grenzen-title"
@@ -139,9 +133,9 @@ export default function GarantiePage() {
         </div>
       </section>
 
-      <section className="section tone-white" aria-labelledby="ablauf-title">
+      <section className="section tone-gray" aria-labelledby="ablauf-title">
         <div className="container">
-          <SectionHead label={GARANTIE_PROCESS.eyebrow} title={GARANTIE_PROCESS.title} id="ablauf-title" />
+          <SectionHead title={GARANTIE_PROCESS.title} id="ablauf-title" />
           <ol className="g-steps">
             {GARANTIE_PROCESS.steps.map((step, index) => (
               <li className="card g-steps__item" key={step.title}>
@@ -154,10 +148,9 @@ export default function GarantiePage() {
         </div>
       </section>
 
-      <section className="section tone-gray" aria-labelledby="warum-title">
+      <section className="section tone-white" aria-labelledby="warum-title">
         <div className="container experience">
           <div className="experience__main">
-            <span className="label">{GARANTIE_WHY.eyebrow}</span>
             <h2 id="warum-title">{GARANTIE_WHY.title}</h2>
             {GARANTIE_WHY.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -169,21 +162,13 @@ export default function GarantiePage() {
             </blockquote>
             <nav aria-labelledby="weiterlesen-title">
               <h3 id="weiterlesen-title" className="g-subtitle">{GARANTIE_LINKS.title}</h3>
-              <ul className="ki-links">
-                {GARANTIE_LINKS.links.map((link) => (
-                  <li key={link.href}>
-                    <Link className="text-link" href={link.href}>
-                      {link.label} <ArrowIcon />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <LinkList links={GARANTIE_LINKS.links} />
             </nav>
           </div>
         </div>
       </section>
 
-      <FaqSection intro={GARANTIE_FAQ_INTRO} items={GARANTIE_FAQS} />
+      <FaqSection intro={GARANTIE_FAQ_INTRO} items={GARANTIE_FAQS} tone="gray" />
       <Closing content={CLOSING} />
     </>
   );

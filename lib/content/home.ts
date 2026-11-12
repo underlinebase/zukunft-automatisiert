@@ -6,18 +6,18 @@ import type {
   CalculatorDefaults,
   Fact,
   Faq,
+  HomeScene,
   Principle,
-  Scene,
   WeekBlockLabel,
   WeekStep,
 } from './types';
 
 export const HERO = {
-  eyebrow: 'KI-Berater Marco Gundlach · remote in ganz Deutschland',
-  /** Erste Zeile der H1 mit dem Suchbegriff der Startseite. */
-  kicker: 'Prozessautomatisierung für kleine Unternehmen',
   title: 'Den Ablauf, der Sie jede Woche Stunden kostet, automatisiere ich in 4 Wochen.',
-  lead: 'Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach. Ohne KI-Zauber, ohne Software-Zoo. Sie arbeiten direkt mit mir.',
+  /** Ein Satz unter der H1, trägt den Suchbegriff der Startseite. */
+  lead: 'Prozessautomatisierung für kleine Unternehmen, zum Festpreis und remote in ganz Deutschland.',
+  /** Steht unter den Buttons, damit die Garantie schon im ersten Bildschirm sichtbar ist. */
+  guarantee: 'Läuft er im vereinbarten Umfang nicht, bessere ich ohne Aufpreis nach.',
 };
 
 export const FACTS: Fact[] = [
@@ -28,37 +28,31 @@ export const FACTS: Fact[] = [
   { label: 'Garantie', value: 'Läuft es nicht, bessere ich nach', text: 'Ohne Aufpreis, bis der vereinbarte Ablauf im Alltag läuft.' },
 ];
 
-export const SCENES_INTRO = {
-  eyebrow: 'Kennen Sie das?',
-  title: 'Tagsüber läuft der Betrieb. Abends holt Sie der Papierkram ein.',
-  lead: 'Drei Szenen, die ich in Gesprächen mit Inhabern immer wieder höre.',
-};
-
-export const SCENES: Scene[] = [
-  {
-    tag: 'Handwerk · SHK, Elektro, Dach',
+/**
+ * Szenen auf den Branchen-Karten der Startseite, nach Branchen-Slug.
+ * Branchen ohne eigenen Eintrag zeigen die erste Szene ihrer Landingpage.
+ */
+export const HOME_SCENES: Readonly<Record<string, HomeScene>> = {
+  handwerk: {
     title: 'Sonntag, 19 Uhr. Sie schreiben Angebote.',
     text: 'Aufmaß vom Zettel abtippen, Preise beim Großhändler nachsehen, Textbausteine zusammenkopieren. Bis alle Angebote raus sind, ist das Wochenende vorbei.',
     hours: 'ca. 5 bis 8 Std. pro Woche',
   },
-  {
-    tag: 'Immobilienmakler',
+  immobilienmakler: {
     title: '21 Uhr. Die Anfragen von heute sind noch offen.',
     text: 'Portal-Anfragen einzeln beantworten, Exposés verschicken, Besichtigungen hin und her schieben. Wer zu spät antwortet, ist beim Interessenten raus.',
     hours: 'ca. 6 bis 10 Std. pro Woche',
   },
-  {
-    tag: 'Steuerkanzlei',
+  steuerberater: {
     title: 'Monatsende. Die Belege fehlen schon wieder.',
     text: 'Mandanten anschreiben, nachtelefonieren, Belege zuordnen. Ihre Fachkräfte verbringen Stunden damit, Unterlagen hinterherzulaufen.',
     hours: 'ca. 7 bis 12 Std. pro Woche',
   },
-];
+};
 
 export const PRINCIPLES_INTRO = {
-  eyebrow: 'Der KI-Realist',
   title: 'Was ich anders mache.',
-  lead: 'Über KI wird viel erzählt. Das meiste davon brauchen Sie nicht. Den kleinen Teil, der wirklich hilft, setze ich ein.',
+  lead: 'Ohne KI-Zauber, ohne Software-Zoo. Über KI wird viel erzählt, das meiste davon brauchen Sie nicht. Den kleinen Teil, der wirklich hilft, setze ich ein.',
 };
 
 export const PRINCIPLES: Principle[] = [
@@ -77,7 +71,6 @@ export const PRINCIPLES: Principle[] = [
 ];
 
 export const WEEKS_INTRO = {
-  eyebrow: 'So läuft es',
   title: 'So laufen die 4 Wochen.',
   lead: 'Ihr Tagesgeschäft läuft weiter. Ich brauche Sie nur zu wenigen, festen Terminen.',
   total: 'Ihr Aufwand insgesamt: rund 5 Stunden',
@@ -130,7 +123,6 @@ export const HOME_EXAMPLE: BeforeAfterExample = {
 };
 
 export const GUARANTEE = {
-  eyebrow: 'Garantie',
   title: 'Läuft der vereinbarte Ablauf nach 4 Wochen nicht, bessere ich ohne Aufpreis nach.',
   lead: 'Für den vereinbarten Umfang trage ich das Risiko. Damit klar ist, worüber wir reden:',
   points: [
@@ -145,11 +137,11 @@ export const GUARANTEE = {
 export const HOME_CALCULATOR: CalculatorDefaults = { hoursPerWeek: 6, hourlyRate: 80 };
 
 export const FIT = {
-  eyebrow: 'Ehrlich vorab',
   title: 'Passt das zu Ihnen?',
   lead: 'Ich arbeite lieber mit wenigen Betrieben richtig als mit vielen halb.',
   yes: [
     'Sie entscheiden in Ihrem Betrieb selbst.',
+    'Ihr Betrieb macht etwa 20.000 € Monatsumsatz oder mehr, zum Beispiel im Handwerk, als Makler, Kanzlei, Agentur oder Coach.',
     'Es gibt einen Ablauf, der jede Woche wiederkommt und Sie Zeit kostet.',
     'Ihre Daten liegen schon am Computer, etwa in E-Mails, Ihrer Branchensoftware oder in Tabellen.',
     'Sie wollen einen festen Ansprechpartner statt einer Agentur.',
@@ -167,14 +159,12 @@ export const FIT = {
 };
 
 export const INDUSTRIES_INTRO = {
-  eyebrow: 'Branchen',
-  title: 'Für diese Betriebe arbeite ich.',
-  lead: 'Jede Branche hat ihren eigenen Papierkram. Hier ein paar Abläufe, die ich oft sehe.',
-  link: { href: ABLAEUFE_PAGE.path, label: 'Weitere Abläufe zum Automatisieren in der Ablauf-Bibliothek' } satisfies NavLink,
+  title: 'Tagsüber läuft der Betrieb. Abends holt Sie der Papierkram ein.',
+  lead: 'Für diese Betriebe arbeite ich. Jede Branche hat ihren eigenen Papierkram, und diese Szenen höre ich von Inhabern immer wieder.',
+  link: { href: ABLAEUFE_PAGE.path, label: 'Alle Abläufe in der Bibliothek', note: 'weitere Abläufe zum Automatisieren' } satisfies NavLink,
 };
 
 export const ABOUT = {
-  eyebrow: 'Über mich · Der KI-Realist',
   title: 'Ich bin Marco Gundlach. Sie arbeiten direkt mit mir.',
   text: [
     'Seit über 14 Jahren leite ich Digitalisierungsprojekte, unter anderem für Hugo Boss, Fressnapf und Aktion Mensch. Dort habe ich gelernt, Abläufe sauber aufzusetzen. Ich habe auch gesehen, wie viel Geld in Projekte fließt, die am Ende niemand nutzt.',
@@ -186,7 +176,6 @@ export const ABOUT = {
 };
 
 export const EXPERIENCE = {
-  eyebrow: 'Erfahrung',
   title: 'Projekterfahrung aus großen Unternehmen.',
   note: 'Frühere Projekte als IT-Projektleiter. Das sind keine Kunden dieses Angebots.',
   companies: ['Hugo Boss', 'Fressnapf', 'Aktion Mensch', 'APCOA', 'Flughafen Düsseldorf'],
@@ -198,7 +187,6 @@ export const EXPERIENCE = {
     'Geprüfter Ausbilder (IHK)',
   ],
   pilot: {
-    label: 'Pilotkunden gesucht',
     title: 'Drei Pilotplätze zum Pilotpreis von 1.999 € netto.',
     text: 'Dieses Angebot ist neu. Die ersten drei Betriebe bekommen ihren Ablauf zum Pilotpreis von 1.999 € zzgl. USt., mit derselben Garantie. Im Gegenzug darf ich das Ergebnis als Fallbeispiel mit Vorher-Nachher-Zahlen zeigen und Sie kurz zu Wort kommen lassen. Beides nur mit Ihrem Einverständnis.',
     cta: 'Als Pilotkunde melden',
@@ -207,18 +195,16 @@ export const EXPERIENCE = {
 
 /** Linkliste vor den Fragen. Nur Artikel, die schon erschienen sind. */
 export const HOME_READING = {
-  eyebrow: 'Weiterlesen',
   title: 'Erst lesen, dann entscheiden.',
   links: [
     { label: 'Alle Notizen aus der Praxis', href: '/wissen' },
     { label: 'KI im Kleinbetrieb in Zahlen', href: DATEN_PAGE.path },
-    { label: 'Wann sich eine Automatisierung lohnt und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
-    { label: 'KI im Betrieb: Was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
+    { label: 'Wann sich Automatisierung lohnt', note: 'und wann nicht', href: '/wissen/wann-sich-automatisierung-lohnt' },
+    { label: 'KI im Betrieb ohne Hype', note: 'was hilft und was nur gut klingt', href: '/wissen/ki-im-betrieb-ohne-hype' },
   ] satisfies NavLink[],
 };
 
 export const FAQ_INTRO = {
-  eyebrow: 'Fragen',
   title: 'Was Inhaber mich vorher fragen.',
 };
 
@@ -261,7 +247,6 @@ export const FAQS: Faq[] = [
 ];
 
 export const CLOSING = {
-  eyebrow: 'Nächster Schritt',
   title: 'Schildern Sie mir Ihren Ablauf in drei Sätzen.',
   lead: `Ich antworte innerhalb von ${SITE.responseTime} mit einer ehrlichen Einschätzung. Auch wenn sie lautet: Das lohnt sich nicht.`,
   callTitle: 'Lieber sprechen?',

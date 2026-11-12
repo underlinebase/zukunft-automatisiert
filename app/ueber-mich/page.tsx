@@ -10,7 +10,6 @@ import { markdownHref } from '@/lib/seo/markdown';
 import JsonLd from '@/components/seo/json-ld';
 import Experience from '@/components/sections/experience';
 import Closing from '@/components/sections/closing';
-import { ArrowIcon } from '@/components/ui/icons';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import KeepCompounds from '@/components/ui/keep-compounds';
 
@@ -39,7 +38,6 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Über mich' }]} />
-          <span className="label">Über mich</span>
           <h1><KeepCompounds text={ABOUT_PAGE.title} /></h1>
           <p className="lead">{ABOUT_PAGE.lead}</p>
         </div>
@@ -59,13 +57,13 @@ export default function AboutPage() {
             {ABOUT_PAGE.links.map((link) => (
               <li key={link.href}>
                 <Link className="text-link" href={link.href}>
-                  {link.label} <ArrowIcon />
+                  {link.label}
                 </Link>
               </li>
             ))}
           </ul>
           <Link className="btn btn--primary" href={CONTACT_ANCHOR}>
-            Ablauf schildern <ArrowIcon />
+            Ablauf schildern
           </Link>
 
           <div className="vita" aria-labelledby="stationen-title">

@@ -1,0 +1,13 @@
+/* Hallmark · v2 check · theme: brand, by request · genre: editorial · job: enquire · posture: restrained · hero: Stage · nav: Wortmarke, Links, eine Aktion · footer: Wortmarke über drei Linkspalten · copy: verbatim, die Seitentexte stammen vom Inhaber · Kritik und Waiver in app/globals.css */
+/* Hallmark · dismissed 54 · Datenschutz: SectionHead erzeugt die h2 in components/ui/section-head.tsx, der statische Check liest nur den Komponentennamen */
+/* Hallmark · dropped angebot, scenes-title · auf der Startseite zusammengelegt, das Menü zeigt auf /#garantie */
+/* Hallmark · waive 44c · Banner auf den Unterseiten: Breadcrumb, H1 und ein Satz, der erste Abschnitt beginnt über dem Falz · Wissen, Kontakt, Garantie und Ablauf-Bibliothek sind Nachschlageseiten, ihr Inhalt soll ohne Scrollen anfangen */
+/* Hallmark · waive 77 · die schmale Spalte ist Lesetext im Ablauf-Detail und bei den Quellen der Zahlen-Seite · lange Absätze brauchen ein Zeilenmaß unter 75 Zeichen, breiter wären sie schwerer zu lesen */
+/* Hallmark · waive 78 · Überschriften im Fließtext der Ablauf-Seiten und Titel in der Artikelliste von Wissen · das sind Lesekapitel und Listeneinträge, keine Abschnittsköpfe der Seite */
+/* Hallmark · waive 39b · FAQ-Fragen und Antwortknöpfe im Check brechen in der schmalen Spalte auf zwei Zeilen um · der Knopf wächst mit seiner Frage, eine Zeile ist 52px hoch */
+/* Hallmark · waive 85 · der Newsletter am Ende von Wissen ist der Operations-Bericht, den der Inhaber selbst eingerichtet hat · auf einer Seite mit Praxis-Notizen ist das Abo die naheliegende nächste Handlung */
+/* Hallmark · dismissed 77 · Kontakt, Wissen, Ablauf-Bibliothek und Check sind Werkzeug- und Listenseiten mit drei oder vier Abschnitten, kein Landing-Streifen */
+/* Hallmark · answered F20 · die Zahl der Abläufe je Branche wächst mit jedem neuen Ablauf, die letzte Reihe ist deshalb mal voll und mal nicht */
+/* Rechtstexte haben sehr lange Wörter („Datenschutzerklärung“, „Streitschlichtung“): auf jeder Breite trennen statt überlaufen. */
+.page-hero--legal h1,
+.prose--legal h2 { hyphens: auto; overflow-wrap: break-word; min-width: 0; text-wrap: balance; }

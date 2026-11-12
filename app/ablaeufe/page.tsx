@@ -58,7 +58,6 @@ export default function AblaeufePage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: ABLAEUFE_PAGE.name }]} />
-          <span className="label">Ablauf-Bibliothek</span>
           <h1>Was sich in Ihrem Betrieb automatisieren lässt.</h1>
           <p className="lead">
             Jeder Ablauf auf einer Seite: wie er heute läuft, wie danach, was Sie weiter selbst machen und was er im

@@ -6,7 +6,6 @@ import Breadcrumbs from '@/components/layout/breadcrumbs';
 import StepCompare from '@/components/ablaeufe/step-compare';
 import FaqSection from '@/components/sections/faq-section';
 import Closing from '@/components/sections/closing';
-import { ArrowIcon } from '@/components/ui/icons';
 import { CLOSING } from '@/lib/content/home';
 import { ABLAEUFE_PAGE, CHECK_PAGE, GARANTIE_PAGE } from '@/lib/content/pages';
 import { KI_BERATUNG_PATH } from '@/lib/content/ki-beratung';
@@ -68,7 +67,6 @@ export default async function AblaufPage({ params }: PageProps) {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: ABLAEUFE_PAGE.name, path: ABLAEUFE_PAGE.path }, { name: ablauf.title }]} />
-          <span className="label">{BRANCHEN[ablauf.branche]}</span>
           <h1><KeepCompounds text={ablauf.title} /></h1>
           <p className="ablauf-byline">
             Von <Link href="/ueber-mich">{SITE.owner}</Link>, dem KI-Realisten
@@ -77,6 +75,7 @@ export default async function AblaufPage({ params }: PageProps) {
           </p>
           <p className="lead">{ablauf.lead}</p>
           <dl className="ablauf-facts">
+            <div><dt>Branche</dt><dd>{BRANCHEN[ablauf.branche]}</dd></div>
             <div><dt>Im Beispiel gespart</dt><dd>{formatHours(savings.minutesPerWeek)} pro Woche</dd></div>
             <div><dt>Nutzen</dt><dd>{STUFEN[ablauf.nutzen]}</dd></div>
             <div><dt>Aufwand</dt><dd>{STUFEN[ablauf.aufwand]}</dd></div>
@@ -126,16 +125,16 @@ export default async function AblaufPage({ params }: PageProps) {
               <h2>Passend dazu</h2>
               <ul>
                 {ablauf.related.map((link) => (
-                  <li key={link.href}><Link href={link.href} className="text-link">{link.label} <ArrowIcon /></Link></li>
+                  <li key={link.href}><Link href={link.href} className="text-link">{link.label}</Link></li>
                 ))}
               </ul>
             </nav>
           ) : null}
-          <p><Link href={ABLAEUFE_PAGE.path} className="text-link">Weitere Abläufe zum Automatisieren <ArrowIcon /></Link></p>
+          <p><Link href={ABLAEUFE_PAGE.path} className="text-link">Alle Abläufe</Link></p>
         </div>
       </section>
 
-      <FaqSection intro={{ eyebrow: 'Fragen', title: 'Häufige Fragen zu diesem Ablauf.' }} items={ablauf.faqs} />
+      <FaqSection intro={{ title: 'Häufige Fragen zu diesem Ablauf.' }} items={ablauf.faqs} />
       <Closing content={CLOSING} />
     </>
   );

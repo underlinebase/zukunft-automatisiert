@@ -111,7 +111,7 @@ function kiBeratungProcess(): string[] {
 
 function guaranteeSection(): string[] {
   const points = GUARANTEE.points.map((point) => `**${point.label}:** ${point.text}`);
-  return [`## ${GUARANTEE.eyebrow}: ${GUARANTEE.title}`, GUARANTEE.lead, bullets(points)];
+  return [`## Garantie: ${GUARANTEE.title}`, GUARANTEE.lead, bullets(points)];
 }
 
 function kiBeratungFit(): string[] {

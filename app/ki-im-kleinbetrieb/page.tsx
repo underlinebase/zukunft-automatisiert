@@ -1,6 +1,5 @@
 import '../styles/daten.css';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/breadcrumbs';
 import JsonLd from '@/components/seo/json-ld';
 import SectionHead from '@/components/ui/section-head';
@@ -12,7 +11,6 @@ import BarChart from '@/components/daten/bar-chart';
 import type { BarView } from '@/components/daten/bar-chart';
 import SourceList from '@/components/daten/source-list';
 import { datenSchema } from '@/components/daten/schema';
-import { ArrowIcon } from '@/components/ui/icons';
 import {
   BAR_GROUPS,
   BRANCHEN_INTRO,
@@ -37,6 +35,7 @@ import { DATEN_PAGE, pageSeoTitle } from '@/lib/content/pages';
 import { pageMetadata } from '@/lib/seo/meta';
 import { markdownHref } from '@/lib/seo/markdown';
 import KeepCompounds from '@/components/ui/keep-compounds';
+import LinkList from '@/components/ui/link-list';
 
 export const metadata: Metadata = {
   ...pageMetadata({
@@ -82,7 +81,6 @@ export default function DatenPage() {
       <section className="page-hero">
         <div className="container page-hero__inner">
           <Breadcrumbs items={[{ name: 'Wissen', path: '/wissen' }, { name: DATEN_PAGE.name }]} />
-          <span className="label">{DATEN_HERO.eyebrow}</span>
           <h1><KeepCompounds text={DATEN_HERO.title} /></h1>
           <p className="lead">{DATEN_HERO.lead}</p>
           <p className="daten-stand">
@@ -94,7 +92,6 @@ export default function DatenPage() {
       <section className="section tone-white" aria-labelledby="kernzahlen-title">
         <div className="container">
           <SectionHead
-            label={KEY_STATS_INTRO.eyebrow}
             title={KEY_STATS_INTRO.title}
             lead={KEY_STATS_INTRO.lead}
             id="kernzahlen-title"
@@ -106,7 +103,6 @@ export default function DatenPage() {
       <section className="section tone-gray" aria-labelledby="branchen-title">
         <div className="container">
           <SectionHead
-            label={BRANCHEN_INTRO.eyebrow}
             title={BRANCHEN_INTRO.title}
             lead={BRANCHEN_INTRO.lead}
             id="branchen-title"
@@ -127,7 +123,7 @@ export default function DatenPage() {
 
       <section className="section tone-white" aria-labelledby="warum-title">
         <div className="container daten-body">
-          <SectionHead label={WHY_INTRO.eyebrow} title={WHY_INTRO.title} lead={WHY_INTRO.lead} id="warum-title" />
+          <SectionHead title={WHY_INTRO.title} lead={WHY_INTRO.lead} id="warum-title" />
           {REASONS.map((reason, index) => (
             <div className="daten-reason" key={reason.title}>
               <h3>
@@ -145,29 +141,20 @@ export default function DatenPage() {
       <section className="section tone-gray" aria-labelledby="bedeutung-title">
         <div className="container experience">
           <div className="experience__main">
-            <span className="label">{MEANING.eyebrow}</span>
             <h2 id="bedeutung-title">{MEANING.title}</h2>
             {MEANING.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
           <nav aria-label="Weiterlesen">
-            <ul className="ki-links">
-              {MEANING.links.map((link) => (
-                <li key={link.href}>
-                  <Link className="text-link" href={link.href}>
-                    {link.label} <ArrowIcon />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <LinkList links={MEANING.links} />
           </nav>
         </div>
       </section>
 
       <section className="section tone-white" id="quellen" aria-labelledby="quellen-title">
         <div className="container daten-body">
-          <SectionHead label={METHOD.eyebrow} title={METHOD.title} id="quellen-title" />
+          <SectionHead title={METHOD.title} id="quellen-title" />
           {METHOD.text.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

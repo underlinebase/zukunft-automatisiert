@@ -36,7 +36,6 @@ export default function TimeSinks({ audienceDative, sinks }: TimeSinksProps) {
 
   return (
     <div className="time-sinks" ref={ref}>
-      <span className="label">Typische Woche</span>
       <h2 className="time-sinks__title">Wo die Zeit bei {audienceDative} hingeht</h2>
       <ul className="time-sinks__list">
         {sorted.map((sink, index) => (
